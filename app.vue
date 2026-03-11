@@ -1,6 +1,7 @@
 <template>
   <div>
     <NuxtPage />
+    <ChatWidget />
   </div>
 </template>
 
