@@ -51,7 +51,7 @@
             <span class="absolute bottom-0 right-0 w-3 h-3 bg-green-400 border-2 border-emerald-600 rounded-full" />
           </div>
           <div class="flex-1 min-w-0">
-            <p class="text-white font-semibold text-sm leading-tight">James</p>
+            <p class="text-white font-semibold text-sm leading-tight">James 👑 <span class="font-normal text-emerald-100 text-xs">The Container King</span></p>
             <p class="text-emerald-100 text-xs">
               <span class="inline-flex items-center gap-1">
                 <span class="w-1.5 h-1.5 bg-green-400 rounded-full inline-block" />
@@ -226,7 +226,7 @@ const quickReplies = [
 
 const defaultMessage: Message = {
   role: 'assistant',
-  text: "Hi there! 👋 I'm **James**, the Roseberry Containers assistant. I can help you with pricing, delivery quotes, container sizes, and anything else you need. What can I help you with today?",
+  text: "Hi there! 👋 I'm **James**, the Container King at Roseberry Containers. I can help you with pricing, delivery quotes, container sizes, and anything else you need. What can I help you with today?",
   time: formatTime(new Date()),
 }
 
