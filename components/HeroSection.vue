@@ -62,13 +62,9 @@
             <div class="absolute -bottom-16 -left-16 w-56 h-56 bg-amber-400/10 rounded-full blur-2xl pointer-events-none"></div>
             <!-- Subtle grid overlay -->
             <div class="absolute inset-0 opacity-[0.05] pointer-events-none" style="background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px); background-size: 40px 40px;"></div>
-            <!-- Product image — object-contain keeps proportions regardless of source size -->
-            <div class="relative z-10 flex items-center justify-center h-full p-6 lg:p-10">
-              <img
-                src="/container-20ft-new.jpg"
-                alt="20ft Shipping Container available in Middlesbrough"
-                class="max-w-full max-h-[240px] lg:max-h-[360px] w-auto object-contain drop-shadow-2xl group-hover:scale-105 transition-transform duration-700"
-              />
+            <!-- Isometric 3D container illustration -->
+            <div class="relative z-10 flex items-center justify-center h-full p-4 lg:p-8">
+              <IsometricContainer class="w-full max-w-[420px] drop-shadow-2xl" />
             </div>
           </div>
           <!-- Location badge -->
