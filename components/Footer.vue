@@ -4,8 +4,8 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <!-- Company Info -->
         <div>
-          <h3 class="text-white text-lg font-bold mb-4">Roseberry Self Storage</h3>
-          <p class="text-sm mb-4">
+          <h3 class="text-white text-lg font-bold mb-4">Roseberry Containers</h3>
+          <p class="text-sm md:text-base mb-4">
             Secure container storage solutions in Middlesbrough. We take care of your stuff with 24/7 CCTV monitoring and secure access.
           </p>
           <div class="flex space-x-4">
@@ -13,7 +13,7 @@
               href="https://www.facebook.com/profile.php?id=100090823632941" 
               target="_blank" 
               rel="noopener noreferrer"
-              class="hover:text-emerald-400 transition-colors"
+              class="hover:text-blue-400 transition-colors"
               aria-label="Facebook"
             >
               <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -24,7 +24,7 @@
               href="https://www.instagram.com/roseberrystorage/" 
               target="_blank" 
               rel="noopener noreferrer"
-              class="hover:text-emerald-400 transition-colors"
+              class="hover:text-pink-400 transition-colors"
               aria-label="Instagram"
             >
               <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -35,7 +35,7 @@
               href="https://www.tiktok.com/@roseberrygroup1" 
               target="_blank" 
               rel="noopener noreferrer"
-              class="hover:text-emerald-400 transition-colors"
+              class="hover:text-white transition-colors"
               aria-label="TikTok"
             >
               <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -46,7 +46,7 @@
               href="https://wa.me/447793251550" 
               target="_blank" 
               rel="noopener noreferrer"
-              class="hover:text-emerald-400 transition-colors"
+              class="hover:text-green-400 transition-colors"
               aria-label="WhatsApp"
             >
               <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -61,13 +61,13 @@
           <h3 class="text-white text-lg font-bold mb-4">Quick Links</h3>
           <ul class="space-y-2 text-sm">
             <li>
-              <NuxtLink to="/" class="hover:text-emerald-400 transition-colors">Home</NuxtLink>
+              <NuxtLink to="/" class="hover:text-primary-400 hover:underline transition-colors">Home</NuxtLink>
             </li>
             <li>
-              <NuxtLink to="/container-sales" class="hover:text-emerald-400 transition-colors">Container Sales</NuxtLink>
+              <NuxtLink to="/container-sales" class="hover:text-primary-400 hover:underline transition-colors">Container Sales</NuxtLink>
             </li>
             <li>
-              <NuxtLink to="/contact" class="hover:text-emerald-400 transition-colors">Contact</NuxtLink>
+              <NuxtLink to="/contact" class="hover:text-primary-400 hover:underline transition-colors">Contact</NuxtLink>
             </li>
           </ul>
         </div>
@@ -105,7 +105,7 @@
       </div>
 
       <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm">
-        <p>&copy; {{ currentYear }} Roseberry Self Storage. All rights reserved.</p>
+        <p>&copy; {{ currentYear }} Roseberry Containers. All rights reserved.</p>
       </div>
     </div>
   </footer>

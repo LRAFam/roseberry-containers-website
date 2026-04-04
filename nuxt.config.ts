@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
-  devtools: { enabled: true },
+  devtools: { enabled: process.env.NODE_ENV !== 'production' },
 
   modules: ['@nuxtjs/tailwindcss'],
 
@@ -23,7 +23,7 @@ export default defineNuxtConfig({
         { property: 'og:type', content: 'website' }
       ],
       link: [
-        { rel: 'icon', type: 'image/avif', href: '/logo.avif' }
+        { rel: 'icon', type: 'image/jpeg', href: '/logo.jpg' }
       ]
     }
   }

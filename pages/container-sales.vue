@@ -18,80 +18,531 @@
       <section class="section-padding bg-gray-50">
         <div class="container-custom">
           <div class="text-center mb-16">
-            <h2 class="text-4xl font-bold text-gray-900 mb-4">Available Containers</h2>
+            <h2 class="heading-lg text-gray-900 mb-4">Available Containers</h2>
             <p class="text-xl text-gray-600">Choose from our range of high-quality storage containers</p>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <!-- 20ft Container -->
-            <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-              <div class="h-64 bg-gray-300">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <!-- Used 10ft Container -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg hover:-translate-y-1 transition-all duration-300 group">
+              <div class="h-64 overflow-hidden bg-gray-100">
                 <img 
-                  src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=600&h=400&fit=crop" 
-                  alt="20ft Container" 
-                  class="w-full h-full object-cover"
+                  src="/container-10ft.jpg" 
+                  alt="Used 10ft Container" 
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
-              <div class="p-8">
-                <h3 class="text-2xl font-bold text-gray-900 mb-4">20ft Container</h3>
+              <div class="p-6 md:p-8">
+                <div class="flex items-center gap-2 mb-2">
+                  <h3 class="text-2xl font-bold text-gray-900">10ft Container</h3>
+                  <span class="text-xs font-semibold bg-gray-100 text-gray-600 px-2 py-1 rounded-full">Used</span>
+                </div>
+                <p class="text-gray-500 text-sm mb-4">Compact and practical — ideal where space is tight, for garden storage, tool storage, or small business use.</p>
                 <ul class="space-y-2 text-gray-600 mb-6">
                   <li class="flex items-center">
-                    <svg class="w-5 h-5 text-emerald-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                     </svg>
-                    Dimensions: 20' x 8' x 8'6"
+                    Dimensions: 10' × 8' × 8'6"
                   </li>
                   <li class="flex items-center">
-                    <svg class="w-5 h-5 text-emerald-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                     </svg>
-                    Perfect for small businesses
+                    ~560 cu ft internal space
                   </li>
                   <li class="flex items-center">
-                    <svg class="w-5 h-5 text-emerald-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                     </svg>
-                    Weather-resistant steel
+                    Fits in tight spaces &amp; driveways
+                  </li>
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Watertight &amp; weather-resistant
+                  </li>
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Great value second-hand option
                   </li>
                 </ul>
-                <button @click="openEnquiry('20ft Container')" class="btn-primary w-full text-center block">
+                <button @click="openEnquiry('Used 10ft Container')" class="btn-primary w-full">
                   Enquire Now
                 </button>
               </div>
             </div>
 
-            <!-- 40ft Container -->
-            <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-              <div class="h-64 bg-gray-300">
+            <!-- Used 20ft Container -->
+            <!-- New 1-Trip 10ft Container -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg hover:-translate-y-1 transition-all duration-300 group">
+              <div class="h-64 overflow-hidden bg-gray-100">
                 <img 
-                  src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=600&h=400&fit=crop" 
-                  alt="40ft Container" 
-                  class="w-full h-full object-cover"
+                  src="/container-10ft-new.jpg" 
+                  alt="New 1-Trip 10ft Container" 
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
-              <div class="p-8">
-                <h3 class="text-2xl font-bold text-gray-900 mb-4">40ft Container</h3>
+              <div class="p-6 md:p-8">
+                <div class="flex items-center gap-2 mb-2">
+                  <h3 class="text-2xl font-bold text-gray-900">10ft Container</h3>
+                  <span class="text-xs font-semibold bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full">1-Trip / New</span>
+                </div>
+                <p class="text-gray-500 text-sm mb-4">Compact, clean, and as good as new — perfect for tight spaces, garden storage, or small workshop conversions.</p>
                 <ul class="space-y-2 text-gray-600 mb-6">
                   <li class="flex items-center">
-                    <svg class="w-5 h-5 text-emerald-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                     </svg>
-                    Dimensions: 40' x 8' x 8'6"
+                    Dimensions: 10' × 8' × 8'6"
                   </li>
                   <li class="flex items-center">
-                    <svg class="w-5 h-5 text-emerald-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                     </svg>
-                    Maximum storage capacity
+                    564 cu ft internal space
                   </li>
                   <li class="flex items-center">
-                    <svg class="w-5 h-5 text-emerald-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                       <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                     </svg>
-                    Secure and durable
+                    Pristine interior &amp; exterior
+                  </li>
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    12,000 kg max gross weight
+                  </li>
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Watertight &amp; weather-resistant
                   </li>
                 </ul>
-                <button @click="openEnquiry('40ft Container')" class="btn-primary w-full text-center block">
+                <button @click="openEnquiry('New 1-Trip 10ft Container')" class="btn-primary w-full">
+                  Enquire Now
+                </button>
+              </div>
+            </div>
+
+            <!-- Used 20ft Container -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg hover:-translate-y-1 transition-all duration-300 group">
+              <div class="h-64 overflow-hidden bg-gray-100">
+                <img 
+                  src="/container-20ft.jpg" 
+                  alt="Used 20ft Container" 
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div class="p-6 md:p-8">
+                <div class="flex items-center gap-2 mb-2">
+                  <h3 class="text-2xl font-bold text-gray-900">20ft Container</h3>
+                  <span class="text-xs font-semibold bg-gray-100 text-gray-600 px-2 py-1 rounded-full">Used</span>
+                </div>
+                <p class="text-gray-500 text-sm mb-4">Ideal for small businesses and home moves — holds the equivalent of a 3-bedroom house.</p>
+                <ul class="space-y-2 text-gray-600 mb-6">
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Dimensions: 20' × 8' × 8'6"
+                  </li>
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    1,360 cu ft internal space
+                  </li>
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Designed to last 25+ years
+                  </li>
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Watertight &amp; weather-resistant
+                  </li>
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Great value second-hand option
+                  </li>
+                </ul>
+                <button @click="openEnquiry('Used 20ft Container')" class="btn-primary w-full">
+                  Enquire Now
+                </button>
+              </div>
+            </div>
+
+            <!-- New 1-Trip 20ft Container -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg hover:-translate-y-1 transition-all duration-300 group">
+              <div class="h-64 overflow-hidden bg-gray-100">
+                <img 
+                  src="/container-20ft-new.jpg" 
+                  alt="New 1-Trip 20ft Container" 
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div class="p-6 md:p-8">
+                <div class="flex items-center gap-2 mb-2">
+                  <h3 class="text-2xl font-bold text-gray-900">20ft Container</h3>
+                  <span class="text-xs font-semibold bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full">1-Trip / New</span>
+                </div>
+                <p class="text-gray-500 text-sm mb-4">A one-trip container is as close to brand new as you can get — used just once to ship cargo from the manufacturer.</p>
+                <ul class="space-y-2 text-gray-600 mb-6">
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Dimensions: 20' × 8' × 8'6"
+                  </li>
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    1,360 cu ft internal space
+                  </li>
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Pristine interior &amp; exterior
+                  </li>
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Ideal for conversions &amp; offices
+                  </li>
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Watertight &amp; weather-resistant
+                  </li>
+                </ul>
+                <button @click="openEnquiry('New 1-Trip 20ft Container')" class="btn-primary w-full">
+                  Enquire Now
+                </button>
+              </div>
+            </div>
+
+            <!-- Used 40ft Container -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg hover:-translate-y-1 transition-all duration-300 group">
+              <div class="h-64 overflow-hidden bg-gray-100">
+                <img 
+                  src="/container-40ft.jpg" 
+                  alt="Used 40ft Container" 
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div class="p-6 md:p-8">
+                <div class="flex items-center gap-2 mb-2">
+                  <h3 class="text-2xl font-bold text-gray-900">40ft Container</h3>
+                  <span class="text-xs font-semibold bg-gray-100 text-gray-600 px-2 py-1 rounded-full">Used</span>
+                </div>
+                <p class="text-gray-500 text-sm mb-4">Maximum capacity for large-scale storage — fits the contents of a 3-bedroom family home with room to spare.</p>
+                <ul class="space-y-2 text-gray-600 mb-6">
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Dimensions: 40' × 8' × 8'6"
+                  </li>
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    2,720 cu ft internal space
+                  </li>
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Designed to last 25+ years
+                  </li>
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Sturdy corten steel construction
+                  </li>
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Great value second-hand option
+                  </li>
+                </ul>
+                <button @click="openEnquiry('Used 40ft Container')" class="btn-primary w-full">
+                  Enquire Now
+                </button>
+              </div>
+            </div>
+
+            <!-- New 1-Trip 40ft Container -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg hover:-translate-y-1 transition-all duration-300 group">
+              <div class="h-64 overflow-hidden bg-gray-100">
+                <img 
+                  src="/container-40ft-new.jpg" 
+                  alt="New 1-Trip 40ft Container" 
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div class="p-6 md:p-8">
+                <div class="flex items-center gap-2 mb-2">
+                  <h3 class="text-2xl font-bold text-gray-900">40ft Container</h3>
+                  <span class="text-xs font-semibold bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full">1-Trip / New</span>
+                </div>
+                <p class="text-gray-500 text-sm mb-4">Brand-new condition with extra height — used just once to ship cargo, perfect for conversions and premium storage.</p>
+                <ul class="space-y-2 text-gray-600 mb-6">
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Dimensions: 40' × 8' × 9'6" (Hi-Cube)
+                  </li>
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    2,700 cu ft internal space
+                  </li>
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Pristine interior &amp; exterior
+                  </li>
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Ideal for conversions &amp; workshops
+                  </li>
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    30,480 kg max gross weight
+                  </li>
+                </ul>
+                <button @click="openEnquiry('New 1-Trip 40ft Container')" class="btn-primary w-full">
+                  Enquire Now
+                </button>
+              </div>
+            </div>
+
+            <!-- Hi-Cube Container -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg hover:-translate-y-1 transition-all duration-300 group">
+              <div class="h-64 overflow-hidden bg-gray-100">
+                <img 
+                  src="https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=600&h=400&fit=crop" 
+                  alt="Hi-Cube Container" 
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div class="p-6 md:p-8">
+                <h3 class="text-2xl font-bold text-gray-900 mb-2">Hi-Cube Container</h3>
+                <p class="text-gray-500 text-sm mb-4">Extra headroom makes Hi-Cube containers perfect for bulky cargo, conversions, and maximising every inch of space.</p>
+                <ul class="space-y-2 text-gray-600 mb-6">
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Available in 20ft &amp; 40ft sizes
+                  </li>
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Extra height: 9'6" internal
+                  </li>
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    High-quality corten steel
+                  </li>
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Ideal for container conversions
+                  </li>
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Available new or used
+                  </li>
+                </ul>
+                <button @click="openEnquiry('Hi-Cube Container')" class="btn-primary w-full">
+                  Enquire Now
+                </button>
+              </div>
+            </div>
+
+            <!-- Side Opening Container -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg hover:-translate-y-1 transition-all duration-300 group">
+              <div class="h-64 overflow-hidden bg-gray-100">
+                <img 
+                  src="/container-side-opening.jpg" 
+                  alt="Side Opening Container" 
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div class="p-6 md:p-8">
+                <h3 class="text-2xl font-bold text-gray-900 mb-2">Side Opening Container</h3>
+                <p class="text-gray-500 text-sm mb-4">Full-length side doors give unobstructed access to the entire container — ideal for loading wide or heavy items with ease.</p>
+                <ul class="space-y-2 text-gray-600 mb-6">
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Available in 20ft &amp; 40ft
+                  </li>
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Full side access panel
+                  </li>
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Standard end doors included
+                  </li>
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Perfect for retail &amp; pop-up use
+                  </li>
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Watertight &amp; secure when closed
+                  </li>
+                </ul>
+                <button @click="openEnquiry('Side Opening Container')" class="btn-primary w-full">
+                  Enquire Now
+                </button>
+              </div>
+            </div>
+
+            <!-- Basic Partial Conversion -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg hover:-translate-y-1 transition-all duration-300 group">
+              <div class="h-64 overflow-hidden bg-gray-100">
+                <img 
+                  src="/container-conversion-basic.jpg" 
+                  alt="Basic Partial Conversion Container" 
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div class="p-6 md:p-8">
+                <div class="flex items-center gap-2 mb-2">
+                  <h3 class="text-2xl font-bold text-gray-900">Container Conversion</h3>
+                  <span class="text-xs font-semibold bg-amber-100 text-amber-700 px-2 py-1 rounded-full">Basic / Partial</span>
+                </div>
+                <p class="text-gray-500 text-sm mb-4">A great starting point for your project — container prepared with large glazed bi-fold doors and a timber floor, ready to finish to your spec.</p>
+                <ul class="space-y-2 text-gray-600 mb-6">
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Large glazed bi-fold / sliding doors
+                  </li>
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Timber flooring included
+                  </li>
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    20ft Hi-Cube base unit
+                  </li>
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Ideal for offices, studios &amp; shops
+                  </li>
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Further fit-out to your requirements
+                  </li>
+                </ul>
+                <button @click="openEnquiry('Basic Partial Conversion')" class="btn-primary w-full">
+                  Enquire Now
+                </button>
+              </div>
+            </div>
+
+            <!-- Full Conversion / Garden Office -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg hover:-translate-y-1 transition-all duration-300 group">
+              <div class="h-64 overflow-hidden bg-gray-100">
+                <img 
+                  src="/container-conversion-full.jpg" 
+                  alt="Full Conversion / Garden Office" 
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div class="p-6 md:p-8">
+                <div class="flex items-center gap-2 mb-2">
+                  <h3 class="text-2xl font-bold text-gray-900">Container Conversion</h3>
+                  <span class="text-xs font-semibold bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full">Full / Garden Office</span>
+                </div>
+                <p class="text-gray-500 text-sm mb-4">A fully finished container conversion — timber-clad, insulated, and fitted out ready to use as a home office, studio, or garden room.</p>
+                <ul class="space-y-2 text-gray-600 mb-6">
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Timber cladding exterior
+                  </li>
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Bi-fold glazed doors
+                  </li>
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Fully insulated &amp; plastered
+                  </li>
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Electrics &amp; lighting fitted
+                  </li>
+                  <li class="flex items-center">
+                    <svg class="w-5 h-5 text-emerald-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    Bespoke to your requirements
+                  </li>
+                </ul>
+                <button @click="openEnquiry('Full Conversion / Garden Office')" class="btn-primary w-full">
                   Enquire Now
                 </button>
               </div>
@@ -113,7 +564,7 @@
       <section class="section-padding bg-white">
         <div class="container-custom">
           <div class="max-w-4xl mx-auto">
-            <h2 class="text-4xl font-bold text-gray-900 mb-12 text-center">Why Buy From Us?</h2>
+            <h2 class="heading-lg text-gray-900 mb-12 text-center">Why Buy From Us?</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div class="flex items-start space-x-4">
@@ -123,8 +574,8 @@
                   </svg>
                 </div>
                 <div>
-                  <h3 class="font-bold text-gray-900 mb-2">Quality Guaranteed</h3>
-                  <p class="text-gray-600">All containers are inspected and certified for quality</p>
+                  <h3 class="font-bold text-gray-900 mb-2">Stringent Quality Checks</h3>
+                  <p class="text-gray-600">Every container — new or used — passes rigorous inspection before sale, ensuring quality and longevity you can count on.</p>
                 </div>
               </div>
 
@@ -136,7 +587,7 @@
                 </div>
                 <div>
                   <h3 class="font-bold text-gray-900 mb-2">Competitive Pricing</h3>
-                  <p class="text-gray-600">Best prices in the Middlesbrough area</p>
+                  <p class="text-gray-600">Great value on new and used containers — with short and long-term options to suit any budget in the Middlesbrough area.</p>
                 </div>
               </div>
 
@@ -148,8 +599,8 @@
                   </svg>
                 </div>
                 <div>
-                  <h3 class="font-bold text-gray-900 mb-2">Delivery Available</h3>
-                  <p class="text-gray-600">We can deliver to your location</p>
+                  <h3 class="font-bold text-gray-900 mb-2">Delivery to Your Door</h3>
+                  <p class="text-gray-600">We deliver directly to your site. From quote to delivery, we make the whole process quick and straightforward.</p>
                 </div>
               </div>
 
@@ -160,8 +611,32 @@
                   </svg>
                 </div>
                 <div>
-                  <h3 class="font-bold text-gray-900 mb-2">Expert Support</h3>
-                  <p class="text-gray-600">Friendly team ready to answer your questions</p>
+                  <h3 class="font-bold text-gray-900 mb-2">Expert Advice</h3>
+                  <p class="text-gray-600">Not sure which container is right for you? Our experienced team will guide you through the options and find the perfect fit.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start space-x-4">
+                <div class="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-bold text-gray-900 mb-2">Built to Last 25+ Years</h3>
+                  <p class="text-gray-600">Constructed from high-grade corten steel, our containers are designed to be watertight and weather-resistant with minimal maintenance.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start space-x-4">
+                <div class="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-bold text-gray-900 mb-2">Ideal for Conversions</h3>
+                  <p class="text-gray-600">Whether you're creating a workshop, pop-up shop, or additional office space, our containers are a versatile base for any project.</p>
                 </div>
               </div>
             </div>

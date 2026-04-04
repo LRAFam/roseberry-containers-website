@@ -20,7 +20,7 @@
       />
 
       <Transition mode="out-in" enter-active-class="transition-all duration-150" enter-from-class="opacity-0 rotate-90 scale-75" enter-to-class="opacity-100 rotate-0 scale-100" leave-active-class="transition-all duration-150" leave-from-class="opacity-100 rotate-0 scale-100" leave-to-class="opacity-0 -rotate-90 scale-75">
-        <img v-if="!isOpen" src="/logo.avif" alt="James — Roseberry Assistant" class="w-10 h-10 object-contain" />
+        <img v-if="!isOpen" src="/logo.jpg" alt="James — Roseberry Assistant" class="w-10 h-10 object-contain" />
         <svg v-else xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
         </svg>
@@ -45,7 +45,7 @@
         <div class="bg-emerald-600 px-4 py-3 flex items-center gap-3 flex-shrink-0">
           <div class="relative flex-shrink-0">
             <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center overflow-hidden shadow-sm">
-              <img src="/logo.avif" alt="James" class="w-8 h-8 object-contain" />
+              <img src="/logo.jpg" alt="James" class="w-8 h-8 object-contain" />
             </div>
             <!-- Online dot -->
             <span class="absolute bottom-0 right-0 w-3 h-3 bg-green-400 border-2 border-emerald-600 rounded-full" />
@@ -99,7 +99,7 @@
           >
             <!-- James avatar beside message -->
             <div v-if="msg.role === 'assistant'" class="flex-shrink-0 w-7 h-7 rounded-full bg-white border border-gray-200 flex items-center justify-center overflow-hidden shadow-sm mb-0.5">
-              <img src="/logo.avif" alt="James" class="w-5 h-5 object-contain" />
+              <img src="/logo.jpg" alt="James" class="w-5 h-5 object-contain" />
             </div>
 
             <div :class="msg.role === 'user' ? 'items-end' : 'items-start'" class="flex flex-col gap-1 max-w-[78%]">
@@ -126,7 +126,7 @@
           <!-- Typing indicator -->
           <div v-if="isLoading" class="flex justify-start items-end gap-2">
             <div class="flex-shrink-0 w-7 h-7 rounded-full bg-white border border-gray-200 flex items-center justify-center overflow-hidden shadow-sm">
-              <img src="/logo.avif" alt="James" class="w-5 h-5 object-contain" />
+              <img src="/logo.jpg" alt="James" class="w-5 h-5 object-contain" />
             </div>
             <div class="bg-white rounded-2xl rounded-bl-md px-4 py-3 shadow-sm border border-gray-100">
               <div class="flex gap-1.5 items-center">
@@ -192,7 +192,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, nextTick, onMounted, watch } from 'vue'
+import { ref, nextTick, onMounted, onUnmounted, watch } from 'vue'
 
 const config = useRuntimeConfig()
 const apiBase = config.public.apiBase || 'http://localhost:3001'
@@ -238,12 +238,38 @@ function formatTime(date: Date): string {
 
 /** Convert basic markdown-like formatting to safe HTML */
 function formatMessage(text: string): string {
-  return text
+  const escaped = text
     .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.+?)\*/g, '<em>$1</em>')
-    .replace(/`(.+?)`/g, '<code class="bg-gray-100 px-1 rounded text-xs font-mono">$1</code>')
-    .replace(/\n/g, '<br />')
+
+  const lines = escaped.split('\n')
+  const result: string[] = []
+  let inUl = false
+  let inOl = false
+
+  for (const raw of lines) {
+    const line = raw
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.+?)\*/g, '<em>$1</em>')
+      .replace(/`(.+?)`/g, '<code class="bg-gray-100 px-1 rounded text-xs font-mono">$1</code>')
+
+    const ulMatch = line.match(/^[-•]\s+(.+)/)
+    const olMatch = line.match(/^\d+\.\s+(.+)/)
+
+    if (ulMatch) {
+      if (!inUl) { if (inOl) { result.push('</ol>'); inOl = false } result.push('<ul class="list-disc pl-4 space-y-0.5 my-1">'); inUl = true }
+      result.push(`<li>${ulMatch[1]}</li>`)
+    } else if (olMatch) {
+      if (!inOl) { if (inUl) { result.push('</ul>'); inUl = false } result.push('<ol class="list-decimal pl-4 space-y-0.5 my-1">'); inOl = true }
+      result.push(`<li>${olMatch[1]}</li>`)
+    } else {
+      if (inUl) { result.push('</ul>'); inUl = false }
+      if (inOl) { result.push('</ol>'); inOl = false }
+      result.push(line === '' ? '<br />' : `<p class="mb-0.5">${line}</p>`)
+    }
+  }
+  if (inUl) result.push('</ul>')
+  if (inOl) result.push('</ol>')
+  return result.join('')
 }
 
 function autoResize(event: Event) {
@@ -360,6 +386,10 @@ onMounted(() => {
       }
     }
   } catch { /* ignore corrupt storage */ }
+
+  const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape' && isOpen.value) isOpen.value = false }
+  window.addEventListener('keydown', onKey)
+  onUnmounted(() => window.removeEventListener('keydown', onKey))
 })
 </script>
 

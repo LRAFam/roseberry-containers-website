@@ -2,21 +2,21 @@
   <section class="section-padding bg-white">
     <div class="container-custom">
       <div class="text-center mb-12">
-        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        <h2 class="heading-lg text-gray-900 mb-4">
           What Our Customers Say
         </h2>
-        <p class="text-xl text-gray-600">
+        <p class="body-lg">
           Trusted by businesses and individuals across Middlesbrough
         </p>
       </div>
 
       <!-- Review prompt cards -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-        <a 
-          href="https://www.facebook.com/profile.php?id=100090823632941" 
-          target="_blank" 
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <a
+          href="https://www.facebook.com/profile.php?id=100090823632941"
+          target="_blank"
           rel="noopener noreferrer"
-          class="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-all group text-center border-2 border-transparent hover:border-blue-100"
+          class="bg-gray-50 rounded-2xl p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group text-center border border-gray-100"
         >
           <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
             <svg class="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
@@ -28,11 +28,11 @@
           <span class="text-blue-600 text-sm font-medium group-hover:underline">View reviews →</span>
         </a>
 
-        <a 
-          href="https://www.instagram.com/roseberrystorage/" 
-          target="_blank" 
+        <a
+          href="https://www.instagram.com/roseberrystorage/"
+          target="_blank"
           rel="noopener noreferrer"
-          class="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-all group text-center border-2 border-transparent hover:border-pink-100"
+          class="bg-gray-50 rounded-2xl p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group text-center border border-gray-100"
         >
           <div class="w-14 h-14 bg-pink-100 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
             <svg class="w-8 h-8 text-pink-600" fill="currentColor" viewBox="0 0 24 24">
@@ -44,11 +44,11 @@
           <span class="text-pink-600 text-sm font-medium group-hover:underline">@roseberrystorage →</span>
         </a>
 
-        <a 
-          href="https://www.tiktok.com/@roseberrygroup1" 
-          target="_blank" 
+        <a
+          href="https://www.tiktok.com/@roseberrygroup1"
+          target="_blank"
           rel="noopener noreferrer"
-          class="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-all group text-center border-2 border-transparent hover:border-gray-200"
+          class="bg-gray-50 rounded-2xl p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group text-center border border-gray-100"
         >
           <div class="w-14 h-14 bg-gray-900 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
             <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">

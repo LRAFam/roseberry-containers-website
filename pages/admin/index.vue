@@ -1,11 +1,35 @@
 <template>
   <div class="min-h-screen bg-gray-100 flex flex-col">
 
+    <!-- ── Toast Notifications ── -->
+    <Teleport to="body">
+      <div class="fixed top-4 right-4 z-[100] flex flex-col gap-2 pointer-events-none">
+        <TransitionGroup name="toast">
+          <div
+            v-for="toast in toasts"
+            :key="toast.id"
+            :class="['pointer-events-auto flex items-center gap-3 px-4 py-3 rounded-xl shadow-lg text-sm font-medium border max-w-sm',
+              toast.type === 'success' ? 'bg-white border-emerald-200 text-emerald-800' :
+              toast.type === 'error'   ? 'bg-white border-red-200 text-red-700' :
+                                         'bg-white border-gray-200 text-gray-700']"
+          >
+            <span v-if="toast.type === 'success'" class="text-emerald-500 flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>
+            </span>
+            <span v-else-if="toast.type === 'error'" class="text-red-500 flex-shrink-0">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            </span>
+            {{ toast.message }}
+          </div>
+        </TransitionGroup>
+      </div>
+    </Teleport>
+
     <!-- ── Nav ── -->
     <header class="bg-white shadow-sm border-b border-gray-200 flex-shrink-0">
       <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
         <div class="flex items-center gap-3">
-          <img src="/logo.avif" alt="Roseberry" class="h-9 w-auto" />
+          <img src="/logo.jpg" alt="Roseberry" class="h-9 w-auto" />
           <div>
             <p class="font-bold text-gray-900 leading-tight text-sm">Roseberry Admin</p>
             <p class="text-xs text-gray-400">Dashboard</p>
@@ -93,12 +117,20 @@
           <table class="w-full text-sm">
             <thead class="bg-gray-50 border-b border-gray-200">
               <tr>
-                <th class="th">Name</th>
-                <th class="th hidden sm:table-cell">Source</th>
+                <th class="th cursor-pointer select-none hover:text-gray-700" @click="toggleSort('customer_name')">
+                  Name <span class="ml-1 text-gray-400">{{ sortIcon('customer_name') }}</span>
+                </th>
+                <th class="th hidden sm:table-cell cursor-pointer select-none hover:text-gray-700" @click="toggleSort('source')">
+                  Source <span class="ml-1 text-gray-400">{{ sortIcon('source') }}</span>
+                </th>
                 <th class="th hidden md:table-cell">Container</th>
                 <th class="th hidden lg:table-cell">Phone</th>
-                <th class="th hidden lg:table-cell">Created</th>
-                <th class="th">Status</th>
+                <th class="th hidden lg:table-cell cursor-pointer select-none hover:text-gray-700" @click="toggleSort('created_at')">
+                  Created <span class="ml-1 text-gray-400">{{ sortIcon('created_at') }}</span>
+                </th>
+                <th class="th cursor-pointer select-none hover:text-gray-700" @click="toggleSort('status')">
+                  Status <span class="ml-1 text-gray-400">{{ sortIcon('status') }}</span>
+                </th>
                 <th class="th w-10"></th>
               </tr>
             </thead>
@@ -314,7 +346,7 @@
                 <td class="td"><span :class="invoiceStatusChip(inv.status)" class="chip capitalize">{{ inv.status }}</span></td>
                 <td class="td hidden sm:table-cell text-gray-400 whitespace-nowrap">{{ fmtDate(inv.created_at) }}</td>
                 <td class="td">
-                  <a v-if="inv.pdf_path" :href="`${apiBase}/${inv.pdf_path}`" target="_blank" class="text-emerald-600 hover:underline text-xs font-medium">Download</a>
+                  <a v-if="inv.pdf_path" :href="`${apiBase}/invoices/${inv.pdf_path}`" target="_blank" class="text-emerald-600 hover:underline text-xs font-medium">Download</a>
                   <span v-else class="text-gray-300 text-xs">—</span>
                 </td>
                 <td class="td">
@@ -330,9 +362,61 @@
         </div>
       </section>
 
-    </div>
+      <!-- ── CALLS ── -->
+      <section v-if="activeTab === 'calls'" class="flex flex-col gap-4">
+        <div v-if="callsLoading" class="card py-16 text-center text-gray-400 text-sm">Loading…</div>
+        <div v-else-if="calls.length === 0" class="card py-16 text-center text-gray-400 text-sm">No AI calls recorded yet.</div>
+        <div v-else class="card overflow-hidden">
+          <table class="w-full text-sm">
+            <thead class="bg-gray-50 border-b border-gray-200"><tr>
+              <th class="th">Contact</th>
+              <th class="th hidden sm:table-cell">Purpose</th>
+              <th class="th hidden md:table-cell">Lead</th>
+              <th class="th">Status</th>
+              <th class="th hidden lg:table-cell">Duration</th>
+              <th class="th hidden lg:table-cell">Date</th>
+              <th class="th w-10"></th>
+            </tr></thead>
+            <tbody class="divide-y divide-gray-100">
+              <tr v-for="call in calls" :key="call.id" class="hover:bg-gray-50 cursor-pointer" @click="expandedCall = expandedCall === call.id ? null : call.id">
+                <td class="td font-medium text-gray-900">{{ call.contact_name || call.phone_number }}</td>
+                <td class="td hidden sm:table-cell">
+                  <span :class="call.purpose === 'haulier_quote' ? 'chip-blue' : 'chip-purple'" class="chip capitalize">{{ call.purpose?.replace('_', ' ') }}</span>
+                </td>
+                <td class="td hidden md:table-cell text-gray-400">{{ call.lead_name || '—' }}</td>
+                <td class="td">
+                  <span :class="{ 'chip-green': call.status === 'completed', 'chip-yellow': call.status === 'in_progress', 'chip-gray': call.status === 'initiated', 'chip-red': call.status === 'failed' }" class="chip capitalize">{{ call.status }}</span>
+                </td>
+                <td class="td hidden lg:table-cell text-gray-400">{{ call.duration_seconds ? `${call.duration_seconds}s` : '—' }}</td>
+                <td class="td hidden lg:table-cell text-gray-400 whitespace-nowrap">{{ fmtDate(call.created_at) }}</td>
+                <td class="td text-gray-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transition-transform" :class="expandedCall === call.id ? 'rotate-180' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                </td>
+              </tr>
+              <!-- Expanded transcript row -->
+              <tr v-if="expandedCall === call.id" :key="`${call.id}-detail`" v-for="call in calls">
+                <td colspan="7" class="px-4 pb-4 bg-gray-50">
+                  <div v-if="call.summary" class="mb-2">
+                    <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Summary</p>
+                    <p class="text-sm text-gray-700">{{ call.summary }}</p>
+                  </div>
+                  <div v-if="call.extracted_price_pence" class="mb-2">
+                    <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Extracted Price</p>
+                    <p class="text-sm font-medium text-emerald-700">£{{ (call.extracted_price_pence / 100).toFixed(2) }}</p>
+                  </div>
+                  <div v-if="call.transcript">
+                    <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Transcript</p>
+                    <p class="text-xs text-gray-500 whitespace-pre-wrap font-mono bg-white border border-gray-100 rounded-lg p-3">{{ call.transcript }}</p>
+                  </div>
+                  <p v-if="!call.summary && !call.transcript" class="text-xs text-gray-400 italic">No transcript available yet.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
 
-    <!-- ── Lead Detail Slide-over ── -->
+    </div>
     <Transition enter-active-class="transition-all duration-300 ease-out" enter-from-class="opacity-0" enter-to-class="opacity-100" leave-active-class="transition-all duration-200" leave-from-class="opacity-100" leave-to-class="opacity-0">
       <div v-if="selectedLead" class="fixed inset-0 z-40 bg-black/30 backdrop-blur-sm" @click.self="selectedLead = null" />
     </Transition>
@@ -399,6 +483,16 @@ const config = useRuntimeConfig()
 const apiBase = config.public.apiBase || 'http://localhost:3001'
 const router = useRouter()
 
+// ── Toasts ─────────────────────────────────────────────────────────────────
+interface Toast { id: number; message: string; type: 'success' | 'error' | 'info' }
+const toasts = ref<Toast[]>([])
+let toastId = 0
+function showToast(message: string, type: Toast['type'] = 'success') {
+  const id = ++toastId
+  toasts.value.push({ id, message, type })
+  setTimeout(() => { toasts.value = toasts.value.filter(t => t.id !== id) }, 3500)
+}
+
 // ── Clock ──────────────────────────────────────────────────────────────────
 const currentTime = ref('')
 onMounted(() => {
@@ -415,6 +509,7 @@ const tabs = [
   { id: 'followups', label: 'Follow-ups' },
   { id: 'haulage', label: 'Haulage' },
   { id: 'invoices', label: 'Invoices' },
+  { id: 'calls', label: 'AI Calls' },
 ]
 const activeTab = ref('leads')
 
@@ -451,13 +546,33 @@ const leadSources = ['website', 'whatsapp', 'instagram', 'facebook']
 const selectedLead = ref<any>(null)
 const leadNotes = ref('')
 
+// Sorting
+const sortBy = ref<string>('created_at')
+const sortDir = ref<'asc' | 'desc'>('desc')
+
+function toggleSort(col: string) {
+  if (sortBy.value === col) sortDir.value = sortDir.value === 'asc' ? 'desc' : 'asc'
+  else { sortBy.value = col; sortDir.value = 'asc' }
+}
+
+function sortIcon(col: string): string {
+  if (sortBy.value !== col) return '↕'
+  return sortDir.value === 'asc' ? '↑' : '↓'
+}
+
 const filteredLeads = computed(() => {
-  return leads.value.filter((l) => {
-    const q = leadSearch.value.toLowerCase()
+  const q = leadSearch.value.toLowerCase()
+  const filtered = leads.value.filter((l) => {
     const matchSearch = !q || l.customer_name?.toLowerCase().includes(q) || l.phone?.includes(q)
     const matchStatus = !leadStatusFilter.value || l.status === leadStatusFilter.value
     const matchSource = !leadSourceFilter.value || l.source === leadSourceFilter.value
     return matchSearch && matchStatus && matchSource
+  })
+  return [...filtered].sort((a, b) => {
+    const av = a[sortBy.value] ?? ''
+    const bv = b[sortBy.value] ?? ''
+    const cmp = String(av).localeCompare(String(bv), undefined, { numeric: true })
+    return sortDir.value === 'asc' ? cmp : -cmp
   })
 })
 
@@ -477,26 +592,33 @@ async function openLead(lead: any) {
 }
 
 async function patchLeadStatus(id: string, status: string) {
-  await fetch(`${apiBase}/admin/leads/${id}`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, credentials: 'include', body: JSON.stringify({ status }) })
-  await fetchLeads()
-  if (selectedLead.value?.id === id) selectedLead.value.status = status
+  try {
+    await fetch(`${apiBase}/admin/leads/${id}`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, credentials: 'include', body: JSON.stringify({ status }) })
+    await fetchLeads()
+    if (selectedLead.value?.id === id) selectedLead.value.status = status
+    showToast('Status updated')
+  } catch { showToast('Failed to update status', 'error') }
 }
 
 async function saveNotes() {
-  await fetch(`${apiBase}/admin/leads/${selectedLead.value.id}`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, credentials: 'include', body: JSON.stringify({ notes: leadNotes.value }) })
-  selectedLead.value.notes = leadNotes.value
+  try {
+    await fetch(`${apiBase}/admin/leads/${selectedLead.value.id}`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, credentials: 'include', body: JSON.stringify({ notes: leadNotes.value }) })
+    selectedLead.value.notes = leadNotes.value
+    showToast('Notes saved')
+  } catch { showToast('Failed to save notes', 'error') }
 }
 
 function exportLeadsCsv() {
-  const header = ['Name', 'Source', 'Status', 'Container', 'Phone', 'Location', 'Created']
+  const header = ['Name', 'Source', 'Status', 'Container', 'Phone', 'Location', 'Quantity', 'Created']
   const rows = filteredLeads.value.map((l) => [
-    l.customer_name, l.source, l.status, l.container_type ?? '', l.phone ?? '', l.location ?? '', fmtDate(l.created_at)
+    l.customer_name, l.source, l.status, l.container_type ?? '', l.phone ?? '', l.location ?? '', l.quantity ?? '', fmtDate(l.created_at)
   ])
   const csv = [header, ...rows].map((r) => r.map((c) => `"${String(c).replace(/"/g, '""')}"`).join(',')).join('\n')
   const blob = new Blob([csv], { type: 'text/csv' })
   const url = URL.createObjectURL(blob)
   const a = document.createElement('a'); a.href = url; a.download = 'leads.csv'; a.click()
   URL.revokeObjectURL(url)
+  showToast(`Exported ${filteredLeads.value.length} leads`)
 }
 
 // ── Customers ──────────────────────────────────────────────────────────────
@@ -512,9 +634,12 @@ async function fetchCustomers() {
 }
 
 async function submitCustomer() {
-  await fetch(`${apiBase}/admin/customers`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, credentials: 'include', body: JSON.stringify(newCustomer.value) })
-  showAddCustomer.value = false; newCustomer.value = { name: '', email: '', phone: '', address: '' }
-  await fetchCustomers()
+  try {
+    await fetch(`${apiBase}/admin/customers`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, credentials: 'include', body: JSON.stringify(newCustomer.value) })
+    showAddCustomer.value = false; newCustomer.value = { name: '', email: '', phone: '', address: '' }
+    await fetchCustomers()
+    showToast('Customer added')
+  } catch { showToast('Failed to add customer', 'error') }
 }
 
 // ── Stock ──────────────────────────────────────────────────────────────────
@@ -530,15 +655,21 @@ async function fetchStock() {
 }
 
 async function submitStock() {
-  await fetch(`${apiBase}/admin/depot`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, credentials: 'include', body: JSON.stringify(newStock.value) })
-  showAddStock.value = false; newStock.value = { depot_name: '', container_type: '', condition: 'used', price_gbp: 0, quantity: 1, postcode: '' }
-  await fetchStock()
+  try {
+    await fetch(`${apiBase}/admin/depot`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, credentials: 'include', body: JSON.stringify(newStock.value) })
+    showAddStock.value = false; newStock.value = { depot_name: '', container_type: '', condition: 'used', price_gbp: 0, quantity: 1, postcode: '' }
+    await fetchStock()
+    showToast('Stock updated')
+  } catch { showToast('Failed to save stock', 'error') }
 }
 
 async function deleteStock(id: string) {
   if (!confirm('Remove this stock entry?')) return
-  await fetch(`${apiBase}/admin/depot/${id}`, { method: 'DELETE', credentials: 'include' })
-  await fetchStock()
+  try {
+    await fetch(`${apiBase}/admin/depot/${id}`, { method: 'DELETE', credentials: 'include' })
+    await fetchStock()
+    showToast('Stock entry removed')
+  } catch { showToast('Failed to delete stock', 'error') }
 }
 
 // ── Follow-ups ─────────────────────────────────────────────────────────────
@@ -552,8 +683,11 @@ async function fetchFollowups() {
 }
 
 async function cancelFollowup(id: string) {
-  await fetch(`${apiBase}/admin/followups/${id}/cancel`, { method: 'PATCH', credentials: 'include' })
-  await fetchFollowups()
+  try {
+    await fetch(`${apiBase}/admin/followups/${id}/cancel`, { method: 'PATCH', credentials: 'include' })
+    await fetchFollowups()
+    showToast('Follow-up cancelled')
+  } catch { showToast('Failed to cancel follow-up', 'error') }
 }
 
 function isPast(date: string) { return new Date(date) < new Date() }
@@ -571,9 +705,12 @@ async function fetchHaulage() {
 }
 
 async function submitHaulage() {
-  await fetch(`${apiBase}/admin/haulage`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, credentials: 'include', body: JSON.stringify(newHaulage.value) })
-  showAddHaulage.value = false; newHaulage.value = { haulier_name: '', price_gbp: 0, origin_postcode: '', destination_postcode: '', distance_km: null, notes: '' }
-  await fetchHaulage()
+  try {
+    await fetch(`${apiBase}/admin/haulage`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, credentials: 'include', body: JSON.stringify(newHaulage.value) })
+    showAddHaulage.value = false; newHaulage.value = { haulier_name: '', price_gbp: 0, origin_postcode: '', destination_postcode: '', distance_km: null, notes: '' }
+    await fetchHaulage()
+    showToast('Haulage quote saved')
+  } catch { showToast('Failed to save quote', 'error') }
 }
 
 // ── Invoices ───────────────────────────────────────────────────────────────
@@ -596,14 +733,31 @@ async function fetchInvoices() {
 }
 
 async function submitInvoice() {
-  await fetch(`${apiBase}/admin/invoices`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, credentials: 'include', body: JSON.stringify(newInvoice.value) })
-  showCreateInvoice.value = false; newInvoice.value = { customer_id: '', lead_id: '', items: [{ description: '', quantity: 1, unit_price: 0 }] }
-  await fetchInvoices()
+  try {
+    await fetch(`${apiBase}/admin/invoices`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, credentials: 'include', body: JSON.stringify(newInvoice.value) })
+    showCreateInvoice.value = false; newInvoice.value = { customer_id: '', lead_id: '', items: [{ description: '', quantity: 1, unit_price: 0 }] }
+    await fetchInvoices()
+    showToast('Invoice created')
+  } catch { showToast('Failed to create invoice', 'error') }
 }
 
 async function patchInvoiceStatus(id: string, status: string) {
-  await fetch(`${apiBase}/admin/invoices/${id}/status`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, credentials: 'include', body: JSON.stringify({ status }) })
-  await fetchInvoices()
+  try {
+    await fetch(`${apiBase}/admin/invoices/${id}/status`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, credentials: 'include', body: JSON.stringify({ status }) })
+    await fetchInvoices()
+    showToast('Invoice status updated')
+  } catch { showToast('Failed to update invoice', 'error') }
+}
+
+// ── Calls ──────────────────────────────────────────────────────────────────
+const calls = ref<any[]>([])
+const callsLoading = ref(false)
+const expandedCall = ref<string | null>(null)
+
+async function fetchCalls() {
+  callsLoading.value = true
+  try { const res = await fetch(`${apiBase}/admin/calls`, { credentials: 'include' }); calls.value = await res.json() }
+  finally { callsLoading.value = false }
 }
 
 // ── Helpers ────────────────────────────────────────────────────────────────
@@ -622,7 +776,7 @@ async function logout() {
 
 // ── Mount ──────────────────────────────────────────────────────────────────
 onMounted(async () => {
-  await Promise.all([fetchStats(), fetchLeads(), fetchCustomers(), fetchStock(), fetchFollowups(), fetchHaulage(), fetchInvoices()])
+  await Promise.all([fetchStats(), fetchLeads(), fetchCustomers(), fetchStock(), fetchFollowups(), fetchHaulage(), fetchInvoices(), fetchCalls()])
 })
 
 watch(activeTab, (tab) => {
@@ -632,6 +786,7 @@ watch(activeTab, (tab) => {
   else if (tab === 'followups') fetchFollowups()
   else if (tab === 'haulage') fetchHaulage()
   else if (tab === 'invoices') fetchInvoices()
+  else if (tab === 'calls') fetchCalls()
 })
 </script>
 
@@ -646,8 +801,16 @@ watch(activeTab, (tab) => {
 .chip-indigo { @apply bg-indigo-100 text-indigo-700; }
 .chip-yellow { @apply bg-yellow-100 text-yellow-700; }
 .chip-gray   { @apply bg-gray-100 text-gray-600; }
+.chip-red    { @apply bg-red-100 text-red-700; }
+.chip-purple { @apply bg-purple-100 text-purple-700; }
 .input-field { @apply border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-100 transition-colors; }
 .form-label  { @apply block text-xs font-medium text-gray-600 mb-1; }
 .btn-primary { @apply bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-4 py-2 rounded-lg transition-colors disabled:opacity-50; }
 .btn-secondary { @apply bg-white hover:bg-gray-50 text-gray-700 font-medium px-4 py-2 rounded-lg border border-gray-200 transition-colors; }
+
+/* Toast animations */
+.toast-enter-active { transition: all 0.3s ease-out; }
+.toast-leave-active { transition: all 0.25s ease-in; }
+.toast-enter-from  { opacity: 0; transform: translateX(1rem); }
+.toast-leave-to    { opacity: 0; transform: translateX(1rem); }
 </style>
