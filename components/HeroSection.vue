@@ -55,12 +55,15 @@
           </div>
         </div>
 
-        <!-- Container image -->
+        <!-- Container image / placeholder -->
         <div class="relative lg:h-[520px] h-[320px]">
-          <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary-800 to-primary-950 border border-white/10 shadow-2xl overflow-hidden bg-cover bg-center" style="background-image: url('/images/hero-containers.jpg')">
-            <div class="absolute inset-0 bg-primary-950/40 rounded-2xl"></div>
+          <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary-800 to-primary-950 border border-white/10 shadow-2xl overflow-hidden">
             <div class="absolute -top-20 -right-20 w-72 h-72 bg-primary-500/20 rounded-full blur-3xl pointer-events-none"></div>
             <div class="absolute -bottom-16 -left-16 w-56 h-56 bg-primary-400/10 rounded-full blur-2xl pointer-events-none"></div>
+            <div class="absolute inset-0 opacity-[0.05] pointer-events-none" style="background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px); background-size: 40px 40px;"></div>
+            <div class="relative z-10 flex items-center justify-center h-full p-4 lg:p-8">
+              <IsometricContainer class="w-full max-w-[420px] drop-shadow-2xl" />
+            </div>
           </div>
         </div>
       </div>
