@@ -4,8 +4,7 @@
     <main>
       <!-- Hero -->
       <section class="relative text-white overflow-hidden">
-        <div class="absolute inset-0">
-          <img src="/images/conversions.jpg" alt="Container conversion" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/images/conversions.jpg')">
           <div class="absolute inset-0 bg-primary-950/85"></div>
         </div>
         <div class="container-custom relative z-10 py-20 md:py-28">

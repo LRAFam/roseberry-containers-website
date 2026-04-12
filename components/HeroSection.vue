@@ -1,12 +1,7 @@
 <template>
   <section class="relative text-white overflow-hidden">
     <!-- Background: container photo with dark burgundy overlay -->
-    <div class="absolute inset-0">
-      <img
-        src="/images/hero-containers.jpg"
-        alt="Roseberry Containers yard"
-        class="w-full h-full object-cover"
-      />
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/images/hero-containers.jpg')">
       <div class="absolute inset-0 bg-primary-950/85"></div>
     </div>
 

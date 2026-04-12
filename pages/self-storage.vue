@@ -4,8 +4,7 @@
     <main>
       <!-- Hero -->
       <section class="relative text-white overflow-hidden">
-        <div class="absolute inset-0">
-          <img src="/images/self-storage.jpg" alt="Self storage containers Teesside" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/images/self-storage.jpg')">
           <div class="absolute inset-0 bg-primary-950/85"></div>
         </div>
         <div class="container-custom relative z-10 py-20 md:py-28">
