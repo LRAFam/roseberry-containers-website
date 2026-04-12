@@ -51,7 +51,11 @@
             <span class="absolute bottom-0 right-0 w-3 h-3 bg-green-400 border-2 border-emerald-600 rounded-full" />
           </div>
           <div class="flex-1 min-w-0">
-            <p class="text-white font-semibold text-sm leading-tight">James 👑 <span class="font-normal text-emerald-100 text-xs">The Container King</span></p>
+            <p class="text-white font-semibold text-sm leading-tight">
+              James
+              <svg class="inline w-3.5 h-3.5 text-amber-300 ml-0.5 -mt-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg>
+              <span class="font-normal text-emerald-100 text-xs ml-1">The Container King</span>
+            </p>
             <p class="text-emerald-100 text-xs">
               <span class="inline-flex items-center gap-1">
                 <span class="w-1.5 h-1.5 bg-green-400 rounded-full inline-block" />
@@ -143,11 +147,12 @@
         <div v-if="showQuickReplies" class="px-4 pt-3 pb-1 flex gap-2 flex-wrap bg-gray-50 border-t border-gray-100 flex-shrink-0">
           <button
             v-for="chip in quickReplies"
-            :key="chip"
-            @click="sendQuick(chip)"
-            class="text-xs bg-white border border-emerald-300 text-emerald-700 hover:bg-emerald-50 hover:border-emerald-500 px-3 py-1.5 rounded-full transition-colors font-medium whitespace-nowrap"
+            :key="chip.label"
+            @click="sendQuick(chip.label)"
+            class="inline-flex items-center gap-1.5 text-xs bg-white border border-emerald-300 text-emerald-700 hover:bg-emerald-50 hover:border-emerald-500 px-3 py-1.5 rounded-full transition-colors font-medium whitespace-nowrap"
           >
-            {{ chip }}
+            <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" v-html="chip.icon" />
+            {{ chip.label }}
           </button>
         </div>
 
@@ -218,15 +223,15 @@ const sessionId = ref<string | null>(null)
 const lastUserMessage = ref('')
 
 const quickReplies = [
-  '📦 Container prices?',
-  '🚚 Delivery cost?',
-  '📏 What sizes available?',
-  '📞 How do I order?',
+  { label: 'Container prices?',   icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>` },
+  { label: 'Delivery cost?',      icon: `<path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/>` },
+  { label: 'What sizes available?', icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/>` },
+  { label: 'How do I order?',     icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>` },
 ]
 
 const defaultMessage: Message = {
   role: 'assistant',
-  text: "Hi there! 👋 I'm **James**, the Container King at Roseberry Containers. I can help you with pricing, delivery quotes, container sizes, and anything else you need. What can I help you with today?",
+  text: "Hi! I'm **James**, the Container King at Roseberry Containers. I can help you with pricing, delivery quotes, container sizes, and anything else you need. What can I help you with today?",
   time: formatTime(new Date()),
 }
 

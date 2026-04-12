@@ -1,155 +1,208 @@
 <template>
-  <div class="iso-wrap">
-    <!--
-      Isometric projection — viewer from front-right-above
-      Key vertices (SVG coords):
-        A(0,0)        B(173.2,100)   front bottom edge
-        E(0,-70)      F(173.2,30)    front top edge
-        C(121.2,130)  G(121.2,60)    back-right bottom/top
-        H(-52,-40)                   back-left top
-      Visible faces: long side (A-B-F-E), door end (B-C-G-F), top (E-F-G-H)
-    -->
-    <svg viewBox="-65 -85 255 235" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
-      <defs>
-        <linearGradient id="iso-top" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#52b07e"/>
-          <stop offset="100%" stop-color="#3a9068"/>
-        </linearGradient>
-        <linearGradient id="iso-side" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="#2d7a55"/>
-          <stop offset="100%" stop-color="#1e5c40"/>
-        </linearGradient>
-        <linearGradient id="iso-door" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="#1a5c38"/>
-          <stop offset="100%" stop-color="#143d27"/>
-        </linearGradient>
-        <radialGradient id="iso-shad" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#000" stop-opacity="0.3"/>
-          <stop offset="100%" stop-color="#000" stop-opacity="0"/>
-        </radialGradient>
-      </defs>
-
-      <!-- Ground shadow -->
-      <ellipse cx="65" cy="152" rx="110" ry="11" fill="url(#iso-shad)"/>
-
-      <!-- ── LONG SIDE FACE (A-B-F-E) ── -->
-      <polygon points="0,0 173.2,100 173.2,30 0,-70" fill="url(#iso-side)"/>
-
-      <!-- Alternating corrugation panel highlights -->
-      <g fill="#3a9068" opacity="0.28">
-        <polygon points="0,0 14.4,8.3 14.4,-61.7 0,-70"/>
-        <polygon points="28.9,16.7 43.3,25 43.3,-45 28.9,-53.3"/>
-        <polygon points="57.7,33.3 72.2,41.7 72.2,-28.3 57.7,-36.7"/>
-        <polygon points="86.6,50 101,58.3 101,-11.7 86.6,-20"/>
-        <polygon points="115.5,66.7 129.9,75 129.9,5 115.5,-3.3"/>
-        <polygon points="144.3,83.3 158.8,91.7 158.8,21.7 144.3,13.3"/>
-      </g>
-
-      <!-- Corrugation lines (11 inner lines between 12 panels) -->
-      <g stroke="#1a5c40" stroke-width="0.8" fill="none">
-        <line x1="14.4"  y1="8.3"  x2="14.4"  y2="-61.7"/>
-        <line x1="28.9"  y1="16.7" x2="28.9"  y2="-53.3"/>
-        <line x1="43.3"  y1="25"   x2="43.3"  y2="-45"/>
-        <line x1="57.7"  y1="33.3" x2="57.7"  y2="-36.7"/>
-        <line x1="72.2"  y1="41.7" x2="72.2"  y2="-28.3"/>
-        <line x1="86.6"  y1="50"   x2="86.6"  y2="-20"/>
-        <line x1="101"   y1="58.3" x2="101"   y2="-11.7"/>
-        <line x1="115.5" y1="66.7" x2="115.5" y2="-3.3"/>
-        <line x1="129.9" y1="75"   x2="129.9" y2="5"/>
-        <line x1="144.3" y1="83.3" x2="144.3" y2="13.3"/>
-        <line x1="158.8" y1="91.7" x2="158.8" y2="21.7"/>
-      </g>
-
-      <!-- Top rail on long face -->
-      <polygon points="0,-70 173.2,30 173.2,34 0,-66" fill="#0d3a22"/>
-      <!-- Bottom rail on long face -->
-      <polygon points="0,0 173.2,100 173.2,104 0,4" fill="#0d3a22"/>
-
-      <!-- Company branding text — rotate(30) follows the isometric X-axis direction -->
-      <g transform="translate(86.6, 15) rotate(30)" text-anchor="middle">
-        <text x="0" y="-6"
-          font-size="10" font-family="Arial, sans-serif"
-          font-weight="bold" fill="#f59e0b" letter-spacing="2.5">ROSEBERRY</text>
-        <text x="0" y="5"
-          font-size="7" font-family="Arial, sans-serif"
-          font-weight="bold" fill="#fcd34d" letter-spacing="1.5">CONTAINERS</text>
-      </g>
-
-      <!-- ── DOOR END FACE (B-C-G-F) ── -->
-      <polygon points="173.2,100 121.2,130 121.2,60 173.2,30" fill="url(#iso-door)"/>
-
-      <!-- Door centre split -->
-      <line x1="147.2" y1="45" x2="147.2" y2="115" stroke="#0a2018" stroke-width="1.5" fill="none"/>
-
-      <!-- Left door panel subtle highlight -->
-      <polygon points="173.2,100 173.2,30 147.2,45 147.2,115" fill="#2a7050" opacity="0.25"/>
-
-      <!-- Cam locking rods -->
-      <line x1="160.2" y1="37.5"  x2="160.2" y2="107.5" stroke="#0a2018" stroke-width="2" fill="none"/>
-      <line x1="134.2" y1="52.5"  x2="134.2" y2="122.5" stroke="#0a2018" stroke-width="2" fill="none"/>
-
-      <!-- Cam lock circles with green highlight -->
-      <circle cx="160.2" cy="72.5" r="3"   fill="#0a2018"/>
-      <circle cx="160.2" cy="72.5" r="1.5" fill="#4abe82"/>
-      <circle cx="134.2" cy="87.5" r="3"   fill="#0a2018"/>
-      <circle cx="134.2" cy="87.5" r="1.5" fill="#4abe82"/>
-
-      <!-- Hinge bars — left door outer edge (x=173.2) -->
-      <g fill="#0a2018">
-        <rect x="171.7" y="43.5" width="3" height="6.5" rx="0.5"/>
-        <rect x="171.7" y="63.5" width="3" height="6.5" rx="0.5"/>
-        <rect x="171.7" y="83.5" width="3" height="6.5" rx="0.5"/>
-      </g>
-
-      <!-- Hinge bars — right door outer edge (x=121.2) -->
-      <g fill="#0a2018">
-        <rect x="119.7" y="73.5"  width="3" height="6.5" rx="0.5"/>
-        <rect x="119.7" y="93.5"  width="3" height="6.5" rx="0.5"/>
-        <rect x="119.7" y="113.5" width="3" height="6.5" rx="0.5"/>
-      </g>
-
-      <!-- Door face top/bottom rails -->
-      <polygon points="173.2,30 121.2,60 121.2,64 173.2,34" fill="#0d3a22"/>
-      <polygon points="173.2,100 121.2,130 121.2,134 173.2,104" fill="#0d3a22"/>
-
-      <!-- ── TOP FACE (E-F-G-H) ── -->
-      <polygon points="0,-70 173.2,30 121.2,60 -52,-40" fill="url(#iso-top)"/>
-
-      <!-- Top face grid lines (length direction at 1/3, 2/3; width direction at 1/3, 2/3) -->
-      <g stroke="#2a9060" stroke-width="0.5" opacity="0.45" fill="none">
-        <line x1="43.3"  y1="-45" x2="-8.7"  y2="-15"/>
-        <line x1="86.6"  y1="-20" x2="34.6"  y2="10"/>
-        <line x1="129.9" y1="5"   x2="77.9"  y2="35"/>
-        <line x1="-17.3" y1="-60" x2="155.9" y2="40"/>
-        <line x1="-34.7" y1="-50" x2="138.5" y2="50"/>
-      </g>
-
-      <!-- ── OUTLINE EDGES (framing / depth) ── -->
-      <g stroke="#0a2018" stroke-width="1.5" fill="none" stroke-linejoin="round">
-        <!-- Long face -->
-        <line x1="0"     y1="0"    x2="173.2" y2="100"/>
-        <line x1="0"     y1="-70"  x2="173.2" y2="30"/>
-        <line x1="0"     y1="0"    x2="0"     y2="-70"/>
-        <line x1="173.2" y1="100"  x2="173.2" y2="30"/>
-        <!-- Door face -->
-        <line x1="173.2" y1="100"  x2="121.2" y2="130"/>
-        <line x1="121.2" y1="130"  x2="121.2" y2="60"/>
-        <line x1="121.2" y1="60"   x2="173.2" y2="30"/>
-        <!-- Top face back edges -->
-        <line x1="0"     y1="-70"  x2="-52"   y2="-40"/>
-        <line x1="-52"   y1="-40"  x2="121.2" y2="60"/>
-      </g>
-    </svg>
-  </div>
+  <canvas ref="canvasEl" class="w-full block" style="aspect-ratio: 1" />
 </template>
 
-<style scoped>
-.iso-wrap {
-  animation: isoFloat 4s ease-in-out infinite;
-}
+<script setup lang="ts">
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 
-@keyframes isoFloat {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-10px); }
-}
-</style>
+const canvasEl = ref<HTMLCanvasElement | null>(null)
+let cleanup: (() => void) | null = null
+
+onMounted(async () => {
+  const canvas = canvasEl.value
+  if (!canvas) return
+
+  const THREE = await import('three')
+
+  const w = canvas.clientWidth || 420
+  const h = canvas.clientHeight || 420
+
+  // ── Renderer ──────────────────────────────────────────────────────────────
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true })
+  renderer.setSize(w, h)
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+  renderer.shadowMap.enabled = true
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap
+
+  // ── Scene ─────────────────────────────────────────────────────────────────
+  const scene = new THREE.Scene()
+
+  // ── Orthographic camera at isometric angle ────────────────────────────────
+  const zoom = 3.8
+  const aspect = w / h
+  const camera = new THREE.OrthographicCamera(
+    -zoom * aspect, zoom * aspect, zoom, -zoom, 0.1, 200
+  )
+  camera.position.set(10, 7, 10)
+  camera.lookAt(0, 0, 0)
+
+  // ── Lighting ──────────────────────────────────────────────────────────────
+  scene.add(new THREE.AmbientLight(0xffffff, 0.65))
+
+  const sun = new THREE.DirectionalLight(0xffffff, 1.1)
+  sun.position.set(6, 14, 8)
+  sun.castShadow = true
+  sun.shadow.mapSize.set(1024, 1024)
+  scene.add(sun)
+
+  const fill = new THREE.DirectionalLight(0x99ddbb, 0.3)
+  fill.position.set(-6, 3, -4)
+  scene.add(fill)
+
+  // ── Container group (everything moves together for animation) ─────────────
+  const group = new THREE.Group()
+  scene.add(group)
+
+  // Dimensions: 40ft proportions ≈ 5.2 : 1 : 1
+  const L = 5.2, H = 1.0, D = 1.0
+
+  // ── Materials ─────────────────────────────────────────────────────────────
+  const mTop   = new THREE.MeshStandardMaterial({ color: 0x48b872, roughness: 0.5,  metalness: 0.2 })
+  const mSide  = new THREE.MeshStandardMaterial({ color: 0x2e7d52, roughness: 0.55, metalness: 0.2 })
+  const mEnd   = new THREE.MeshStandardMaterial({ color: 0x1c5c38, roughness: 0.5,  metalness: 0.25 })
+  const mBot   = new THREE.MeshStandardMaterial({ color: 0x0c2f1a, roughness: 0.9 })
+  const mDark  = new THREE.MeshStandardMaterial({ color: 0x0a1e12, roughness: 0.7,  metalness: 0.5 })
+  const mLock  = new THREE.MeshStandardMaterial({ color: 0x4abe82, roughness: 0.3,  metalness: 0.7, emissive: 0x1a5c3a, emissiveIntensity: 0.3 })
+  const mRidge = new THREE.MeshStandardMaterial({ color: 0x1a5038, roughness: 0.65, metalness: 0.2 })
+  const mRail  = new THREE.MeshStandardMaterial({ color: 0x0c2f1a, roughness: 0.6,  metalness: 0.5 })
+
+  // ── Container body: face order [+X, -X, +Y, -Y, +Z, -Z] ──────────────────
+  const body = new THREE.Mesh(
+    new THREE.BoxGeometry(L, H, D),
+    [mEnd, mEnd, mTop, mBot, mSide, mSide]
+  )
+  body.castShadow = true
+  body.receiveShadow = true
+  group.add(body)
+
+  // ── Corrugation ridges on +Z face (front long side) ───────────────────────
+  const nRidges = 14
+  const rW = 0.022, rH = H * 0.93, rD = 0.048
+  const ridgeGeo = new THREE.BoxGeometry(rW, rH, rD)
+  for (let i = 0; i < nRidges; i++) {
+    const r = new THREE.Mesh(ridgeGeo, mRidge)
+    r.position.set(-L / 2 + (i + 0.5) * (L / nRidges), 0, D / 2 + rD / 2)
+    group.add(r)
+  }
+
+  // ── Corrugation ridges on -X face (non-door end, visible) ─────────────────
+  const nEndR = 4
+  const erW = 0.048, erD = 0.022
+  const endRidgeGeo = new THREE.BoxGeometry(erW, H * 0.93, erD)
+  for (let i = 0; i < nEndR; i++) {
+    const r = new THREE.Mesh(endRidgeGeo, mRidge)
+    r.position.set(-L / 2 - erW / 2, 0, -D / 2 + (i + 0.5) * (D / nEndR))
+    group.add(r)
+  }
+
+  // ── Top & bottom rails along front edge ───────────────────────────────────
+  const railGeo = new THREE.BoxGeometry(L + 0.1, 0.055, 0.055)
+  for (const y of [H / 2 + 0.027, -H / 2 - 0.027]) {
+    const r = new THREE.Mesh(railGeo, mRail)
+    r.position.set(0, y, D / 2)
+    group.add(r)
+  }
+
+  // ── Corner posts ──────────────────────────────────────────────────────────
+  const postGeo = new THREE.BoxGeometry(0.065, H + 0.065, 0.065)
+  const corners: [number, number][] = [[-L/2, D/2], [L/2, D/2], [-L/2, -D/2], [L/2, -D/2]]
+  for (const [x, z] of corners) {
+    const p = new THREE.Mesh(postGeo, mDark)
+    p.position.set(x, 0, z)
+    group.add(p)
+  }
+
+  // ── Door end (+X face) ────────────────────────────────────────────────────
+  // Vertical centre split
+  const split = new THREE.Mesh(new THREE.BoxGeometry(0.025, H * 0.95, 0.025), mDark)
+  split.position.set(L / 2 + 0.013, 0, 0)
+  group.add(split)
+
+  // Horizontal cam lock bars
+  const camBarGeo = new THREE.BoxGeometry(0.025, 0.025, D * 0.75)
+  for (const y of [H * 0.18, -H * 0.18]) {
+    const bar = new THREE.Mesh(camBarGeo, mDark)
+    bar.position.set(L / 2 + 0.02, y, 0)
+    group.add(bar)
+  }
+
+  // Lock handles (cylinder, glowing green)
+  const lockGeo = new THREE.CylinderGeometry(0.048, 0.048, 0.025, 10)
+  for (const z of [-D * 0.16, D * 0.16]) {
+    for (const y of [H * 0.18, -H * 0.18]) {
+      const lock = new THREE.Mesh(lockGeo, mLock)
+      lock.rotation.x = Math.PI / 2
+      lock.position.set(L / 2 + 0.028, y, z)
+      group.add(lock)
+    }
+  }
+
+  // Hinge bars on door outer edge
+  const hingeGeo = new THREE.BoxGeometry(0.025, 0.07, 0.07)
+  for (const y of [H * 0.3, 0, -H * 0.3]) {
+    const hinge = new THREE.Mesh(hingeGeo, mDark)
+    hinge.position.set(L / 2 + 0.013, y, D / 2 + 0.01)
+    group.add(hinge)
+  }
+
+  // ── Branding text on +Z face via canvas texture ───────────────────────────
+  const tc = document.createElement('canvas')
+  tc.width = 512; tc.height = 128
+  const tctx = tc.getContext('2d')!
+  tctx.textAlign = 'center'
+  tctx.fillStyle = '#f59e0b'
+  tctx.font = 'bold 52px Arial, sans-serif'
+  tctx.fillText('ROSEBERRY', 256, 55)
+  tctx.fillStyle = '#fcd34d'
+  tctx.font = 'bold 32px Arial, sans-serif'
+  tctx.fillText('CONTAINERS', 256, 100)
+  const textMesh = new THREE.Mesh(
+    new THREE.PlaneGeometry(L * 0.65, H * 0.38),
+    new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(tc), transparent: true })
+  )
+  textMesh.position.set(0, 0, D / 2 + 0.07)
+  group.add(textMesh)
+
+  // ── Ground shadow ellipse ─────────────────────────────────────────────────
+  const shadowMesh = new THREE.Mesh(
+    new THREE.PlaneGeometry(L * 1.2, D * 2.8),
+    new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 0.2, depthWrite: false })
+  )
+  shadowMesh.rotation.x = -Math.PI / 2
+  shadowMesh.position.y = -H / 2 - 0.01
+  scene.add(shadowMesh)
+
+  // ── Animation loop ─────────────────────────────────────────────────────────
+  let animId = 0
+  let t = 0
+  const tick = () => {
+    animId = requestAnimationFrame(tick)
+    t += 0.012
+    // Float up/down + gentle rotation to show 3D
+    group.position.y = Math.sin(t * 0.8) * 0.1
+    group.rotation.y = Math.sin(t * 0.18) * 0.13
+    renderer.render(scene, camera)
+  }
+  tick()
+
+  // ── Resize handling ────────────────────────────────────────────────────────
+  const ro = new ResizeObserver(() => {
+    const w = canvas.clientWidth
+    const h = canvas.clientHeight
+    if (!w || !h) return
+    const a = w / h
+    camera.left = -zoom * a; camera.right = zoom * a
+    camera.updateProjectionMatrix()
+    renderer.setSize(w, h)
+  })
+  ro.observe(canvas)
+
+  cleanup = () => {
+    cancelAnimationFrame(animId)
+    ro.disconnect()
+    renderer.dispose()
+  }
+})
+
+onBeforeUnmount(() => cleanup?.())
+</script>

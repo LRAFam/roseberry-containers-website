@@ -25,12 +25,8 @@
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             <!-- Used 10ft Container -->
             <div class="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg hover:-translate-y-1 transition-all duration-300 group">
-              <div class="h-64 overflow-hidden bg-gray-100">
-                <img 
-                  src="/container-10ft.jpg" 
-                  alt="Used 10ft Container" 
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
+              <div class="h-64 bg-gradient-to-br from-primary-950 to-gray-900">
+                <ContainerViewer3D :sizeFt="10" />
               </div>
               <div class="p-6 md:p-8">
                 <div class="flex items-center gap-2 mb-2">
@@ -79,12 +75,8 @@
             <!-- Used 20ft Container -->
             <!-- New 1-Trip 10ft Container -->
             <div class="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg hover:-translate-y-1 transition-all duration-300 group">
-              <div class="h-64 overflow-hidden bg-gray-100">
-                <img 
-                  src="/container-10ft-new.jpg" 
-                  alt="New 1-Trip 10ft Container" 
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
+              <div class="h-64 bg-gradient-to-br from-primary-950 to-gray-900">
+                <ContainerViewer3D :sizeFt="10" :isNew="true" />
               </div>
               <div class="p-6 md:p-8">
                 <div class="flex items-center gap-2 mb-2">
@@ -132,12 +124,8 @@
 
             <!-- Used 20ft Container -->
             <div class="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg hover:-translate-y-1 transition-all duration-300 group">
-              <div class="h-64 overflow-hidden bg-gray-100">
-                <img 
-                  src="/container-20ft.jpg" 
-                  alt="Used 20ft Container" 
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
+              <div class="h-64 bg-gradient-to-br from-primary-950 to-gray-900">
+                <ContainerViewer3D :sizeFt="20" />
               </div>
               <div class="p-6 md:p-8">
                 <div class="flex items-center gap-2 mb-2">
@@ -185,12 +173,8 @@
 
             <!-- New 1-Trip 20ft Container -->
             <div class="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg hover:-translate-y-1 transition-all duration-300 group">
-              <div class="h-64 overflow-hidden bg-gray-100">
-                <img 
-                  src="/container-20ft-new.jpg" 
-                  alt="New 1-Trip 20ft Container" 
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
+              <div class="h-64 bg-gradient-to-br from-primary-950 to-gray-900">
+                <ContainerViewer3D :sizeFt="20" :isNew="true" />
               </div>
               <div class="p-6 md:p-8">
                 <div class="flex items-center gap-2 mb-2">
@@ -238,12 +222,8 @@
 
             <!-- Used 40ft Container -->
             <div class="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg hover:-translate-y-1 transition-all duration-300 group">
-              <div class="h-64 overflow-hidden bg-gray-100">
-                <img 
-                  src="/container-40ft.jpg" 
-                  alt="Used 40ft Container" 
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
+              <div class="h-64 bg-gradient-to-br from-primary-950 to-gray-900">
+                <ContainerViewer3D :sizeFt="40" />
               </div>
               <div class="p-6 md:p-8">
                 <div class="flex items-center gap-2 mb-2">
@@ -291,12 +271,8 @@
 
             <!-- New 1-Trip 40ft Container -->
             <div class="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg hover:-translate-y-1 transition-all duration-300 group">
-              <div class="h-64 overflow-hidden bg-gray-100">
-                <img 
-                  src="/container-40ft-new.jpg" 
-                  alt="New 1-Trip 40ft Container" 
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
+              <div class="h-64 bg-gradient-to-br from-primary-950 to-gray-900">
+                <ContainerViewer3D :sizeFt="40" :isNew="true" :hiCube="true" />
               </div>
               <div class="p-6 md:p-8">
                 <div class="flex items-center gap-2 mb-2">
@@ -344,12 +320,8 @@
 
             <!-- Hi-Cube Container -->
             <div class="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg hover:-translate-y-1 transition-all duration-300 group">
-              <div class="h-64 overflow-hidden bg-gray-100">
-                <img 
-                  src="https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?w=600&h=400&fit=crop" 
-                  alt="Hi-Cube Container" 
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
+              <div class="h-64 bg-gradient-to-br from-primary-950 to-gray-900">
+                <ContainerViewer3D :sizeFt="40" :hiCube="true" />
               </div>
               <div class="p-6 md:p-8">
                 <h3 class="text-2xl font-bold text-gray-900 mb-2">Hi-Cube Container</h3>
@@ -394,12 +366,8 @@
 
             <!-- Side Opening Container -->
             <div class="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg hover:-translate-y-1 transition-all duration-300 group">
-              <div class="h-64 overflow-hidden bg-gray-100">
-                <img 
-                  src="/container-side-opening.jpg" 
-                  alt="Side Opening Container" 
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
+              <div class="h-64 bg-gradient-to-br from-primary-950 to-gray-900">
+                <ContainerViewer3D :sizeFt="20" />
               </div>
               <div class="p-6 md:p-8">
                 <h3 class="text-2xl font-bold text-gray-900 mb-2">Side Opening Container</h3>
@@ -444,12 +412,8 @@
 
             <!-- Basic Partial Conversion -->
             <div class="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg hover:-translate-y-1 transition-all duration-300 group">
-              <div class="h-64 overflow-hidden bg-gray-100">
-                <img 
-                  src="/container-conversion-basic.jpg" 
-                  alt="Basic Partial Conversion Container" 
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
+              <div class="h-64 bg-gradient-to-br from-primary-950 to-gray-900">
+                <ContainerViewer3D :sizeFt="20" :isNew="true" />
               </div>
               <div class="p-6 md:p-8">
                 <div class="flex items-center gap-2 mb-2">
@@ -497,12 +461,8 @@
 
             <!-- Full Conversion / Garden Office -->
             <div class="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg hover:-translate-y-1 transition-all duration-300 group">
-              <div class="h-64 overflow-hidden bg-gray-100">
-                <img 
-                  src="/container-conversion-full.jpg" 
-                  alt="Full Conversion / Garden Office" 
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
+              <div class="h-64 bg-gradient-to-br from-primary-950 to-gray-900">
+                <ContainerViewer3D :sizeFt="20" :isNew="true" :hiCube="true" />
               </div>
               <div class="p-6 md:p-8">
                 <div class="flex items-center gap-2 mb-2">

@@ -18,13 +18,9 @@
         </NuxtLink>
       </div>
 
-      <!-- Decorative illustration -->
-      <div class="mt-12 max-w-md mx-auto">
-        <svg viewBox="0 0 400 300" class="w-full h-auto text-gray-300">
-          <rect x="50" y="100" width="120" height="150" rx="5" fill="currentColor" opacity="0.3"/>
-          <rect x="230" y="80" width="120" height="170" rx="5" fill="currentColor" opacity="0.5"/>
-          <circle cx="200" cy="180" r="80" fill="none" stroke="currentColor" stroke-width="4" opacity="0.2"/>
-        </svg>
+      <!-- 3D scattered container illustration -->
+      <div class="mt-8 max-w-2xl mx-auto">
+        <Scene404 />
       </div>
     </div>
   </div>
