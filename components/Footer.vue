@@ -60,15 +60,13 @@
         <div>
           <h3 class="text-white text-lg font-bold mb-4">Quick Links</h3>
           <ul class="space-y-2 text-sm">
-            <li>
-              <NuxtLink to="/" class="hover:text-primary-400 hover:underline transition-colors">Home</NuxtLink>
-            </li>
-            <li>
-              <NuxtLink to="/container-sales" class="hover:text-primary-400 hover:underline transition-colors">Container Sales</NuxtLink>
-            </li>
-            <li>
-              <NuxtLink to="/contact" class="hover:text-primary-400 hover:underline transition-colors">Contact</NuxtLink>
-            </li>
+            <li><NuxtLink to="/" class="hover:text-primary-400 hover:underline transition-colors">Home</NuxtLink></li>
+            <li><NuxtLink to="/container-sales" class="hover:text-primary-400 hover:underline transition-colors">Container Sales</NuxtLink></li>
+            <li><NuxtLink to="/container-sales/nationwide" class="hover:text-primary-400 hover:underline transition-colors">Nationwide Depots</NuxtLink></li>
+            <li><NuxtLink to="/container-hire" class="hover:text-primary-400 hover:underline transition-colors">Container Hire</NuxtLink></li>
+            <li><NuxtLink to="/container-conversions" class="hover:text-primary-400 hover:underline transition-colors">Container Conversions</NuxtLink></li>
+            <li><NuxtLink to="/self-storage" class="hover:text-primary-400 hover:underline transition-colors">Self Storage</NuxtLink></li>
+            <li><NuxtLink to="/contact" class="hover:text-primary-400 hover:underline transition-colors">Contact</NuxtLink></li>
           </ul>
         </div>
 
@@ -81,7 +79,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
-              <span>Waverley Rd, Middlesbrough, TS1, UK</span>
+              <span>Westerby Rd, Middlesbrough, TS1, UK</span>
             </li>
             <li class="flex items-center space-x-2">
               <svg class="w-5 h-5 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">

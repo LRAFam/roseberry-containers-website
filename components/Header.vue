@@ -14,23 +14,46 @@
             class="text-amber-200 hover:text-white font-medium px-4 py-2 rounded-lg hover:bg-white/10 transition-all"
             active-class="!text-white !bg-white/15 font-semibold"
             exact
-          >
-            Home
-          </NuxtLink>
+          >Home</NuxtLink>
+
+          <!-- Container Sales dropdown -->
+          <div class="relative group">
+            <button class="text-amber-200 hover:text-white font-medium px-4 py-2 rounded-lg hover:bg-white/10 transition-all flex items-center gap-1">
+              Container Sales
+              <svg class="w-3.5 h-3.5 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </button>
+            <div class="absolute left-0 top-full mt-1 w-52 bg-primary-900 border border-white/10 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150">
+              <NuxtLink to="/container-sales" class="block px-4 py-2.5 text-sm text-amber-200 hover:text-white hover:bg-white/10 rounded-t-xl transition-all">Buy a Container</NuxtLink>
+              <NuxtLink to="/container-sales/nationwide" class="block px-4 py-2.5 text-sm text-amber-200 hover:text-white hover:bg-white/10 rounded-b-xl transition-all">Nationwide Depots</NuxtLink>
+            </div>
+          </div>
+
           <NuxtLink
-            to="/container-sales"
+            to="/container-hire"
             class="text-amber-200 hover:text-white font-medium px-4 py-2 rounded-lg hover:bg-white/10 transition-all"
             active-class="!text-white !bg-white/15 font-semibold"
-          >
-            Container Sales
-          </NuxtLink>
+          >Container Hire</NuxtLink>
+
+          <NuxtLink
+            to="/container-conversions"
+            class="text-amber-200 hover:text-white font-medium px-4 py-2 rounded-lg hover:bg-white/10 transition-all"
+            active-class="!text-white !bg-white/15 font-semibold"
+          >Conversions</NuxtLink>
+
+          <NuxtLink
+            to="/self-storage"
+            class="text-amber-200 hover:text-white font-medium px-4 py-2 rounded-lg hover:bg-white/10 transition-all"
+            active-class="!text-white !bg-white/15 font-semibold"
+          >Self Storage</NuxtLink>
+
           <NuxtLink
             to="/contact"
             class="text-amber-200 hover:text-white font-medium px-4 py-2 rounded-lg hover:bg-white/10 transition-all"
             active-class="!text-white !bg-white/15 font-semibold"
-          >
-            Contact
-          </NuxtLink>
+          >Contact</NuxtLink>
+
           <a
             href="tel:07793251550"
             class="ml-3 bg-amber-500 hover:bg-amber-400 text-white font-semibold py-2 px-5 rounded-lg transition-all duration-200 shadow flex items-center gap-2"
@@ -69,37 +92,14 @@
       >
         <div v-if="mobileMenuOpen" class="md:hidden pb-4 border-t border-white/10 pt-4">
           <div class="flex flex-col gap-1">
-            <NuxtLink
-              to="/"
-              @click="mobileMenuOpen = false"
-              class="text-amber-200 hover:text-white hover:bg-white/10 font-medium py-2 px-3 rounded-lg transition-all"
-              active-class="!text-white !bg-white/15 font-semibold"
-              exact
-            >
-              Home
-            </NuxtLink>
-            <NuxtLink
-              to="/container-sales"
-              @click="mobileMenuOpen = false"
-              class="text-amber-200 hover:text-white hover:bg-white/10 font-medium py-2 px-3 rounded-lg transition-all"
-              active-class="!text-white !bg-white/15 font-semibold"
-            >
-              Container Sales
-            </NuxtLink>
-            <NuxtLink
-              to="/contact"
-              @click="mobileMenuOpen = false"
-              class="text-amber-200 hover:text-white hover:bg-white/10 font-medium py-2 px-3 rounded-lg transition-all"
-              active-class="!text-white !bg-white/15 font-semibold"
-            >
-              Contact
-            </NuxtLink>
-            <a
-              href="tel:07793251550"
-              class="mt-2 bg-amber-500 hover:bg-amber-400 text-white font-semibold py-2 px-5 rounded-lg transition-all duration-200 text-center"
-            >
-              Call Us
-            </a>
+            <NuxtLink to="/" @click="mobileMenuOpen = false" class="text-amber-200 hover:text-white hover:bg-white/10 font-medium py-2 px-3 rounded-lg transition-all" active-class="!text-white !bg-white/15 font-semibold" exact>Home</NuxtLink>
+            <NuxtLink to="/container-sales" @click="mobileMenuOpen = false" class="text-amber-200 hover:text-white hover:bg-white/10 font-medium py-2 px-3 rounded-lg transition-all" active-class="!text-white !bg-white/15 font-semibold">Container Sales</NuxtLink>
+            <NuxtLink to="/container-sales/nationwide" @click="mobileMenuOpen = false" class="text-amber-200/70 hover:text-white hover:bg-white/10 font-medium py-2 px-6 rounded-lg transition-all text-sm">↳ Nationwide Depots</NuxtLink>
+            <NuxtLink to="/container-hire" @click="mobileMenuOpen = false" class="text-amber-200 hover:text-white hover:bg-white/10 font-medium py-2 px-3 rounded-lg transition-all" active-class="!text-white !bg-white/15 font-semibold">Container Hire</NuxtLink>
+            <NuxtLink to="/container-conversions" @click="mobileMenuOpen = false" class="text-amber-200 hover:text-white hover:bg-white/10 font-medium py-2 px-3 rounded-lg transition-all" active-class="!text-white !bg-white/15 font-semibold">Conversions</NuxtLink>
+            <NuxtLink to="/self-storage" @click="mobileMenuOpen = false" class="text-amber-200 hover:text-white hover:bg-white/10 font-medium py-2 px-3 rounded-lg transition-all" active-class="!text-white !bg-white/15 font-semibold">Self Storage</NuxtLink>
+            <NuxtLink to="/contact" @click="mobileMenuOpen = false" class="text-amber-200 hover:text-white hover:bg-white/10 font-medium py-2 px-3 rounded-lg transition-all" active-class="!text-white !bg-white/15 font-semibold">Contact</NuxtLink>
+            <a href="tel:07793251550" class="mt-2 bg-amber-500 hover:bg-amber-400 text-white font-semibold py-2 px-5 rounded-lg transition-all duration-200 text-center">Call Us</a>
           </div>
         </div>
       </Transition>

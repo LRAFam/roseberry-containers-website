@@ -28,7 +28,7 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 mb-1">Address</h3>
-                <p class="text-gray-600">Waverley Rd, Middlesbrough, TS1, UK</p>
+                <p class="text-gray-600">Westerby Rd, Middlesbrough, TS1, UK</p>
               </div>
             </div>
 
@@ -63,7 +63,7 @@
           <!-- Map -->
           <div class="rounded-2xl overflow-hidden shadow-lg h-48 md:h-64 bg-gray-200">
             <iframe 
-              src="https://maps.google.com/maps?q=Waverley+Road,+Middlesbrough,+TS1&output=embed"
+              src="https://maps.google.com/maps?q=Westerby+Road,+Middlesbrough,+TS1&output=embed"
               width="100%" 
               height="100%" 
               style="border:0;" 
