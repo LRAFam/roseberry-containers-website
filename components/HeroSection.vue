@@ -1,8 +1,8 @@
 <template>
-  <section class="relative text-white overflow-hidden">
-    <!-- Background: container photo with dark burgundy overlay -->
+  <section class="relative bg-gradient-to-br from-primary-950 via-gray-900 to-gray-900 text-white overflow-hidden">
+    <!-- Background: container photo with dark overlay -->
     <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/images/hero-containers.jpg')">
-      <div class="absolute inset-0 bg-primary-950/85"></div>
+      <div class="absolute inset-0 bg-primary-950/80"></div>
     </div>
 
     <div class="container-custom relative z-10">
@@ -16,7 +16,7 @@
 
           <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight text-white">
             Buy, Hire &amp; Convert
-            <span class="text-primary-400"> Shipping Containers</span>
+            <span class="text-burgundy-light"> Shipping Containers</span>
           </h1>
 
           <p class="body-lg text-gray-300">
@@ -55,36 +55,13 @@
           </div>
         </div>
 
-        <!-- Service cards -->
-        <div class="grid grid-cols-2 gap-4">
-          <NuxtLink to="/container-sales" class="bg-white/10 hover:bg-white/15 border border-white/20 rounded-2xl p-5 transition-all duration-200">
-            <svg class="w-8 h-8 text-primary-400 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-            </svg>
-            <h3 class="font-bold text-white mb-1">Container Sales</h3>
-            <p class="text-xs text-gray-300">New &amp; used containers, nationwide delivery</p>
-          </NuxtLink>
-          <NuxtLink to="/container-hire" class="bg-white/10 hover:bg-white/15 border border-white/20 rounded-2xl p-5 transition-all duration-200">
-            <svg class="w-8 h-8 text-primary-400 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
-            <h3 class="font-bold text-white mb-1">Container Hire</h3>
-            <p class="text-xs text-gray-300">Short &amp; long-term hire to your site</p>
-          </NuxtLink>
-          <NuxtLink to="/container-conversions" class="bg-white/10 hover:bg-white/15 border border-white/20 rounded-2xl p-5 transition-all duration-200">
-            <svg class="w-8 h-8 text-primary-400 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
-            </svg>
-            <h3 class="font-bold text-white mb-1">Conversions</h3>
-            <p class="text-xs text-gray-300">Offices, food stalls &amp; bespoke builds</p>
-          </NuxtLink>
-          <NuxtLink to="/self-storage" class="bg-white/10 hover:bg-white/15 border border-white/20 rounded-2xl p-5 transition-all duration-200">
-            <svg class="w-8 h-8 text-primary-400 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-            </svg>
-            <h3 class="font-bold text-white mb-1">Self Storage</h3>
-            <p class="text-xs text-gray-300">Secure storage in Teesside, 24/7 CCTV</p>
-          </NuxtLink>
+        <!-- Container image -->
+        <div class="relative lg:h-[520px] h-[320px]">
+          <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary-800 to-primary-950 border border-white/10 shadow-2xl overflow-hidden bg-cover bg-center" style="background-image: url('/images/hero-containers.jpg')">
+            <div class="absolute inset-0 bg-primary-950/40 rounded-2xl"></div>
+            <div class="absolute -top-20 -right-20 w-72 h-72 bg-primary-500/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-16 -left-16 w-56 h-56 bg-primary-400/10 rounded-full blur-2xl pointer-events-none"></div>
+          </div>
         </div>
       </div>
     </div>

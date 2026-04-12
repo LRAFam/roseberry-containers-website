@@ -14,7 +14,7 @@
               Bespoke Container Conversions
             </div>
             <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6">
-              Transform a Container <span class="text-primary-400">Into Something Extraordinary</span>
+              Transform a Container <span class="text-burgundy-light">Into Something Extraordinary</span>
             </h1>
             <p class="text-xl text-gray-300 mb-8">
               We convert shipping containers into home offices, business premises, food stalls and more. Full conversions or partial — we handle the structural work, windows and doors.

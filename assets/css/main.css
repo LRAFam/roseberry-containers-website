@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --color-primary: #bf2d64;
-  --color-primary-dark: #9e1e50;
-  --color-primary-light: #d94e83;
+  --color-primary: #10b981;
+  --color-primary-dark: #059669;
+  --color-primary-light: #34d399;
 }
 
 @layer base {

@@ -12,7 +12,7 @@
               8 Depots Nationwide
             </div>
             <h1 class="text-4xl sm:text-5xl font-bold leading-tight mb-6">
-              Nationwide Container Sales — <span class="text-primary-400">Find Your Closest Depot</span>
+              Nationwide Container Sales — <span class="text-burgundy-light">Find Your Closest Depot</span>
             </h1>
             <p class="text-xl text-gray-300 mb-8">
               With depots strategically located across the UK from Scotland to the South Coast, we can source and deliver your container from the nearest site — keeping costs down and delivery times fast.

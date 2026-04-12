@@ -14,7 +14,7 @@
               Teesside Self Storage
             </div>
             <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6">
-              Safe, Affordable Self Storage <span class="text-primary-400">in Teesside</span>
+              Safe, Affordable Self Storage <span class="text-burgundy-light">in Teesside</span>
             </h1>
             <p class="text-xl text-gray-300 mb-8">
               Store your belongings, business stock or equipment at our secure Teesside facility. 24/7 CCTV, easy access and flexible rental periods starting from just one month.

@@ -14,7 +14,7 @@
               Flexible Container Hire
             </div>
             <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6">
-              Container Hire <span class="text-primary-400">Delivered to Your Site</span>
+              Container Hire <span class="text-burgundy-light">Delivered to Your Site</span>
             </h1>
             <p class="text-xl text-gray-300 mb-8">
               We hire shipping containers directly to construction sites, businesses, events and residential customers across the UK. Flexible short and long-term hire periods available.

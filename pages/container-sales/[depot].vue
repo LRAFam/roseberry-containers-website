@@ -20,7 +20,7 @@
               {{ depot.region }}
             </div>
             <h1 class="text-4xl sm:text-5xl font-bold leading-tight mb-6">
-              Shipping Containers for Sale — <span class="text-primary-400">{{ depot.name }}</span>
+              Shipping Containers for Sale — <span class="text-burgundy-light">{{ depot.name }}</span>
             </h1>
             <p class="text-xl text-gray-300 mb-8">{{ depot.heroText }}</p>
             <div class="flex flex-col sm:flex-row gap-4">
