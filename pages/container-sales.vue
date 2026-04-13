@@ -24,14 +24,14 @@
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             <!-- Used 10ft Container -->
-            <div class="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg hover:-translate-y-1 transition-all duration-300 group">
+            <div class="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg hover:-translate-y-1 transition-all duration-300 group border-t-4 border-gray-300">
               <div class="h-64 bg-gradient-to-br from-primary-950 to-gray-900">
                 <ContainerViewer3D :sizeFt="10" />
               </div>
               <div class="p-6 md:p-8">
                 <div class="flex items-center gap-2 mb-2">
                   <h3 class="text-2xl font-bold text-gray-900">10ft Container</h3>
-                  <span class="text-xs font-semibold bg-gray-100 text-gray-600 px-2 py-1 rounded-full">Used</span>
+                  <span class="text-xs font-semibold bg-gray-200 text-gray-600 px-2 py-1 rounded-full">Used</span>
                 </div>
                 <p class="text-gray-500 text-sm mb-4">Compact and practical — ideal where space is tight, for garden storage, tool storage, or small business use.</p>
                 <ul class="space-y-2 text-gray-600 mb-6">
@@ -72,16 +72,19 @@
               </div>
             </div>
 
-            <!-- Used 20ft Container -->
             <!-- New 1-Trip 10ft Container -->
-            <div class="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg hover:-translate-y-1 transition-all duration-300 group">
-              <div class="h-64 bg-gradient-to-br from-primary-950 to-gray-900">
+            <div class="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg hover:-translate-y-1 transition-all duration-300 group border-t-4 border-amber-400">
+              <div class="h-64 bg-gradient-to-br from-amber-950 via-primary-950 to-gray-900 relative">
+                <div class="absolute top-2 left-2 bg-amber-500 text-white text-xs font-bold px-2.5 py-1 rounded-full flex items-center gap-1">
+                  <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  1-Trip Condition
+                </div>
                 <ContainerViewer3D :sizeFt="10" :isNew="true" />
               </div>
               <div class="p-6 md:p-8">
                 <div class="flex items-center gap-2 mb-2">
                   <h3 class="text-2xl font-bold text-gray-900">10ft Container</h3>
-                  <span class="text-xs font-semibold bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full">1-Trip / New</span>
+                  <span class="text-xs font-semibold bg-amber-100 text-amber-700 px-2 py-1 rounded-full">1-Trip / New</span>
                 </div>
                 <p class="text-gray-500 text-sm mb-4">Compact, clean, and as good as new — perfect for tight spaces, garden storage, or small workshop conversions.</p>
                 <ul class="space-y-2 text-gray-600 mb-6">
@@ -123,14 +126,14 @@
             </div>
 
             <!-- Used 20ft Container -->
-            <div class="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg hover:-translate-y-1 transition-all duration-300 group">
+            <div class="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg hover:-translate-y-1 transition-all duration-300 group border-t-4 border-gray-300">
               <div class="h-64 bg-gradient-to-br from-primary-950 to-gray-900">
                 <ContainerViewer3D :sizeFt="20" />
               </div>
               <div class="p-6 md:p-8">
                 <div class="flex items-center gap-2 mb-2">
                   <h3 class="text-2xl font-bold text-gray-900">20ft Container</h3>
-                  <span class="text-xs font-semibold bg-gray-100 text-gray-600 px-2 py-1 rounded-full">Used</span>
+                  <span class="text-xs font-semibold bg-gray-200 text-gray-600 px-2 py-1 rounded-full">Used</span>
                 </div>
                 <p class="text-gray-500 text-sm mb-4">Ideal for small businesses and home moves — holds the equivalent of a 3-bedroom house.</p>
                 <ul class="space-y-2 text-gray-600 mb-6">
@@ -172,14 +175,18 @@
             </div>
 
             <!-- New 1-Trip 20ft Container -->
-            <div class="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg hover:-translate-y-1 transition-all duration-300 group">
-              <div class="h-64 bg-gradient-to-br from-primary-950 to-gray-900">
+            <div class="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg hover:-translate-y-1 transition-all duration-300 group border-t-4 border-amber-400">
+              <div class="h-64 bg-gradient-to-br from-amber-950 via-primary-950 to-gray-900 relative">
+                <div class="absolute top-2 left-2 bg-amber-500 text-white text-xs font-bold px-2.5 py-1 rounded-full flex items-center gap-1">
+                  <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  1-Trip Condition
+                </div>
                 <ContainerViewer3D :sizeFt="20" :isNew="true" />
               </div>
               <div class="p-6 md:p-8">
                 <div class="flex items-center gap-2 mb-2">
                   <h3 class="text-2xl font-bold text-gray-900">20ft Container</h3>
-                  <span class="text-xs font-semibold bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full">1-Trip / New</span>
+                  <span class="text-xs font-semibold bg-amber-100 text-amber-700 px-2 py-1 rounded-full">1-Trip / New</span>
                 </div>
                 <p class="text-gray-500 text-sm mb-4">A one-trip container is as close to brand new as you can get — used just once to ship cargo from the manufacturer.</p>
                 <ul class="space-y-2 text-gray-600 mb-6">
@@ -221,14 +228,14 @@
             </div>
 
             <!-- Used 40ft Container -->
-            <div class="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg hover:-translate-y-1 transition-all duration-300 group">
+            <div class="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg hover:-translate-y-1 transition-all duration-300 group border-t-4 border-gray-300">
               <div class="h-64 bg-gradient-to-br from-primary-950 to-gray-900">
                 <ContainerViewer3D :sizeFt="40" />
               </div>
               <div class="p-6 md:p-8">
                 <div class="flex items-center gap-2 mb-2">
                   <h3 class="text-2xl font-bold text-gray-900">40ft Container</h3>
-                  <span class="text-xs font-semibold bg-gray-100 text-gray-600 px-2 py-1 rounded-full">Used</span>
+                  <span class="text-xs font-semibold bg-gray-200 text-gray-600 px-2 py-1 rounded-full">Used</span>
                 </div>
                 <p class="text-gray-500 text-sm mb-4">Maximum capacity for large-scale storage — fits the contents of a 3-bedroom family home with room to spare.</p>
                 <ul class="space-y-2 text-gray-600 mb-6">
@@ -270,14 +277,18 @@
             </div>
 
             <!-- New 1-Trip 40ft Container -->
-            <div class="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg hover:-translate-y-1 transition-all duration-300 group">
-              <div class="h-64 bg-gradient-to-br from-primary-950 to-gray-900">
+            <div class="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg hover:-translate-y-1 transition-all duration-300 group border-t-4 border-amber-400">
+              <div class="h-64 bg-gradient-to-br from-amber-950 via-primary-950 to-gray-900 relative">
+                <div class="absolute top-2 left-2 bg-amber-500 text-white text-xs font-bold px-2.5 py-1 rounded-full flex items-center gap-1">
+                  <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                  1-Trip Condition
+                </div>
                 <ContainerViewer3D :sizeFt="40" :isNew="true" :hiCube="true" />
               </div>
               <div class="p-6 md:p-8">
                 <div class="flex items-center gap-2 mb-2">
                   <h3 class="text-2xl font-bold text-gray-900">40ft Container</h3>
-                  <span class="text-xs font-semibold bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full">1-Trip / New</span>
+                  <span class="text-xs font-semibold bg-amber-100 text-amber-700 px-2 py-1 rounded-full">1-Trip / New</span>
                 </div>
                 <p class="text-gray-500 text-sm mb-4">Brand-new condition with extra height — used just once to ship cargo, perfect for conversions and premium storage.</p>
                 <ul class="space-y-2 text-gray-600 mb-6">

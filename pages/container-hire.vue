@@ -89,7 +89,7 @@
             <div class="bg-primary-800 rounded-2xl shadow-card p-8 text-center hover:shadow-card-lg transition-all relative">
               <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full">Most Popular</div>
               <div class="text-5xl font-black text-white mb-2">20ft</div>
-              <div class="text-primary-300 text-sm mb-4">6.1m × 2.4m × 2.6m</div>
+              <div class="text-burgundy-light text-sm mb-4">6.1m × 2.4m × 2.6m</div>
               <h3 class="font-bold text-white mb-3">Standard Storage</h3>
               <p class="text-primary-200 text-sm mb-6">The go-to hire size — perfect for construction sites, events and business use.</p>
               <a href="#enquire" class="bg-white text-primary-800 hover:bg-gray-100 font-semibold py-3 px-8 rounded-lg transition-all inline-flex items-center justify-center w-full">Enquire</a>

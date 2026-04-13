@@ -41,15 +41,15 @@
           <!-- Stats -->
           <div class="grid grid-cols-3 gap-4 pt-6 border-t border-white/10">
             <div class="text-center">
-              <div class="text-3xl font-bold text-primary-400">8</div>
+              <div class="text-3xl font-bold text-burgundy-light">8</div>
               <div class="text-xs text-gray-400 mt-1 uppercase tracking-wide">UK Depots</div>
             </div>
             <div class="text-center border-x border-white/10">
-              <div class="text-3xl font-bold text-primary-400">24/7</div>
+              <div class="text-3xl font-bold text-burgundy-light">24/7</div>
               <div class="text-xs text-gray-400 mt-1 uppercase tracking-wide">CCTV Security</div>
             </div>
             <div class="text-center">
-              <div class="text-3xl font-bold text-primary-400">Best</div>
+              <div class="text-3xl font-bold text-burgundy-light">Best</div>
               <div class="text-xs text-gray-400 mt-1 uppercase tracking-wide">UK Prices</div>
             </div>
           </div>

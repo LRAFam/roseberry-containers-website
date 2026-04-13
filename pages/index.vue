@@ -9,7 +9,7 @@
       <section class="bg-primary-950 py-12">
         <div class="container-custom flex flex-col sm:flex-row items-center justify-between gap-6">
           <div>
-            <p class="text-primary-300 text-sm font-semibold uppercase tracking-wider mb-1">Ready to get started?</p>
+            <p class="text-burgundy-light text-sm font-semibold uppercase tracking-wider mb-1">Ready to get started?</p>
             <h2 class="text-2xl md:text-3xl font-bold text-white">Container sales, hire &amp; conversions nationwide</h2>
           </div>
           <div class="flex flex-col sm:flex-row gap-3 flex-shrink-0">

@@ -6,7 +6,7 @@
       <section class="relative text-white overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-br from-primary-950 via-primary-900 to-primary-950"></div>
         <div class="container-custom relative z-10 py-20 md:py-24">
-          <div class="flex items-center gap-2 text-sm text-primary-300 mb-4">
+          <div class="flex items-center gap-2 text-sm text-burgundy-light mb-4">
             <NuxtLink to="/container-sales/nationwide" class="hover:text-white transition-colors">All Depots</NuxtLink>
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             <span class="text-white">{{ depot.name }}</span>

@@ -70,7 +70,7 @@
             <div class="bg-primary-800 rounded-2xl shadow-card p-8 text-center relative">
               <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full">Most Popular</div>
               <div class="text-5xl font-black text-white mb-2">20ft</div>
-              <p class="text-primary-300 text-sm mb-4">Approx 28 m³ capacity</p>
+              <p class="text-burgundy-light text-sm mb-4">Approx 28 m³ capacity</p>
               <p class="text-primary-200 text-sm mb-6">The most popular choice — ideal for household contents, business stock and equipment.</p>
               <a href="#enquire" class="bg-white text-primary-800 hover:bg-gray-100 font-semibold py-3 px-8 rounded-lg transition-all inline-flex items-center justify-center w-full">Check Availability</a>
             </div>

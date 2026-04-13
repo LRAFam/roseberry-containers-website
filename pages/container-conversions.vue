@@ -42,7 +42,7 @@
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div v-for="type in conversionTypes" :key="type.title" class="bg-gray-50 rounded-2xl overflow-hidden hover:shadow-card-lg transition-all duration-300 group">
               <div class="h-48 bg-gradient-to-br from-primary-800 to-primary-950 flex items-center justify-center">
-                <div v-html="type.icon" class="text-primary-300 w-20 h-20"></div>
+                <div v-html="type.icon" class="text-burgundy-light w-20 h-20"></div>
               </div>
               <div class="p-6">
                 <h3 class="heading-sm text-gray-900 mb-3">{{ type.title }}</h3>
