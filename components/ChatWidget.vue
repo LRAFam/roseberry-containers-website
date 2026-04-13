@@ -20,7 +20,7 @@
       />
 
       <Transition mode="out-in" enter-active-class="transition-all duration-150" enter-from-class="opacity-0 rotate-90 scale-75" enter-to-class="opacity-100 rotate-0 scale-100" leave-active-class="transition-all duration-150" leave-from-class="opacity-100 rotate-0 scale-100" leave-to-class="opacity-0 -rotate-90 scale-75">
-        <img v-if="!isOpen" src="/logo.jpg" alt="James — Roseberry Assistant" class="w-10 h-10 object-contain" />
+        <img v-if="!isOpen" src="/chatbot-avatar.jpg" alt="James — Roseberry Assistant" class="w-full h-full object-cover object-top" />
         <svg v-else xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
         </svg>
@@ -45,7 +45,7 @@
         <div class="bg-emerald-600 px-4 py-3 flex items-center gap-3 flex-shrink-0">
           <div class="relative flex-shrink-0">
             <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center overflow-hidden shadow-sm">
-              <img src="/logo.jpg" alt="James" class="w-8 h-8 object-contain" />
+              <img src="/chatbot-avatar.jpg" alt="James" class="w-8 h-8 rounded-full object-cover object-top" />
             </div>
             <!-- Online dot -->
             <span class="absolute bottom-0 right-0 w-3 h-3 bg-green-400 border-2 border-emerald-600 rounded-full" />
@@ -103,7 +103,7 @@
           >
             <!-- James avatar beside message -->
             <div v-if="msg.role === 'assistant'" class="flex-shrink-0 w-7 h-7 rounded-full bg-white border border-gray-200 flex items-center justify-center overflow-hidden shadow-sm mb-0.5">
-              <img src="/logo.jpg" alt="James" class="w-5 h-5 object-contain" />
+              <img src="/chatbot-avatar.jpg" alt="James" class="w-5 h-5 rounded-full object-cover object-top" />
             </div>
 
             <div :class="msg.role === 'user' ? 'items-end' : 'items-start'" class="flex flex-col gap-1 max-w-[78%]">
@@ -130,7 +130,7 @@
           <!-- Typing indicator -->
           <div v-if="isLoading" class="flex justify-start items-end gap-2">
             <div class="flex-shrink-0 w-7 h-7 rounded-full bg-white border border-gray-200 flex items-center justify-center overflow-hidden shadow-sm">
-              <img src="/logo.jpg" alt="James" class="w-5 h-5 object-contain" />
+              <img src="/chatbot-avatar.jpg" alt="James" class="w-5 h-5 rounded-full object-cover object-top" />
             </div>
             <div class="bg-white rounded-2xl rounded-bl-md px-4 py-3 shadow-sm border border-gray-100">
               <div class="flex gap-1.5 items-center">
