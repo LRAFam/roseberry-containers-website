@@ -29,7 +29,7 @@
     <header class="bg-white shadow-sm border-b border-gray-200 flex-shrink-0">
       <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
         <div class="flex items-center gap-3">
-          <img src="/logo.jpg" alt="Roseberry" class="h-9 w-auto" />
+          <img src="/logo-nav.png" alt="Roseberry" class="h-9 w-auto" />
           <div>
             <p class="font-bold text-gray-900 leading-tight text-sm">Roseberry Admin</p>
             <p class="text-xs text-gray-400">Dashboard</p>

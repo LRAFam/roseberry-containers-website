@@ -4,7 +4,7 @@
       <div class="flex items-center justify-between h-16">
         <!-- Logo -->
         <NuxtLink to="/" class="flex items-center" aria-label="Roseberry Containers — home">
-          <img src="/logo.jpg" alt="Roseberry Containers" class="h-9 md:h-10 w-auto" />
+          <img src="/logo-nav.png" alt="Roseberry Containers" class="h-10 md:h-12 w-auto" />
         </NuxtLink>
 
         <!-- Desktop Navigation -->
