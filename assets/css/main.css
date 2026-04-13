@@ -59,11 +59,11 @@
     @apply hover:shadow-card-lg hover:-translate-y-1 transition-all duration-300;
   }
 
-  /* ── Burgundy heading highlight ──────────────────────────
-     Warm glow + drop shadow so dark crimson pops on white. */
-  .text-burgundy-light {
-    text-shadow:
-      0 0 22px rgba(158, 16, 30, 0.22),
-      0 1px 3px rgba(80, 0, 8, 0.18);
+  /* ── Gold gradient text for hero headings & stats ───────── */
+  .hero-gold-text {
+    background: linear-gradient(135deg, #c9a84c 0%, #e8c96a 50%, #b8922a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }
