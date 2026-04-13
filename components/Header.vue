@@ -1,10 +1,7 @@
 <template>
-  <header
-    class="sticky top-0 z-50 transition-all duration-300"
-    :class="scrolled
-      ? 'bg-primary-950/95 backdrop-blur-md shadow-lg border-b border-white/5'
-      : 'bg-transparent'"
-  >
+  <header class="bg-primary-950 sticky top-0 z-50">
+    <!-- Gradient fade at bottom blends nav into hero -->
+    <div class="absolute bottom-0 left-0 right-0 h-8 translate-y-full bg-gradient-to-b from-primary-950 to-transparent pointer-events-none z-10"></div>
     <nav class="container-custom">
       <div class="flex items-center justify-between h-16">
         <!-- Logo -->
@@ -114,11 +111,4 @@
 
 <script setup lang="ts">
 const mobileMenuOpen = ref(false)
-const scrolled = ref(false)
-
-onMounted(() => {
-  const onScroll = () => { scrolled.value = window.scrollY > 20 }
-  window.addEventListener('scroll', onScroll, { passive: true })
-  onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
-})
 </script>
