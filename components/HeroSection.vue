@@ -1,8 +1,8 @@
 <template>
   <section class="relative bg-gradient-to-br from-primary-950 via-gray-900 to-gray-900 text-white overflow-hidden" style="clip-path: polygon(0 0, 100% 0, 100% 94%, 0 100%)">
-    <!-- Background overlay -->
-    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/images/hero-containers.jpg')">
-      <div class="absolute inset-0 bg-primary-950/80"></div>
+    <!-- Background: real container yard photo with dark overlay -->
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/images/hero-bg.jpg')">
+      <div class="absolute inset-0 bg-primary-950/75"></div>
     </div>
     <!-- Dot pattern -->
     <div class="absolute inset-0 opacity-[0.04] pointer-events-none" style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 28px 28px;"></div>

@@ -1,3 +1,13 @@
+#!/usr/bin/env python3
+"""Helper script to write improved page files."""
+import os
+
+base = '/Users/adamdowning/Documents/GitHub/roseberry-storage-website/pages'
+
+# ============================================================
+# self-storage.vue
+# ============================================================
+self_storage = '''\
 <template>
   <div>
     <Header />
@@ -116,7 +126,7 @@
           <div class="text-center mb-12">
             <div class="inline-flex items-center gap-2 bg-amber-500/10 text-amber-300 border border-amber-500/30 px-4 py-1.5 rounded-full text-sm font-semibold mb-6">
               <span class="w-1.5 h-1.5 bg-amber-400 rounded-full animate-pulse"></span>
-              It's Easy
+              It\'s Easy
             </div>
             <h2 class="heading-lg text-white mb-4">How to Get Started</h2>
             <p class="body-lg text-gray-400 max-w-xl mx-auto">Renting a storage unit with Roseberry is quick and hassle-free.</p>
@@ -238,8 +248,8 @@ const svgPrice = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0
 
 const features = [
   { title: '24/7 CCTV Monitored', description: 'Our site is monitored around the clock with high-definition CCTV cameras for your peace of mind.', icon: svgCctv },
-  { title: 'Secure Lock Systems', description: 'Heavy-duty lock boxes fitted to every container. Your lock, your access — nobody else gets in.', icon: svgLock },
-  { title: 'Drive-Up Access', description: 'Load and unload directly from your vehicle. No stairs, no lifts — just easy ground-level access.', icon: svgKey },
+  { title: 'Secure Lock Systems', description: 'Heavy-duty lock boxes fitted to every container. Your lock, your access \u2014 nobody else gets in.', icon: svgLock },
+  { title: 'Drive-Up Access', description: 'Load and unload directly from your vehicle. No stairs, no lifts \u2014 just easy ground-level access.', icon: svgKey },
   { title: 'Wind & Watertight', description: 'All our storage containers are certified wind and watertight, keeping your belongings dry and safe.', icon: svgWeather },
   { title: 'Flexible Rental', description: 'Rent month by month with no long-term contracts. Scale up or down as your needs change.', icon: svgCalendar },
   { title: 'Competitive Pricing', description: 'Transparent pricing with no hidden fees. Call us for a personalised quote based on your requirements.', icon: svgPrice },
@@ -254,3 +264,8 @@ const storageUses = [
   'Seasonal businesses with fluctuating inventory',
 ]
 </script>
+'''
+
+with open(os.path.join(base, 'self-storage.vue'), 'w') as f:
+    f.write(self_storage)
+print('self-storage.vue written')
