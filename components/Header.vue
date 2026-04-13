@@ -1,5 +1,10 @@
 <template>
-  <header class="bg-primary-950 shadow-md sticky top-0 z-50">
+  <header
+    class="sticky top-0 z-50 transition-all duration-300"
+    :class="scrolled
+      ? 'bg-primary-950/95 backdrop-blur-md shadow-lg border-b border-white/5'
+      : 'bg-transparent'"
+  >
     <nav class="container-custom">
       <div class="flex items-center justify-between h-16">
         <!-- Logo -->
@@ -90,7 +95,7 @@
         leave-from-class="opacity-100 translate-y-0"
         leave-to-class="opacity-0 -translate-y-2"
       >
-        <div v-if="mobileMenuOpen" class="md:hidden pb-4 border-t border-white/10 pt-4">
+        <div v-if="mobileMenuOpen" class="md:hidden pb-4 border-t border-white/10 pt-4 bg-primary-950/95 backdrop-blur-md">
           <div class="flex flex-col gap-1">
             <NuxtLink to="/" @click="mobileMenuOpen = false" class="text-amber-200 hover:text-white hover:bg-white/10 font-medium py-2 px-3 rounded-lg transition-all" active-class="!text-white !bg-white/15 font-semibold" exact>Home</NuxtLink>
             <NuxtLink to="/container-sales" @click="mobileMenuOpen = false" class="text-amber-200 hover:text-white hover:bg-white/10 font-medium py-2 px-3 rounded-lg transition-all" active-class="!text-white !bg-white/15 font-semibold">Container Sales</NuxtLink>
@@ -109,4 +114,11 @@
 
 <script setup lang="ts">
 const mobileMenuOpen = ref(false)
+const scrolled = ref(false)
+
+onMounted(() => {
+  const onScroll = () => { scrolled.value = window.scrollY > 20 }
+  window.addEventListener('scroll', onScroll, { passive: true })
+  onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
+})
 </script>
