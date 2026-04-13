@@ -1,7 +1,5 @@
 <template>
-  <header class="bg-primary-950 sticky top-0 z-50">
-    <!-- Gradient fade at bottom blends nav into hero -->
-    <div class="absolute bottom-0 left-0 right-0 h-8 translate-y-full bg-gradient-to-b from-primary-950 to-transparent pointer-events-none z-10"></div>
+  <header class="bg-primary-950 shadow-md sticky top-0 z-50">
     <nav class="container-custom">
       <div class="flex items-center justify-between h-16">
         <!-- Logo -->
