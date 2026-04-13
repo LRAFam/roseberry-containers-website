@@ -25,7 +25,7 @@ export default {
         },
         burgundy: {
           DEFAULT: '#6b0d14',
-          light:   '#7c1018',
+          light:   '#9a1020',
           dark:    '#4a0b10',
         },
       },
