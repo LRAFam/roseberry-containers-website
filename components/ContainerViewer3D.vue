@@ -67,9 +67,10 @@ onMounted(async () => {
   const heightLabel = props.hiCube ? '2.9m  (Hi-Cube)' : '2.59m'
 
   // ── Camera ────────────────────────────────────────────────────────────────
-  const camera = new THREE.PerspectiveCamera(40, w / h, 0.1, 100)
-  camera.position.set(L * 0.6, H * 1.1, span * 0.85)
-  camera.lookAt(0, 0, 0)
+  // Start at a classic 3/4 angle: side-on, slightly elevated, well back
+  const camera = new THREE.PerspectiveCamera(45, w / h, 0.1, 100)
+  camera.position.set(L * 0.75, H * 0.55, span * 1.25)
+  camera.lookAt(0, H * 0.05, 0)
 
   // ── Orbit controls ────────────────────────────────────────────────────────
   orbitControls = new OrbitControls(camera, canvas)
@@ -78,8 +79,8 @@ onMounted(async () => {
   orbitControls.enablePan = false
   orbitControls.autoRotate = true
   orbitControls.autoRotateSpeed = 1.2
-  orbitControls.minPolarAngle = 0.25
-  orbitControls.maxPolarAngle = Math.PI * 0.62
+  orbitControls.minPolarAngle = 0.3
+  orbitControls.maxPolarAngle = Math.PI * 0.52
   orbitControls.minDistance = span * 0.5
   orbitControls.maxDistance = span * 2.5
 
