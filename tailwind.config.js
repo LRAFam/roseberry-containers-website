@@ -24,9 +24,9 @@ export default {
           950: '#1a4731',
         },
         burgundy: {
-          DEFAULT: '#6b1728',
-          light:   '#8b1f30',
-          dark:    '#4a0f1e',
+          DEFAULT: '#6b0d14',
+          light:   '#7c1018',
+          dark:    '#4a0b10',
         },
       },
       fontFamily: {
