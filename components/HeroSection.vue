@@ -1,16 +1,20 @@
 <template>
-  <section class="relative bg-gradient-to-br from-primary-950 via-gray-900 to-gray-900 text-white overflow-hidden">
+  <section class="relative bg-gradient-to-br from-primary-950 via-gray-900 to-gray-900 text-white overflow-hidden" style="clip-path: polygon(0 0, 100% 0, 100% 94%, 0 100%)">
     <!-- Background: container photo with dark overlay -->
     <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/images/hero-containers.jpg')">
       <div class="absolute inset-0 bg-primary-950/80"></div>
     </div>
+    <!-- Dot pattern -->
+    <div class="absolute inset-0 opacity-[0.04] pointer-events-none" style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 28px 28px;"></div>
+    <!-- Diagonal lines -->
+    <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0, rgba(255,255,255,0.02) 1px, transparent 0, transparent 50%); background-size: 20px 20px;"></div>
 
     <div class="container-custom relative z-10">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-16 md:py-24 lg:min-h-[660px]">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center pt-16 md:pt-24 pb-24 md:pb-32 lg:min-h-[660px]">
         <!-- Content -->
         <div class="space-y-7">
-          <div class="inline-flex items-center gap-2 bg-primary-500/15 text-primary-300 border border-primary-500/25 px-4 py-1.5 rounded-full text-sm font-semibold">
-            <span class="w-1.5 h-1.5 bg-primary-400 rounded-full animate-pulse"></span>
+          <div class="inline-flex items-center gap-2 bg-amber-500/10 text-amber-300 border border-amber-500/30 px-4 py-1.5 rounded-full text-sm font-semibold">
+            <span class="w-1.5 h-1.5 bg-amber-400 rounded-full animate-pulse"></span>
             UK Container Specialists
           </div>
 
@@ -39,25 +43,30 @@
           </div>
 
           <!-- Stats -->
-          <div class="grid grid-cols-3 gap-4 pt-6 border-t border-white/10">
+          <div class="grid grid-cols-3 gap-4 pt-6 border-t border-amber-500/20">
             <div class="text-center">
               <div class="text-3xl font-bold text-burgundy-light">8</div>
-              <div class="text-xs text-gray-400 mt-1 uppercase tracking-wide">UK Depots</div>
+              <div class="text-xs text-amber-300/70 mt-1 uppercase tracking-wide">UK Depots</div>
             </div>
             <div class="text-center border-x border-white/10">
               <div class="text-3xl font-bold text-burgundy-light">24/7</div>
-              <div class="text-xs text-gray-400 mt-1 uppercase tracking-wide">CCTV Security</div>
+              <div class="text-xs text-amber-300/70 mt-1 uppercase tracking-wide">CCTV Security</div>
             </div>
             <div class="text-center">
               <div class="text-3xl font-bold text-burgundy-light">Best</div>
-              <div class="text-xs text-gray-400 mt-1 uppercase tracking-wide">UK Prices</div>
+              <div class="text-xs text-amber-300/70 mt-1 uppercase tracking-wide">UK Prices</div>
             </div>
           </div>
         </div>
 
         <!-- Container image / placeholder -->
         <div class="relative lg:h-[520px] h-[320px]">
-          <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary-800 to-primary-950 border border-white/10 shadow-2xl overflow-hidden">
+          <div class="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary-900 to-gray-900 border border-amber-500/30 shadow-2xl overflow-hidden">
+            <!-- Gold corner dots -->
+            <div class="w-2 h-2 rounded-full bg-amber-400/60 absolute top-2 left-2"></div>
+            <div class="w-2 h-2 rounded-full bg-amber-400/60 absolute top-2 right-2"></div>
+            <div class="w-2 h-2 rounded-full bg-amber-400/60 absolute bottom-2 left-2"></div>
+            <div class="w-2 h-2 rounded-full bg-amber-400/60 absolute bottom-2 right-2"></div>
             <div class="absolute -top-20 -right-20 w-72 h-72 bg-primary-500/20 rounded-full blur-3xl pointer-events-none"></div>
             <div class="absolute -bottom-16 -left-16 w-56 h-56 bg-primary-400/10 rounded-full blur-2xl pointer-events-none"></div>
             <div class="absolute inset-0 opacity-[0.05] pointer-events-none" style="background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px); background-size: 40px 40px;"></div>
@@ -65,8 +74,8 @@
               <IsometricContainer class="w-full max-w-[420px] drop-shadow-2xl" />
             </div>
           </div>
+          </div>
         </div>
       </div>
-    </div>
   </section>
 </template>
