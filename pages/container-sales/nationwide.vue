@@ -3,12 +3,25 @@
     <Header />
     <main>
       <!-- Hero -->
-      <section class="relative text-white overflow-hidden">
+      <section class="relative text-white overflow-hidden" style="clip-path: polygon(0 0, 100% 0, 100% 94%, 0 100%);">
         <div class="absolute inset-0 bg-gradient-to-br from-primary-950 via-primary-900 to-primary-950"></div>
-        <div class="container-custom relative z-10 py-20 md:py-28">
+        <!-- Dot pattern -->
+        <div class="absolute inset-0 opacity-[0.04] pointer-events-none" style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 28px 28px;"></div>
+        <!-- Glow blobs -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl pointer-events-none -translate-y-1/2 translate-x-1/2"></div>
+        <div class="absolute bottom-0 left-1/3 w-72 h-72 bg-burgundy/8 rounded-full blur-3xl pointer-events-none"></div>
+        <!-- UK map watermark -->
+        <div class="absolute right-0 top-0 bottom-0 w-1/2 flex items-center justify-end pr-8 opacity-[0.06] pointer-events-none hidden lg:flex">
+          <svg viewBox="0 0 200 350" class="h-80 w-auto fill-white" xmlns="http://www.w3.org/2000/svg">
+            <path d="M100 10 L115 30 L130 25 L140 50 L155 55 L150 80 L165 95 L155 115 L145 110 L140 130 L125 140 L130 165 L120 180 L110 175 L105 195 L115 215 L108 235 L95 240 L88 225 L75 230 L70 215 L80 200 L72 185 L60 180 L65 160 L55 145 L65 130 L60 110 L72 100 L68 80 L78 65 L70 45 L85 35 Z"/>
+            <path d="M85 250 L95 255 L100 270 L90 280 L82 272 Z" opacity="0.7"/>
+            <path d="M108 242 L120 248 L125 262 L115 270 L107 258 Z" opacity="0.6"/>
+          </svg>
+        </div>
+        <div class="container-custom relative z-10 pt-20 md:pt-28 pb-24 md:pb-32">
           <div class="max-w-3xl">
-            <div class="inline-flex items-center gap-2 bg-primary-500/15 text-primary-300 border border-primary-500/25 px-4 py-1.5 rounded-full text-sm font-semibold mb-6">
-              <span class="w-1.5 h-1.5 bg-primary-400 rounded-full"></span>
+            <div class="inline-flex items-center gap-2 bg-amber-500/10 text-amber-300 border border-amber-500/30 px-4 py-1.5 rounded-full text-sm font-semibold mb-6">
+              <span class="w-1.5 h-1.5 bg-amber-400 rounded-full animate-pulse"></span>
               8 Depots Nationwide
             </div>
             <h1 class="text-4xl sm:text-5xl font-bold leading-tight mb-6">

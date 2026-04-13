@@ -3,19 +3,58 @@
     <Header />
     <main>
       <!-- Hero Section -->
-      <section class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white section-padding">
-        <div class="container-custom">
-          <div class="max-w-3xl mx-auto text-center">
-            <h1 class="text-5xl md:text-6xl font-bold mb-6">Container Sales</h1>
-            <p class="text-xl text-gray-300">
-              Looking to purchase a storage container? We offer quality containers for sale at competitive prices.
+      <section class="relative bg-gradient-to-br from-primary-950 via-gray-900 to-gray-950 text-white overflow-hidden" style="clip-path: polygon(0 0, 100% 0, 100% 94%, 0 100%);">
+        <!-- Dot pattern -->
+        <div class="absolute inset-0 opacity-[0.04] pointer-events-none" style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 28px 28px;"></div>
+        <!-- Diagonal lines -->
+        <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.8) 0, rgba(255,255,255,0.8) 1px, transparent 0, transparent 50%); background-size: 20px 20px;"></div>
+        <!-- Glow blobs -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl pointer-events-none -translate-y-1/2 translate-x-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-burgundy/10 rounded-full blur-3xl pointer-events-none translate-y-1/2 -translate-x-1/2"></div>
+
+        <div class="container-custom relative z-10 py-20 md:py-28 pb-28 md:pb-36">
+          <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 bg-amber-500/10 text-amber-300 border border-amber-500/30 px-4 py-1.5 rounded-full text-sm font-semibold mb-6">
+              <span class="w-1.5 h-1.5 bg-amber-400 rounded-full animate-pulse"></span>
+              Quality Containers — Nationwide Delivery
+            </div>
+            <h1 class="text-5xl md:text-6xl font-bold leading-tight tracking-tight text-white mb-6">
+              Shipping Containers<br><span class="text-burgundy-light">For Sale Across the UK</span>
+            </h1>
+            <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
+              10ft, 20ft and 40ft containers available — new (1-trip) and quality used stock. Competitive prices with delivery from our 8 UK depots.
             </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-14">
+              <a href="#containers" class="btn-primary">
+                View All Containers
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+              </a>
+              <a href="tel:07793251550" class="inline-flex items-center justify-center gap-2 border-2 border-white/40 hover:border-white text-white font-semibold py-3 px-8 rounded-lg transition-all duration-200 hover:bg-white/10">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                Call Us: 07793 251550
+              </a>
+            </div>
+            <!-- Trust strip -->
+            <div class="grid grid-cols-3 gap-6 max-w-lg mx-auto border-t border-amber-500/20 pt-8">
+              <div class="text-center">
+                <div class="text-2xl font-bold text-burgundy-light">10/20/40ft</div>
+                <div class="text-xs text-amber-300/70 mt-1 uppercase tracking-wide">All Sizes</div>
+              </div>
+              <div class="text-center border-x border-white/10">
+                <div class="text-2xl font-bold text-burgundy-light">8</div>
+                <div class="text-xs text-amber-300/70 mt-1 uppercase tracking-wide">UK Depots</div>
+              </div>
+              <div class="text-center">
+                <div class="text-2xl font-bold text-burgundy-light">1-Trip</div>
+                <div class="text-xs text-amber-300/70 mt-1 uppercase tracking-wide">New Stock</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       <!-- Container Types -->
-      <section class="section-padding bg-gray-50">
+      <section id="containers" class="section-padding bg-gray-50">
         <div class="container-custom">
           <div class="text-center mb-16">
             <h2 class="heading-lg text-gray-900 mb-4">Available Containers</h2>

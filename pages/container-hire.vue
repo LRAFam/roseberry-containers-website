@@ -3,14 +3,19 @@
     <Header />
     <main>
       <!-- Hero -->
-      <section class="relative text-white overflow-hidden">
+      <section class="relative text-white overflow-hidden" style="clip-path: polygon(0 0, 100% 0, 100% 94%, 0 100%);">
         <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/images/hire-containers.jpg')">
           <div class="absolute inset-0 bg-primary-950/85"></div>
         </div>
-        <div class="container-custom relative z-10 py-20 md:py-28">
+        <!-- Dot pattern -->
+        <div class="absolute inset-0 opacity-[0.04] pointer-events-none" style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 28px 28px;"></div>
+        <!-- Glow blobs -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl pointer-events-none -translate-y-1/2 translate-x-1/2"></div>
+        <div class="absolute bottom-0 left-1/3 w-72 h-72 bg-burgundy/8 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="container-custom relative z-10 pt-20 md:pt-28 pb-24 md:pb-32">
           <div class="max-w-3xl">
-            <div class="inline-flex items-center gap-2 bg-primary-500/15 text-primary-300 border border-primary-500/25 px-4 py-1.5 rounded-full text-sm font-semibold mb-6">
-              <span class="w-1.5 h-1.5 bg-primary-400 rounded-full"></span>
+            <div class="inline-flex items-center gap-2 bg-amber-500/10 text-amber-300 border border-amber-500/30 px-4 py-1.5 rounded-full text-sm font-semibold mb-6">
+              <span class="w-1.5 h-1.5 bg-amber-400 rounded-full animate-pulse"></span>
               Flexible Container Hire
             </div>
             <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6">
@@ -27,6 +32,20 @@
                 </svg>
                 Call Us Now
               </a>
+            </div>
+            <div class="grid grid-cols-3 gap-4 max-w-sm mt-12 border-t border-amber-500/20 pt-6">
+              <div class="text-center">
+                <div class="text-xl font-bold text-burgundy-light">Same Day</div>
+                <div class="text-xs text-amber-300/70 mt-0.5 uppercase tracking-wide">Delivery Avail.</div>
+              </div>
+              <div class="text-center border-x border-white/10">
+                <div class="text-xl font-bold text-burgundy-light">Flexible</div>
+                <div class="text-xs text-amber-300/70 mt-0.5 uppercase tracking-wide">Hire Periods</div>
+              </div>
+              <div class="text-center">
+                <div class="text-xl font-bold text-burgundy-light">All Sizes</div>
+                <div class="text-xs text-amber-300/70 mt-0.5 uppercase tracking-wide">10 / 20 / 40ft</div>
+              </div>
             </div>
           </div>
         </div>
