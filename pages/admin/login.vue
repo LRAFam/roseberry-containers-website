@@ -16,6 +16,17 @@
       <!-- Login card -->
       <form @submit.prevent="login" class="bg-gray-800 rounded-2xl p-8 shadow-xl space-y-5">
         <div>
+          <label class="block text-sm font-medium text-gray-300 mb-2">Client API Key</label>
+          <input
+            v-model="apiKey"
+            type="password"
+            placeholder="Your client API key"
+            class="w-full bg-gray-700 border border-gray-600 text-white rounded-lg px-4 py-3 text-sm outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors"
+            :class="{ 'border-red-500': error }"
+            required
+          />
+        </div>
+        <div>
           <label class="block text-sm font-medium text-gray-300 mb-2">Password</label>
           <input
             v-model="password"
@@ -52,6 +63,7 @@ const apiBase = config.public.apiBase || 'http://localhost:3001'
 const router = useRouter()
 
 const password = ref('')
+const apiKey = ref('')
 const error = ref('')
 const isLoading = ref(false)
 
@@ -64,7 +76,7 @@ async function login() {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
-      body: JSON.stringify({ password: password.value }),
+      body: JSON.stringify({ password: password.value, api_key: apiKey.value }),
     })
 
     const data = await res.json()

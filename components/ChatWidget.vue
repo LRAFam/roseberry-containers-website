@@ -201,6 +201,7 @@ import { ref, nextTick, onMounted, onUnmounted, watch } from 'vue'
 
 const config = useRuntimeConfig()
 const apiBase = config.public.apiBase || 'http://localhost:3001'
+const clientId = config.public.clientId
 
 interface Message {
   role: 'user' | 'assistant'
@@ -339,7 +340,7 @@ async function send() {
     const res = await fetch(`${apiBase}/api/chat`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: text, sessionId: sessionId.value }),
+      body: JSON.stringify({ message: text, sessionId: sessionId.value, clientId }),
     })
 
     const data = await res.json()

@@ -75,6 +75,7 @@ const error = ref('')
 const result = ref<{ formattedPrice: string; distanceKm: number } | null>(null)
 
 const config = useRuntimeConfig()
+const clientId = config.public.clientId
 
 const getQuote = async () => {
   loading.value = true
@@ -82,7 +83,7 @@ const getQuote = async () => {
   result.value = null
 
   try {
-    const params = new URLSearchParams({ postcode: postcode.value.trim() })
+    const params = new URLSearchParams({ postcode: postcode.value.trim(), clientId })
     const res = await fetch(`${config.public.apiBase}/api/delivery/estimate?${params}`)
 
     if (!res.ok) {

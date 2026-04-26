@@ -184,6 +184,9 @@
 </template>
 
 <script setup lang="ts">
+const config = useRuntimeConfig()
+const clientId = config.public.clientId
+
 const form = ref({
   name: '',
   email: '',
@@ -204,7 +207,7 @@ const submitForm = async () => {
     const res = await fetch(`${useRuntimeConfig().public.apiBase}/api/contact`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(form.value),
+      body: JSON.stringify({ ...form.value, clientId }),
     })
 
     if (!res.ok) {
