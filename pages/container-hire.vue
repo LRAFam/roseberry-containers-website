@@ -132,7 +132,7 @@
       </section>
 
       <!-- How It Works -->
-      <section class="section-padding bg-gray-900 text-white">
+      <section class="section-padding bg-primary-950 text-white">
         <div class="container-custom">
           <div class="text-center mb-12">
             <div class="inline-flex items-center gap-2 bg-amber-500/10 text-amber-300 border border-amber-500/30 px-4 py-1.5 rounded-full text-sm font-semibold mb-6">
@@ -143,22 +143,22 @@
             <p class="body-lg text-gray-400 max-w-xl mx-auto">Hiring a container from Roseberry is straightforward. Here's what to expect.</p>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="bg-gray-800 rounded-2xl p-6 border border-gray-700 hover:border-amber-500/40 transition-all">
+            <div class="bg-primary-900 rounded-2xl p-6 border border-primary-800 hover:border-amber-500/40 transition-all">
               <div class="w-14 h-14 bg-amber-500 text-white rounded-full flex items-center justify-center font-black text-2xl mb-5">1</div>
               <h3 class="font-bold text-white text-lg mb-2">Get a Quote</h3>
               <p class="text-gray-400 text-sm">Call or message us with your size, location and hire period. We'll give you a fast, no-obligation price.</p>
             </div>
-            <div class="bg-gray-800 rounded-2xl p-6 border border-gray-700 hover:border-amber-500/40 transition-all">
+            <div class="bg-primary-900 rounded-2xl p-6 border border-primary-800 hover:border-amber-500/40 transition-all">
               <div class="w-14 h-14 bg-amber-500 text-white rounded-full flex items-center justify-center font-black text-2xl mb-5">2</div>
               <h3 class="font-bold text-white text-lg mb-2">We Deliver</h3>
               <p class="text-gray-400 text-sm">Your container is delivered and positioned on site by our team — often same or next day.</p>
             </div>
-            <div class="bg-gray-800 rounded-2xl p-6 border border-gray-700 hover:border-amber-500/40 transition-all">
+            <div class="bg-primary-900 rounded-2xl p-6 border border-primary-800 hover:border-amber-500/40 transition-all">
               <div class="w-14 h-14 bg-amber-500 text-white rounded-full flex items-center justify-center font-black text-2xl mb-5">3</div>
               <h3 class="font-bold text-white text-lg mb-2">Use It</h3>
               <p class="text-gray-400 text-sm">Store your equipment, materials or goods securely on site for as long as you need.</p>
             </div>
-            <div class="bg-gray-800 rounded-2xl p-6 border border-gray-700 hover:border-amber-500/40 transition-all">
+            <div class="bg-primary-900 rounded-2xl p-6 border border-primary-800 hover:border-amber-500/40 transition-all">
               <div class="w-14 h-14 bg-amber-500 text-white rounded-full flex items-center justify-center font-black text-2xl mb-5">4</div>
               <h3 class="font-bold text-white text-lg mb-2">We Collect</h3>
               <p class="text-gray-400 text-sm">When you're done, just call us and we'll arrange collection at a time that suits you.</p>
