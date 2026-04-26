@@ -9,6 +9,8 @@ export default defineNuxtConfig({
     public: {
       apiBase: process.env.NUXT_PUBLIC_API_BASE ?? 'http://localhost:3001',
       clientId: process.env.NUXT_PUBLIC_CLIENT_ID ?? '',
+      trustpilotBusinessUnitId: process.env.NUXT_PUBLIC_TRUSTPILOT_BUSINESS_UNIT_ID ?? '',
+      trustpilotDomain: process.env.NUXT_PUBLIC_TRUSTPILOT_DOMAIN ?? 'roseberrycontainers.co.uk',
     }
   },
 
