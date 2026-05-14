@@ -157,9 +157,15 @@
         </div>
 
         <!-- ── Error banner ── -->
-        <div v-if="error" class="flex items-center justify-between gap-2 px-4 py-2 bg-red-50 border-t border-red-100 flex-shrink-0">
-          <p class="text-red-600 text-xs flex-1">{{ error }}</p>
-          <button @click="retryLast" class="text-xs font-semibold text-red-600 hover:text-red-800 underline flex-shrink-0">Retry</button>
+        <div v-if="error" class="flex flex-col gap-1.5 px-4 py-3 bg-red-50 border-t border-red-100 flex-shrink-0">
+          <div class="flex items-center justify-between gap-2">
+            <p class="text-red-600 text-xs flex-1">{{ error }}</p>
+            <button @click="retryLast" class="text-xs font-semibold text-red-600 hover:text-red-800 underline flex-shrink-0">Retry</button>
+          </div>
+          <p class="text-xs text-gray-500">
+            Or email us directly:
+            <a :href="`mailto:${contactEmail}`" class="text-emerald-600 hover:underline font-medium">{{ contactEmail }}</a>
+          </p>
         </div>
 
         <!-- ── Input ── -->
@@ -202,6 +208,7 @@ import { ref, nextTick, onMounted, onUnmounted, watch } from 'vue'
 const config = useRuntimeConfig()
 const apiBase = config.public.apiBase || 'http://localhost:3001'
 const clientId = config.public.clientId
+const contactEmail = 'james@roseberrycontainers.com'
 
 interface Message {
   role: 'user' | 'assistant'
@@ -340,7 +347,7 @@ async function send() {
     const res = await fetch(`${apiBase}/api/chat`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: text, sessionId: sessionId.value, clientId }),
+      body: JSON.stringify({ message: text, sessionId: sessionId.value, clientId, contactEmail }),
     })
 
     const data = await res.json()
