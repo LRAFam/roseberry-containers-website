@@ -75,7 +75,7 @@
                 </svg>
               </div>
               <h3 class="font-bold text-gray-900 text-lg mb-3">Email Us</h3>
-              <a href="mailto:roseberyselfstorage@hotmail.com" class="block text-primary-700 font-medium hover:underline break-all mb-3">roseberyselfstorage@hotmail.com</a>
+              <a href="mailto:james@roseberrycontainers.com" class="block text-primary-700 font-medium hover:underline break-all mb-3">james@roseberrycontainers.com</a>
               <p class="text-gray-500 text-sm">We reply within 24 hours</p>
             </div>
             <!-- Address -->
@@ -151,7 +151,7 @@
 useHead({
   title: 'Contact Us | Roseberry Containers',
   meta: [
-    { name: 'description', content: 'Contact Roseberry Containers in Teesside. Call 07793 251550, email roseberyselfstorage@hotmail.com or visit us at Westerby Rd, Middlesbrough. We serve the whole of the UK.' }
+    { name: 'description', content: 'Contact Roseberry Containers in Teesside. Call 07793 251550, email james@roseberrycontainers.com or visit us at Westerby Rd, Middlesbrough. We serve the whole of the UK.' }
   ]
 })
 

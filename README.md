@@ -91,7 +91,7 @@ Edit the color scheme in `tailwind.config.js` and `assets/css/main.css`.
 ## 📝 Business Information
 
 - **Address**: Waverley Rd, Middlesbrough, TS1, UK
-- **Email**: roseberyselfstorage@hotmail.com
+- **Email**: james@roseberrycontainers.com
 - **Phone**: 07793 251550 / 07873 082655
 
 ## 🌐 Pages

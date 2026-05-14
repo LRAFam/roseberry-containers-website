@@ -53,8 +53,8 @@
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900 mb-1">Email</h3>
-                <a href="mailto:roseberyselfstorage@hotmail.com" class="text-gray-600 hover:text-emerald-600 transition-colors">
-                  roseberyselfstorage@hotmail.com
+                <a href="mailto:james@roseberrycontainers.com" class="text-gray-600 hover:text-emerald-600 transition-colors">
+                  james@roseberrycontainers.com
                 </a>
               </div>
             </div>
