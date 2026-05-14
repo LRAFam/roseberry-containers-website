@@ -92,7 +92,7 @@
           Leave us a review — it means the world to us.
         </p>
         <a
-          href="https://uk.trustpilot.com/review/roseberrycontainers.co.uk"
+          href="https://uk.trustpilot.com/review/roseberrycontainers.com"
           target="_blank"
           rel="noopener noreferrer"
           class="inline-flex items-center gap-2 bg-[#00b67a] hover:bg-[#00a368] text-white font-semibold px-6 py-3 rounded-lg transition-colors"
