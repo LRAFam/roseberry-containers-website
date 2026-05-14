@@ -14,6 +14,18 @@ export default defineNuxtConfig({
     }
   },
 
+  routeRules: {
+    '/**': {
+      headers: {
+        'X-Frame-Options': 'SAMEORIGIN',
+        'X-Content-Type-Options': 'nosniff',
+        'Referrer-Policy': 'strict-origin-when-cross-origin',
+        'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
+        'Strict-Transport-Security': 'max-age=31536000; includeSubDomains',
+      }
+    }
+  },
+
   app: {
     head: {
       title: 'Roseberry Self Storage - Secure Container Storage in Middlesbrough',
@@ -23,7 +35,14 @@ export default defineNuxtConfig({
         { name: 'description', content: 'Secure container storage solutions in Middlesbrough. 24hr CCTV, affordable rates, and Luton van hire available.' },
         { property: 'og:title', content: 'Roseberry Self Storage' },
         { property: 'og:description', content: 'Secure container storage solutions in Middlesbrough' },
-        { property: 'og:type', content: 'website' }
+        { property: 'og:type', content: 'website' },
+        { property: 'og:url', content: 'https://roseberryselfstorage.com' },
+        { property: 'og:image', content: 'https://roseberryselfstorage.com/logo.jpg' },
+        { property: 'og:image:alt', content: 'Roseberry Self Storage' },
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:title', content: 'Roseberry Self Storage' },
+        { name: 'twitter:description', content: 'Secure container storage solutions in Middlesbrough. 24hr CCTV, affordable rates, and Luton van hire available.' },
+        { name: 'twitter:image', content: 'https://roseberryselfstorage.com/logo.jpg' },
       ],
       link: [
         { rel: 'icon', type: 'image/jpeg', href: '/logo.jpg' }

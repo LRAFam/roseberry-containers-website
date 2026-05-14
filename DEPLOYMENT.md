@@ -38,25 +38,28 @@ npm run generate
 
 ## Environment Variables
 
-Currently, no environment variables are needed. When you add backend functionality (e.g., contact form API), create a `.env` file:
+Create a `.env` file in the project root (see `.env.example` for a template). The following variables are required:
 
-```env
-# Example
-NUXT_PUBLIC_API_URL=https://api.example.com
-CONTACT_FORM_EMAIL=your-email@example.com
-```
+| Variable | Description |
+|---|---|
+| `NUXT_PUBLIC_API_BASE` | URL of the backend API (e.g. `https://api.roseberrycontainers.co.uk`) |
+| `NUXT_PUBLIC_CLIENT_ID` | Client UUID from the Roseberry Assistant platform |
+| `NUXT_PUBLIC_TRUSTPILOT_BUSINESS_UNIT_ID` | Trustpilot Business Unit ID for the TrustBox widget |
+| `NUXT_PUBLIC_TRUSTPILOT_DOMAIN` | Your Trustpilot domain (default: `roseberrycontainers.co.uk`) |
+
+All variables are public (client-side safe). Do **not** commit `.env` — it is git-ignored.
 
 ## Pre-Deployment Checklist
 
-- [ ] Update business information in components
-- [ ] Replace placeholder images with real photos
-- [ ] Update Google Maps embed with correct location
-- [ ] Connect contact form to email/backend service
-- [ ] Update meta tags and SEO information
+- [ ] Set all required environment variables on your hosting platform
+- [ ] Confirm `NUXT_PUBLIC_API_BASE` points to the production backend
+- [ ] Test contact form, delivery calculator, and container enquiry form end-to-end
+- [ ] Verify chatbot (James) responds correctly via the production API
 - [ ] Test all pages and links
 - [ ] Test mobile responsiveness
-- [ ] Add Google Analytics (optional)
-- [ ] Set up domain name
+- [ ] Add Google Analytics / tracking (optional)
+- [ ] Set up custom domain name
+- [ ] Submit sitemap to Google Search Console (`/sitemap.xml`)
 
 ## Post-Deployment
 
@@ -76,9 +79,8 @@ Most hosting providers offer simple domain configuration:
 
 ## Performance Tips
 
-- Images are currently using Unsplash placeholders - replace with optimized local images
-- Consider using Nuxt Image module for automatic image optimization
-- Enable caching headers in production
+- Consider using the Nuxt Image module for automatic image optimisation
+- Enable caching headers in production (already partially configured via `routeRules` in `nuxt.config.ts`)
 - Use a CDN for static assets
 
 ## Support
