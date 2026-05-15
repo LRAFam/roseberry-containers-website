@@ -1,7 +1,9 @@
 <template>
   <div>
     <NuxtPage />
-    <ChatWidget />
+    <ClientOnly>
+      <ChatWidget />
+    </ClientOnly>
   </div>
 </template>
 

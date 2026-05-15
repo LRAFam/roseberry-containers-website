@@ -22,7 +22,9 @@
       </section>
 
       <TestimonialsSection />
-      <TrustpilotSection />
+      <ClientOnly>
+        <TrustpilotSection />
+      </ClientOnly>
       <ContactSection />
     </main>
     <Footer />
