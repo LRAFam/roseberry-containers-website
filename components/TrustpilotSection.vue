@@ -21,6 +21,7 @@
         <!-- Mini score widget -->
         <div class="flex justify-center">
           <div
+            ref="widgetScore"
             class="trustpilot-widget"
             data-locale="en-GB"
             data-template-id="53aa8807dec7e10d38f59f32"
@@ -40,6 +41,7 @@
 
         <!-- Review carousel -->
         <div
+          ref="widgetCarousel"
           class="trustpilot-widget"
           data-locale="en-GB"
           data-template-id="53aa8912dec7e10d38f59f36"
@@ -112,20 +114,51 @@
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
+
 const config = useRuntimeConfig()
 const businessunitId = config.public.trustpilotBusinessUnitId as string
-const domain = config.public.trustpilotDomain as string || 'roseberrycontainers.co.uk'
+const domain = config.public.trustpilotDomain as string || 'roseberrycontainers.com'
 
-// Load the Trustpilot TrustBox bootstrap script once when businessunitId is set
+const widgetScore = ref<HTMLElement | null>(null)
+const widgetCarousel = ref<HTMLElement | null>(null)
+
 if (businessunitId) {
   useHead({
     script: [
       {
         src: '//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js',
         async: true,
-        defer: true,
       },
     ],
   })
 }
+
+// In Nuxt 3 / Vue SPA, the Trustpilot script runs before widgets are in the DOM.
+// We must manually call loadFromElement() after mount so Trustpilot finds them.
+onMounted(() => {
+  if (!businessunitId) return
+
+  const init = () => {
+    const tp = (window as any).Trustpilot
+    if (tp) {
+      if (widgetScore.value) tp.loadFromElement(widgetScore.value, true)
+      if (widgetCarousel.value) tp.loadFromElement(widgetCarousel.value, true)
+    }
+  }
+
+  if ((window as any).Trustpilot) {
+    init()
+  } else {
+    // Script still loading — retry after it has had time to execute
+    const interval = setInterval(() => {
+      if ((window as any).Trustpilot) {
+        clearInterval(interval)
+        init()
+      }
+    }, 200)
+    // Stop retrying after 10 seconds
+    setTimeout(() => clearInterval(interval), 10000)
+  }
+})
 </script>
