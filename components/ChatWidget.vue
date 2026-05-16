@@ -347,7 +347,7 @@ async function send() {
     const res = await fetch(`${apiBase}/api/chat`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: text, sessionId: sessionId.value, clientId, contactEmail }),
+      body: JSON.stringify({ message: text, sessionId: sessionId.value ?? undefined, clientId, contactEmail }),
     })
 
     const data = await res.json()
