@@ -113,7 +113,6 @@
         </div>
       </section>
 
-      <TestimonialsSection />
       <ClientOnly>
         <TrustpilotSection />
       </ClientOnly>
