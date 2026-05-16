@@ -90,7 +90,7 @@
               </div>
             </div>
             <div class="bg-gray-50 rounded-2xl overflow-hidden hover:shadow-card-lg transition-all duration-300 group border border-gray-100 hover:border-primary-200">
-              <img src="/container-side-opening.jpg" class="w-full h-48 object-cover" alt="Container food stall catering unit">
+              <img src="/container-food-stall.jpg" class="w-full h-48 object-cover" alt="Container food stall and catering unit conversion">
               <div class="p-6">
                 <h3 class="heading-sm text-gray-900 mb-3">Food Stall / Catering Unit</h3>
                 <p class="text-gray-600 text-sm mb-4">Fully fitted catering units for street food, markets, festivals and permanent pitches. Built to your menu.</p>
