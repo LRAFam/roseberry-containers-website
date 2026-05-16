@@ -27,20 +27,27 @@
             </h1>
             <p class="text-xl text-gray-300 mb-8">{{ depot.heroText }}</p>
             <div class="flex flex-col sm:flex-row gap-4">
-              <a href="tel:07793251550" class="btn-primary">Get a Quote</a>
-              <NuxtLink to="/container-sales" class="inline-flex items-center justify-center gap-2 border-2 border-white/40 hover:border-white text-white font-semibold py-3 px-8 rounded-lg transition-all duration-200 hover:bg-white/10">Browse All Containers</NuxtLink>
+              <a href="tel:07793251550" class="btn-primary inline-flex items-center gap-2">
+                Get a Quote
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+              </a>
+              <a href="tel:07793251550" class="inline-flex items-center justify-center gap-2 border-2 border-white/40 hover:border-white text-white font-semibold py-3 px-8 rounded-lg transition-all duration-200 hover:bg-white/10">Call 07793 251550</a>
             </div>
-            <div class="grid grid-cols-3 gap-4 max-w-sm mt-12 border-t border-amber-500/20 pt-6">
+            <div class="grid grid-cols-4 gap-4 max-w-lg mt-12 border-t border-amber-500/20 pt-8">
               <div class="text-center">
-                <div class="text-3xl font-bold hero-gold-text">10 / 20 / 40ft</div>
-                <div class="text-xs text-amber-300/70 mt-0.5 uppercase tracking-wide">Available Sizes</div>
+                <div class="text-2xl font-bold hero-gold-text">10ft</div>
+                <div class="text-xs text-amber-300/70 mt-0.5 uppercase tracking-wide">Compact</div>
               </div>
               <div class="text-center border-x border-white/10">
-                <div class="text-3xl font-bold hero-gold-text">New &amp; Used</div>
-                <div class="text-xs text-amber-300/70 mt-0.5 uppercase tracking-wide">Stock Options</div>
+                <div class="text-2xl font-bold hero-gold-text">20ft</div>
+                <div class="text-xs text-amber-300/70 mt-0.5 uppercase tracking-wide">Standard</div>
+              </div>
+              <div class="text-center border-r border-white/10">
+                <div class="text-2xl font-bold hero-gold-text">40ft</div>
+                <div class="text-xs text-amber-300/70 mt-0.5 uppercase tracking-wide">Large</div>
               </div>
               <div class="text-center">
-                <div class="text-3xl font-bold hero-gold-text">Fast</div>
+                <div class="text-2xl font-bold hero-gold-text">Fast</div>
                 <div class="text-xs text-amber-300/70 mt-0.5 uppercase tracking-wide">Delivery</div>
               </div>
             </div>
@@ -53,6 +60,11 @@
         <div class="container-custom">
           <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <div class="lg:col-span-2">
+              <div class="inline-flex items-center gap-2 text-amber-600 font-semibold text-sm uppercase tracking-widest mb-3">
+                <span class="w-8 h-px bg-amber-500"></span>
+                Local Availability
+                <span class="w-8 h-px bg-amber-500"></span>
+              </div>
               <h2 class="heading-lg text-gray-900 mb-6">Container Sales Near {{ depot.name }}</h2>
               <div class="prose prose-gray max-w-none">
                 <p class="body-lg mb-4">{{ depot.areaDescription }}</p>
@@ -62,21 +74,23 @@
             </div>
             <div class="space-y-4">
               <div class="bg-primary-50 rounded-2xl p-6 border-2 border-amber-500/30">
+                <div class="w-10 h-10 bg-amber-500/10 border border-amber-500/30 rounded-xl flex items-center justify-center mb-4">
+                  <svg class="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                </div>
                 <h3 class="font-bold text-gray-900 mb-3">Quick Enquiry</h3>
                 <p class="text-gray-600 text-sm mb-4">Call us for availability and pricing at our {{ depot.name }} depot.</p>
                 <a href="tel:07793251550" class="btn-primary w-full justify-center mb-3">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
                   07793 251550
                 </a>
-                <NuxtLink to="/contact" class="block text-center text-primary-700 hover:text-primary-900 text-sm font-medium">Send an enquiry &rarr;</NuxtLink>
+                <NuxtLink to="/contact" class="block text-center text-amber-600 hover:text-amber-700 text-sm font-medium">Send an enquiry &rarr;</NuxtLink>
               </div>
               <div class="bg-gray-50 rounded-2xl p-6">
                 <h3 class="font-bold text-gray-900 mb-3">Other Nearby Depots</h3>
                 <ul class="space-y-2">
                   <li v-for="nearby in depot.nearbyDepots" :key="nearby.slug">
-                    <NuxtLink :to="`/container-sales/${nearby.slug}`" class="text-primary-700 hover:text-primary-900 text-sm font-medium flex items-center gap-1">
+                    <NuxtLink :to="`/container-sales/${nearby.slug}`" class="text-amber-600 hover:text-amber-700 text-sm font-medium flex items-center gap-1">
                       <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                       {{ nearby.name }}
                     </NuxtLink>
@@ -91,21 +105,34 @@
       <!-- What we sell -->
       <section class="section-padding bg-gray-50">
         <div class="container-custom">
-          <h2 class="heading-lg text-gray-900 mb-8 text-center">Containers Available at {{ depot.name }}</h2>
+          <div class="text-center mb-10">
+            <div class="inline-flex items-center gap-2 text-amber-600 font-semibold text-sm uppercase tracking-widest mb-3">
+              <span class="w-8 h-px bg-amber-500"></span>
+              Available Stock
+              <span class="w-8 h-px bg-amber-500"></span>
+            </div>
+            <h2 class="heading-lg text-gray-900">Containers Available at {{ depot.name }}</h2>
+          </div>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div v-for="container in containerTypes" :key="container.size" class="bg-white rounded-2xl shadow-card overflow-hidden hover:shadow-card-lg transition-all">
-              <img :src="container.image" class="w-full h-40 object-cover" :alt="`${container.size} shipping container`">
-              <div class="p-6">
-                <div class="flex items-center justify-between mb-1">
-                  <div class="text-4xl font-black text-primary-700">{{ container.size }}</div>
-                  <span class="bg-amber-100 text-amber-800 text-xs font-semibold px-2.5 py-1 rounded-full">New or Used</span>
+            <div v-for="(container, index) in containerTypes" :key="container.size" class="bg-white rounded-2xl shadow-card overflow-hidden hover:shadow-card-lg transition-all group" :class="index === 1 ? 'ring-2 ring-amber-400' : ''">
+              <div class="relative h-52 overflow-hidden">
+                <img :src="container.image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" :alt="`${container.size} shipping container`">
+                <div class="absolute inset-0 bg-gradient-to-t from-primary-950/70 to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-4">
+                  <div class="flex items-end justify-between">
+                    <div class="text-4xl font-black text-white">{{ container.size }}</div>
+                    <span v-if="index === 1" class="bg-amber-500 text-white text-xs font-bold px-2.5 py-1 rounded-full">Most Popular</span>
+                    <span v-else class="bg-white/20 text-white text-xs font-semibold px-2.5 py-1 rounded-full backdrop-blur-sm">New or Used</span>
+                  </div>
                 </div>
-                <div class="text-gray-500 text-sm mb-4">{{ container.dimensions }}</div>
-                <h3 class="font-bold text-gray-900 mb-3">{{ container.name }}</h3>
+              </div>
+              <div class="p-6">
+                <div class="text-gray-500 text-sm mb-1">{{ container.dimensions }}</div>
+                <h3 class="font-bold text-gray-900 mb-4">{{ container.name }}</h3>
                 <ul class="space-y-2 text-sm text-gray-600 mb-6">
                   <li v-for="use in container.uses" :key="use" class="flex items-center gap-2">
-                    <svg class="w-4 h-4 text-primary-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    <svg class="w-4 h-4 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                     </svg>
                     {{ use }}
                   </li>
