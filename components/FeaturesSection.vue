@@ -1,79 +1,97 @@
 <template>
-  <section class="section-padding bg-gray-50">
+  <section class="section-padding bg-white">
     <div class="container-custom">
-      <div class="text-center mb-10">
+      <div class="text-center mb-12">
         <div class="inline-flex items-center gap-2 bg-primary-500/10 text-primary-700 border border-primary-500/20 px-4 py-1.5 rounded-full text-sm font-semibold mb-4">
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
           </svg>
-          Our Services
+          What We Do
         </div>
         <h2 class="heading-lg text-gray-900 mb-4">Everything Containers, Nationwide</h2>
         <p class="body-lg max-w-2xl mx-auto">
-          Whether you need to buy, hire, convert or store — we've got the container solution for you
+          From 10ft storage containers to full bespoke conversions — we supply, deliver and build across the entire UK.
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
         <!-- Container Sales -->
-        <div class="bg-white rounded-2xl p-6 md:p-8 shadow-card hover:shadow-card-lg hover:-translate-y-1 transition-all duration-300 group">
-          <div class="w-14 h-14 bg-primary-100 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-            <svg class="w-7 h-7 text-primary-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-            </svg>
+        <NuxtLink to="/container-sales" class="group bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg hover:-translate-y-1.5 transition-all duration-300 border border-gray-100 hover:border-primary-200 flex flex-col">
+          <div class="relative h-48 overflow-hidden bg-gray-100">
+            <img src="/container-20ft.jpg" alt="20ft shipping container for sale" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+            <div class="absolute bottom-3 left-3">
+              <span class="bg-primary-600 text-white text-xs font-bold px-2.5 py-1 rounded-full">Sales</span>
+            </div>
           </div>
-          <h3 class="heading-sm text-gray-900 mb-3">Container Sales</h3>
-          <p class="body-sm mb-4">New and used shipping containers for sale with 8 UK depots offering nationwide delivery to your door.</p>
-          <NuxtLink to="/container-sales" class="text-sm font-semibold text-primary-700 hover:text-primary-900 flex items-center gap-1">
-            Browse containers
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-          </NuxtLink>
-        </div>
+          <div class="p-6 flex flex-col flex-1">
+            <h3 class="heading-sm text-gray-900 mb-2">Container Sales</h3>
+            <p class="body-sm mb-4 flex-1">New 1-trip and quality used containers. 8 UK depot locations with nationwide delivery direct to your door.</p>
+            <span class="text-sm font-semibold text-primary-700 group-hover:text-primary-900 flex items-center gap-1">
+              Browse containers
+              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </span>
+          </div>
+        </NuxtLink>
 
         <!-- Container Hire -->
-        <div class="bg-white rounded-2xl p-6 md:p-8 shadow-card hover:shadow-card-lg hover:-translate-y-1 transition-all duration-300 group">
-          <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-            <svg class="w-7 h-7 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
+        <NuxtLink to="/container-hire" class="group bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg hover:-translate-y-1.5 transition-all duration-300 border border-gray-100 hover:border-blue-200 flex flex-col">
+          <div class="relative h-48 overflow-hidden bg-gray-100">
+            <img src="/container-10ft.jpg" alt="Container hire" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+            <div class="absolute bottom-3 left-3">
+              <span class="bg-blue-600 text-white text-xs font-bold px-2.5 py-1 rounded-full">Hire</span>
+            </div>
           </div>
-          <h3 class="heading-sm text-gray-900 mb-3">Container Hire</h3>
-          <p class="body-sm mb-4">Flexible short and long-term container hire delivered directly to your site. Perfect for construction, events and business use.</p>
-          <NuxtLink to="/container-hire" class="text-sm font-semibold text-blue-700 hover:text-blue-900 flex items-center gap-1">
-            Hire a container
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-          </NuxtLink>
-        </div>
+          <div class="p-6 flex flex-col flex-1">
+            <h3 class="heading-sm text-gray-900 mb-2">Container Hire</h3>
+            <p class="body-sm mb-4 flex-1">Flexible short and long-term hire. Perfect for construction sites, events and temporary business storage — delivered to you.</p>
+            <span class="text-sm font-semibold text-blue-700 group-hover:text-blue-900 flex items-center gap-1">
+              Hire a container
+              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </span>
+          </div>
+        </NuxtLink>
 
         <!-- Container Conversions -->
-        <div class="bg-white rounded-2xl p-6 md:p-8 shadow-card hover:shadow-card-lg hover:-translate-y-1 transition-all duration-300 group">
-          <div class="w-14 h-14 bg-amber-100 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-            <svg class="w-7 h-7 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
-            </svg>
+        <NuxtLink to="/container-conversions" class="group bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg hover:-translate-y-1.5 transition-all duration-300 border border-gray-100 hover:border-amber-200 flex flex-col">
+          <div class="relative h-48 overflow-hidden bg-gray-100">
+            <img src="/container-conversion-full.jpg" alt="Container conversion - business premises" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+            <div class="absolute bottom-3 left-3">
+              <span class="bg-amber-500 text-white text-xs font-bold px-2.5 py-1 rounded-full">Conversions</span>
+            </div>
           </div>
-          <h3 class="heading-sm text-gray-900 mb-3">Container Conversions</h3>
-          <p class="body-sm mb-4">Home offices, business premises, food stalls and more. Full or partial conversions — we fit the structure, windows &amp; doors.</p>
-          <NuxtLink to="/container-conversions" class="text-sm font-semibold text-amber-700 hover:text-amber-900 flex items-center gap-1">
-            See conversions
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-          </NuxtLink>
-        </div>
+          <div class="p-6 flex flex-col flex-1">
+            <h3 class="heading-sm text-gray-900 mb-2">Container Conversions</h3>
+            <p class="body-sm mb-4 flex-1">Home offices, shops, catering units and more. Fully bespoke — we fit windows, doors, electrics and insulation.</p>
+            <span class="text-sm font-semibold text-amber-700 group-hover:text-amber-900 flex items-center gap-1">
+              See conversions
+              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </span>
+          </div>
+        </NuxtLink>
 
         <!-- Self Storage -->
-        <div class="bg-white rounded-2xl p-6 md:p-8 shadow-card hover:shadow-card-lg hover:-translate-y-1 transition-all duration-300 group">
-          <div class="w-14 h-14 bg-rose-100 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-            <svg class="w-7 h-7 text-rose-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-            </svg>
+        <NuxtLink to="/self-storage" class="group bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg hover:-translate-y-1.5 transition-all duration-300 border border-gray-100 hover:border-rose-200 flex flex-col">
+          <div class="relative h-48 overflow-hidden bg-gray-100">
+            <img src="/container-40ft.jpg" alt="Self storage containers Teesside" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+            <div class="absolute bottom-3 left-3">
+              <span class="bg-rose-600 text-white text-xs font-bold px-2.5 py-1 rounded-full">Storage</span>
+            </div>
           </div>
-          <h3 class="heading-sm text-gray-900 mb-3">Self Storage</h3>
-          <p class="body-sm mb-4">Secure self storage at our Teesside site. 24/7 CCTV, easy access and flexible rental periods to suit you.</p>
-          <NuxtLink to="/self-storage" class="text-sm font-semibold text-rose-700 hover:text-rose-900 flex items-center gap-1">
-            Find out more
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-          </NuxtLink>
-        </div>
+          <div class="p-6 flex flex-col flex-1">
+            <h3 class="heading-sm text-gray-900 mb-2">Self Storage</h3>
+            <p class="body-sm mb-4 flex-1">Secure self storage at our Teesside site. 24/7 CCTV, easy drive-up access and flexible rental periods.</p>
+            <span class="text-sm font-semibold text-rose-700 group-hover:text-rose-900 flex items-center gap-1">
+              Find out more
+              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </span>
+          </div>
+        </NuxtLink>
+
       </div>
     </div>
   </section>

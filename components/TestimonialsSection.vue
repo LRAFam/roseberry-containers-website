@@ -1,98 +1,84 @@
 <template>
-  <section class="section-padding bg-white">
-    <div class="container-custom">
+  <section class="section-padding bg-primary-950 relative overflow-hidden">
+    <!-- Subtle background texture -->
+    <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 32px 32px;"></div>
+
+    <div class="container-custom relative z-10">
       <div class="text-center mb-12">
-        <div class="inline-flex items-center gap-2 bg-primary-500/10 text-primary-700 border border-primary-500/20 px-4 py-1.5 rounded-full text-sm font-semibold mb-4">
-          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+        <div class="inline-flex items-center gap-2 bg-[#00b67a]/15 text-[#00e08a] border border-[#00b67a]/30 px-4 py-1.5 rounded-full text-sm font-semibold mb-4">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/>
           </svg>
-          Customer Reviews
+          Verified Trustpilot Reviews
         </div>
-        <h2 class="heading-lg text-gray-900 mb-4">
-          What Our Customers Say
-        </h2>
-        <p class="body-lg">
-          Trusted by businesses and individuals across Middlesbrough
-        </p>
+        <h2 class="heading-lg text-white mb-3">What Our Customers Say</h2>
+        <div class="flex items-center justify-center gap-2 mb-2">
+          <div class="flex gap-0.5">
+            <svg v-for="i in 5" :key="i" class="w-5 h-5 text-white bg-[#00b67a] p-0.5 rounded-sm" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/>
+            </svg>
+          </div>
+          <span class="text-white font-bold">4.3 Excellent</span>
+          <span class="text-gray-400 text-sm">· 10 reviews on Trustpilot</span>
+        </div>
       </div>
 
-      <!-- Review prompt cards -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-        <a
-          href="https://www.facebook.com/profile.php?id=100090823632941"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="bg-gray-50 rounded-2xl p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group text-center border border-gray-100"
-        >
-          <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-            <svg class="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-            </svg>
-          </div>
+      <!-- 3 featured quotes -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+        <div v-for="review in featured" :key="review.name" class="bg-white/5 border border-white/10 rounded-2xl p-7 hover:bg-white/8 hover:border-white/20 transition-all duration-300 flex flex-col gap-4">
           <!-- Stars -->
-          <div class="flex justify-center gap-0.5 mb-3">
-            <svg v-for="i in 5" :key="i" class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+          <div class="flex gap-0.5">
+            <svg v-for="i in 5" :key="i" class="w-4 h-4 text-white bg-[#00b67a] p-0.5 rounded-sm" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/>
             </svg>
           </div>
-          <h3 class="font-bold text-gray-900 mb-2">Facebook Reviews</h3>
-          <p class="text-sm text-gray-500 mb-3">See what our customers are saying on Facebook</p>
-          <span class="text-blue-600 text-sm font-medium group-hover:underline inline-flex items-center gap-1">
-            View reviews
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-          </span>
-        </a>
+          <!-- Quote -->
+          <p class="text-gray-200 text-base leading-relaxed italic flex-1">"{{ review.body }}"</p>
+          <!-- Author -->
+          <div class="flex items-center gap-3 pt-3 border-t border-white/10">
+            <div class="w-9 h-9 rounded-full bg-[#00b67a] flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
+              {{ review.name.charAt(0) }}
+            </div>
+            <div>
+              <p class="text-white text-sm font-semibold">{{ review.name }}</p>
+              <p class="text-gray-400 text-xs">{{ review.date }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <!-- CTA -->
+      <div class="text-center">
         <a
-          href="https://www.instagram.com/roseberrystorage/"
+          href="https://uk.trustpilot.com/review/roseberrycontainers.com"
           target="_blank"
           rel="noopener noreferrer"
-          class="bg-gray-50 rounded-2xl p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group text-center border border-gray-100"
+          class="inline-flex items-center gap-2 bg-[#00b67a] hover:bg-[#00a368] text-white font-semibold px-6 py-3 rounded-lg transition-colors text-sm"
         >
-          <div class="w-14 h-14 bg-pink-100 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-            <svg class="w-8 h-8 text-pink-600" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-            </svg>
-          </div>
-          <!-- Stars -->
-          <div class="flex justify-center gap-0.5 mb-3">
-            <svg v-for="i in 5" :key="i" class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-            </svg>
-          </div>
-          <h3 class="font-bold text-gray-900 mb-2">Instagram</h3>
-          <p class="text-sm text-gray-500 mb-3">Follow us for updates, offers and behind the scenes</p>
-          <span class="text-pink-600 text-sm font-medium group-hover:underline inline-flex items-center gap-1">
-            @roseberrystorage
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-          </span>
-        </a>
-
-        <a
-          href="https://www.tiktok.com/@roseberrygroup1"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="bg-gray-50 rounded-2xl p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group text-center border border-gray-100"
-        >
-          <div class="w-14 h-14 bg-gray-900 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-            <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/>
-            </svg>
-          </div>
-          <!-- Stars -->
-          <div class="flex justify-center gap-0.5 mb-3">
-            <svg v-for="i in 5" :key="i" class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-            </svg>
-          </div>
-          <h3 class="font-bold text-gray-900 mb-2">TikTok</h3>
-          <p class="text-sm text-gray-500 mb-3">Watch our videos on TikTok</p>
-          <span class="text-gray-700 text-sm font-medium group-hover:underline inline-flex items-center gap-1">
-            @roseberrygroup1
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-          </span>
+          Read all 10 reviews on Trustpilot
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
         </a>
       </div>
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+const featured = [
+  {
+    name: 'Michelle Jones',
+    body: 'James was helpful at every step. The containers were exactly as he had described. Delivery was prompt with a lovely driver who was very considerate. Would highly recommend using Roseberry again.',
+    date: 'May 2026',
+  },
+  {
+    name: 'Rubberduck Bathrooms',
+    body: 'James was very quick to source the right size containers at a competitive price. Delivery and placement were arranged efficiently. Communication was easy and all questions answered. Would happily deal again.',
+    date: 'February 2026',
+  },
+  {
+    name: 'Angus Fletcher',
+    body: '20ft container delivered with efficiency, great communication, great product as described — PERFECT. Would recommend and use again.',
+    date: 'May 2026',
+  },
+]
+</script>
