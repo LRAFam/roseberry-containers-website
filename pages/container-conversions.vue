@@ -4,47 +4,48 @@
     <main>
       <!-- Hero -->
       <section class="relative text-white overflow-hidden" style="clip-path: polygon(0 0, 100% 0, 100% 94%, 0 100%);">
-        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/images/conversions.jpg')">
-          <div class="absolute inset-0 bg-primary-950/95"></div>
+        <div class="absolute inset-0">
+          <img src="/container-conversion-full.jpg" alt="" class="w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-primary-950/88"></div>
         </div>
         <div class="absolute inset-0 opacity-[0.04] pointer-events-none" style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 28px 28px;"></div>
-        <!-- Diagonal lines -->
-        <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.8) 0, rgba(255,255,255,0.8) 1px, transparent 0, transparent 50%); background-size: 20px 20px;"></div>
         <div class="absolute top-0 right-0 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl pointer-events-none -translate-y-1/2 translate-x-1/2"></div>
-        <div class="absolute bottom-0 left-1/3 w-72 h-72 bg-burgundy/8 rounded-full blur-3xl pointer-events-none"></div>
         <div class="container-custom relative z-10 pt-20 md:pt-28 pb-24 md:pb-32">
           <div class="max-w-3xl">
             <div class="inline-flex items-center gap-2 bg-amber-500/10 text-amber-300 border border-amber-500/30 px-4 py-1.5 rounded-full text-sm font-semibold mb-6">
               <span class="w-1.5 h-1.5 bg-amber-400 rounded-full animate-pulse"></span>
-              Bespoke Container Conversions
+              Bespoke Container Conversions · Teesside Built
             </div>
             <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6">
-              Transform a Container <span class="hero-gold-text">Into Something Extraordinary</span>
+              Transform a Container<br><span class="hero-gold-text">Into Something Extraordinary</span>
             </h1>
-            <p class="text-xl text-gray-300 mb-8">
+            <p class="text-xl text-gray-300 mb-8 max-w-2xl">
               We convert shipping containers into home offices, business premises, food stalls and more. Full conversions or partial — we handle the structural work, windows and doors.
             </p>
-            <div class="flex flex-col sm:flex-row gap-4">
-              <a href="#enquire" class="btn-primary">Discuss Your Project</a>
+            <div class="flex flex-col sm:flex-row gap-4 mb-12">
+              <a href="#enquire" class="btn-primary">
+                Discuss Your Project
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+              </a>
               <a href="tel:07793251550" class="inline-flex items-center justify-center gap-2 border-2 border-white/40 hover:border-white text-white font-semibold py-3 px-8 rounded-lg transition-all duration-200 hover:bg-white/10">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                Call Us
+                Call 07793 251550
               </a>
             </div>
-            <div class="grid grid-cols-3 gap-4 max-w-sm mt-12 border-t border-amber-500/20 pt-6">
+            <div class="grid grid-cols-3 gap-4 max-w-xs border-t border-amber-500/20 pt-8">
               <div class="text-center">
-                <div class="text-3xl font-bold hero-gold-text">Bespoke</div>
-                <div class="text-xs text-amber-300/70 mt-0.5 uppercase tracking-wide">Every Build</div>
+                <div class="text-2xl font-bold hero-gold-text">Bespoke</div>
+                <div class="text-xs text-amber-300/70 mt-1 uppercase tracking-wide">Every Build</div>
               </div>
               <div class="text-center border-x border-white/10">
-                <div class="text-3xl font-bold hero-gold-text">Full</div>
-                <div class="text-xs text-amber-300/70 mt-0.5 uppercase tracking-wide">or Partial</div>
+                <div class="text-2xl font-bold hero-gold-text">Full</div>
+                <div class="text-xs text-amber-300/70 mt-1 uppercase tracking-wide">or Partial</div>
               </div>
               <div class="text-center">
-                <div class="text-3xl font-bold hero-gold-text">Teesside</div>
-                <div class="text-xs text-amber-300/70 mt-0.5 uppercase tracking-wide">Based</div>
+                <div class="text-2xl font-bold hero-gold-text">UK</div>
+                <div class="text-xs text-amber-300/70 mt-1 uppercase tracking-wide">Delivery</div>
               </div>
             </div>
           </div>
@@ -52,52 +53,72 @@
       </section>
 
       <!-- Conversion types -->
-      <section class="section-padding bg-white">
+      <section class="section-padding bg-gray-50">
         <div class="container-custom">
           <div class="text-center mb-12">
+            <div class="inline-flex items-center gap-2 text-amber-600 font-semibold text-sm uppercase tracking-widest mb-3">
+              <span class="w-8 h-px bg-amber-500"></span>
+              Popular Projects
+              <span class="w-8 h-px bg-amber-500"></span>
+            </div>
             <h2 class="heading-lg text-gray-900 mb-4">What Can We Convert?</h2>
-            <p class="body-lg max-w-2xl mx-auto">Every conversion is designed and built to your exact specification. Here are some of our most popular projects.</p>
+            <p class="text-xl text-gray-500 max-w-2xl mx-auto">Every conversion is designed and built to your exact specification. Here are some of our most popular projects.</p>
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-gray-50 rounded-2xl overflow-hidden hover:shadow-card-lg transition-all duration-300 group border border-gray-100 hover:border-primary-200">
-              <img src="/container-conversion-basic.jpg" class="w-full h-48 object-cover" alt="Container home office conversion">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white rounded-2xl overflow-hidden hover:shadow-card-lg transition-all duration-300 group shadow-card">
+              <div class="relative h-52 overflow-hidden">
+                <img src="/container-conversion-basic.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Container home office conversion">
+                <div class="absolute inset-0 bg-gradient-to-t from-primary-950/60 to-transparent"></div>
+                <div class="absolute bottom-4 left-4">
+                  <span class="bg-amber-500 text-white text-xs font-bold px-3 py-1.5 rounded-full">Home Office</span>
+                </div>
+              </div>
               <div class="p-6">
-                <h3 class="heading-sm text-gray-900 mb-3">Home Office</h3>
                 <p class="text-gray-600 text-sm mb-4">Create a quiet, professional workspace in your garden. Fully insulated, electrics fitted, and finished to a high standard.</p>
                 <ul class="space-y-1.5">
                   <li v-for="feature in conversionTypes[0].features" :key="feature" class="flex items-center gap-2 text-sm text-gray-600">
-                    <svg class="w-4 h-4 text-primary-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    <svg class="w-4 h-4 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                     </svg>
                     {{ feature }}
                   </li>
                 </ul>
               </div>
             </div>
-            <div class="bg-gray-50 rounded-2xl overflow-hidden hover:shadow-card-lg transition-all duration-300 group border border-gray-100 hover:border-primary-200">
-              <img src="/container-conversion-full.jpg" class="w-full h-48 object-cover" alt="Container business premises conversion">
+            <div class="bg-white rounded-2xl overflow-hidden hover:shadow-card-lg transition-all duration-300 group shadow-card">
+              <div class="relative h-52 overflow-hidden">
+                <img src="/container-conversion-full.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Container business premises conversion">
+                <div class="absolute inset-0 bg-gradient-to-t from-primary-950/60 to-transparent"></div>
+                <div class="absolute bottom-4 left-4">
+                  <span class="bg-amber-500 text-white text-xs font-bold px-3 py-1.5 rounded-full">Business Premises</span>
+                </div>
+              </div>
               <div class="p-6">
-                <h3 class="heading-sm text-gray-900 mb-3">Business Premises</h3>
                 <p class="text-gray-600 text-sm mb-4">Cost-effective commercial space for retail, workshops, studios or pop-up businesses. Planning-friendly and relocatable.</p>
                 <ul class="space-y-1.5">
                   <li v-for="feature in conversionTypes[1].features" :key="feature" class="flex items-center gap-2 text-sm text-gray-600">
-                    <svg class="w-4 h-4 text-primary-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    <svg class="w-4 h-4 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                     </svg>
                     {{ feature }}
                   </li>
                 </ul>
               </div>
             </div>
-            <div class="bg-gray-50 rounded-2xl overflow-hidden hover:shadow-card-lg transition-all duration-300 group border border-gray-100 hover:border-primary-200">
-              <img src="/container-food-stall.jpg" class="w-full h-48 object-cover" alt="Container food stall and catering unit conversion">
+            <div class="bg-white rounded-2xl overflow-hidden hover:shadow-card-lg transition-all duration-300 group shadow-card">
+              <div class="relative h-52 overflow-hidden">
+                <img src="/container-food-stall.jpg" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Container food stall conversion">
+                <div class="absolute inset-0 bg-gradient-to-t from-primary-950/60 to-transparent"></div>
+                <div class="absolute bottom-4 left-4">
+                  <span class="bg-amber-500 text-white text-xs font-bold px-3 py-1.5 rounded-full">Food Stall / Catering</span>
+                </div>
+              </div>
               <div class="p-6">
-                <h3 class="heading-sm text-gray-900 mb-3">Food Stall / Catering Unit</h3>
                 <p class="text-gray-600 text-sm mb-4">Fully fitted catering units for street food, markets, festivals and permanent pitches. Built to your menu.</p>
                 <ul class="space-y-1.5">
                   <li v-for="feature in conversionTypes[2].features" :key="feature" class="flex items-center gap-2 text-sm text-gray-600">
-                    <svg class="w-4 h-4 text-primary-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    <svg class="w-4 h-4 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                     </svg>
                     {{ feature }}
                   </li>
@@ -148,43 +169,48 @@
       <section class="section-padding bg-white">
         <div class="container-custom">
           <div class="text-center mb-12">
+            <div class="inline-flex items-center gap-2 text-amber-600 font-semibold text-sm uppercase tracking-widest mb-3">
+              <span class="w-8 h-px bg-amber-500"></span>
+              Conversion Levels
+              <span class="w-8 h-px bg-amber-500"></span>
+            </div>
             <h2 class="heading-lg text-gray-900 mb-4">Full or Partial Conversion?</h2>
-            <p class="body-lg max-w-2xl mx-auto">We offer two levels of conversion to suit different budgets and requirements.</p>
+            <p class="text-xl text-gray-500 max-w-2xl mx-auto">We offer two levels of conversion to suit different budgets and requirements.</p>
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="bg-white rounded-2xl shadow-card p-8 border-2 border-primary-200">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div class="bg-primary-950 rounded-2xl p-8 text-white">
               <div class="flex items-center gap-3 mb-6">
-                <div class="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center">
-                  <svg class="w-6 h-6 text-primary-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="w-12 h-12 bg-amber-500/10 border border-amber-500/30 rounded-xl flex items-center justify-center">
+                  <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                   </svg>
                 </div>
-                <h3 class="heading-sm text-gray-900">Full Conversion</h3>
+                <h3 class="text-xl font-bold">Full Conversion</h3>
               </div>
-              <p class="text-gray-600 mb-6">We take care of everything from start to finish — a completely finished space ready to use, to your design brief.</p>
+              <p class="text-gray-400 text-sm mb-6">We take care of everything from start to finish — a completely finished space ready to use, to your design brief.</p>
               <ul class="space-y-3">
-                <li v-for="item in fullConversion" :key="item" class="flex items-start gap-2 text-sm text-gray-700">
-                  <svg class="w-4 h-4 text-primary-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                <li v-for="item in fullConversion" :key="item" class="flex items-start gap-2 text-sm text-gray-300">
+                  <svg class="w-4 h-4 text-amber-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                   </svg>
                   {{ item }}
                 </li>
               </ul>
             </div>
-            <div class="bg-white rounded-2xl shadow-card p-8 border-2 border-amber-200">
+            <div class="bg-gray-50 rounded-2xl p-8 border-2 border-amber-200">
               <div class="flex items-center gap-3 mb-6">
                 <div class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center">
                   <svg class="w-6 h-6 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
                   </svg>
                 </div>
-                <h3 class="heading-sm text-gray-900">Partial Conversion</h3>
+                <h3 class="text-xl font-bold text-gray-900">Partial Conversion</h3>
               </div>
-              <p class="text-gray-600 mb-6">We handle the structural work and fit the windows and doors — then hand over to you to finish the interior your way.</p>
+              <p class="text-gray-600 text-sm mb-6">We handle the structural work and fit the windows and doors — then hand over to you to finish the interior your way.</p>
               <ul class="space-y-3">
                 <li v-for="item in partialConversion" :key="item" class="flex items-start gap-2 text-sm text-gray-700">
                   <svg class="w-4 h-4 text-amber-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                   </svg>
                   {{ item }}
                 </li>
