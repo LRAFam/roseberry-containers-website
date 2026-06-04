@@ -160,7 +160,16 @@
 useHead({
   title: 'Contact Us | Roseberry Containers',
   meta: [
-    { name: 'description', content: 'Contact Roseberry Containers in Teesside. Call 07793 251550, email james@roseberrycontainers.com or visit us at Westerby Rd, Middlesbrough. We serve the whole of the UK.' }
+    { name: 'description', content: 'Contact Roseberry Containers in Teesside. Call 07793 251550, email james@roseberrycontainers.com or visit us at Westerby Rd, Middlesbrough. We serve the whole of the UK.' },
+    { property: 'og:title', content: 'Contact Us | Roseberry Containers' },
+    { property: 'og:description', content: 'Get in touch with Roseberry Containers. Call, email or visit us in Middlesbrough. We respond the same day.' },
+    { property: 'og:url', content: 'https://roseberrycontainers.com/contact' },
+    { property: 'og:image', content: 'https://roseberrycontainers.com/logo.jpg' },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:locale', content: 'en_GB' },
+  ],
+  link: [
+    { rel: 'canonical', href: 'https://roseberrycontainers.com/contact' }
   ]
 })
 

@@ -248,7 +248,72 @@
 useHead({
   title: 'Container Conversions | Roseberry Containers',
   meta: [
-    { name: 'description', content: 'Bespoke shipping container conversions including home offices, business premises, food stalls and more. Full and partial conversions available from Roseberry Containers.' }
+    { name: 'description', content: 'Bespoke shipping container conversions including home offices, business premises, food stalls and more. Full and partial conversions available from Roseberry Containers.' },
+    { property: 'og:title', content: 'Container Conversions | Roseberry Containers' },
+    { property: 'og:description', content: 'Bespoke shipping container conversions — offices, shops, catering units and more. Full and partial conversions with UK-wide delivery.' },
+    { property: 'og:url', content: 'https://roseberrycontainers.com/container-conversions' },
+    { property: 'og:image', content: 'https://roseberrycontainers.com/logo.jpg' },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:locale', content: 'en_GB' },
+  ],
+  link: [
+    { rel: 'canonical', href: 'https://roseberrycontainers.com/container-conversions' }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        name: 'Shipping Container Conversions',
+        description: 'Bespoke shipping container conversions into offices, shops, catering units, gyms and more. Full and partial conversions with UK-wide delivery.',
+        provider: {
+          '@type': 'LocalBusiness',
+          name: 'Roseberry Containers',
+          url: 'https://roseberrycontainers.com',
+          telephone: '+447793251550',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: 'Westerby Rd',
+            addressLocality: 'Middlesbrough',
+            addressRegion: 'Teesside',
+            addressCountry: 'GB',
+          },
+        },
+        areaServed: { '@type': 'Country', name: 'United Kingdom' },
+        url: 'https://roseberrycontainers.com/container-conversions',
+        serviceType: 'Container Conversion',
+      })
+    },
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: [
+          {
+            '@type': 'Question',
+            name: 'What types of container conversions do you offer?',
+            acceptedAnswer: { '@type': 'Answer', text: 'We offer full and partial conversions including garden offices, home gyms, business premises, catering units, food stalls and bespoke commercial builds.' }
+          },
+          {
+            '@type': 'Question',
+            name: 'Can I customise my container conversion?',
+            acceptedAnswer: { '@type': 'Answer', text: 'Yes — all our conversions are bespoke. We work with you to design insulation, cladding, windows, doors, electrics and any additional features you need.' }
+          },
+          {
+            '@type': 'Question',
+            name: 'How long does a container conversion take?',
+            acceptedAnswer: { '@type': 'Answer', text: 'Lead times vary depending on the complexity of the conversion. Contact us on 07793 251550 for a tailored quote and timeline.' }
+          },
+          {
+            '@type': 'Question',
+            name: 'Do you deliver the converted container?',
+            acceptedAnswer: { '@type': 'Answer', text: 'Yes — we deliver converted containers across the UK. We have 8 depot locations to ensure fast delivery to your site.' }
+          },
+        ]
+      })
+    }
   ]
 })
 

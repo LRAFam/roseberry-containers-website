@@ -277,7 +277,77 @@
 useHead({
   title: 'Self Storage Teesside | Roseberry Containers',
   meta: [
-    { name: 'description', content: 'Secure self storage in Teesside at Roseberry Containers. 24/7 CCTV monitored, flexible rental periods, 10ft, 20ft and 40ft units available. Call today to check availability.' }
+    { name: 'description', content: 'Secure self storage in Teesside at Roseberry Containers. 24/7 CCTV monitored, flexible rental periods, 10ft, 20ft and 40ft units available. Call today to check availability.' },
+    { property: 'og:title', content: 'Self Storage Teesside | Roseberry Containers' },
+    { property: 'og:description', content: 'Secure self storage in Teesside. 24/7 CCTV monitored, flexible rentals, drive-up access. 10ft, 20ft and 40ft units available.' },
+    { property: 'og:url', content: 'https://roseberrycontainers.com/self-storage' },
+    { property: 'og:image', content: 'https://roseberrycontainers.com/logo.jpg' },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:locale', content: 'en_GB' },
+  ],
+  link: [
+    { rel: 'canonical', href: 'https://roseberrycontainers.com/self-storage' }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        name: 'Self Storage Teesside',
+        description: 'Secure container self storage in Middlesbrough, Teesside. 24/7 CCTV, flexible month-by-month rentals, drive-up access.',
+        provider: {
+          '@type': 'LocalBusiness',
+          name: 'Roseberry Containers',
+          url: 'https://roseberrycontainers.com',
+          telephone: '+447793251550',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: 'Westerby Rd',
+            addressLocality: 'Middlesbrough',
+            addressRegion: 'Teesside',
+            addressCountry: 'GB',
+          },
+        },
+        areaServed: { '@type': 'Place', name: 'Teesside, Middlesbrough' },
+        url: 'https://roseberrycontainers.com/self-storage',
+        serviceType: 'Self Storage',
+      })
+    },
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: [
+          {
+            '@type': 'Question',
+            name: 'What sizes of storage units do you offer?',
+            acceptedAnswer: { '@type': 'Answer', text: 'We offer 10ft, 20ft and 40ft shipping container storage units at our Teesside facility, suitable for personal and business use.' }
+          },
+          {
+            '@type': 'Question',
+            name: 'Is the self storage site secure?',
+            acceptedAnswer: { '@type': 'Answer', text: 'Yes. Our site is monitored 24/7 with HD CCTV cameras. Every container has a heavy-duty lock box — your lock, your key, your access only.' }
+          },
+          {
+            '@type': 'Question',
+            name: 'How long are rental periods?',
+            acceptedAnswer: { '@type': 'Answer', text: 'We offer flexible month-by-month rentals with no long-term contracts. You can scale up or down as your needs change.' }
+          },
+          {
+            '@type': 'Question',
+            name: 'Where is your self storage facility?',
+            acceptedAnswer: { '@type': 'Answer', text: 'Our self storage facility is located in Middlesbrough, Teesside. Call us on 07793 251550 for the full address and availability.' }
+          },
+          {
+            '@type': 'Question',
+            name: 'Do I need to provide my own lock?',
+            acceptedAnswer: { '@type': 'Answer', text: 'Yes — you provide your own padlock for the lock box, meaning only you have access to your unit.' }
+          },
+        ]
+      })
+    }
   ]
 })
 

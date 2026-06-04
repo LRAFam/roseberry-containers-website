@@ -265,6 +265,9 @@ useHead(() => ({
         ? `Buy shipping containers near ${depot.value.name}, ${depot.value.region}. Roseberry Containers supply 10ft, 20ft and 40ft containers with fast delivery. Call for a quote today.`
         : 'Roseberry Containers &mdash; nationwide depot network.'
     }
+  ],
+  link: [
+    { rel: 'canonical', href: depot.value ? `https://roseberrycontainers.com/container-sales/${depot.value.slug}` : 'https://roseberrycontainers.com/container-sales' }
   ]
 }))
 

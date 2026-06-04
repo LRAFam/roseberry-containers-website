@@ -181,6 +181,9 @@ useHead({
   title: 'Nationwide Container Sales | Roseberry Containers',
   meta: [
     { name: 'description', content: 'Buy shipping containers nationwide with Roseberry Containers. 8 UK depots at Felixstowe, Tilbury, Southampton, Birmingham, Liverpool, Leeds, Teesside and Bathgate. Fast delivery, competitive prices.' }
+  ],
+  link: [
+    { rel: 'canonical', href: 'https://roseberrycontainers.com/container-sales/nationwide' }
   ]
 })
 

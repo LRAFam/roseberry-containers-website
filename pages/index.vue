@@ -123,6 +123,44 @@
 </template>
 
 <script setup lang="ts">
+useHead({
+  link: [
+    { rel: 'canonical', href: 'https://roseberrycontainers.com/' }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': ['LocalBusiness', 'Store'],
+        name: 'Roseberry Containers',
+        description: 'Buy shipping containers — new 1-trip and quality used containers. Container hire, self storage and bespoke conversions. 8 UK depots, nationwide delivery.',
+        url: 'https://roseberrycontainers.com',
+        telephone: '+447793251550',
+        email: 'james@roseberrycontainers.com',
+        image: 'https://roseberrycontainers.com/logo.jpg',
+        priceRange: '££',
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: 'Westerby Rd',
+          addressLocality: 'Middlesbrough',
+          addressRegion: 'Teesside',
+          postalCode: 'TS3',
+          addressCountry: 'GB',
+        },
+        areaServed: [
+          { '@type': 'Country', name: 'United Kingdom' }
+        ],
+        hasMap: 'https://maps.google.com/?q=Roseberry+Containers+Middlesbrough',
+        sameAs: [
+          'https://roseberrycontainers.com',
+          'https://www.trustpilot.com/review/roseberrycontainers.com',
+        ],
+      })
+    }
+  ]
+})
+
 const containers = [
   {
     size: '10ft Container',

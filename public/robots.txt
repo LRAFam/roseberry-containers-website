@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin
 
-Sitemap: https://roseberryselfstorage.com/sitemap.xml
+Sitemap: https://roseberrycontainers.com/sitemap.xml

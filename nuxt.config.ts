@@ -28,21 +28,22 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: 'Roseberry Self Storage - Secure Container Storage in Middlesbrough',
+      title: 'Buy Shipping Containers | New & Used | UK Wide Delivery | Roseberry Containers',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: 'Secure container storage solutions in Middlesbrough. 24hr CCTV, affordable rates, and Luton van hire available.' },
-        { property: 'og:title', content: 'Roseberry Self Storage' },
-        { property: 'og:description', content: 'Secure container storage solutions in Middlesbrough' },
+        { name: 'description', content: 'Buy shipping containers from Roseberry Containers. New 1-trip & quality used 10ft, 20ft, 40ft containers. 8 UK depots, competitive prices, nationwide delivery. Container hire & conversions also available.' },
+        { property: 'og:title', content: 'Buy Shipping Containers | New & Used | Roseberry Containers' },
+        { property: 'og:description', content: 'Buy shipping containers from Roseberry Containers. New 1-trip and quality used containers with 8 UK depots and nationwide delivery.' },
         { property: 'og:type', content: 'website' },
-        { property: 'og:url', content: 'https://roseberryselfstorage.com' },
-        { property: 'og:image', content: 'https://roseberryselfstorage.com/logo.jpg' },
-        { property: 'og:image:alt', content: 'Roseberry Self Storage' },
+        { property: 'og:url', content: 'https://roseberrycontainers.com' },
+        { property: 'og:image', content: 'https://roseberrycontainers.com/logo.jpg' },
+        { property: 'og:image:alt', content: 'Roseberry Containers - Shipping Containers for Sale' },
+        { property: 'og:locale', content: 'en_GB' },
         { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:title', content: 'Roseberry Self Storage' },
-        { name: 'twitter:description', content: 'Secure container storage solutions in Middlesbrough. 24hr CCTV, affordable rates, and Luton van hire available.' },
-        { name: 'twitter:image', content: 'https://roseberryselfstorage.com/logo.jpg' },
+        { name: 'twitter:title', content: 'Buy Shipping Containers | Roseberry Containers' },
+        { name: 'twitter:description', content: 'New 1-trip and quality used shipping containers. 10ft, 20ft, 40ft sizes. Nationwide delivery from 8 UK depots.' },
+        { name: 'twitter:image', content: 'https://roseberrycontainers.com/logo.jpg' },
       ],
       link: [
         { rel: 'icon', type: 'image/jpeg', href: '/logo.jpg' }

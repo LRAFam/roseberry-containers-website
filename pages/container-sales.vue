@@ -435,6 +435,54 @@
 </template>
 
 <script setup lang="ts">
+useHead({
+  title: 'Shipping Container Sales | Roseberry Containers',
+  meta: [
+    { name: 'description', content: 'Buy 10ft, 20ft and 40ft shipping containers from Roseberry Containers. New 1-trip and quality used containers available. 8 UK depots, nationwide delivery, competitive prices. Get a quote today.' },
+    { property: 'og:title', content: 'Shipping Container Sales | Roseberry Containers' },
+    { property: 'og:description', content: 'Buy 10ft, 20ft and 40ft shipping containers. New 1-trip and quality used containers from 8 UK depots with nationwide delivery.' },
+    { property: 'og:url', content: 'https://roseberrycontainers.com/container-sales' },
+    { property: 'og:image', content: 'https://roseberrycontainers.com/logo.jpg' },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:locale', content: 'en_GB' },
+  ],
+  link: [
+    { rel: 'canonical', href: 'https://roseberrycontainers.com/container-sales' }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        name: 'Shipping Container Sales',
+        description: 'Buy new 1-trip and quality used 10ft, 20ft and 40ft shipping containers with delivery across the UK from 8 depots.',
+        provider: {
+          '@type': 'LocalBusiness',
+          name: 'Roseberry Containers',
+          url: 'https://roseberrycontainers.com',
+          telephone: '+447793251550',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: 'Westerby Rd',
+            addressLocality: 'Middlesbrough',
+            addressRegion: 'Teesside',
+            addressCountry: 'GB',
+          },
+        },
+        areaServed: { '@type': 'Country', name: 'United Kingdom' },
+        url: 'https://roseberrycontainers.com/container-sales',
+        serviceType: 'Shipping Container Sales',
+        offers: [
+          { '@type': 'Offer', name: '10ft Shipping Container', description: 'New 1-trip and used 10ft containers for sale with UK delivery.' },
+          { '@type': 'Offer', name: '20ft Shipping Container', description: 'New 1-trip and used 20ft containers for sale with UK delivery.' },
+          { '@type': 'Offer', name: '40ft Shipping Container', description: 'New 1-trip and used 40ft containers for sale with UK delivery.' },
+        ],
+      })
+    }
+  ]
+})
+
 const config = useRuntimeConfig()
 
 const trustBar = [

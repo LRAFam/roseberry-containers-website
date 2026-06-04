@@ -266,7 +266,72 @@
 useHead({
   title: 'Container Hire | Roseberry Containers',
   meta: [
-    { name: 'description', content: 'Flexible shipping container hire delivered to your site. 10ft, 20ft and 40ft containers available for short and long-term hire across the UK. Call Roseberry Containers today.' }
+    { name: 'description', content: 'Flexible shipping container hire delivered to your site. 10ft, 20ft and 40ft containers available for short and long-term hire across the UK. Call Roseberry Containers today.' },
+    { property: 'og:title', content: 'Container Hire | Roseberry Containers' },
+    { property: 'og:description', content: 'Flexible shipping container hire delivered anywhere in the UK. 10ft, 20ft and 40ft for short and long-term hire. Same-day response.' },
+    { property: 'og:url', content: 'https://roseberrycontainers.com/container-hire' },
+    { property: 'og:image', content: 'https://roseberrycontainers.com/logo.jpg' },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:locale', content: 'en_GB' },
+  ],
+  link: [
+    { rel: 'canonical', href: 'https://roseberrycontainers.com/container-hire' }
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        name: 'Shipping Container Hire',
+        description: 'Flexible short and long-term shipping container hire delivered across the UK. 10ft, 20ft and 40ft containers for construction, events, businesses and more.',
+        provider: {
+          '@type': 'LocalBusiness',
+          name: 'Roseberry Containers',
+          url: 'https://roseberrycontainers.com',
+          telephone: '+447793251550',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: 'Westerby Rd',
+            addressLocality: 'Middlesbrough',
+            addressRegion: 'Teesside',
+            addressCountry: 'GB',
+          },
+        },
+        areaServed: { '@type': 'Country', name: 'United Kingdom' },
+        url: 'https://roseberrycontainers.com/container-hire',
+        serviceType: 'Shipping Container Hire',
+      })
+    },
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: [
+          {
+            '@type': 'Question',
+            name: 'What sizes of containers can I hire?',
+            acceptedAnswer: { '@type': 'Answer', text: 'We offer 10ft, 20ft and 40ft shipping containers for hire, suitable for construction sites, events, businesses, farms and more.' }
+          },
+          {
+            '@type': 'Question',
+            name: 'How long can I hire a container for?',
+            acceptedAnswer: { '@type': 'Answer', text: 'We offer both short-term and long-term container hire with flexible periods to suit your project. Contact us to discuss your requirements.' }
+          },
+          {
+            '@type': 'Question',
+            name: 'Where do you deliver hired containers?',
+            acceptedAnswer: { '@type': 'Answer', text: 'We deliver hired containers across the UK from our 8 depots including Teesside, Leeds, Birmingham, Liverpool, Southampton, Tilbury, Felixstowe and Bathgate.' }
+          },
+          {
+            '@type': 'Question',
+            name: 'How quickly can a container be delivered?',
+            acceptedAnswer: { '@type': 'Answer', text: 'We respond the same day and aim to deliver as quickly as possible. Contact us on 07793 251550 for lead times in your area.' }
+          },
+        ]
+      })
+    }
   ]
 })
 
