@@ -24,8 +24,12 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
               </svg>
             </button>
-            <div class="absolute left-0 top-full mt-1 w-52 bg-primary-900 border border-white/10 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150">
+            <div class="absolute left-0 top-full mt-1 w-56 bg-primary-900 border border-white/10 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150">
               <NuxtLink to="/container-sales" class="block px-4 py-2.5 text-sm text-amber-200 hover:text-white hover:bg-white/10 rounded-t-xl transition-all">Buy a Container</NuxtLink>
+              <NuxtLink to="/container-sales/20ft-containers" class="block px-4 py-2.5 text-sm text-amber-200 hover:text-white hover:bg-white/10 transition-all">20ft Containers</NuxtLink>
+              <NuxtLink to="/container-sales/10ft-containers" class="block px-4 py-2.5 text-sm text-amber-200 hover:text-white hover:bg-white/10 transition-all">10ft Containers</NuxtLink>
+              <NuxtLink to="/container-sales/40ft-containers" class="block px-4 py-2.5 text-sm text-amber-200 hover:text-white hover:bg-white/10 transition-all">40ft Containers</NuxtLink>
+              <NuxtLink to="/guides/shipping-container-prices-uk" class="block px-4 py-2.5 text-sm text-amber-200 hover:text-white hover:bg-white/10 transition-all">Container Prices Guide</NuxtLink>
               <NuxtLink to="/container-sales/nationwide" class="block px-4 py-2.5 text-sm text-amber-200 hover:text-white hover:bg-white/10 rounded-b-xl transition-all">Nationwide Depots</NuxtLink>
             </div>
           </div>
@@ -94,6 +98,10 @@
           <div class="flex flex-col gap-1">
             <NuxtLink to="/" @click="mobileMenuOpen = false" class="text-amber-200 hover:text-white hover:bg-white/10 font-medium py-2 px-3 rounded-lg transition-all" active-class="!text-white !bg-white/15 font-semibold" exact>Home</NuxtLink>
             <NuxtLink to="/container-sales" @click="mobileMenuOpen = false" class="text-amber-200 hover:text-white hover:bg-white/10 font-medium py-2 px-3 rounded-lg transition-all" active-class="!text-white !bg-white/15 font-semibold">Container Sales</NuxtLink>
+            <NuxtLink to="/container-sales/20ft-containers" @click="mobileMenuOpen = false" class="text-amber-200/70 hover:text-white hover:bg-white/10 font-medium py-2 px-6 rounded-lg transition-all text-sm">↳ 20ft Containers</NuxtLink>
+            <NuxtLink to="/container-sales/10ft-containers" @click="mobileMenuOpen = false" class="text-amber-200/70 hover:text-white hover:bg-white/10 font-medium py-2 px-6 rounded-lg transition-all text-sm">↳ 10ft Containers</NuxtLink>
+            <NuxtLink to="/container-sales/40ft-containers" @click="mobileMenuOpen = false" class="text-amber-200/70 hover:text-white hover:bg-white/10 font-medium py-2 px-6 rounded-lg transition-all text-sm">↳ 40ft Containers</NuxtLink>
+            <NuxtLink to="/guides/shipping-container-prices-uk" @click="mobileMenuOpen = false" class="text-amber-200/70 hover:text-white hover:bg-white/10 font-medium py-2 px-6 rounded-lg transition-all text-sm">↳ Container Prices Guide</NuxtLink>
             <NuxtLink to="/container-sales/nationwide" @click="mobileMenuOpen = false" class="text-amber-200/70 hover:text-white hover:bg-white/10 font-medium py-2 px-6 rounded-lg transition-all text-sm">↳ Nationwide Depots</NuxtLink>
             <NuxtLink to="/container-hire" @click="mobileMenuOpen = false" class="text-amber-200 hover:text-white hover:bg-white/10 font-medium py-2 px-3 rounded-lg transition-all" active-class="!text-white !bg-white/15 font-semibold">Container Hire</NuxtLink>
             <NuxtLink to="/container-conversions" @click="mobileMenuOpen = false" class="text-amber-200 hover:text-white hover:bg-white/10 font-medium py-2 px-3 rounded-lg transition-all" active-class="!text-white !bg-white/15 font-semibold">Conversions</NuxtLink>

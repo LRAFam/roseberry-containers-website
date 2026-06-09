@@ -74,7 +74,7 @@
               muted
               loop
               playsinline
-              preload="auto"
+              preload="metadata"
               src="/videos/hero.mp4"
             ></video>
           </div>

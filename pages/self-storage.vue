@@ -5,7 +5,7 @@
       <!-- Hero -->
       <section class="relative text-white overflow-hidden" style="clip-path: polygon(0 0, 100% 0, 100% 94%, 0 100%);">
         <div class="absolute inset-0">
-          <img src="/container-20ft.jpg" alt="" class="w-full h-full object-cover" />
+          <img src="/container-20ft.jpg" alt="Secure self storage containers in Teesside" class="w-full h-full object-cover" loading="lazy" />
           <div class="absolute inset-0 bg-primary-950/88"></div>
         </div>
         <div class="absolute inset-0 opacity-[0.04] pointer-events-none" style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 28px 28px;"></div>

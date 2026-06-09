@@ -78,7 +78,7 @@
                     {{ spec }}
                   </li>
                 </ul>
-                <NuxtLink to="/container-sales" class="block text-center bg-primary-50 hover:bg-primary-100 text-primary-700 font-semibold py-2.5 rounded-lg transition-colors text-sm">
+                <NuxtLink :to="c.link" class="block text-center bg-primary-50 hover:bg-primary-100 text-primary-700 font-semibold py-2.5 rounded-lg transition-colors text-sm">
                   View pricing &amp; availability →
                 </NuxtLink>
               </div>
@@ -123,6 +123,8 @@
 </template>
 
 <script setup lang="ts">
+import { aggregateRatingSchema, BUSINESS_ADDRESS } from '~/utils/container-sales-seo'
+
 useHead({
   link: [
     { rel: 'canonical', href: 'https://roseberrycontainers.com/' }
@@ -134,19 +136,16 @@ useHead({
         '@context': 'https://schema.org',
         '@type': ['LocalBusiness', 'Store'],
         name: 'Roseberry Containers',
-        description: 'Buy shipping containers — new 1-trip and quality used containers. Container hire, self storage and bespoke conversions. 8 UK depots, nationwide delivery.',
+        description: 'Buy shipping containers — new 1-trip and quality used containers. Container hire, self storage and bespoke conversions. Nationwide delivery across the UK.',
         url: 'https://roseberrycontainers.com',
         telephone: '+447793251550',
         email: 'james@roseberrycontainers.com',
         image: 'https://roseberrycontainers.com/logo.jpg',
         priceRange: '££',
+        aggregateRating: aggregateRatingSchema(),
         address: {
           '@type': 'PostalAddress',
-          streetAddress: 'Westerby Rd',
-          addressLocality: 'Middlesbrough',
-          addressRegion: 'Teesside',
-          postalCode: 'TS3',
-          addressCountry: 'GB',
+          ...BUSINESS_ADDRESS,
         },
         areaServed: [
           { '@type': 'Country', name: 'United Kingdom' }
@@ -166,18 +165,21 @@ const containers = [
     size: '10ft Container',
     subtitle: 'Compact & versatile',
     image: '/container-10ft.jpg',
+    link: '/container-sales/10ft-containers',
     specs: ['2.99m × 2.44m × 2.59m', 'Perfect for gardens &amp; workshops', 'Available new 1-trip or used', 'Sale &amp; hire available'],
   },
   {
     size: '20ft Container',
     subtitle: 'Most popular size',
     image: '/container-20ft.jpg',
+    link: '/container-sales/20ft-containers',
     specs: ['6.06m × 2.44m × 2.59m', 'Ideal for business storage', 'Available new 1-trip or used', 'Sale &amp; hire available'],
   },
   {
     size: '40ft Container',
     subtitle: 'Maximum capacity',
     image: '/container-40ft.jpg',
+    link: '/container-sales/40ft-containers',
     specs: ['12.19m × 2.44m × 2.59m', 'Large-scale storage &amp; conversions', 'Available new 1-trip or used', 'Sale &amp; hire available'],
   },
 ]

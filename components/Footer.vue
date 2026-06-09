@@ -62,6 +62,10 @@
           <ul class="space-y-2 text-sm">
             <li><NuxtLink to="/" class="hover:text-primary-400 hover:underline transition-colors">Home</NuxtLink></li>
             <li><NuxtLink to="/container-sales" class="hover:text-primary-400 hover:underline transition-colors">Container Sales</NuxtLink></li>
+            <li><NuxtLink to="/container-sales/20ft-containers" class="hover:text-primary-400 hover:underline transition-colors">20ft Containers</NuxtLink></li>
+            <li><NuxtLink to="/container-sales/10ft-containers" class="hover:text-primary-400 hover:underline transition-colors">10ft Containers</NuxtLink></li>
+            <li><NuxtLink to="/container-sales/40ft-containers" class="hover:text-primary-400 hover:underline transition-colors">40ft Containers</NuxtLink></li>
+            <li><NuxtLink to="/guides/shipping-container-prices-uk" class="hover:text-primary-400 hover:underline transition-colors">Container Prices Guide</NuxtLink></li>
             <li><NuxtLink to="/container-sales/nationwide" class="hover:text-primary-400 hover:underline transition-colors">Nationwide Depots</NuxtLink></li>
             <li><NuxtLink to="/container-hire" class="hover:text-primary-400 hover:underline transition-colors">Container Hire</NuxtLink></li>
             <li><NuxtLink to="/container-conversions" class="hover:text-primary-400 hover:underline transition-colors">Container Conversions</NuxtLink></li>

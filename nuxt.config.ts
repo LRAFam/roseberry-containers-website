@@ -28,6 +28,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
+      htmlAttrs: { lang: 'en-GB' },
       title: 'Buy Shipping Containers | New & Used | UK Wide Delivery | Roseberry Containers',
       meta: [
         { charset: 'utf-8' },

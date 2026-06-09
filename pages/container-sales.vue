@@ -5,7 +5,7 @@
       <!-- Hero Section -->
       <section class="relative text-white overflow-hidden" style="clip-path: polygon(0 0, 100% 0, 100% 94%, 0 100%);">
         <div class="absolute inset-0">
-          <img src="/container-20ft.jpg" alt="" class="w-full h-full object-cover" />
+          <img src="/container-20ft.jpg" alt="Buy shipping containers for sale across the UK" class="w-full h-full object-cover" fetchpriority="high" />
           <div class="absolute inset-0 bg-primary-950/88"></div>
         </div>
         <div class="absolute inset-0 opacity-[0.04] pointer-events-none" style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 28px 28px;"></div>
@@ -105,13 +105,18 @@
                     <div class="border-x border-gray-200"><div class="font-bold text-gray-900">8'6"</div><div class="text-gray-500 text-xs mt-0.5">Height</div></div>
                     <div><div class="font-bold text-gray-900">~560 ft³</div><div class="text-gray-500 text-xs mt-0.5">Capacity</div></div>
                   </div>
-                  <div class="flex gap-3">
-                    <button @click="openEnquiry('10ft Container (Used)')" class="flex-1 py-3 px-4 border-2 border-primary-700 text-primary-700 font-semibold rounded-xl hover:bg-primary-700 hover:text-white transition-all duration-200 text-sm">
-                      Enquire — Used
-                    </button>
-                    <button @click="openEnquiry('10ft Container (1-Trip New)')" class="flex-1 py-3 px-4 bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-xl transition-all duration-200 text-sm">
-                      Enquire — 1-Trip
-                    </button>
+                  <div class="flex flex-col gap-3">
+                    <div class="flex gap-3">
+                      <button @click="openEnquiry('10ft Container (Used)')" class="flex-1 py-3 px-4 border-2 border-primary-700 text-primary-700 font-semibold rounded-xl hover:bg-primary-700 hover:text-white transition-all duration-200 text-sm">
+                        Enquire — Used
+                      </button>
+                      <button @click="openEnquiry('10ft Container (1-Trip New)')" class="flex-1 py-3 px-4 bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-xl transition-all duration-200 text-sm">
+                        Enquire — 1-Trip
+                      </button>
+                    </div>
+                    <NuxtLink to="/container-sales/10ft-containers" class="text-center text-sm text-primary-700 font-semibold hover:text-primary-900 transition-colors">
+                      View full 10ft container details →
+                    </NuxtLink>
                   </div>
                 </div>
               </div>
@@ -131,13 +136,18 @@
                     <div class="border-x border-gray-200"><div class="font-bold text-gray-900">8'6"</div><div class="text-gray-500 text-xs mt-0.5">Height</div></div>
                     <div><div class="font-bold text-gray-900">1,360 ft³</div><div class="text-gray-500 text-xs mt-0.5">Capacity</div></div>
                   </div>
-                  <div class="flex gap-3">
-                    <button @click="openEnquiry('20ft Container (Used)')" class="flex-1 py-3 px-4 border-2 border-primary-700 text-primary-700 font-semibold rounded-xl hover:bg-primary-700 hover:text-white transition-all duration-200 text-sm">
-                      Enquire — Used
-                    </button>
-                    <button @click="openEnquiry('20ft Container (1-Trip New)')" class="flex-1 py-3 px-4 bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-xl transition-all duration-200 text-sm">
-                      Enquire — 1-Trip
-                    </button>
+                  <div class="flex flex-col gap-3">
+                    <div class="flex gap-3">
+                      <button @click="openEnquiry('20ft Container (Used)')" class="flex-1 py-3 px-4 border-2 border-primary-700 text-primary-700 font-semibold rounded-xl hover:bg-primary-700 hover:text-white transition-all duration-200 text-sm">
+                        Enquire — Used
+                      </button>
+                      <button @click="openEnquiry('20ft Container (1-Trip New)')" class="flex-1 py-3 px-4 bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-xl transition-all duration-200 text-sm">
+                        Enquire — 1-Trip
+                      </button>
+                    </div>
+                    <NuxtLink to="/container-sales/20ft-containers" class="text-center text-sm text-primary-700 font-semibold hover:text-primary-900 transition-colors">
+                      View full 20ft container details →
+                    </NuxtLink>
                   </div>
                 </div>
                 <div class="relative h-72 lg:h-auto overflow-hidden order-1 lg:order-2">
@@ -172,13 +182,18 @@
                     <div class="border-x border-gray-200"><div class="font-bold text-gray-900">8'6" / 9'6"</div><div class="text-gray-500 text-xs mt-0.5">Std / Hi-Cube</div></div>
                     <div><div class="font-bold text-gray-900">2,720 ft³</div><div class="text-gray-500 text-xs mt-0.5">Capacity</div></div>
                   </div>
-                  <div class="flex gap-3">
-                    <button @click="openEnquiry('40ft Container (Used)')" class="flex-1 py-3 px-4 border-2 border-primary-700 text-primary-700 font-semibold rounded-xl hover:bg-primary-700 hover:text-white transition-all duration-200 text-sm">
-                      Enquire — Used
-                    </button>
-                    <button @click="openEnquiry('40ft Container (1-Trip New)')" class="flex-1 py-3 px-4 bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-xl transition-all duration-200 text-sm">
-                      Enquire — 1-Trip
-                    </button>
+                  <div class="flex flex-col gap-3">
+                    <div class="flex gap-3">
+                      <button @click="openEnquiry('40ft Container (Used)')" class="flex-1 py-3 px-4 border-2 border-primary-700 text-primary-700 font-semibold rounded-xl hover:bg-primary-700 hover:text-white transition-all duration-200 text-sm">
+                        Enquire — Used
+                      </button>
+                      <button @click="openEnquiry('40ft Container (1-Trip New)')" class="flex-1 py-3 px-4 bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-xl transition-all duration-200 text-sm">
+                        Enquire — 1-Trip
+                      </button>
+                    </div>
+                    <NuxtLink to="/container-sales/40ft-containers" class="text-center text-sm text-primary-700 font-semibold hover:text-primary-900 transition-colors">
+                      View full 40ft container details →
+                    </NuxtLink>
                   </div>
                 </div>
               </div>
@@ -302,6 +317,26 @@
           </div>
         </div>
       </section>
+
+      <!-- Price guide -->
+      <section class="section-padding bg-white border-t border-gray-100">
+        <div class="container-custom max-w-3xl text-center">
+          <h2 class="heading-md text-gray-900 mb-4">How Much Does a Shipping Container Cost?</h2>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            Prices vary by size, condition and delivery location. Used wind-and-watertight containers typically start from around £875 + VAT, while new 1-trip units range from £1,900 + VAT depending on size.
+          </p>
+          <NuxtLink to="/guides/shipping-container-prices-uk" class="inline-flex items-center gap-2 text-primary-700 font-semibold hover:text-primary-900 transition-colors">
+            Read our full UK container price guide
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </NuxtLink>
+        </div>
+      </section>
+
+      <ContainerSalesFaq
+        :faqs="containerSalesFaqs"
+        title="Shipping Container Sales FAQs"
+        subtitle="Everything you need to know before buying a container."
+      />
 
       <!-- Delivery Calculator -->
       <section class="section-padding bg-gray-50">
@@ -435,16 +470,22 @@
 </template>
 
 <script setup lang="ts">
+import { containerSalesFaqs, faqPageSchema, localBusinessProvider } from '~/utils/container-sales-seo'
+
 useHead({
-  title: 'Shipping Container Sales | Roseberry Containers',
+  title: 'Buy Shipping Containers UK | New & Used 10ft, 20ft, 40ft | Roseberry',
   meta: [
-    { name: 'description', content: 'Buy 10ft, 20ft and 40ft shipping containers from Roseberry Containers. New 1-trip and quality used containers available. 8 UK depots, nationwide delivery, competitive prices. Get a quote today.' },
-    { property: 'og:title', content: 'Shipping Container Sales | Roseberry Containers' },
-    { property: 'og:description', content: 'Buy 10ft, 20ft and 40ft shipping containers. New 1-trip and quality used containers from 8 UK depots with nationwide delivery.' },
+    { name: 'description', content: 'Buy new 1-trip and quality used 10ft, 20ft and 40ft shipping containers from Roseberry Containers. Nationwide UK delivery, transparent pricing, same-day response. Get a free quote today.' },
+    { property: 'og:title', content: 'Buy Shipping Containers UK | Roseberry Containers' },
+    { property: 'og:description', content: 'Buy new 1-trip and quality used 10ft, 20ft and 40ft shipping containers with nationwide UK delivery and transparent pricing.' },
     { property: 'og:url', content: 'https://roseberrycontainers.com/container-sales' },
-    { property: 'og:image', content: 'https://roseberrycontainers.com/logo.jpg' },
+    { property: 'og:image', content: 'https://roseberrycontainers.com/container-20ft-new.jpg' },
     { property: 'og:type', content: 'website' },
     { property: 'og:locale', content: 'en_GB' },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: 'Buy Shipping Containers UK | Roseberry Containers' },
+    { name: 'twitter:description', content: 'New 1-trip and quality used shipping containers. 10ft, 20ft, 40ft sizes. Nationwide delivery.' },
+    { name: 'twitter:image', content: 'https://roseberrycontainers.com/container-20ft-new.jpg' },
   ],
   link: [
     { rel: 'canonical', href: 'https://roseberrycontainers.com/container-sales' }
@@ -456,30 +497,22 @@ useHead({
         '@context': 'https://schema.org',
         '@type': 'Service',
         name: 'Shipping Container Sales',
-        description: 'Buy new 1-trip and quality used 10ft, 20ft and 40ft shipping containers with delivery across the UK from 8 depots.',
-        provider: {
-          '@type': 'LocalBusiness',
-          name: 'Roseberry Containers',
-          url: 'https://roseberrycontainers.com',
-          telephone: '+447793251550',
-          address: {
-            '@type': 'PostalAddress',
-            streetAddress: 'Westerby Rd',
-            addressLocality: 'Middlesbrough',
-            addressRegion: 'Teesside',
-            addressCountry: 'GB',
-          },
-        },
+        description: 'Buy new 1-trip and quality used 10ft, 20ft and 40ft shipping containers with nationwide delivery across the UK.',
+        provider: localBusinessProvider(),
         areaServed: { '@type': 'Country', name: 'United Kingdom' },
         url: 'https://roseberrycontainers.com/container-sales',
         serviceType: 'Shipping Container Sales',
         offers: [
-          { '@type': 'Offer', name: '10ft Shipping Container', description: 'New 1-trip and used 10ft containers for sale with UK delivery.' },
-          { '@type': 'Offer', name: '20ft Shipping Container', description: 'New 1-trip and used 20ft containers for sale with UK delivery.' },
-          { '@type': 'Offer', name: '40ft Shipping Container', description: 'New 1-trip and used 40ft containers for sale with UK delivery.' },
+          { '@type': 'Offer', name: '10ft Shipping Container', url: 'https://roseberrycontainers.com/container-sales/10ft-containers', description: 'New 1-trip and used 10ft containers for sale with UK delivery.' },
+          { '@type': 'Offer', name: '20ft Shipping Container', url: 'https://roseberrycontainers.com/container-sales/20ft-containers', description: 'New 1-trip and used 20ft containers for sale with UK delivery.' },
+          { '@type': 'Offer', name: '40ft Shipping Container', url: 'https://roseberrycontainers.com/container-sales/40ft-containers', description: 'New 1-trip and used 40ft containers for sale with UK delivery.' },
         ],
       })
-    }
+    },
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify(faqPageSchema(containerSalesFaqs)),
+    },
   ]
 })
 
