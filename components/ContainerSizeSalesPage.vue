@@ -97,6 +97,11 @@
         subtitle="Answers to the most common questions about buying this size."
       />
 
+      <DepotLinksSection
+        :title="`Buy ${sizeLabel} Containers from Your Nearest Depot`"
+        :subtitle="`We deliver ${sizeLabel} shipping containers nationwide from 9 UK depot locations.`"
+      />
+
       <section class="section-padding bg-primary-950 text-white">
         <div class="container-custom text-center max-w-2xl mx-auto">
           <h2 class="heading-lg text-white mb-4">Ready to Buy a {{ sizeLabel }} Container?</h2>

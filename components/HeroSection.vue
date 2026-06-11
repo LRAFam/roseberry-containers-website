@@ -24,7 +24,7 @@
           </h1>
 
           <p class="body-lg text-gray-300 max-w-lg">
-            Sales, hire, bespoke conversions and self storage — with 8 depots across the UK, Roseberry Containers delivers direct to your door at prices that can't be beaten.
+            Sales, hire, bespoke conversions and self storage — with 9 depots across the UK, Roseberry Containers delivers direct to your door at prices that can't be beaten.
           </p>
 
           <div class="flex flex-col sm:flex-row gap-4">
@@ -98,7 +98,7 @@
     <!-- Depot ticker -->
     <div class="relative z-10 border-t border-white/10 bg-primary-950/60 backdrop-blur-sm">
       <div class="container-custom py-3 flex items-center gap-4 overflow-hidden">
-        <span class="text-xs text-amber-400 font-semibold uppercase tracking-wider whitespace-nowrap flex-shrink-0">8 Depots:</span>
+        <span class="text-xs text-amber-400 font-semibold uppercase tracking-wider whitespace-nowrap flex-shrink-0">9 Depots:</span>
         <div class="flex gap-6 text-xs text-gray-400 overflow-x-auto" style="scrollbar-width:none">
           <span v-for="depot in depots" :key="depot" class="whitespace-nowrap flex items-center gap-1.5">
             <span class="w-1 h-1 bg-amber-400/60 rounded-full"></span>
@@ -111,8 +111,7 @@
 </template>
 
 <script setup lang="ts">
-const depots = [
-  'Teesside', 'Newcastle', 'Leeds', 'Manchester',
-  'Birmingham', 'Bristol', 'London', 'Glasgow',
-]
+import { depotNames } from '~/utils/depots'
+
+const depots = depotNames
 </script>

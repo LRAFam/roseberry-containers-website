@@ -36,8 +36,8 @@
               <thead class="bg-gray-50">
                 <tr>
                   <th class="px-5 py-4 font-semibold text-gray-900">Size</th>
-                  <th class="px-5 py-4 font-semibold text-gray-900">Used (WWT)</th>
-                  <th class="px-5 py-4 font-semibold text-gray-900">New 1-Trip</th>
+                  <th class="px-5 py-4 font-semibold text-gray-900">Used / Refurb</th>
+                  <th class="px-5 py-4 font-semibold text-gray-900">1-Trip New</th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-gray-200">
@@ -51,7 +51,7 @@
               </tbody>
             </table>
           </div>
-          <p class="text-xs text-gray-400 mb-10">All prices indicative market ranges, excluding VAT and delivery. WWT = wind and watertight.</p>
+          <p class="text-xs text-gray-400 mb-10">All prices are starting prices excluding VAT and delivery.</p>
 
           <h2 class="text-2xl font-bold text-gray-900 mb-4">What Affects the Price?</h2>
           <div class="space-y-6 mb-10">
@@ -82,6 +82,8 @@
         </div>
       </section>
 
+      <DepotLinksSection />
+
       <ContainerSalesFaq
         :faqs="faqs"
         title="Container Pricing FAQs"
@@ -98,9 +100,9 @@ import { containerSalesFaqs, faqPageSchema } from '~/utils/container-sales-seo'
 const canonical = 'https://roseberrycontainers.com/guides/shipping-container-prices-uk'
 
 const priceTable = [
-  { size: '10ft Container', used: '£1,000–£1,500 + VAT', new: '£1,800–£2,500 + VAT', link: '/container-sales/10ft-containers' },
-  { size: '20ft Container', used: '£875–£1,600 + VAT', new: '£1,900–£2,325 + VAT', link: '/container-sales/20ft-containers' },
-  { size: '40ft Container', used: '£1,400–£2,500 + VAT', new: '£2,800–£3,500 + VAT', link: '/container-sales/40ft-containers' },
+  { size: '10ft Container', used: 'Refurb from £1,650 + VAT', new: 'From £2,750 + VAT', link: '/container-sales/10ft-containers' },
+  { size: '20ft Container', used: 'Low grade from £950 + VAT', new: 'From £1,900 + VAT', link: '/container-sales/20ft-containers' },
+  { size: '40ft Container', used: 'Used from £1,450 + VAT', new: 'From £3,050 + VAT', link: '/container-sales/40ft-containers' },
 ]
 
 const priceFactors = [
@@ -123,7 +125,7 @@ const faqs = containerSalesFaqs
 useHead({
   title: 'Shipping Container Prices UK (2026) | Cost Guide | Roseberry Containers',
   meta: [
-    { name: 'description', content: 'How much does a shipping container cost in the UK? Typical prices for 10ft, 20ft and 40ft used and new 1-trip containers, plus delivery costs. Get an exact quote from Roseberry Containers.' },
+    { name: 'description', content: 'How much does a shipping container cost in the UK? 20ft low grade from £950 + VAT, 10ft refurb from £1,650 + VAT, 40ft used from £1,450 + VAT. 1-trip new from £1,900 + VAT. Get an exact quote from Roseberry Containers.' },
     { property: 'og:title', content: 'Shipping Container Prices UK | Roseberry Containers' },
     { property: 'og:description', content: 'UK shipping container price guide — typical costs for 10ft, 20ft and 40ft containers by condition, plus delivery.' },
     { property: 'og:url', content: canonical },

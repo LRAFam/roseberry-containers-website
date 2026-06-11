@@ -21,7 +21,7 @@
           <div class="max-w-3xl">
             <div class="inline-flex items-center gap-2 bg-amber-500/10 text-amber-300 border border-amber-500/30 px-4 py-1.5 rounded-full text-sm font-semibold mb-6">
               <span class="w-1.5 h-1.5 bg-amber-400 rounded-full animate-pulse"></span>
-              8 UK Depots Nationwide
+              9 UK Depots Nationwide
             </div>
             <h1 class="text-4xl sm:text-5xl font-bold leading-tight mb-6">
               Nationwide Container Sales &mdash; <span class="hero-gold-text">Find Your Closest Depot</span>
@@ -35,7 +35,7 @@
             </a>
             <div class="grid grid-cols-3 gap-4 max-w-md mt-12 border-t border-amber-500/20 pt-6">
               <div class="text-center">
-                <div class="text-3xl font-bold hero-gold-text">8 Depots</div>
+                <div class="text-3xl font-bold hero-gold-text">9 Depots</div>
                 <div class="text-xs text-amber-300/70 mt-0.5 uppercase tracking-wide">Across the UK</div>
               </div>
               <div class="text-center border-x border-white/10">
@@ -98,7 +98,7 @@
                 <span class="w-8 h-px bg-amber-500"></span>
               </div>
               <h2 class="heading-lg text-gray-900 mb-6">Container Delivery Across the UK</h2>
-              <p class="body-lg mb-6">With 8 strategically placed depots, we can deliver shipping containers to virtually anywhere in mainland UK. Whether you need a 10ft, 20ft or 40ft container &mdash; new or used &mdash; we'll source it from the depot closest to you.</p>
+              <p class="body-lg mb-6">With 9 strategically placed depots, we can deliver shipping containers to virtually anywhere in mainland UK. Whether you need a 10ft, 20ft or 40ft container &mdash; new or used &mdash; we'll source it from the depot closest to you.</p>
               <ul class="space-y-4 mb-8">
                 <li class="flex items-start gap-3">
                   <svg class="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -177,24 +177,15 @@
 </template>
 
 <script setup lang="ts">
+import { depots, DEPOT_COUNT } from '~/utils/depots'
+
 useHead({
   title: 'Nationwide Container Sales | Roseberry Containers',
   meta: [
-    { name: 'description', content: 'Buy shipping containers nationwide with Roseberry Containers. 8 UK depots at Felixstowe, Tilbury, Southampton, Birmingham, Liverpool, Leeds, Teesside and Bathgate. Fast delivery, competitive prices.' }
+    { name: 'description', content: `Buy shipping containers nationwide with Roseberry Containers. ${DEPOT_COUNT} UK depots at Felixstowe, Tilbury, Southampton, Birmingham, Liverpool, Leeds, Teesside, Immingham and Bathgate. 20ft from £950 + VAT. Fast delivery.` }
   ],
   link: [
     { rel: 'canonical', href: 'https://roseberrycontainers.com/container-sales/nationwide' }
   ]
 })
-
-const depots = [
-  { slug: 'teesside', name: 'Teesside', region: 'North East England', isHQ: true, highlight: 'HQ &mdash; largest stock & fastest local delivery' },
-  { slug: 'felixstowe', name: 'Felixstowe', region: 'Suffolk, East Anglia', isHQ: false, highlight: 'Port depot &mdash; huge range of new stock' },
-  { slug: 'tilbury', name: 'Tilbury', region: 'Essex, Thames Estuary', isHQ: false, highlight: 'Port depot &mdash; serves Greater London' },
-  { slug: 'southampton', name: 'Southampton', region: 'Hampshire, South Coast', isHQ: false, highlight: 'Port depot &mdash; South Coast coverage' },
-  { slug: 'birmingham', name: 'Birmingham', region: 'West Midlands', isHQ: false, highlight: 'Central location &mdash; Midlands hub' },
-  { slug: 'liverpool', name: 'Liverpool', region: 'Merseyside, North West', isHQ: false, highlight: 'Port depot &mdash; North West coverage' },
-  { slug: 'leeds', name: 'Leeds', region: 'West Yorkshire', isHQ: false, highlight: 'Yorkshire hub &mdash; fast Northern delivery' },
-  { slug: 'bathgate', name: 'Bathgate', region: 'West Lothian, Scotland', isHQ: false, highlight: 'Scotland depot &mdash; Edinburgh & Glasgow' },
-]
 </script>

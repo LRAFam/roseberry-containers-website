@@ -20,7 +20,7 @@ export type ContainerFaq = {
 export const containerSalesFaqs: ContainerFaq[] = [
   {
     question: 'How much does a shipping container cost in the UK?',
-    answer: 'Prices depend on size, condition and delivery location. Used wind-and-watertight containers typically start from around £875–£1,600 + VAT, while new 1-trip containers are usually £1,900–£3,500 + VAT depending on size. Contact Roseberry Containers for an accurate quote tailored to your requirements.',
+    answer: 'Prices depend on size, condition and delivery location. 20ft low-grade used containers start from £950 + VAT, 10ft refurbished units from £1,650 + VAT, and 40ft used containers from £1,450 + VAT. New 1-trip containers start from £1,900 + VAT (20ft), £2,750 + VAT (10ft) and £3,050 + VAT (40ft). Contact Roseberry Containers for an accurate quote tailored to your requirements.',
   },
   {
     question: 'What is a 1-trip shipping container?',
@@ -85,5 +85,41 @@ export function localBusinessProvider() {
       '@type': 'PostalAddress',
       ...BUSINESS_ADDRESS,
     },
+  }
+}
+
+export type DepotSchemaInput = {
+  slug: string
+  name: string
+  region: string
+  addressLocality: string
+  addressRegion: string
+  streetAddress?: string
+  postalCode?: string
+}
+
+export function depotLocalBusinessSchema(depot: DepotSchemaInput) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: `Roseberry Containers — ${depot.name}`,
+    description: `Buy shipping containers near ${depot.name}, ${depot.region}. Roseberry Containers supply 10ft, 20ft and 40ft containers with fast delivery.`,
+    url: `https://roseberrycontainers.com/container-sales/${depot.slug}`,
+    telephone: '+447793251550',
+    image: 'https://roseberrycontainers.com/logo.jpg',
+    address: {
+      '@type': 'PostalAddress',
+      ...(depot.streetAddress ? { streetAddress: depot.streetAddress } : {}),
+      addressLocality: depot.addressLocality,
+      addressRegion: depot.addressRegion,
+      ...(depot.postalCode ? { postalCode: depot.postalCode } : {}),
+      addressCountry: 'GB',
+    },
+    parentOrganization: {
+      '@type': 'Organization',
+      name: 'Roseberry Containers',
+      url: 'https://roseberrycontainers.com',
+    },
+    aggregateRating: aggregateRatingSchema(),
   }
 }

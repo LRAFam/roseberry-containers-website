@@ -42,7 +42,7 @@ const useCases = [
 const faqs = [
   {
     question: 'How much does a 40ft shipping container cost in the UK?',
-    answer: 'Used 40ft containers typically range from £1,400–£2,500 + VAT. New 1-trip 40ft containers are usually £2,800–£3,500 + VAT, with hi-cube variants at the higher end. Contact us for an exact quote including delivery.',
+    answer: 'Used 40ft containers start from £1,450 + VAT. New 1-trip 40ft containers start from £3,050 + VAT, with hi-cube variants at a premium. Contact us for an exact quote including delivery.',
   },
   containerSalesFaqs[1],
   {
@@ -62,7 +62,7 @@ const otherSizes = [
 useHead({
   title: 'Buy 40ft Shipping Containers UK | New & Used For Sale | Roseberry',
   meta: [
-    { name: 'description', content: 'Buy 40ft shipping containers in the UK. Standard and hi-cube new 1-trip and used containers with nationwide delivery. Maximum capacity storage. Get a free quote today.' },
+    { name: 'description', content: 'Buy 40ft shipping containers in the UK. Used from £1,450 + VAT, new 1-trip from £3,050 + VAT. Nationwide delivery from 9 UK depots. Get a free quote today.' },
     { property: 'og:title', content: 'Buy 40ft Shipping Containers UK | Roseberry Containers' },
     { property: 'og:description', content: 'Buy 40ft shipping containers — standard and hi-cube, new 1-trip and quality used with nationwide UK delivery.' },
     { property: 'og:url', content: canonical },
@@ -89,6 +89,7 @@ useHead({
           '@type': 'Offer',
           availability: 'https://schema.org/InStock',
           priceCurrency: 'GBP',
+          price: '1450',
           seller: localBusinessProvider(),
           url: canonical,
         },

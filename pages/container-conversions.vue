@@ -309,7 +309,7 @@ useHead({
           {
             '@type': 'Question',
             name: 'Do you deliver the converted container?',
-            acceptedAnswer: { '@type': 'Answer', text: 'Yes — we deliver converted containers across the UK. We have 8 depot locations to ensure fast delivery to your site.' }
+            acceptedAnswer: { '@type': 'Answer', text: 'Yes — we deliver converted containers across the UK. We have 9 depot locations to ensure fast delivery to your site.' }
           },
         ]
       })

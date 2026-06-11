@@ -43,7 +43,7 @@ const faqs = [
   containerSalesFaqs[0],
   {
     question: 'How much does a 20ft shipping container cost in the UK?',
-    answer: 'Used wind-and-watertight 20ft containers typically range from £875–£1,600 + VAT. New 1-trip 20ft containers are usually £1,900–£2,325 + VAT. Delivery is additional. Contact us for an exact quote for your location.',
+    answer: 'Low-grade used 20ft containers start from £950 + VAT. New 1-trip 20ft containers start from £1,900 + VAT. Delivery is additional. Contact us for an exact quote for your location.',
   },
   containerSalesFaqs[1],
   containerSalesFaqs[2],
@@ -60,7 +60,7 @@ const otherSizes = [
 useHead({
   title: 'Buy 20ft Shipping Containers UK | New & Used For Sale | Roseberry',
   meta: [
-    { name: 'description', content: 'Buy 20ft shipping containers in the UK. New 1-trip and quality used 20ft containers with nationwide delivery. Wind and watertight, inspected before sale. Get a free quote today.' },
+    { name: 'description', content: 'Buy 20ft shipping containers in the UK. Low grade used from £950 + VAT, new 1-trip from £1,900 + VAT. Nationwide delivery from 9 UK depots. Get a free quote today.' },
     { property: 'og:title', content: 'Buy 20ft Shipping Containers UK | Roseberry Containers' },
     { property: 'og:description', content: 'Buy new 1-trip and used 20ft shipping containers with nationwide UK delivery. Same-day response, transparent pricing.' },
     { property: 'og:url', content: canonical },
@@ -87,6 +87,7 @@ useHead({
           '@type': 'Offer',
           availability: 'https://schema.org/InStock',
           priceCurrency: 'GBP',
+          price: '950',
           seller: localBusinessProvider(),
           url: canonical,
         },

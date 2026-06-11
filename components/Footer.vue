@@ -1,7 +1,7 @@
 <template>
   <footer class="bg-gray-900 text-gray-300">
     <div class="container-custom py-12">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         <!-- Company Info -->
         <div>
           <h3 class="text-white text-lg font-bold mb-4">Roseberry Containers</h3>
@@ -74,6 +74,21 @@
           </ul>
         </div>
 
+        <!-- Depot Locations -->
+        <div>
+          <h3 class="text-white text-lg font-bold mb-4">Depot Locations</h3>
+          <ul class="space-y-2 text-sm">
+            <li v-for="depot in depots" :key="depot.slug">
+              <NuxtLink
+                :to="`/container-sales/${depot.slug}`"
+                class="hover:text-primary-400 hover:underline transition-colors"
+              >
+                {{ depot.name }}
+              </NuxtLink>
+            </li>
+          </ul>
+        </div>
+
         <!-- Contact Info -->
         <div>
           <h3 class="text-white text-lg font-bold mb-4">Contact Us</h3>
@@ -114,5 +129,7 @@
 </template>
 
 <script setup lang="ts">
+import { depots } from '~/utils/depots'
+
 const currentYear = new Date().getFullYear()
 </script>

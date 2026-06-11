@@ -169,107 +169,48 @@
 </template>
 
 <script setup lang="ts">
+import { getDepotBySlug, depotPageUrl } from '~/utils/depots'
+import { depotLocalBusinessSchema } from '~/utils/container-sales-seo'
+
 const route = useRoute()
 
-const allDepots = [
-  {
-    slug: 'teesside',
-    name: 'Teesside',
-    region: 'North East England',
-    heroText: 'Roseberry Containers is based in Teesside &mdash; our home depot with the largest stock and fastest delivery times in the North East.',
-    areaDescription: 'Teesside is our home and headquarters, serving Middlesbrough, Stockton-on-Tees, Hartlepool, Darlington and the wider North East region.',
-    containerInfo: 'With direct access to our main yard on Westerby Rd, Middlesbrough, we hold a wide range of new and used 10ft, 20ft and 40ft shipping containers in stock. Whether you need a standard dry container, an open-top, or a specialist unit, we can usually supply from stock or source quickly.',
-    deliveryInfo: 'We deliver across the whole North East, including County Durham, North Yorkshire and Northumberland. Our fleet of low-loaders can position containers precisely on your site.',
-    nearbyDepots: [{ slug: 'leeds', name: 'Leeds' }, { slug: 'liverpool', name: 'Liverpool' }],
-  },
-  {
-    slug: 'felixstowe',
-    name: 'Felixstowe',
-    region: 'Suffolk, East Anglia',
-    heroText: "Felixstowe is the UK's busiest container port &mdash; giving us access to an enormous range of new and one-trip containers at unbeatable prices.",
-    areaDescription: "Felixstowe in Suffolk is home to the UK's largest container port, handling around 40% of Britain's container trade. This makes it one of the best locations in the country to source shipping containers.",
-    containerInfo: 'Our Felixstowe depot has direct access to containers arriving from major shipping lines, meaning excellent stock availability of new, one-trip and grade A used containers. We regularly have 10ft, 20ft and 40ft units available, including high-cube variants.',
-    deliveryInfo: 'We deliver from Felixstowe across East Anglia, the South East and Greater London. Postcode areas covered include Suffolk, Norfolk, Essex, Cambridgeshire and surrounding counties.',
-    nearbyDepots: [{ slug: 'tilbury', name: 'Tilbury' }, { slug: 'southampton', name: 'Southampton' }],
-  },
-  {
-    slug: 'tilbury',
-    name: 'Tilbury',
-    region: 'Essex, Thames Estuary',
-    heroText: 'Our Tilbury depot on the Thames Estuary serves Greater London and the South East with fast delivery of quality shipping containers.',
-    areaDescription: "Tilbury sits on the north bank of the Thames in Essex, just 25 miles from central London. It is one of the UK's major port complexes and a key hub for shipping container supply in the South East.",
-    containerInfo: 'From Tilbury we supply containers throughout Greater London, Kent, Essex, Surrey and Hertfordshire. Stock includes standard dry containers, open-tops and refrigerated units in 20ft and 40ft sizes. New and used grades available.',
-    deliveryInfo: 'Delivery is available across Greater London and all surrounding Home Counties. We can navigate urban environments including congestion charge zones and restricted access areas.',
-    nearbyDepots: [{ slug: 'felixstowe', name: 'Felixstowe' }, { slug: 'southampton', name: 'Southampton' }],
-  },
-  {
-    slug: 'southampton',
-    name: 'Southampton',
-    region: 'Hampshire, South Coast',
-    heroText: "Southampton is one of the UK's busiest cruise and container ports. Our South Coast depot serves Hampshire, Dorset, Wiltshire and beyond.",
-    areaDescription: "Southampton is a major port city on England's South Coast and an important hub for container logistics. Our depot here provides excellent coverage across southern England, making delivery fast and cost-effective.",
-    containerInfo: 'We supply 10ft, 20ft and 40ft shipping containers from Southampton to customers across Hampshire, Dorset, Wiltshire, Somerset, Berkshire and the Isle of Wight. Both new one-trip containers and quality grade-A used stock are available.',
-    deliveryInfo: 'Delivery from our Southampton depot typically reaches your site within 3-5 working days. We cover all of the South Coast, up through the M3 and M27 corridors and into the South West.',
-    nearbyDepots: [{ slug: 'tilbury', name: 'Tilbury' }, { slug: 'birmingham', name: 'Birmingham' }],
-  },
-  {
-    slug: 'birmingham',
-    name: 'Birmingham',
-    region: 'West Midlands',
-    heroText: "At the heart of the UK's road network, our Birmingham depot delivers containers throughout the Midlands faster and cheaper than anywhere else.",
-    areaDescription: "Birmingham is the UK's second largest city and sits at the centre of the country's motorway network &mdash; making it the ideal hub for container deliveries across the Midlands.",
-    containerInfo: 'Our West Midlands depot stocks 10ft, 20ft and 40ft shipping containers in a range of grades and conditions. New, one-trip and good quality used containers are all available. We serve Birmingham, Coventry, Wolverhampton, Leicester, Nottingham, Oxford and the whole of the Midlands.',
-    deliveryInfo: 'With direct access to the M5, M6, M40 and M42 motorway corridors, our Birmingham depot can reach most Midlands postcodes within 24-48 hours of dispatch.',
-    nearbyDepots: [{ slug: 'liverpool', name: 'Liverpool' }, { slug: 'southampton', name: 'Southampton' }],
-  },
-  {
-    slug: 'liverpool',
-    name: 'Liverpool',
-    region: 'Merseyside, North West',
-    heroText: "Liverpool's historic port heritage continues today. Our North West depot serves Merseyside, Greater Manchester, Cheshire and beyond.",
-    areaDescription: "Liverpool's port on the River Mersey has been a centre of UK trade for centuries. Today it remains a key entry point for container traffic, and our depot here gives us strong stock levels and fast delivery across the North West.",
-    containerInfo: 'From Liverpool we supply shipping containers to customers across Merseyside, Greater Manchester, Lancashire, Cheshire, North Wales and the wider North West. We stock 10ft, 20ft and 40ft units in new and used conditions.',
-    deliveryInfo: 'Delivery across the North West is quick and competitive from our Liverpool depot. We regularly supply to Manchester, Preston, Chester, Wigan, Warrington and all surrounding areas.',
-    nearbyDepots: [{ slug: 'leeds', name: 'Leeds' }, { slug: 'birmingham', name: 'Birmingham' }],
-  },
-  {
-    slug: 'leeds',
-    name: 'Leeds',
-    region: 'West Yorkshire',
-    heroText: "Our Leeds depot serves Yorkshire and the wider North with fast, affordable container delivery across one of England's largest regions.",
-    areaDescription: 'Leeds is the largest city in Yorkshire and a major commercial centre for the North of England. Our depot here provides excellent coverage of West Yorkshire, North Yorkshire, South Yorkshire and the surrounding areas.',
-    containerInfo: 'We supply 10ft, 20ft and 40ft shipping containers from Leeds to customers across Yorkshire, including Sheffield, Bradford, Harrogate, Hull, York and surrounding areas. New, one-trip and quality used containers are regularly in stock.',
-    deliveryInfo: "Yorkshire's excellent road network via the M1, M62 and A1(M) means we can deliver containers to most Yorkshire postcodes within 2-3 working days of order confirmation.",
-    nearbyDepots: [{ slug: 'teesside', name: 'Teesside' }, { slug: 'liverpool', name: 'Liverpool' }],
-  },
-  {
-    slug: 'bathgate',
-    name: 'Bathgate',
-    region: 'West Lothian, Scotland',
-    heroText: 'Our Scottish depot in Bathgate, West Lothian, serves Edinburgh, Glasgow and the whole of central Scotland with quality shipping containers.',
-    areaDescription: 'Bathgate in West Lothian sits between Edinburgh and Glasgow &mdash; perfectly positioned to serve all of central Scotland. Our Scottish depot gives customers north of the border access to the same quality containers and service we provide across the rest of the UK.',
-    containerInfo: 'From Bathgate we supply 10ft, 20ft and 40ft shipping containers to customers across Scotland, including Edinburgh, Glasgow, Stirling, Perth, Falkirk and the Highlands. We hold both new and used stock at this location.',
-    deliveryInfo: 'We deliver throughout Scotland via the M8 and M9 corridors and northward. For remote Highland or island deliveries, please call us to discuss logistics and pricing.',
-    nearbyDepots: [{ slug: 'leeds', name: 'Leeds' }, { slug: 'teesside', name: 'Teesside' }],
-  },
-]
+const depot = computed(() => getDepotBySlug(String(route.params.depot)))
 
-const depot = computed(() => allDepots.find(d => d.slug === route.params.depot))
-
-useHead(() => ({
-  title: depot.value ? `Container Sales ${depot.value.name} | Roseberry Containers` : 'Depot | Roseberry Containers',
-  meta: [
-    {
-      name: 'description',
-      content: depot.value
-        ? `Buy shipping containers near ${depot.value.name}, ${depot.value.region}. Roseberry Containers supply 10ft, 20ft and 40ft containers with fast delivery. Call for a quote today.`
-        : 'Roseberry Containers &mdash; nationwide depot network.'
+useHead(() => {
+  if (!depot.value) {
+    return {
+      title: 'Depot | Roseberry Containers',
+      meta: [{ name: 'description', content: 'Roseberry Containers — nationwide depot network.' }],
+      link: [{ rel: 'canonical', href: 'https://roseberrycontainers.com/container-sales' }],
     }
-  ],
-  link: [
-    { rel: 'canonical', href: depot.value ? `https://roseberrycontainers.com/container-sales/${depot.value.slug}` : 'https://roseberrycontainers.com/container-sales' }
-  ]
-}))
+  }
+
+  const canonical = depotPageUrl(depot.value.slug)
+  const description = `Buy shipping containers near ${depot.value.name}, ${depot.value.region}. 10ft, 20ft and 40ft containers from £950 + VAT. Fast delivery from our ${depot.value.name} depot. Call for a quote.`
+
+  return {
+    title: `Container Sales ${depot.value.name} | Roseberry Containers`,
+    meta: [
+      { name: 'description', content: description },
+      { property: 'og:title', content: `Container Sales ${depot.value.name} | Roseberry Containers` },
+      { property: 'og:description', content: description },
+      { property: 'og:url', content: canonical },
+      { property: 'og:image', content: 'https://roseberrycontainers.com/logo.jpg' },
+      { property: 'og:type', content: 'website' },
+      { property: 'og:locale', content: 'en_GB' },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:title', content: `Container Sales ${depot.value.name} | Roseberry Containers` },
+      { name: 'twitter:description', content: description },
+    ],
+    link: [{ rel: 'canonical', href: canonical }],
+    script: [
+      {
+        type: 'application/ld+json',
+        innerHTML: JSON.stringify(depotLocalBusinessSchema(depot.value)),
+      },
+    ],
+  }
+})
 
 const containerTypes = [
   {

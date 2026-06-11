@@ -42,7 +42,7 @@ const useCases = [
 const faqs = [
   {
     question: 'How much does a 10ft shipping container cost in the UK?',
-    answer: '10ft containers are typically priced from around £1,200–£2,500 + VAT depending on condition (used vs 1-trip new) and delivery location. Contact Roseberry Containers for an accurate quote.',
+    answer: 'Refurbished 10ft containers start from £1,650 + VAT. New 1-trip 10ft containers start from £2,750 + VAT. Delivery is additional. Contact Roseberry Containers for an accurate quote for your location.',
   },
   containerSalesFaqs[1],
   containerSalesFaqs[2],
@@ -59,7 +59,7 @@ const otherSizes = [
 useHead({
   title: 'Buy 10ft Shipping Containers UK | New & Used For Sale | Roseberry',
   meta: [
-    { name: 'description', content: 'Buy 10ft shipping containers in the UK. Compact new 1-trip and used containers for gardens, driveways and small yards. Nationwide delivery. Get a free quote today.' },
+    { name: 'description', content: 'Buy 10ft shipping containers in the UK. Refurbished from £1,650 + VAT, new 1-trip from £2,750 + VAT. Nationwide delivery from 9 UK depots. Get a free quote today.' },
     { property: 'og:title', content: 'Buy 10ft Shipping Containers UK | Roseberry Containers' },
     { property: 'og:description', content: 'Buy compact 10ft shipping containers — new 1-trip and quality used with nationwide UK delivery.' },
     { property: 'og:url', content: canonical },
@@ -86,6 +86,7 @@ useHead({
           '@type': 'Offer',
           availability: 'https://schema.org/InStock',
           priceCurrency: 'GBP',
+          price: '1650',
           seller: localBusinessProvider(),
           url: canonical,
         },

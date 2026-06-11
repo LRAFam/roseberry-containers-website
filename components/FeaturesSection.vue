@@ -27,7 +27,7 @@
           </div>
           <div class="p-6 flex flex-col flex-1">
             <h3 class="heading-sm text-gray-900 mb-2">Container Sales</h3>
-            <p class="body-sm mb-4 flex-1">New 1-trip and quality used containers. 8 UK depot locations with nationwide delivery direct to your door.</p>
+            <p class="body-sm mb-4 flex-1">New 1-trip and quality used containers. 9 UK depot locations with nationwide delivery direct to your door.</p>
             <span class="text-sm font-semibold text-primary-700 group-hover:text-primary-900 flex items-center gap-1">
               Browse containers
               <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
