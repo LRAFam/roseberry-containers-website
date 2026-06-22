@@ -6,8 +6,9 @@ export type SitemapEntry = {
   priority: number
 }
 
-export const sitemapEntries: SitemapEntry[] = [
+export const staticSitemapEntries: SitemapEntry[] = [
   { loc: '/', changefreq: 'weekly', priority: 1.0 },
+  { loc: '/blog', changefreq: 'weekly', priority: 0.85 },
   { loc: '/container-sales', changefreq: 'weekly', priority: 1.0 },
   { loc: '/container-sales/20ft-containers', changefreq: 'weekly', priority: 0.95 },
   { loc: '/container-sales/10ft-containers', changefreq: 'weekly', priority: 0.95 },
@@ -25,8 +26,12 @@ export const sitemapEntries: SitemapEntry[] = [
   { loc: '/contact', changefreq: 'monthly', priority: 0.6 },
 ]
 
-export function buildSitemapXml() {
-  const urls = sitemapEntries.map(entry => `  <url>
+/** @deprecated use staticSitemapEntries */
+export const sitemapEntries = staticSitemapEntries
+
+export function buildSitemapXml(extraEntries: SitemapEntry[] = []) {
+  const allEntries = [...staticSitemapEntries, ...extraEntries]
+  const urls = allEntries.map(entry => `  <url>
     <loc>${SITE_URL}${entry.loc === '/' ? '' : entry.loc}</loc>
     <changefreq>${entry.changefreq}</changefreq>
     <priority>${entry.priority}</priority>
@@ -37,4 +42,23 @@ export function buildSitemapXml() {
 ${urls}
 </urlset>
 `
+}
+
+export async function fetchBlogSitemapEntries(): Promise<SitemapEntry[]> {
+  const apiBase = process.env.NUXT_PUBLIC_API_BASE || 'http://localhost:3001'
+  const clientId = process.env.NUXT_PUBLIC_CLIENT_ID
+  if (!clientId) return []
+
+  try {
+    const res = await fetch(`${apiBase}/api/blog?clientId=${clientId}&per_page=100`)
+    if (!res.ok) return []
+    const data = await res.json()
+    return (data.posts ?? []).map((post: { slug: string }) => ({
+      loc: `/blog/${post.slug}`,
+      changefreq: 'monthly' as const,
+      priority: 0.75,
+    }))
+  } catch {
+    return []
+  }
 }

@@ -1,53 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gray-100 flex flex-col">
-
-    <!-- ── Toast Notifications ── -->
-    <Teleport to="body">
-      <div class="fixed top-4 right-4 z-[100] flex flex-col gap-2 pointer-events-none">
-        <TransitionGroup name="toast">
-          <div
-            v-for="toast in toasts"
-            :key="toast.id"
-            :class="['pointer-events-auto flex items-center gap-3 px-4 py-3 rounded-xl shadow-lg text-sm font-medium border max-w-sm',
-              toast.type === 'success' ? 'bg-white border-emerald-200 text-emerald-800' :
-              toast.type === 'error'   ? 'bg-white border-red-200 text-red-700' :
-                                         'bg-white border-gray-200 text-gray-700']"
-          >
-            <span v-if="toast.type === 'success'" class="text-emerald-500 flex-shrink-0">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>
-            </span>
-            <span v-else-if="toast.type === 'error'" class="text-red-500 flex-shrink-0">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-            </span>
-            {{ toast.message }}
-          </div>
-        </TransitionGroup>
-      </div>
-    </Teleport>
-
-    <!-- ── Nav ── -->
-    <header class="bg-white shadow-sm border-b border-gray-200 flex-shrink-0">
-      <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
-        <div class="flex items-center gap-3">
-          <img src="/logo-nav.png" alt="Roseberry" class="h-9 w-auto" />
-          <div>
-            <p class="font-bold text-gray-900 leading-tight text-sm">Roseberry Admin</p>
-            <p class="text-xs text-gray-400">Dashboard</p>
-          </div>
-        </div>
-        <div class="flex items-center gap-4">
-          <span class="hidden sm:block text-xs text-gray-400">{{ currentTime }}</span>
-          <button @click="logout" class="text-sm text-gray-500 hover:text-gray-800 transition-colors flex items-center gap-1.5">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-            </svg>
-            Sign out
-          </button>
-        </div>
-      </div>
-    </header>
-
-    <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 py-6 w-full flex-1 flex flex-col gap-6">
+  <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 py-6 w-full flex flex-col gap-6">
 
       <!-- ── Stats Overview ── -->
       <section v-if="stats">
@@ -73,6 +25,23 @@
           <p class="text-xs text-gray-400 mt-2">Conversion rate: <span class="font-semibold text-gray-700">{{ stats.conversionRate }}%</span></p>
         </div>
       </section>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <NuxtLink to="/admin/website" class="card p-4 hover:border-emerald-300 transition-colors flex items-center gap-3">
+          <span class="text-2xl">📈</span>
+          <div>
+            <p class="font-semibold text-gray-900 text-sm">Website Analytics</p>
+            <p class="text-xs text-gray-500">Traffic, SEO &amp; enquiries</p>
+          </div>
+        </NuxtLink>
+        <NuxtLink to="/admin/blog" class="card p-4 hover:border-emerald-300 transition-colors flex items-center gap-3">
+          <span class="text-2xl">📝</span>
+          <div>
+            <p class="font-semibold text-gray-900 text-sm">Manage Blog</p>
+            <p class="text-xs text-gray-500">Create &amp; publish posts</p>
+          </div>
+        </NuxtLink>
+      </div>
 
       <!-- ── Tabs ── -->
       <nav class="flex gap-1 bg-white rounded-xl p-1 shadow-sm border border-gray-200 overflow-x-auto flex-shrink-0">
@@ -416,7 +385,6 @@
         </div>
       </section>
 
-    </div>
     <Transition enter-active-class="transition-all duration-300 ease-out" enter-from-class="opacity-0" enter-to-class="opacity-100" leave-active-class="transition-all duration-200" leave-from-class="opacity-100" leave-to-class="opacity-0">
       <div v-if="selectedLead" class="fixed inset-0 z-40 bg-black/30 backdrop-blur-sm" @click.self="selectedLead = null" />
     </Transition>
@@ -477,29 +445,11 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({ layout: false, middleware: ['admin-auth'] })
+definePageMeta({ layout: 'admin', middleware: ['admin-auth'] })
 
 const config = useRuntimeConfig()
 const apiBase = config.public.apiBase || 'http://localhost:3001'
-const router = useRouter()
-
-// ── Toasts ─────────────────────────────────────────────────────────────────
-interface Toast { id: number; message: string; type: 'success' | 'error' | 'info' }
-const toasts = ref<Toast[]>([])
-let toastId = 0
-function showToast(message: string, type: Toast['type'] = 'success') {
-  const id = ++toastId
-  toasts.value.push({ id, message, type })
-  setTimeout(() => { toasts.value = toasts.value.filter(t => t.id !== id) }, 3500)
-}
-
-// ── Clock ──────────────────────────────────────────────────────────────────
-const currentTime = ref('')
-onMounted(() => {
-  const tick = () => { currentTime.value = new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit' }) }
-  tick()
-  setInterval(tick, 1000)
-})
+const { showToast } = useAdminToast()
 
 // ── Tabs ───────────────────────────────────────────────────────────────────
 const tabs = [
@@ -769,11 +719,6 @@ function sourceChip(s: string) { return { website: 'chip-blue', whatsapp: 'chip-
 function followupStatusChip(s: string) { return { pending: 'chip-yellow', sent: 'chip-green', cancelled: 'chip-gray' }[s] ?? '' }
 function invoiceStatusChip(s: string) { return { draft: 'chip-gray', sent: 'chip-blue', paid: 'chip-green' }[s] ?? '' }
 
-async function logout() {
-  await fetch(`${apiBase}/admin/logout`, { method: 'POST', credentials: 'include' })
-  await router.push('/admin/login')
-}
-
 // ── Mount ──────────────────────────────────────────────────────────────────
 onMounted(async () => {
   await Promise.all([fetchStats(), fetchLeads(), fetchCustomers(), fetchStock(), fetchFollowups(), fetchHaulage(), fetchInvoices(), fetchCalls()])
@@ -807,10 +752,4 @@ watch(activeTab, (tab) => {
 .form-label  { @apply block text-xs font-medium text-gray-600 mb-1; }
 .btn-primary { @apply bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-4 py-2 rounded-lg transition-colors disabled:opacity-50; }
 .btn-secondary { @apply bg-white hover:bg-gray-50 text-gray-700 font-medium px-4 py-2 rounded-lg border border-gray-200 transition-colors; }
-
-/* Toast animations */
-.toast-enter-active { transition: all 0.3s ease-out; }
-.toast-leave-active { transition: all 0.25s ease-in; }
-.toast-enter-from  { opacity: 0; transform: translateX(1rem); }
-.toast-leave-to    { opacity: 0; transform: translateX(1rem); }
 </style>

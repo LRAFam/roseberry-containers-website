@@ -1,7 +1,8 @@
-import { buildSitemapXml } from '~/utils/sitemap'
+import { buildSitemapXml, fetchBlogSitemapEntries } from '~/utils/sitemap'
 
-export default defineEventHandler((event) => {
+export default defineEventHandler(async (event) => {
   setHeader(event, 'Content-Type', 'application/xml; charset=utf-8')
   setHeader(event, 'Cache-Control', 'public, max-age=3600')
-  return buildSitemapXml()
+  const blogEntries = await fetchBlogSitemapEntries()
+  return buildSitemapXml(blogEntries)
 })

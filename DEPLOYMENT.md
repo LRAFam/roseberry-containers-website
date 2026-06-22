@@ -52,8 +52,9 @@ All variables are public (client-side safe). Do **not** commit `.env` — it is 
 ## Pre-Deployment Checklist
 
 - [ ] Set all required environment variables on your hosting platform
-- [ ] Confirm `NUXT_PUBLIC_API_BASE` points to the production backend
-- [ ] Test contact form, delivery calculator, and container enquiry form end-to-end
+- [ ] Confirm `NUXT_PUBLIC_API_BASE` points to the production backend (`https://roseberry-assistant-production.up.railway.app` or your custom API domain)
+- [ ] Confirm `NUXT_PUBLIC_CLIENT_ID` is set to the Roseberry client UUID from the assistant platform
+- [ ] Confirm SMTP is configured on the backend API (see `roseberry-assistant/PRODUCTION_SETUP.md`) — contact form emails will not arrive without it
 - [ ] Verify chatbot (James) responds correctly via the production API
 - [ ] Test all pages and links
 - [ ] Test mobile responsiveness

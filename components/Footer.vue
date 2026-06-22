@@ -70,6 +70,7 @@
             <li><NuxtLink to="/container-hire" class="hover:text-primary-400 hover:underline transition-colors">Container Hire</NuxtLink></li>
             <li><NuxtLink to="/container-conversions" class="hover:text-primary-400 hover:underline transition-colors">Container Conversions</NuxtLink></li>
             <li><NuxtLink to="/self-storage" class="hover:text-primary-400 hover:underline transition-colors">Self Storage</NuxtLink></li>
+            <li><NuxtLink to="/blog" class="hover:text-primary-400 hover:underline transition-colors">Blog &amp; Guides</NuxtLink></li>
             <li><NuxtLink to="/contact" class="hover:text-primary-400 hover:underline transition-colors">Contact</NuxtLink></li>
           </ul>
         </div>

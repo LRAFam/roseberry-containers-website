@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@types/three": "^0.183.1",
+    "isomorphic-dompurify": "^2.21.0",
+    "marked": "^15.0.7",
     "nuxt": "^4.3.1",
     "three": "^0.183.2",
     "vue": "^3.5.28",

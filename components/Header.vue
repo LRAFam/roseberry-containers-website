@@ -53,6 +53,12 @@
           >Self Storage</NuxtLink>
 
           <NuxtLink
+            to="/blog"
+            class="text-amber-200 hover:text-white font-medium px-4 py-2 rounded-lg hover:bg-white/10 transition-all"
+            active-class="!text-white !bg-white/15 font-semibold"
+          >Blog</NuxtLink>
+
+          <NuxtLink
             to="/contact"
             class="text-amber-200 hover:text-white font-medium px-4 py-2 rounded-lg hover:bg-white/10 transition-all"
             active-class="!text-white !bg-white/15 font-semibold"
@@ -106,6 +112,7 @@
             <NuxtLink to="/container-hire" @click="mobileMenuOpen = false" class="text-amber-200 hover:text-white hover:bg-white/10 font-medium py-2 px-3 rounded-lg transition-all" active-class="!text-white !bg-white/15 font-semibold">Container Hire</NuxtLink>
             <NuxtLink to="/container-conversions" @click="mobileMenuOpen = false" class="text-amber-200 hover:text-white hover:bg-white/10 font-medium py-2 px-3 rounded-lg transition-all" active-class="!text-white !bg-white/15 font-semibold">Conversions</NuxtLink>
             <NuxtLink to="/self-storage" @click="mobileMenuOpen = false" class="text-amber-200 hover:text-white hover:bg-white/10 font-medium py-2 px-3 rounded-lg transition-all" active-class="!text-white !bg-white/15 font-semibold">Self Storage</NuxtLink>
+            <NuxtLink to="/blog" @click="mobileMenuOpen = false" class="text-amber-200 hover:text-white hover:bg-white/10 font-medium py-2 px-3 rounded-lg transition-all" active-class="!text-white !bg-white/15 font-semibold">Blog</NuxtLink>
             <NuxtLink to="/contact" @click="mobileMenuOpen = false" class="text-amber-200 hover:text-white hover:bg-white/10 font-medium py-2 px-3 rounded-lg transition-all" active-class="!text-white !bg-white/15 font-semibold">Contact</NuxtLink>
             <a href="tel:07793251550" class="mt-2 bg-amber-500 hover:bg-amber-400 text-white font-semibold py-2 px-5 rounded-lg transition-all duration-200 text-center">Call Us</a>
           </div>

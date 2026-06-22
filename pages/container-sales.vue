@@ -519,6 +519,7 @@ useHead({
 })
 
 const config = useRuntimeConfig()
+const clientId = config.public.clientId
 
 const trustBar = [
   { label: 'Direct from Port', icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18M3 12h18M3 17h18"/>' },
@@ -590,6 +591,7 @@ const submitEnquiry = async () => {
         phone: enquiryForm.value.phone,
         subject: enquirySubject.value,
         message: enquiryForm.value.message || `Interested in purchasing a ${enquirySubject.value}.`,
+        clientId,
       }),
     })
 
