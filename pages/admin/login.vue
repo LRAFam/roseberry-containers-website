@@ -10,7 +10,7 @@
           </svg>
         </div>
         <h1 class="text-2xl font-bold text-white">Roseberry Admin</h1>
-        <p class="text-gray-400 text-sm mt-1">Enter your dashboard password to continue</p>
+        <p class="text-gray-400 text-sm mt-1">Sign in with your client API key and account password</p>
       </div>
 
       <!-- Login card -->
@@ -27,7 +27,7 @@
           />
         </div>
         <div>
-          <label class="block text-sm font-medium text-gray-300 mb-2">Password</label>
+          <label class="block text-sm font-medium text-gray-300 mb-2">Account password</label>
           <input
             v-model="password"
             type="password"

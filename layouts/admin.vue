@@ -100,6 +100,11 @@ const navGroups = [
       { to: '/admin/website', label: 'Analytics', icon: '📈' },
       { to: '/admin/blog', label: 'Blog', icon: '📝' },
     ],
+  {
+    label: 'Account',
+    links: [
+      { to: '/admin/settings', label: 'Settings', icon: '⚙️' },
+    ],
   },
 ]
 
@@ -108,6 +113,7 @@ const pageTitle = computed(() => {
   if (route.path.startsWith('/admin/sales')) return 'Leads & CRM'
   if (route.path.startsWith('/admin/website')) return 'Website Analytics'
   if (route.path.startsWith('/admin/blog')) return 'Blog Management'
+  if (route.path.startsWith('/admin/settings')) return 'Account Settings'
   return 'Admin'
 })
 
