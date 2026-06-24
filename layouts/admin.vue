@@ -100,6 +100,7 @@ const navGroups = [
       { to: '/admin/website', label: 'Analytics', icon: '📈' },
       { to: '/admin/blog', label: 'Blog', icon: '📝' },
     ],
+  },
   {
     label: 'Account',
     links: [
