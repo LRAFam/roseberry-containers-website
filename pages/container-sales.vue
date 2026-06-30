@@ -21,7 +21,7 @@
               Shipping Containers<br><span class="hero-gold-text">For Sale Across the UK</span>
             </h1>
             <p class="text-xl text-gray-300 mb-8 max-w-2xl">
-              10ft, 20ft and 40ft containers — 1-trip new condition and quality used stock. Fast delivery from 9 UK depots. Same-day response guaranteed.
+              10ft, 20ft and 40ft containers — 1-trip new condition and quality used stock. Fast delivery from {{ DEPOT_COUNT }} UK depots. Same-day response guaranteed.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 mb-12">
               <a href="#containers" class="btn-primary">
@@ -39,7 +39,7 @@
                 <div class="text-xs text-amber-300/70 mt-1 uppercase tracking-wide">Sold</div>
               </div>
               <div class="text-center border-x border-white/10">
-                <div class="text-2xl font-bold hero-gold-text">9</div>
+                <div class="text-2xl font-bold hero-gold-text">{{ DEPOT_COUNT }}</div>
                 <div class="text-xs text-amber-300/70 mt-1 uppercase tracking-wide">UK Depots</div>
               </div>
               <div class="text-center border-r border-white/10">
@@ -77,7 +77,7 @@
               <span class="w-8 h-px bg-amber-500"></span>
             </div>
             <h2 class="heading-lg text-gray-900 mb-4">Containers Available Now</h2>
-            <p class="text-xl text-gray-500 max-w-2xl mx-auto">New 1-trip and quality used stock across all sizes. Delivered direct from our 9 UK depots — same-day response on all enquiries.</p>
+            <p class="text-xl text-gray-500 max-w-2xl mx-auto">New 1-trip and quality used stock across all sizes. Delivered direct from our {{ DEPOT_COUNT }} UK depots — same-day response on all enquiries.</p>
           </div>
 
           <!-- Main Size Cards -->
@@ -388,7 +388,7 @@
                 <div class="text-gray-400 text-xs mt-1">Response Guarantee</div>
               </div>
               <div class="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
-                <div class="text-amber-300 font-bold text-lg">9 Depots</div>
+                <div class="text-amber-300 font-bold text-lg">{{ DEPOT_COUNT }} Depots</div>
                 <div class="text-gray-400 text-xs mt-1">Nationwide UK Coverage</div>
               </div>
               <div class="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
@@ -473,11 +473,12 @@
 
 <script setup lang="ts">
 import { containerSalesFaqs, faqPageSchema, localBusinessProvider } from '~/utils/container-sales-seo'
+import { DEPOT_COUNT } from '~/utils/depots'
 
 useHead({
   title: 'Buy Shipping Containers UK | New & Used 10ft, 20ft, 40ft | Roseberry',
   meta: [
-    { name: 'description', content: 'Buy new 1-trip and quality used 10ft, 20ft and 40ft shipping containers from Roseberry Containers. 20ft from £950 + VAT, 9 UK depots, nationwide delivery. Get a free quote today.' },
+    { name: 'description', content: `Buy new 1-trip and quality used 10ft, 20ft and 40ft shipping containers from Roseberry Containers. 20ft from £950 + VAT, ${DEPOT_COUNT} UK depots, nationwide delivery. Get a free quote today.` },
     { property: 'og:title', content: 'Buy Shipping Containers UK | Roseberry Containers' },
     { property: 'og:description', content: 'Buy new 1-trip and quality used 10ft, 20ft and 40ft shipping containers with nationwide UK delivery and transparent pricing.' },
     { property: 'og:url', content: 'https://roseberrycontainers.com/container-sales' },
@@ -524,7 +525,7 @@ const clientId = config.public.clientId
 const trustBar = [
   { label: 'Direct from Port', icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7h18M3 12h18M3 17h18"/>' },
   { label: 'All Sizes In Stock', icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>' },
-  { label: '9 UK Depots', icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>' },
+  { label: `${DEPOT_COUNT} UK Depots`, icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>' },
   { label: 'Same-Day Response', icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>' },
   { label: 'Nationwide Delivery', icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1"/>' },
 ]

@@ -99,7 +99,7 @@
 
       <DepotLinksSection
         :title="`Buy ${sizeLabel} Containers from Your Nearest Depot`"
-        :subtitle="`We deliver ${sizeLabel} shipping containers nationwide from 9 UK depot locations.`"
+        :subtitle="`We deliver ${sizeLabel} shipping containers nationwide from ${DEPOT_COUNT} UK depot locations.`"
       />
 
       <section class="section-padding bg-primary-950 text-white">
@@ -121,6 +121,7 @@
 
 <script setup lang="ts">
 import type { ContainerFaq } from '~/utils/container-sales-seo'
+import { DEPOT_COUNT } from '~/utils/depots'
 
 defineProps<{
   sizeLabel: string

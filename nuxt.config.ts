@@ -1,4 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { DEPOT_COUNT, depotNamesList, depots } from './utils/depots'
+
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: process.env.NODE_ENV !== 'production' },
@@ -18,6 +20,12 @@ export default defineNuxtConfig({
 
   routeRules: {
     '/admin/**': { ssr: false },
+    ...Object.fromEntries(
+      depots.map(d => [
+        `/container-sales/${d.slug}`,
+        { redirect: { to: `/depots/${d.slug}`, statusCode: 301 } },
+      ]),
+    ),
     '/**': {
       headers: {
         'X-Frame-Options': 'SAMEORIGIN',
@@ -31,7 +39,10 @@ export default defineNuxtConfig({
 
   nitro: {
     prerender: {
-      routes: ['/sitemap.xml'],
+      routes: [
+        '/sitemap.xml',
+        ...depots.map(d => `/depots/${d.slug}`),
+      ],
     },
   },
 
@@ -42,9 +53,9 @@ export default defineNuxtConfig({
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: 'Buy shipping containers from Roseberry Containers. New 1-trip & quality used 10ft, 20ft, 40ft containers. 9 UK depots, 20ft from £950 + VAT, nationwide delivery. Container hire & conversions also available.' },
+        { name: 'description', content: `Buy shipping containers from Roseberry Containers. New 1-trip & quality used 10ft, 20ft, 40ft containers. ${DEPOT_COUNT} UK depots, 20ft from £950 + VAT, nationwide delivery. Container hire & conversions also available.` },
         { property: 'og:title', content: 'Buy Shipping Containers | New & Used | Roseberry Containers' },
-        { property: 'og:description', content: 'Buy shipping containers from Roseberry Containers. New 1-trip and quality used containers with 9 UK depots and nationwide delivery.' },
+        { property: 'og:description', content: `Buy shipping containers from Roseberry Containers. New 1-trip and quality used containers with ${DEPOT_COUNT} UK depots and nationwide delivery.` },
         { property: 'og:type', content: 'website' },
         { property: 'og:url', content: 'https://roseberrycontainers.com' },
         { property: 'og:image', content: 'https://roseberrycontainers.com/logo.jpg' },
@@ -52,7 +63,7 @@ export default defineNuxtConfig({
         { property: 'og:locale', content: 'en_GB' },
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:title', content: 'Buy Shipping Containers | Roseberry Containers' },
-        { name: 'twitter:description', content: 'New 1-trip and quality used shipping containers. 10ft, 20ft, 40ft sizes. Nationwide delivery from 9 UK depots.' },
+        { name: 'twitter:description', content: `New 1-trip and quality used shipping containers. 10ft, 20ft, 40ft sizes. Nationwide delivery from ${DEPOT_COUNT} UK depots including ${depotNamesList()}.` },
         { name: 'twitter:image', content: 'https://roseberrycontainers.com/logo.jpg' },
       ],
       link: [

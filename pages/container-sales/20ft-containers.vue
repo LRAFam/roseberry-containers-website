@@ -15,6 +15,7 @@
 
 <script setup lang="ts">
 import { containerSalesFaqs, faqPageSchema, localBusinessProvider } from '~/utils/container-sales-seo'
+import { DEPOT_COUNT } from '~/utils/depots'
 
 const canonical = 'https://roseberrycontainers.com/container-sales/20ft-containers'
 
@@ -60,7 +61,7 @@ const otherSizes = [
 useHead({
   title: 'Buy 20ft Shipping Containers UK | New & Used For Sale | Roseberry',
   meta: [
-    { name: 'description', content: 'Buy 20ft shipping containers in the UK. Low grade used from £950 + VAT, new 1-trip from £1,900 + VAT. Nationwide delivery from 9 UK depots. Get a free quote today.' },
+    { name: 'description', content: `Buy 20ft shipping containers in the UK. Low grade used from £950 + VAT, new 1-trip from £1,900 + VAT. Nationwide delivery from ${DEPOT_COUNT} UK depots. Get a free quote today.` },
     { property: 'og:title', content: 'Buy 20ft Shipping Containers UK | Roseberry Containers' },
     { property: 'og:description', content: 'Buy new 1-trip and used 20ft shipping containers with nationwide UK delivery. Same-day response, transparent pricing.' },
     { property: 'og:url', content: canonical },

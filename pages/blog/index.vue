@@ -53,6 +53,8 @@
 </template>
 
 <script setup lang="ts">
+import { DEPOT_COUNT, depotNamesList } from '~/utils/depots'
+
 const config = useRuntimeConfig()
 const clientId = config.public.clientId
 const apiBase = config.public.apiBase
@@ -60,7 +62,7 @@ const { setPageSEO } = useSEO()
 
 setPageSEO({
   title: 'Blog & Guides | Roseberry Containers',
-  description: 'Shipping container guides, buying advice, and news from Roseberry Containers — UK-wide delivery from 9 depots.',
+  description: `Shipping container guides, buying advice, and news from Roseberry Containers — UK-wide delivery from ${DEPOT_COUNT} depots.`,
   type: 'website',
 })
 

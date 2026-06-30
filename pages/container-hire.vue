@@ -263,6 +263,8 @@
 </template>
 
 <script setup lang="ts">
+import { DEPOT_COUNT, depotNamesList } from '~/utils/depots'
+
 useHead({
   title: 'Container Hire | Roseberry Containers',
   meta: [
@@ -322,7 +324,7 @@ useHead({
           {
             '@type': 'Question',
             name: 'Where do you deliver hired containers?',
-            acceptedAnswer: { '@type': 'Answer', text: 'We deliver hired containers across the UK from our 9 depots including Felixstowe, Tilbury, Southampton, Birmingham, Liverpool, Leeds, Teesside, Immingham and Bathgate.' }
+            acceptedAnswer: { '@type': 'Answer', text: `We deliver hired containers across the UK from our ${DEPOT_COUNT} depots including ${depotNamesList()}.` }
           },
           {
             '@type': 'Question',

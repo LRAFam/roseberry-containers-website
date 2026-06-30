@@ -22,7 +22,7 @@
         <NuxtLink
           v-for="depot in depots"
           :key="depot.slug"
-          :to="`/container-sales/${depot.slug}`"
+          :to="depotPagePath(depot.slug)"
           class="rounded-xl px-4 py-3 text-sm font-medium transition-all duration-200 flex items-center justify-between gap-2 group"
           :class="variant === 'dark'
             ? 'bg-white/5 border border-white/10 hover:border-amber-500/40 hover:bg-white/10 text-white'
@@ -61,7 +61,7 @@
 </template>
 
 <script setup lang="ts">
-import { depots, DEPOT_COUNT } from '~/utils/depots'
+import { depots, DEPOT_COUNT, depotPagePath } from '~/utils/depots'
 
 withDefaults(defineProps<{
   title?: string
@@ -69,7 +69,7 @@ withDefaults(defineProps<{
   variant?: 'light' | 'dark'
 }>(), {
   title: 'Buy Containers from Your Nearest Depot',
-  subtitle: 'We supply 10ft, 20ft and 40ft shipping containers from 9 locations across the UK — click your nearest depot for local pricing and delivery.',
+  subtitle: `We supply 10ft, 20ft and 40ft shipping containers from ${DEPOT_COUNT} locations across the UK — click your nearest depot for local pricing and delivery.`,
   variant: 'light',
 })
 </script>

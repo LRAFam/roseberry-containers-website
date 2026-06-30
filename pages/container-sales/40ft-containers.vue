@@ -15,6 +15,7 @@
 
 <script setup lang="ts">
 import { containerSalesFaqs, faqPageSchema, localBusinessProvider } from '~/utils/container-sales-seo'
+import { DEPOT_COUNT } from '~/utils/depots'
 
 const canonical = 'https://roseberrycontainers.com/container-sales/40ft-containers'
 
@@ -62,7 +63,7 @@ const otherSizes = [
 useHead({
   title: 'Buy 40ft Shipping Containers UK | New & Used For Sale | Roseberry',
   meta: [
-    { name: 'description', content: 'Buy 40ft shipping containers in the UK. Used from £1,450 + VAT, new 1-trip from £3,050 + VAT. Nationwide delivery from 9 UK depots. Get a free quote today.' },
+    { name: 'description', content: `Buy 40ft shipping containers in the UK. Used from £1,450 + VAT, new 1-trip from £3,050 + VAT. Nationwide delivery from ${DEPOT_COUNT} UK depots. Get a free quote today.` },
     { property: 'og:title', content: 'Buy 40ft Shipping Containers UK | Roseberry Containers' },
     { property: 'og:description', content: 'Buy 40ft shipping containers — standard and hi-cube, new 1-trip and quality used with nationwide UK delivery.' },
     { property: 'og:url', content: canonical },

@@ -21,7 +21,7 @@
           <div class="max-w-3xl">
             <div class="inline-flex items-center gap-2 bg-amber-500/10 text-amber-300 border border-amber-500/30 px-4 py-1.5 rounded-full text-sm font-semibold mb-6">
               <span class="w-1.5 h-1.5 bg-amber-400 rounded-full animate-pulse"></span>
-              9 UK Depots Nationwide
+              {{ DEPOT_COUNT }} UK Depots Nationwide
             </div>
             <h1 class="text-4xl sm:text-5xl font-bold leading-tight mb-6">
               Nationwide Container Sales &mdash; <span class="hero-gold-text">Find Your Closest Depot</span>
@@ -35,7 +35,7 @@
             </a>
             <div class="grid grid-cols-3 gap-4 max-w-md mt-12 border-t border-amber-500/20 pt-6">
               <div class="text-center">
-                <div class="text-3xl font-bold hero-gold-text">9 Depots</div>
+                <div class="text-3xl font-bold hero-gold-text">{{ DEPOT_COUNT }} Depots</div>
                 <div class="text-xs text-amber-300/70 mt-0.5 uppercase tracking-wide">Across the UK</div>
               </div>
               <div class="text-center border-x border-white/10">
@@ -63,7 +63,7 @@
             <NuxtLink
               v-for="depot in depots"
               :key="depot.slug"
-              :to="`/container-sales/${depot.slug}`"
+              :to="depotPagePath(depot.slug)"
               class="bg-white rounded-2xl shadow-card hover:shadow-card-lg hover:-translate-y-1 transition-all duration-300 p-6 group border border-transparent hover:border-amber-400/50"
             >
               <div class="flex items-start justify-between mb-4">
@@ -98,7 +98,7 @@
                 <span class="w-8 h-px bg-amber-500"></span>
               </div>
               <h2 class="heading-lg text-gray-900 mb-6">Container Delivery Across the UK</h2>
-              <p class="body-lg mb-6">With 9 strategically placed depots, we can deliver shipping containers to virtually anywhere in mainland UK. Whether you need a 10ft, 20ft or 40ft container &mdash; new or used &mdash; we'll source it from the depot closest to you.</p>
+              <p class="body-lg mb-6">With {{ DEPOT_COUNT }} strategically placed depots, we can deliver shipping containers to virtually anywhere in mainland UK. Whether you need a 10ft, 20ft or 40ft container &mdash; new or used &mdash; we'll source it from the depot closest to you.</p>
               <ul class="space-y-4 mb-8">
                 <li class="flex items-start gap-3">
                   <svg class="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -142,7 +142,7 @@
                   <svg class="w-4 h-4 text-amber-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
                   </svg>
-                  <NuxtLink :to="`/container-sales/${depot.slug}`" class="text-gray-700 hover:text-amber-600 font-medium transition-colors">
+                  <NuxtLink :to="depotPagePath(depot.slug)" class="text-gray-700 hover:text-amber-600 font-medium transition-colors">
                     {{ depot.name }} <span class="text-gray-400 font-normal">&mdash; {{ depot.region }}</span>
                   </NuxtLink>
                 </li>
@@ -177,12 +177,12 @@
 </template>
 
 <script setup lang="ts">
-import { depots, DEPOT_COUNT } from '~/utils/depots'
+import { depots, DEPOT_COUNT, depotNamesList, depotPagePath } from '~/utils/depots'
 
 useHead({
   title: 'Nationwide Container Sales | Roseberry Containers',
   meta: [
-    { name: 'description', content: `Buy shipping containers nationwide with Roseberry Containers. ${DEPOT_COUNT} UK depots at Felixstowe, Tilbury, Southampton, Birmingham, Liverpool, Leeds, Teesside, Immingham and Bathgate. 20ft from £950 + VAT. Fast delivery.` }
+    { name: 'description', content: `Buy shipping containers nationwide with Roseberry Containers. ${DEPOT_COUNT} UK depots at ${depotNamesList()}. 20ft from £950 + VAT. Fast delivery.` }
   ],
   link: [
     { rel: 'canonical', href: 'https://roseberrycontainers.com/container-sales/nationwide' }

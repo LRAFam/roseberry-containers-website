@@ -245,6 +245,8 @@
 </template>
 
 <script setup lang="ts">
+import { DEPOT_COUNT } from '~/utils/depots'
+
 useHead({
   title: 'Container Conversions | Roseberry Containers',
   meta: [
@@ -309,7 +311,7 @@ useHead({
           {
             '@type': 'Question',
             name: 'Do you deliver the converted container?',
-            acceptedAnswer: { '@type': 'Answer', text: 'Yes — we deliver converted containers across the UK. We have 9 depot locations to ensure fast delivery to your site.' }
+            acceptedAnswer: { '@type': 'Answer', text: `Yes — we deliver converted containers across the UK. We have ${DEPOT_COUNT} depot locations to ensure fast delivery to your site.` }
           },
         ]
       })

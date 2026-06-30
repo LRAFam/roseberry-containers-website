@@ -96,15 +96,75 @@ export type DepotSchemaInput = {
   addressRegion: string
   streetAddress?: string
   postalCode?: string
+  areasServed?: string[]
+}
+
+export function depotFaqs(depot: Pick<DepotSchemaInput, 'name' | 'region' | 'addressLocality'>): ContainerFaq[] {
+  const locality = depot.addressLocality || depot.name
+  return [
+    {
+      question: `How much does a shipping container cost in ${depot.name}?`,
+      answer: `Prices depend on size and condition. 20ft low-grade used containers start from £950 + VAT, with new 1-trip 20ft units from £1,900 + VAT. Delivery from our ${depot.name} depot across ${depot.region} typically adds £250–£700 + VAT. Call Roseberry Containers on 07793 251550 for a quote tailored to your ${locality} postcode.`,
+    },
+    {
+      question: `Do you deliver shipping containers to ${depot.name}?`,
+      answer: `Yes. We deliver 10ft, 20ft and 40ft shipping containers from our ${depot.name} depot across ${depot.region} and surrounding areas. Most local postcodes can be reached within 2–4 working days of order confirmation.`,
+    },
+    {
+      question: `What sizes of shipping containers can I buy near ${depot.name}?`,
+      answer: `We supply 10ft, 20ft and 40ft shipping containers from our ${depot.name} depot. New 1-trip and quality used grades are available. The 20ft container is the most popular size for general storage and site use.`,
+    },
+    {
+      question: `How do I get a quote for a container in ${depot.name}?`,
+      answer: `Call us on 07793 251550 or submit an enquiry through our website. We respond the same day with a clear quote covering the container, delivery to your ${locality} address and VAT.`,
+    },
+  ]
+}
+
+export function depotBreadcrumbSchema(depot: Pick<DepotSchemaInput, 'slug' | 'name'>) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://roseberrycontainers.com',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Container Sales',
+        item: 'https://roseberrycontainers.com/container-sales',
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: 'Nationwide Depots',
+        item: 'https://roseberrycontainers.com/container-sales/nationwide',
+      },
+      {
+        '@type': 'ListItem',
+        position: 4,
+        name: depot.name,
+        item: `https://roseberrycontainers.com/depots/${depot.slug}`,
+      },
+    ],
+  }
 }
 
 export function depotLocalBusinessSchema(depot: DepotSchemaInput) {
+  const areas = depot.areasServed?.length
+    ? depot.areasServed.map(name => ({ '@type': 'Place', name }))
+    : [{ '@type': 'Place', name: `${depot.name}, ${depot.region}` }]
+
   return {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     name: `Roseberry Containers — ${depot.name}`,
     description: `Buy shipping containers near ${depot.name}, ${depot.region}. Roseberry Containers supply 10ft, 20ft and 40ft containers with fast delivery.`,
-    url: `https://roseberrycontainers.com/container-sales/${depot.slug}`,
+    url: `https://roseberrycontainers.com/depots/${depot.slug}`,
     telephone: '+447793251550',
     image: 'https://roseberrycontainers.com/logo.jpg',
     address: {
@@ -115,6 +175,7 @@ export function depotLocalBusinessSchema(depot: DepotSchemaInput) {
       ...(depot.postalCode ? { postalCode: depot.postalCode } : {}),
       addressCountry: 'GB',
     },
+    areaServed: areas,
     parentOrganization: {
       '@type': 'Organization',
       name: 'Roseberry Containers',

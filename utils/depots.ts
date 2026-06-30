@@ -20,6 +20,8 @@ export type Depot = {
   addressRegion: string
   streetAddress?: string
   postalCode?: string
+  /** Towns and counties served — used in JSON-LD areaServed */
+  areasServed?: string[]
 }
 
 export const depots: Depot[] = [
@@ -33,7 +35,7 @@ export const depots: Depot[] = [
     areaDescription: 'Teesside is our home and headquarters, serving Middlesbrough, Stockton-on-Tees, Hartlepool, Darlington and the wider North East region.',
     containerInfo: 'With direct access to our main yard on Westerby Rd, Middlesbrough, we hold a wide range of new and used 10ft, 20ft and 40ft shipping containers in stock. Whether you need a standard dry container, an open-top, or a specialist unit, we can usually supply from stock or source quickly.',
     deliveryInfo: 'We deliver across the whole North East, including County Durham, North Yorkshire and Northumberland. Our fleet of low-loaders can position containers precisely on your site.',
-    nearbyDepots: [{ slug: 'leeds', name: 'Leeds' }, { slug: 'immingham', name: 'Immingham' }],
+    nearbyDepots: [{ slug: 'newcastle', name: 'Newcastle' }, { slug: 'leeds', name: 'Leeds' }, { slug: 'immingham', name: 'Immingham' }],
     streetAddress: 'Westerby Rd',
     addressLocality: 'Middlesbrough',
     addressRegion: 'Teesside',
@@ -113,9 +115,34 @@ export const depots: Depot[] = [
     areaDescription: 'Leeds is the largest city in Yorkshire and a major commercial centre for the North of England. Our depot here provides excellent coverage of West Yorkshire, North Yorkshire, South Yorkshire and the surrounding areas.',
     containerInfo: 'We supply 10ft, 20ft and 40ft shipping containers from Leeds to customers across Yorkshire, including Sheffield, Bradford, Harrogate, Hull, York and surrounding areas. New, one-trip and quality used containers are regularly in stock.',
     deliveryInfo: "Yorkshire's excellent road network via the M1, M62 and A1(M) means we can deliver containers to most Yorkshire postcodes within 2-3 working days of order confirmation.",
-    nearbyDepots: [{ slug: 'teesside', name: 'Teesside' }, { slug: 'immingham', name: 'Immingham' }],
+    nearbyDepots: [{ slug: 'newcastle', name: 'Newcastle' }, { slug: 'teesside', name: 'Teesside' }, { slug: 'immingham', name: 'Immingham' }],
     addressLocality: 'Leeds',
     addressRegion: 'West Yorkshire',
+  },
+  {
+    slug: 'newcastle',
+    name: 'Newcastle',
+    region: 'Tyne & Wear, North East England',
+    highlight: 'Tyneside hub — fast North East delivery',
+    heroText: 'Our Newcastle depot on Tyneside serves Newcastle upon Tyne, Gateshead, Sunderland and the wider North East with quality shipping containers and competitive delivery.',
+    areaDescription: 'Newcastle upon Tyne is the commercial heart of the North East, sitting on the River Tyne alongside Gateshead. Our Tyneside depot provides excellent coverage across Tyne and Wear, Northumberland, County Durham and the wider North East — an ideal location for customers who need containers without travelling to our Teesside HQ.',
+    containerInfo: 'From Newcastle we supply 10ft, 20ft and 40ft shipping containers to customers across Tyneside, including Gateshead, Sunderland, South Shields, Durham, Hexham and Morpeth. New 1-trip containers and quality grade-A used stock are regularly available, with low-grade 20ft units from £950 + VAT.',
+    deliveryInfo: 'We deliver from our Newcastle depot across Tyne and Wear, Northumberland and into southern Scotland via the A1 and A69 corridors. Most Tyneside and Wearside postcodes can be reached within 2–4 working days of order confirmation.',
+    nearbyDepots: [{ slug: 'teesside', name: 'Teesside' }, { slug: 'leeds', name: 'Leeds' }, { slug: 'immingham', name: 'Immingham' }],
+    addressLocality: 'Newcastle upon Tyne',
+    addressRegion: 'Tyne and Wear',
+    areasServed: [
+      'Newcastle upon Tyne',
+      'Gateshead',
+      'Sunderland',
+      'South Shields',
+      'North Shields',
+      'Tyne and Wear',
+      'Northumberland',
+      'County Durham',
+      'Tyneside',
+      'Wearside',
+    ],
   },
   {
     slug: 'immingham',
@@ -126,7 +153,7 @@ export const depots: Depot[] = [
     areaDescription: "Immingham in North Lincolnshire sits on the south bank of the Humber Estuary, alongside the port of Grimsby. It is one of the UK's busiest deep-water ports and a key hub for container supply across the East Midlands and Northern England.",
     containerInfo: 'Our Immingham depot supplies 10ft, 20ft and 40ft shipping containers to customers across Lincolnshire, Humberside, Nottinghamshire, Derbyshire and the wider East Midlands. New 1-trip and quality used containers are regularly available, with low-grade 20ft units from £950 + VAT.',
     deliveryInfo: 'We deliver from Immingham across the Humber region, South Yorkshire, Nottinghamshire and into the East Midlands via the M180 and A1 corridors. Most local postcodes can be reached within 2-4 working days.',
-    nearbyDepots: [{ slug: 'teesside', name: 'Teesside' }, { slug: 'leeds', name: 'Leeds' }],
+    nearbyDepots: [{ slug: 'newcastle', name: 'Newcastle' }, { slug: 'teesside', name: 'Teesside' }, { slug: 'leeds', name: 'Leeds' }],
     addressLocality: 'Immingham',
     addressRegion: 'North Lincolnshire',
   },
@@ -149,10 +176,19 @@ export const DEPOT_COUNT = depots.length
 
 export const depotNames = depots.map(d => d.name)
 
+/** Comma-separated depot names for meta descriptions and FAQ copy */
+export function depotNamesList() {
+  return depotNames.join(', ')
+}
+
 export function getDepotBySlug(slug: string) {
   return depots.find(d => d.slug === slug)
 }
 
+export function depotPagePath(slug: string) {
+  return `/depots/${slug}`
+}
+
 export function depotPageUrl(slug: string) {
-  return `${SITE_URL}/container-sales/${slug}`
+  return `${SITE_URL}/depots/${slug}`
 }

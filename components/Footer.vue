@@ -81,7 +81,7 @@
           <ul class="space-y-2 text-sm">
             <li v-for="depot in depots" :key="depot.slug">
               <NuxtLink
-                :to="`/container-sales/${depot.slug}`"
+                :to="depotPagePath(depot.slug)"
                 class="hover:text-primary-400 hover:underline transition-colors"
               >
                 {{ depot.name }}
@@ -130,7 +130,7 @@
 </template>
 
 <script setup lang="ts">
-import { depots } from '~/utils/depots'
+import { depots, depotPagePath } from '~/utils/depots'
 
 const currentYear = new Date().getFullYear()
 </script>

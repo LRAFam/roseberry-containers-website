@@ -16,7 +16,7 @@ export const staticSitemapEntries: SitemapEntry[] = [
   { loc: '/guides/shipping-container-prices-uk', changefreq: 'monthly', priority: 0.9 },
   { loc: '/container-sales/nationwide', changefreq: 'weekly', priority: 0.85 },
   ...depots.map(d => ({
-    loc: `/container-sales/${d.slug}`,
+    loc: `/depots/${d.slug}`,
     changefreq: 'weekly' as const,
     priority: 0.85,
   })),
