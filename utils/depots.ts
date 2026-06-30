@@ -22,6 +22,8 @@ export type Depot = {
   postalCode?: string
   /** Towns and counties served — used in JSON-LD areaServed */
   areasServed?: string[]
+  /** Optional hero background image path (e.g. /images/depots/newcastle-hero.jpg) */
+  heroImage?: string
 }
 
 export const depots: Depot[] = [
@@ -124,6 +126,7 @@ export const depots: Depot[] = [
     name: 'Newcastle',
     region: 'Tyne & Wear, North East England',
     highlight: 'Tyneside hub — fast North East delivery',
+    heroImage: '/images/depots/newcastle-hero.jpg',
     heroText: 'Our Newcastle depot on Tyneside serves Newcastle upon Tyne, Gateshead, Sunderland and the wider North East with quality shipping containers and competitive delivery.',
     areaDescription: 'Newcastle upon Tyne is the commercial heart of the North East, sitting on the River Tyne alongside Gateshead. Our Tyneside depot provides excellent coverage across Tyne and Wear, Northumberland, County Durham and the wider North East — an ideal location for customers who need containers without travelling to our Teesside HQ.',
     containerInfo: 'From Newcastle we supply 10ft, 20ft and 40ft shipping containers to customers across Tyneside, including Gateshead, Sunderland, South Shields, Durham, Hexham and Morpeth. New 1-trip containers and quality grade-A used stock are regularly available, with low-grade 20ft units from £950 + VAT.',

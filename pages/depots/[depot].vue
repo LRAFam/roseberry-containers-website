@@ -4,10 +4,21 @@
     <main v-if="depot">
       <!-- Hero -->
       <section class="relative text-white overflow-hidden" style="clip-path: polygon(0 0, 100% 0, 100% 94%, 0 100%);">
-        <div class="absolute inset-0 bg-gradient-to-br from-primary-950 via-primary-900 to-primary-950"></div>
-        <div class="absolute inset-0 opacity-[0.04] pointer-events-none" style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 28px 28px;"></div>
-        <div class="absolute top-0 right-0 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl pointer-events-none -translate-y-1/2 translate-x-1/2"></div>
-        <div class="absolute bottom-0 left-1/3 w-72 h-72 bg-burgundy/8 rounded-full blur-3xl pointer-events-none"></div>
+        <div v-if="depot.heroImage" class="absolute inset-0">
+          <img
+            :src="depot.heroImage"
+            :alt="`Shipping containers for sale in ${depot.name} — River Tyne and Tyneside`"
+            class="w-full h-full object-cover"
+            fetchpriority="high"
+          >
+          <div class="absolute inset-0 bg-primary-950/80"></div>
+        </div>
+        <template v-else>
+          <div class="absolute inset-0 bg-gradient-to-br from-primary-950 via-primary-900 to-primary-950"></div>
+          <div class="absolute inset-0 opacity-[0.04] pointer-events-none" style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 28px 28px;"></div>
+          <div class="absolute top-0 right-0 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl pointer-events-none -translate-y-1/2 translate-x-1/2"></div>
+          <div class="absolute bottom-0 left-1/3 w-72 h-72 bg-burgundy/8 rounded-full blur-3xl pointer-events-none"></div>
+        </template>
         <div class="container-custom relative z-10 pt-24 md:pt-32 pb-28 md:pb-36">
           <div class="flex items-center gap-2 text-sm text-amber-400/80 mb-4">
             <NuxtLink to="/container-sales/nationwide" class="hover:text-white transition-colors">All Depots</NuxtLink>
@@ -192,7 +203,7 @@
 </template>
 
 <script setup lang="ts">
-import { getDepotBySlug, depotPagePath, depotPageUrl } from '~/utils/depots'
+import { getDepotBySlug, depotPagePath, depotPageUrl, SITE_URL } from '~/utils/depots'
 import { depotLocalBusinessSchema, depotBreadcrumbSchema, depotFaqs, faqPageSchema } from '~/utils/container-sales-seo'
 
 const route = useRoute()
@@ -221,6 +232,9 @@ useHead(() => {
   ].join(', ')
 
   const faqs = depotFaqs(depot.value)
+  const ogImage = depot.value.heroImage
+    ? `${SITE_URL}${depot.value.heroImage}`
+    : `${SITE_URL}/logo.jpg`
 
   return {
     title: `Shipping Containers for Sale ${depot.value.name} | Roseberry Containers`,
@@ -230,12 +244,13 @@ useHead(() => {
       { property: 'og:title', content: `Shipping Containers for Sale ${depot.value.name} | Roseberry Containers` },
       { property: 'og:description', content: description },
       { property: 'og:url', content: canonical },
-      { property: 'og:image', content: 'https://roseberrycontainers.com/logo.jpg' },
+      { property: 'og:image', content: ogImage },
       { property: 'og:type', content: 'website' },
       { property: 'og:locale', content: 'en_GB' },
       { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'twitter:title', content: `Shipping Containers for Sale ${depot.value.name} | Roseberry Containers` },
       { name: 'twitter:description', content: description },
+      { name: 'twitter:image', content: ogImage },
     ],
     link: [{ rel: 'canonical', href: canonical }],
     script: [
