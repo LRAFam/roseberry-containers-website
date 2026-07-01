@@ -271,13 +271,13 @@ useHead({
     { name: 'description', content: 'Flexible shipping container hire delivered to your site. 10ft, 20ft and 40ft containers available for short and long-term hire across the UK. Call Roseberry Containers today.' },
     { property: 'og:title', content: 'Container Hire | Roseberry Containers' },
     { property: 'og:description', content: 'Flexible shipping container hire delivered anywhere in the UK. 10ft, 20ft and 40ft for short and long-term hire. Same-day response.' },
-    { property: 'og:url', content: 'https://roseberrycontainers.com/container-hire' },
-    { property: 'og:image', content: 'https://roseberrycontainers.com/logo.jpg' },
+    { property: 'og:url', content: 'https://www.roseberrycontainers.com/container-hire' },
+    { property: 'og:image', content: 'https://www.roseberrycontainers.com/logo.jpg' },
     { property: 'og:type', content: 'website' },
     { property: 'og:locale', content: 'en_GB' },
   ],
   link: [
-    { rel: 'canonical', href: 'https://roseberrycontainers.com/container-hire' }
+    { rel: 'canonical', href: 'https://www.roseberrycontainers.com/container-hire' }
   ],
   script: [
     {
@@ -290,7 +290,7 @@ useHead({
         provider: {
           '@type': 'LocalBusiness',
           name: 'Roseberry Containers',
-          url: 'https://roseberrycontainers.com',
+          url: 'https://www.roseberrycontainers.com',
           telephone: '+447793251550',
           address: {
             '@type': 'PostalAddress',
@@ -301,7 +301,7 @@ useHead({
           },
         },
         areaServed: { '@type': 'Country', name: 'United Kingdom' },
-        url: 'https://roseberrycontainers.com/container-hire',
+        url: 'https://www.roseberrycontainers.com/container-hire',
         serviceType: 'Shipping Container Hire',
       })
     },

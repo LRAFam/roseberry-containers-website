@@ -17,7 +17,7 @@
 import { containerSalesFaqs, faqPageSchema, localBusinessProvider } from '~/utils/container-sales-seo'
 import { DEPOT_COUNT } from '~/utils/depots'
 
-const canonical = 'https://roseberrycontainers.com/container-sales/10ft-containers'
+const canonical = 'https://www.roseberrycontainers.com/container-sales/10ft-containers'
 
 const bodyParagraphs = [
   'A 10ft shipping container is the most compact standard size — perfect where space is limited on driveways, in gardens or small commercial yards. Despite its smaller footprint it offers secure, weatherproof storage equivalent to a large garden shed.',
@@ -64,13 +64,13 @@ useHead({
     { property: 'og:title', content: 'Buy 10ft Shipping Containers UK | Roseberry Containers' },
     { property: 'og:description', content: 'Buy compact 10ft shipping containers — new 1-trip and quality used with nationwide UK delivery.' },
     { property: 'og:url', content: canonical },
-    { property: 'og:image', content: 'https://roseberrycontainers.com/container-10ft-new.jpg' },
+    { property: 'og:image', content: 'https://www.roseberrycontainers.com/container-10ft-new.jpg' },
     { property: 'og:type', content: 'website' },
     { property: 'og:locale', content: 'en_GB' },
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:title', content: 'Buy 10ft Shipping Containers UK | Roseberry Containers' },
     { name: 'twitter:description', content: 'Compact 10ft shipping containers for sale with nationwide UK delivery.' },
-    { name: 'twitter:image', content: 'https://roseberrycontainers.com/container-10ft-new.jpg' },
+    { name: 'twitter:image', content: 'https://www.roseberrycontainers.com/container-10ft-new.jpg' },
   ],
   link: [{ rel: 'canonical', href: canonical }],
   script: [
@@ -81,7 +81,7 @@ useHead({
         '@type': 'Product',
         name: '10ft Shipping Container',
         description: 'Buy new 1-trip and quality used 10ft shipping containers with nationwide UK delivery.',
-        image: 'https://roseberrycontainers.com/container-10ft-new.jpg',
+        image: 'https://www.roseberrycontainers.com/container-10ft-new.jpg',
         brand: { '@type': 'Brand', name: 'Roseberry Containers' },
         offers: {
           '@type': 'Offer',

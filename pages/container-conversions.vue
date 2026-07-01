@@ -253,13 +253,13 @@ useHead({
     { name: 'description', content: 'Bespoke shipping container conversions including home offices, business premises, food stalls and more. Full and partial conversions available from Roseberry Containers.' },
     { property: 'og:title', content: 'Container Conversions | Roseberry Containers' },
     { property: 'og:description', content: 'Bespoke shipping container conversions — offices, shops, catering units and more. Full and partial conversions with UK-wide delivery.' },
-    { property: 'og:url', content: 'https://roseberrycontainers.com/container-conversions' },
-    { property: 'og:image', content: 'https://roseberrycontainers.com/logo.jpg' },
+    { property: 'og:url', content: 'https://www.roseberrycontainers.com/container-conversions' },
+    { property: 'og:image', content: 'https://www.roseberrycontainers.com/logo.jpg' },
     { property: 'og:type', content: 'website' },
     { property: 'og:locale', content: 'en_GB' },
   ],
   link: [
-    { rel: 'canonical', href: 'https://roseberrycontainers.com/container-conversions' }
+    { rel: 'canonical', href: 'https://www.roseberrycontainers.com/container-conversions' }
   ],
   script: [
     {
@@ -272,7 +272,7 @@ useHead({
         provider: {
           '@type': 'LocalBusiness',
           name: 'Roseberry Containers',
-          url: 'https://roseberrycontainers.com',
+          url: 'https://www.roseberrycontainers.com',
           telephone: '+447793251550',
           address: {
             '@type': 'PostalAddress',
@@ -283,7 +283,7 @@ useHead({
           },
         },
         areaServed: { '@type': 'Country', name: 'United Kingdom' },
-        url: 'https://roseberrycontainers.com/container-conversions',
+        url: 'https://www.roseberrycontainers.com/container-conversions',
         serviceType: 'Container Conversion',
       })
     },

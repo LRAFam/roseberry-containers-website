@@ -130,7 +130,7 @@ import { DEPOT_COUNT } from '~/utils/depots'
 
 useHead({
   link: [
-    { rel: 'canonical', href: 'https://roseberrycontainers.com/' }
+    { rel: 'canonical', href: 'https://www.roseberrycontainers.com/' }
   ],
   script: [
     {
@@ -140,10 +140,10 @@ useHead({
         '@type': ['LocalBusiness', 'Store'],
         name: 'Roseberry Containers',
         description: 'Buy shipping containers — new 1-trip and quality used containers. Container hire, self storage and bespoke conversions. Nationwide delivery across the UK.',
-        url: 'https://roseberrycontainers.com',
+        url: 'https://www.roseberrycontainers.com',
         telephone: '+447793251550',
         email: 'james@roseberrycontainers.com',
-        image: 'https://roseberrycontainers.com/logo.jpg',
+        image: 'https://www.roseberrycontainers.com/logo.jpg',
         priceRange: '££',
         aggregateRating: aggregateRatingSchema(),
         address: {
@@ -155,7 +155,7 @@ useHead({
         ],
         hasMap: 'https://maps.google.com/?q=Roseberry+Containers+Middlesbrough',
         sameAs: [
-          'https://roseberrycontainers.com',
+          'https://www.roseberrycontainers.com',
           'https://www.trustpilot.com/review/roseberrycontainers.com',
         ],
       })

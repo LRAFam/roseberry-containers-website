@@ -1,4 +1,4 @@
-export const SITE_URL = 'https://roseberrycontainers.com'
+export const SITE_URL = 'https://www.roseberrycontainers.com'
 
 export type DepotNearby = {
   slug: string

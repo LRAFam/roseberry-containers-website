@@ -97,7 +97,7 @@
 <script setup lang="ts">
 import { containerSalesFaqs, faqPageSchema } from '~/utils/container-sales-seo'
 
-const canonical = 'https://roseberrycontainers.com/guides/shipping-container-prices-uk'
+const canonical = 'https://www.roseberrycontainers.com/guides/shipping-container-prices-uk'
 
 const priceTable = [
   { size: '10ft Container', used: 'Refurb from £1,650 + VAT', new: 'From £2,750 + VAT', link: '/container-sales/10ft-containers' },
@@ -129,7 +129,7 @@ useHead({
     { property: 'og:title', content: 'Shipping Container Prices UK | Roseberry Containers' },
     { property: 'og:description', content: 'UK shipping container price guide — typical costs for 10ft, 20ft and 40ft containers by condition, plus delivery.' },
     { property: 'og:url', content: canonical },
-    { property: 'og:image', content: 'https://roseberrycontainers.com/logo.jpg' },
+    { property: 'og:image', content: 'https://www.roseberrycontainers.com/logo.jpg' },
     { property: 'og:type', content: 'article' },
     { property: 'og:locale', content: 'en_GB' },
     { name: 'twitter:card', content: 'summary_large_image' },

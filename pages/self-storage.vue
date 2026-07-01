@@ -280,13 +280,13 @@ useHead({
     { name: 'description', content: 'Secure self storage in Teesside at Roseberry Containers. 24/7 CCTV monitored, flexible rental periods, 10ft, 20ft and 40ft units available. Call today to check availability.' },
     { property: 'og:title', content: 'Self Storage Teesside | Roseberry Containers' },
     { property: 'og:description', content: 'Secure self storage in Teesside. 24/7 CCTV monitored, flexible rentals, drive-up access. 10ft, 20ft and 40ft units available.' },
-    { property: 'og:url', content: 'https://roseberrycontainers.com/self-storage' },
-    { property: 'og:image', content: 'https://roseberrycontainers.com/logo.jpg' },
+    { property: 'og:url', content: 'https://www.roseberrycontainers.com/self-storage' },
+    { property: 'og:image', content: 'https://www.roseberrycontainers.com/logo.jpg' },
     { property: 'og:type', content: 'website' },
     { property: 'og:locale', content: 'en_GB' },
   ],
   link: [
-    { rel: 'canonical', href: 'https://roseberrycontainers.com/self-storage' }
+    { rel: 'canonical', href: 'https://www.roseberrycontainers.com/self-storage' }
   ],
   script: [
     {
@@ -299,7 +299,7 @@ useHead({
         provider: {
           '@type': 'LocalBusiness',
           name: 'Roseberry Containers',
-          url: 'https://roseberrycontainers.com',
+          url: 'https://www.roseberrycontainers.com',
           telephone: '+447793251550',
           address: {
             '@type': 'PostalAddress',
@@ -310,7 +310,7 @@ useHead({
           },
         },
         areaServed: { '@type': 'Place', name: 'Teesside, Middlesbrough' },
-        url: 'https://roseberrycontainers.com/self-storage',
+        url: 'https://www.roseberrycontainers.com/self-storage',
         serviceType: 'Self Storage',
       })
     },

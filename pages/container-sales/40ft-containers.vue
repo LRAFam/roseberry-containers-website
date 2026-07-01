@@ -17,7 +17,7 @@
 import { containerSalesFaqs, faqPageSchema, localBusinessProvider } from '~/utils/container-sales-seo'
 import { DEPOT_COUNT } from '~/utils/depots'
 
-const canonical = 'https://roseberrycontainers.com/container-sales/40ft-containers'
+const canonical = 'https://www.roseberrycontainers.com/container-sales/40ft-containers'
 
 const bodyParagraphs = [
   'The 40ft shipping container offers the largest standard capacity — roughly double the storage volume of a 20ft unit. It is the go-to choice for large-scale industrial storage, logistics operations and ambitious container conversion projects.',
@@ -67,13 +67,13 @@ useHead({
     { property: 'og:title', content: 'Buy 40ft Shipping Containers UK | Roseberry Containers' },
     { property: 'og:description', content: 'Buy 40ft shipping containers — standard and hi-cube, new 1-trip and quality used with nationwide UK delivery.' },
     { property: 'og:url', content: canonical },
-    { property: 'og:image', content: 'https://roseberrycontainers.com/container-40ft-new.jpg' },
+    { property: 'og:image', content: 'https://www.roseberrycontainers.com/container-40ft-new.jpg' },
     { property: 'og:type', content: 'website' },
     { property: 'og:locale', content: 'en_GB' },
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:title', content: 'Buy 40ft Shipping Containers UK | Roseberry Containers' },
     { name: 'twitter:description', content: '40ft shipping containers for sale with nationwide UK delivery.' },
-    { name: 'twitter:image', content: 'https://roseberrycontainers.com/container-40ft-new.jpg' },
+    { name: 'twitter:image', content: 'https://www.roseberrycontainers.com/container-40ft-new.jpg' },
   ],
   link: [{ rel: 'canonical', href: canonical }],
   script: [
@@ -84,7 +84,7 @@ useHead({
         '@type': 'Product',
         name: '40ft Shipping Container',
         description: 'Buy new 1-trip and quality used 40ft shipping containers with nationwide UK delivery.',
-        image: 'https://roseberrycontainers.com/container-40ft-new.jpg',
+        image: 'https://www.roseberrycontainers.com/container-40ft-new.jpg',
         brand: { '@type': 'Brand', name: 'Roseberry Containers' },
         offers: {
           '@type': 'Offer',

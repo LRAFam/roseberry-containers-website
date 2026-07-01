@@ -1,3 +1,5 @@
+import { SITE_URL } from './depots'
+
 export const TRUSTPILOT_RATING = {
   ratingValue: 4.3,
   reviewCount: 10,
@@ -77,9 +79,9 @@ export function localBusinessProvider() {
   return {
     '@type': 'LocalBusiness',
     name: 'Roseberry Containers',
-    url: 'https://roseberrycontainers.com',
+    url: SITE_URL,
     telephone: '+447793251550',
-    image: 'https://roseberrycontainers.com/logo.jpg',
+    image: `${SITE_URL}/logo.jpg`,
     aggregateRating: aggregateRatingSchema(),
     address: {
       '@type': 'PostalAddress',
@@ -130,25 +132,25 @@ export function depotBreadcrumbSchema(depot: Pick<DepotSchemaInput, 'slug' | 'na
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: 'https://roseberrycontainers.com',
+        item: SITE_URL,
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Container Sales',
-        item: 'https://roseberrycontainers.com/container-sales',
+        item: `${SITE_URL}/container-sales`,
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: 'Nationwide Depots',
-        item: 'https://roseberrycontainers.com/container-sales/nationwide',
+        item: `${SITE_URL}/container-sales/nationwide`,
       },
       {
         '@type': 'ListItem',
         position: 4,
         name: depot.name,
-        item: `https://roseberrycontainers.com/depots/${depot.slug}`,
+        item: `${SITE_URL}/depots/${depot.slug}`,
       },
     ],
   }
@@ -164,9 +166,9 @@ export function depotLocalBusinessSchema(depot: DepotSchemaInput) {
     '@type': 'LocalBusiness',
     name: `Roseberry Containers — ${depot.name}`,
     description: `Buy shipping containers near ${depot.name}, ${depot.region}. Roseberry Containers supply 10ft, 20ft and 40ft containers with fast delivery.`,
-    url: `https://roseberrycontainers.com/depots/${depot.slug}`,
+    url: `${SITE_URL}/depots/${depot.slug}`,
     telephone: '+447793251550',
-    image: 'https://roseberrycontainers.com/logo.jpg',
+    image: `${SITE_URL}/logo.jpg`,
     address: {
       '@type': 'PostalAddress',
       ...(depot.streetAddress ? { streetAddress: depot.streetAddress } : {}),
@@ -179,7 +181,7 @@ export function depotLocalBusinessSchema(depot: DepotSchemaInput) {
     parentOrganization: {
       '@type': 'Organization',
       name: 'Roseberry Containers',
-      url: 'https://roseberrycontainers.com',
+      url: SITE_URL,
     },
     aggregateRating: aggregateRatingSchema(),
   }

@@ -185,7 +185,7 @@ useHead({
     { name: 'description', content: `Buy shipping containers nationwide with Roseberry Containers. ${DEPOT_COUNT} UK depots at ${depotNamesList()}. 20ft from £950 + VAT. Fast delivery.` }
   ],
   link: [
-    { rel: 'canonical', href: 'https://roseberrycontainers.com/container-sales/nationwide' }
+    { rel: 'canonical', href: 'https://www.roseberrycontainers.com/container-sales/nationwide' }
   ]
 })
 </script>

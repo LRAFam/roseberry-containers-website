@@ -17,7 +17,7 @@
 import { containerSalesFaqs, faqPageSchema, localBusinessProvider } from '~/utils/container-sales-seo'
 import { DEPOT_COUNT } from '~/utils/depots'
 
-const canonical = 'https://roseberrycontainers.com/container-sales/20ft-containers'
+const canonical = 'https://www.roseberrycontainers.com/container-sales/20ft-containers'
 
 const bodyParagraphs = [
   'The 20ft shipping container is the industry standard — holding roughly the equivalent of a 3-bedroom home in volume. It is the most popular size for secure on-site storage, construction projects, business stock and container conversions across the UK.',
@@ -65,13 +65,13 @@ useHead({
     { property: 'og:title', content: 'Buy 20ft Shipping Containers UK | Roseberry Containers' },
     { property: 'og:description', content: 'Buy new 1-trip and used 20ft shipping containers with nationwide UK delivery. Same-day response, transparent pricing.' },
     { property: 'og:url', content: canonical },
-    { property: 'og:image', content: 'https://roseberrycontainers.com/container-20ft-new.jpg' },
+    { property: 'og:image', content: 'https://www.roseberrycontainers.com/container-20ft-new.jpg' },
     { property: 'og:type', content: 'website' },
     { property: 'og:locale', content: 'en_GB' },
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:title', content: 'Buy 20ft Shipping Containers UK | Roseberry Containers' },
     { name: 'twitter:description', content: 'New 1-trip and quality used 20ft shipping containers with nationwide UK delivery.' },
-    { name: 'twitter:image', content: 'https://roseberrycontainers.com/container-20ft-new.jpg' },
+    { name: 'twitter:image', content: 'https://www.roseberrycontainers.com/container-20ft-new.jpg' },
   ],
   link: [{ rel: 'canonical', href: canonical }],
   script: [
@@ -82,7 +82,7 @@ useHead({
         '@type': 'Product',
         name: '20ft Shipping Container',
         description: 'Buy new 1-trip and quality used 20ft shipping containers with nationwide UK delivery.',
-        image: 'https://roseberrycontainers.com/container-20ft-new.jpg',
+        image: 'https://www.roseberrycontainers.com/container-20ft-new.jpg',
         brand: { '@type': 'Brand', name: 'Roseberry Containers' },
         offers: {
           '@type': 'Offer',

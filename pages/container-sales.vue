@@ -481,17 +481,17 @@ useHead({
     { name: 'description', content: `Buy new 1-trip and quality used 10ft, 20ft and 40ft shipping containers from Roseberry Containers. 20ft from £950 + VAT, ${DEPOT_COUNT} UK depots, nationwide delivery. Get a free quote today.` },
     { property: 'og:title', content: 'Buy Shipping Containers UK | Roseberry Containers' },
     { property: 'og:description', content: 'Buy new 1-trip and quality used 10ft, 20ft and 40ft shipping containers with nationwide UK delivery and transparent pricing.' },
-    { property: 'og:url', content: 'https://roseberrycontainers.com/container-sales' },
-    { property: 'og:image', content: 'https://roseberrycontainers.com/container-20ft-new.jpg' },
+    { property: 'og:url', content: 'https://www.roseberrycontainers.com/container-sales' },
+    { property: 'og:image', content: 'https://www.roseberrycontainers.com/container-20ft-new.jpg' },
     { property: 'og:type', content: 'website' },
     { property: 'og:locale', content: 'en_GB' },
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:title', content: 'Buy Shipping Containers UK | Roseberry Containers' },
     { name: 'twitter:description', content: 'New 1-trip and quality used shipping containers. 10ft, 20ft, 40ft sizes. Nationwide delivery.' },
-    { name: 'twitter:image', content: 'https://roseberrycontainers.com/container-20ft-new.jpg' },
+    { name: 'twitter:image', content: 'https://www.roseberrycontainers.com/container-20ft-new.jpg' },
   ],
   link: [
-    { rel: 'canonical', href: 'https://roseberrycontainers.com/container-sales' }
+    { rel: 'canonical', href: 'https://www.roseberrycontainers.com/container-sales' }
   ],
   script: [
     {
@@ -503,12 +503,12 @@ useHead({
         description: 'Buy new 1-trip and quality used 10ft, 20ft and 40ft shipping containers with nationwide delivery across the UK.',
         provider: localBusinessProvider(),
         areaServed: { '@type': 'Country', name: 'United Kingdom' },
-        url: 'https://roseberrycontainers.com/container-sales',
+        url: 'https://www.roseberrycontainers.com/container-sales',
         serviceType: 'Shipping Container Sales',
         offers: [
-          { '@type': 'Offer', name: '10ft Shipping Container', url: 'https://roseberrycontainers.com/container-sales/10ft-containers', description: 'New 1-trip and used 10ft containers for sale with UK delivery.' },
-          { '@type': 'Offer', name: '20ft Shipping Container', url: 'https://roseberrycontainers.com/container-sales/20ft-containers', description: 'New 1-trip and used 20ft containers for sale with UK delivery.' },
-          { '@type': 'Offer', name: '40ft Shipping Container', url: 'https://roseberrycontainers.com/container-sales/40ft-containers', description: 'New 1-trip and used 40ft containers for sale with UK delivery.' },
+          { '@type': 'Offer', name: '10ft Shipping Container', url: 'https://www.roseberrycontainers.com/container-sales/10ft-containers', description: 'New 1-trip and used 10ft containers for sale with UK delivery.' },
+          { '@type': 'Offer', name: '20ft Shipping Container', url: 'https://www.roseberrycontainers.com/container-sales/20ft-containers', description: 'New 1-trip and used 20ft containers for sale with UK delivery.' },
+          { '@type': 'Offer', name: '40ft Shipping Container', url: 'https://www.roseberrycontainers.com/container-sales/40ft-containers', description: 'New 1-trip and used 40ft containers for sale with UK delivery.' },
         ],
       })
     },

@@ -217,7 +217,7 @@ useHead(() => {
     return {
       title: 'Depot | Roseberry Containers',
       meta: [{ name: 'description', content: 'Roseberry Containers — nationwide depot network.' }],
-      link: [{ rel: 'canonical', href: 'https://roseberrycontainers.com/container-sales/nationwide' }],
+      link: [{ rel: 'canonical', href: 'https://www.roseberrycontainers.com/container-sales/nationwide' }],
     }
   }
 

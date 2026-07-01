@@ -11,7 +11,7 @@ interface SEOConfig {
 export function useSEO() {
   const config = useRuntimeConfig()
   const route = useRoute()
-  const siteUrl = config.public.siteUrl || 'https://roseberrycontainers.com'
+  const siteUrl = config.public.siteUrl || 'https://www.roseberrycontainers.com'
 
   function setPageSEO(seo: SEOConfig) {
     const url = seo.url || `${siteUrl}${route.path}`
