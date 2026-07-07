@@ -36,12 +36,12 @@ export function useAdminApi() {
     return res
   }
 
-  /** Same-origin website backend (CRM, blog, SEO analytics). */
+  /** Same-origin website backend — blog, SEO, CRM admin. Never use for AI assistant routes. */
   function siteFetch(path: string, init: RequestInit = {}) {
     return adminFetch(path, init, 'site')
   }
 
-  /** Roseberry Assistant API (invoice PDFs, chat widget, contact form). */
+  /** Public site only: invoice PDF downloads from assistant file server. Not used for admin CMS. */
   function assistantFetch(path: string, init: RequestInit = {}) {
     return adminFetch(path, init, 'assistant')
   }

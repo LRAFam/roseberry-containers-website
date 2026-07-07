@@ -4,7 +4,7 @@
       <div>
         <h1 class="text-2xl font-bold text-gray-900">Blog</h1>
         <p class="text-gray-500 text-sm mt-1">
-          {{ stats.total }} posts — {{ stats.published }} published, {{ stats.draft }} drafts
+          Website CMS — {{ stats.total }} posts ({{ stats.published }} published, {{ stats.draft }} drafts). Not part of the AI assistant.
         </p>
       </div>
       <button class="btn-primary text-sm" @click="openCreate">+ New Post</button>

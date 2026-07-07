@@ -15,7 +15,26 @@ export function useAdminOperations() {
   ] as const
 
   type TabId = typeof tabs[number]['id']
+  const route = useRoute()
+  const router = useRouter()
   const activeTab = ref<TabId>('leads')
+
+  const validTabIds = tabs.map((t) => t.id)
+
+  function syncTabFromRoute() {
+    const q = route.query.tab
+    if (typeof q === 'string' && validTabIds.includes(q as TabId)) {
+      activeTab.value = q as TabId
+    }
+  }
+
+  watch(activeTab, (tab) => {
+    if (route.path === '/admin' && route.query.tab !== tab) {
+      router.replace({ query: { tab } })
+    }
+  })
+
+  watch(() => route.query.tab, () => syncTabFromRoute())
 
   const stats = ref<any>(null)
 
@@ -295,6 +314,7 @@ export function useAdminOperations() {
   }
 
   async function loadAll() {
+    syncTabFromRoute()
     await Promise.all([
       fetchStats(), fetchLeads(), fetchCustomers(), fetchStock(),
       fetchFollowups(), fetchHaulage(), fetchInvoices(), fetchCalls(),

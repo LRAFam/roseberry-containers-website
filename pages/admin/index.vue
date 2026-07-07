@@ -1,6 +1,8 @@
 <template>
   <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 py-6 w-full flex flex-col gap-6">
 
+      <AdminQuickNav />
+
       <!-- ── Stats Overview ── -->
       <section v-if="stats">
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">

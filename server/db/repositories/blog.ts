@@ -245,18 +245,28 @@ export async function incrementBlogViewCount(clientId: string, slug: string): Pr
   )
 }
 
+const EMPTY_BLOG_STATS = { total: 0, published: 0, draft: 0 }
+
 export async function getBlogStats(clientId: string): Promise<{ total: number; published: number; draft: number }> {
-  const row = await queryOne<{ total: string; published: string; draft: string }>(
-    `SELECT
-      COUNT(*)::TEXT AS total,
-      COUNT(*) FILTER (WHERE status = 'published')::TEXT AS published,
-      COUNT(*) FILTER (WHERE status = 'draft')::TEXT AS draft
-     FROM blog_posts WHERE client_id = $1`,
-    [clientId],
-  )
-  return {
-    total: parseInt(row?.total ?? '0', 10),
-    published: parseInt(row?.published ?? '0', 10),
-    draft: parseInt(row?.draft ?? '0', 10),
+  try {
+    const row = await queryOne<{ total: string; published: string; draft: string }>(
+      `SELECT
+        COUNT(*)::TEXT AS total,
+        COUNT(*) FILTER (WHERE status = 'published')::TEXT AS published,
+        COUNT(*) FILTER (WHERE status = 'draft')::TEXT AS draft
+       FROM blog_posts WHERE client_id = $1`,
+      [clientId],
+    )
+    return {
+      total: parseInt(row?.total ?? '0', 10),
+      published: parseInt(row?.published ?? '0', 10),
+      draft: parseInt(row?.draft ?? '0', 10),
+    }
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : ''
+    if (message.includes('blog_posts') && message.includes('does not exist')) {
+      return EMPTY_BLOG_STATS
+    }
+    throw err
   }
 }

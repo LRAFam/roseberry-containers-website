@@ -2,7 +2,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 py-6 space-y-6">
     <div>
       <h1 class="text-2xl font-bold text-gray-900">Website Analytics</h1>
-      <p class="text-gray-500 text-sm mt-1">Track how the site is performing and where enquiries come from.</p>
+      <p class="text-gray-500 text-sm mt-1">Website CMS — traffic, SEO and blog stats (separate from the AI assistant).</p>
     </div>
 
     <div v-if="loading" class="card py-16 text-center text-gray-400 text-sm">Loading stats…</div>
