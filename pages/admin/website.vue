@@ -27,6 +27,8 @@
         </div>
       </div>
 
+      <AdminGrowthPanel />
+
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <div class="card p-6">
           <h2 class="font-semibold text-gray-900 mb-2">Visitor Analytics</h2>
@@ -57,23 +59,12 @@
         </div>
 
         <div class="card p-6">
-          <h2 class="font-semibold text-gray-900 mb-2">Search Console (SEO)</h2>
-          <p class="text-sm text-gray-500 mb-4">
-            See which Google searches bring people to your site — impressions, clicks, and average position.
-          </p>
-          <ul class="text-sm text-gray-600 space-y-2 mb-4">
-            <li>• Verify <strong>roseberrycontainers.com</strong> in Google Search Console</li>
-            <li>• Submit your sitemap: <a href="/sitemap.xml" target="_blank" class="text-emerald-600 hover:underline">/sitemap.xml</a></li>
-            <li>• Check indexing for blog posts and container sales pages</li>
+          <h2 class="font-semibold text-gray-900 mb-2">Quick links</h2>
+          <ul class="text-sm text-gray-600 space-y-2">
+            <li>• Submit sitemap: <a href="/sitemap.xml" target="_blank" class="text-emerald-600 hover:underline">/sitemap.xml</a></li>
+            <li>• <a href="https://search.google.com/search-console" target="_blank" rel="noopener noreferrer" class="text-emerald-600 hover:underline">Open Search Console</a></li>
+            <li v-if="plausibleDomain">• <a :href="`https://plausible.io/${plausibleDomain}`" target="_blank" rel="noopener noreferrer" class="text-emerald-600 hover:underline">Open Plausible</a></li>
           </ul>
-          <a
-            href="https://search.google.com/search-console"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-block text-sm text-emerald-600 hover:underline font-medium"
-          >
-            Open Search Console →
-          </a>
         </div>
       </div>
 
@@ -95,7 +86,7 @@
 <script setup lang="ts">
 definePageMeta({ layout: 'admin', middleware: ['admin-auth'] })
 
-const { adminFetch } = useAdminApi()
+const { siteFetch } = useAdminApi()
 const config = useRuntimeConfig()
 const plausibleDomain = config.public.plausibleDomain
 
@@ -104,8 +95,8 @@ const stats = ref<any>(null)
 
 onMounted(async () => {
   try {
-    const res = await adminFetch('/admin/website-stats')
-    if (res.ok) stats.value = await res.json()
+    const res = await siteFetch('/admin/website-stats')
+    stats.value = res.ok ? await res.json() : null
   } finally {
     loading.value = false
   }

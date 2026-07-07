@@ -57,6 +57,7 @@
             <td class="td text-right">
               <div class="flex items-center justify-end gap-2">
                 <a v-if="post.status === 'published'" :href="`/blog/${post.slug}`" target="_blank" class="text-xs text-emerald-600 hover:underline">View</a>
+                <button class="text-xs text-gray-500 hover:text-gray-800" @click="openPreview(post)">Preview</button>
                 <button class="text-xs text-gray-500 hover:text-gray-800" @click="openEdit(post)">Edit</button>
                 <button v-if="post.status === 'draft'" class="text-xs text-emerald-600 hover:underline" @click="publishPost(post.id)">Publish</button>
                 <button class="text-xs text-red-500 hover:underline" @click="deleteTarget = post">Delete</button>
@@ -92,6 +93,11 @@
             <input v-model="form.title" type="text" class="input-field w-full" />
           </div>
           <div>
+            <label class="form-label">URL slug</label>
+            <input v-model="form.slug" type="text" placeholder="auto-generated from title if blank" class="input-field w-full" />
+            <p class="text-xs text-gray-400 mt-1">/blog/{{ slugPreview }}</p>
+          </div>
+          <div>
             <label class="form-label">Excerpt *</label>
             <textarea v-model="form.excerpt" rows="2" class="input-field w-full resize-none" />
           </div>
@@ -112,11 +118,13 @@
           </div>
           <div>
             <label class="form-label">SEO Title</label>
-            <input v-model="form.seo_title" type="text" class="input-field w-full" />
+            <input v-model="form.seo_title" type="text" maxlength="200" class="input-field w-full" />
+            <p class="text-xs text-gray-400 mt-1">{{ (form.seo_title || form.title).length }}/200 — leave blank to use post title</p>
           </div>
           <div>
             <label class="form-label">SEO Description</label>
-            <textarea v-model="form.seo_description" rows="2" class="input-field w-full resize-none" />
+            <textarea v-model="form.seo_description" rows="2" maxlength="500" class="input-field w-full resize-none" />
+            <p class="text-xs text-gray-400 mt-1">{{ (form.seo_description || form.excerpt).length }}/500 — leave blank to use excerpt</p>
           </div>
           <div>
             <label class="form-label">Featured Image URL</label>
@@ -140,6 +148,27 @@
       </div>
     </div>
 
+    <!-- Preview modal -->
+    <div v-if="preview.open" class="fixed inset-0 bg-black/50 z-50 flex items-start justify-center p-4 overflow-y-auto" @click.self="preview.open = false">
+      <div class="bg-white rounded-2xl w-full max-w-3xl my-8 shadow-xl">
+        <div class="flex items-center justify-between px-6 py-4 border-b border-gray-200">
+          <div>
+            <h2 class="text-lg font-bold text-gray-900">{{ preview.post?.title }}</h2>
+            <p class="text-xs text-gray-400 mt-1 capitalize">{{ preview.post?.category?.replace('-', ' ') }} · {{ preview.post?.status }}</p>
+          </div>
+          <button class="text-gray-400 hover:text-gray-700" @click="preview.open = false">✕</button>
+        </div>
+        <div class="p-6">
+          <p class="text-gray-500 italic mb-4 text-sm">{{ preview.post?.excerpt }}</p>
+          <article class="prose prose-sm prose-emerald max-w-none" v-html="previewHtml" />
+        </div>
+        <div class="flex justify-end gap-3 px-6 py-4 border-t border-gray-200">
+          <button class="btn-secondary text-sm" @click="preview.open = false">Close</button>
+          <button class="btn-primary text-sm" @click="openEdit(preview.post); preview.open = false">Edit</button>
+        </div>
+      </div>
+    </div>
+
     <!-- Delete confirm -->
     <div v-if="deleteTarget" class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" @click.self="deleteTarget = null">
       <div class="bg-white rounded-2xl p-6 w-full max-w-sm shadow-xl">
@@ -155,9 +184,11 @@
 </template>
 
 <script setup lang="ts">
+import { renderMarkdown } from '~/utils/markdown'
+
 definePageMeta({ layout: 'admin', middleware: ['admin-auth'] })
 
-const { adminFetch } = useAdminApi()
+const { siteFetch } = useAdminApi()
 const { showToast } = useAdminToast()
 
 const categories = [
@@ -175,9 +206,11 @@ const filters = reactive({ status: '', category: '', search: '' })
 const pagination = reactive({ current_page: 1, last_page: 1, total: 0 })
 const stats = reactive({ total: 0, published: 0, draft: 0 })
 const modal = reactive({ open: false, isNew: false, editId: null as string | null })
+const preview = reactive({ open: false, post: null as any })
 const tagsInput = ref('')
 const form = reactive({
   title: '',
+  slug: '',
   excerpt: '',
   content: '',
   category: 'guides',
@@ -197,8 +230,26 @@ function fmtDate(iso?: string) {
   return iso ? new Date(iso).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) : '—'
 }
 
+function slugify(title: string): string {
+  return title
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 120) || 'post'
+}
+
+const slugPreview = computed(() => form.slug.trim() || slugify(form.title) || 'post')
+const previewHtml = computed(() => preview.post?.content ? renderMarkdown(preview.post.content) : '')
+
+function openPreview(post: any) {
+  preview.post = post
+  preview.open = true
+}
+
 function resetForm() {
   form.title = ''
+  form.slug = ''
   form.excerpt = ''
   form.content = ''
   form.category = 'guides'
@@ -215,7 +266,7 @@ async function fetchPosts(page = 1) {
     const params = new URLSearchParams({ page: String(page), per_page: '20' })
     if (filters.status) params.set('status', filters.status)
     if (filters.search) params.set('search', filters.search)
-    const res = await adminFetch(`/admin/blog?${params}`)
+    const res = await siteFetch(`/admin/blog?${params}`)
     const data = await res.json()
     posts.value = data.posts
     Object.assign(pagination, data.pagination)
@@ -238,6 +289,7 @@ function openEdit(post: any) {
   modal.isNew = false
   modal.editId = post.id
   form.title = post.title
+  form.slug = post.slug
   form.excerpt = post.excerpt
   form.content = post.content
   form.category = post.category
@@ -256,6 +308,7 @@ function closeModal() {
 function buildPayload() {
   return {
     title: form.title,
+    slug: form.slug.trim() || undefined,
     excerpt: form.excerpt,
     content: form.content,
     category: form.category,
@@ -272,8 +325,8 @@ async function savePost() {
   try {
     const payload = buildPayload()
     const res = modal.isNew
-      ? await adminFetch('/admin/blog', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
-      : await adminFetch(`/admin/blog/${modal.editId}`, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+      ? await siteFetch('/admin/blog', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+      : await siteFetch(`/admin/blog/${modal.editId}`, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
     if (!res.ok) {
       const data = await res.json().catch(() => ({}))
       throw new Error(data.error || 'Save failed')
@@ -290,7 +343,7 @@ async function savePost() {
 
 async function publishPost(id: string) {
   try {
-    await adminFetch(`/admin/blog/${id}/publish`, { method: 'POST' })
+    await siteFetch(`/admin/blog/${id}/publish`, { method: 'POST' })
     await fetchPosts(pagination.current_page)
     showToast('Post published')
   } catch {
@@ -302,7 +355,7 @@ async function deletePost() {
   if (!deleteTarget.value) return
   saving.value = true
   try {
-    await adminFetch(`/admin/blog/${deleteTarget.value.id}`, { method: 'DELETE' })
+    await siteFetch(`/admin/blog/${deleteTarget.value.id}`, { method: 'DELETE' })
     deleteTarget.value = null
     await fetchPosts(pagination.current_page)
     showToast('Post deleted')

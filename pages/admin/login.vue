@@ -58,8 +58,6 @@
 <script setup lang="ts">
 definePageMeta({ layout: false })
 
-const config = useRuntimeConfig()
-const apiBase = config.public.apiBase || 'http://localhost:3001'
 const router = useRouter()
 
 const password = ref('')
@@ -72,17 +70,16 @@ async function login() {
   isLoading.value = true
 
   try {
-    const res = await fetch(`${apiBase}/admin/auth`, {
+    const res = await fetch('/api/admin/auth', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
       body: JSON.stringify({ password: password.value, api_key: apiKey.value }),
     })
 
-    const data = await res.json()
-
     if (!res.ok) {
-      error.value = data.error || 'Login failed. Please check your password.'
+      const data = await res.json().catch(() => ({}))
+      error.value = data.message || data.error || 'Login failed. Please check your password.'
       return
     }
 

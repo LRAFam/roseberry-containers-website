@@ -1,8 +1,14 @@
+export type AdminApiTarget = 'assistant' | 'site'
+
 export function useAdminApi() {
   const config = useRuntimeConfig()
   const apiBase = config.public.apiBase || 'http://localhost:3001'
 
-  async function adminFetch(path: string, init: RequestInit = {}): Promise<Response> {
+  async function adminFetch(
+    path: string,
+    init: RequestInit = {},
+    target: AdminApiTarget = 'site',
+  ): Promise<Response> {
     const headers: Record<string, string> = {
       ...(init.headers as Record<string, string> | undefined),
     }
@@ -12,7 +18,11 @@ export function useAdminApi() {
       if (requestHeaders.cookie) headers.cookie = requestHeaders.cookie
     }
 
-    const res = await fetch(`${apiBase}${path}`, {
+    const url = target === 'site'
+      ? (path.startsWith('/api') ? path : `/api${path}`)
+      : `${apiBase}${path}`
+
+    const res = await fetch(url, {
       ...init,
       credentials: 'include',
       headers,
@@ -26,5 +36,15 @@ export function useAdminApi() {
     return res
   }
 
-  return { apiBase, adminFetch }
+  /** Same-origin website backend (CRM, blog, SEO analytics). */
+  function siteFetch(path: string, init: RequestInit = {}) {
+    return adminFetch(path, init, 'site')
+  }
+
+  /** Roseberry Assistant API (invoice PDFs, chat widget, contact form). */
+  function assistantFetch(path: string, init: RequestInit = {}) {
+    return adminFetch(path, init, 'assistant')
+  }
+
+  return { apiBase, adminFetch: siteFetch, siteFetch, assistantFetch }
 }

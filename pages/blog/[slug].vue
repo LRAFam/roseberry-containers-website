@@ -48,14 +48,11 @@ import { renderMarkdown } from '~/utils/markdown'
 const route = useRoute()
 const config = useRuntimeConfig()
 const clientId = config.public.clientId
-const apiBase = config.public.apiBase
-const { setPageSEO, setArticleJsonLd, siteUrl } = useSEO()
+const { setPageSEO, setArticleJsonLd, setBreadcrumbJsonLd, siteUrl } = useSEO()
 
-const { data: post, pending } = await useAsyncData(`blog-${route.params.slug}`, async () => {
-  if (!clientId) return null
-  const res = await fetch(`${apiBase}/api/blog/${route.params.slug}?clientId=${clientId}`)
-  if (!res.ok) return null
-  return res.json()
+const { data: post, pending } = await useFetch(() => `/api/blog/${route.params.slug}`, {
+  query: { clientId },
+  watch: false,
 })
 
 const htmlContent = computed(() => post.value?.content ? renderMarkdown(post.value.content) : '')
@@ -80,6 +77,11 @@ watch(post, (p) => {
     publishedAt: p.published_at,
     modifiedAt: p.updated_at,
   })
+  setBreadcrumbJsonLd([
+    { name: 'Home', url: siteUrl },
+    { name: 'Blog', url: `${siteUrl}/blog` },
+    { name: p.title, url },
+  ])
 }, { immediate: true })
 
 function fmtDate(iso?: string) {

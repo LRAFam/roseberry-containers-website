@@ -38,21 +38,42 @@ npm run generate
 
 ## Environment Variables
 
-Create a `.env` file in the project root (see `.env.example` for a template). The following variables are required:
+Create a `.env` file in the project root (see `.env.example` for a template).
+
+### Server-only (never expose to the browser)
 
 | Variable | Description |
 |---|---|
-| `NUXT_PUBLIC_API_BASE` | URL of the backend API (e.g. `https://api.roseberrycontainers.co.uk`) |
-| `NUXT_PUBLIC_CLIENT_ID` | Client UUID from the Roseberry Assistant platform |
+| `DATABASE_URL` | Railway Postgres connection string — same DB as assistant in Phase 1 |
+| `SITE_JWT_SECRET` | Signs `site_token` cookie for all admin (CRM + blog) — generate with `openssl rand -hex 32` |
+| `INTERNAL_API_KEY` | Optional — auth for `POST /api/internal/leads` from assistant |
+| `GOOGLE_SERVICE_ACCOUNT_JSON` | Optional — service account JSON for Search Console sync |
+| `GSC_SITE_URL` | Optional — e.g. `sc-domain:roseberrycontainers.com` |
+
+### Public (client-side safe)
+
+| Variable | Description |
+|---|---|
+| `NUXT_PUBLIC_API_BASE` | Roseberry Assistant API URL for CRM, chat, contact (e.g. `https://roseberry-assistant-production.up.railway.app`) |
+| `NUXT_PUBLIC_CLIENT_ID` | Client UUID — scopes blog posts and public API requests |
+| `NUXT_PUBLIC_SITE_URL` | Canonical site URL for SEO and sitemaps |
+| `NUXT_PUBLIC_PLAUSIBLE_DOMAIN` | Plausible Analytics domain (optional) |
 | `NUXT_PUBLIC_TRUSTPILOT_BUSINESS_UNIT_ID` | Trustpilot Business Unit ID for the TrustBox widget |
 | `NUXT_PUBLIC_TRUSTPILOT_DOMAIN` | Your Trustpilot domain (default: `roseberrycontainers.co.uk`) |
 
-All variables are public (client-side safe). Do **not** commit `.env` — it is git-ignored.
+Do **not** commit `.env` — it is git-ignored.
+
+### Architecture note
+
+Blog, CRM admin, and website CMS APIs are served by **this Nuxt app** (`/api/blog`, `/api/admin/*`). The assistant API handles AI chat, contact form, voice/social automation, and the slim briefing dashboard only.
+
+See [docs/INTEGRATION.md](docs/INTEGRATION.md) for the full boundary.
 
 ## Pre-Deployment Checklist
 
-- [ ] Set all required environment variables on your hosting platform
-- [ ] Confirm `NUXT_PUBLIC_API_BASE` points to the production backend (`https://roseberry-assistant-production.up.railway.app` or your custom API domain)
+- [ ] Run analytics migration: `npm run db:migrate -- 002_analytics.sql`
+- [ ] Set `DATABASE_URL` and `SITE_JWT_SECRET` on the **website** deployment (Vercel/Railway)
+- [ ] Confirm `NUXT_PUBLIC_API_BASE` points to the production assistant API
 - [ ] Confirm `NUXT_PUBLIC_CLIENT_ID` is set to the Roseberry client UUID from the assistant platform
 - [ ] Confirm SMTP is configured on the backend API (see `roseberry-assistant/PRODUCTION_SETUP.md`) — contact form emails will not arrive without it
 - [ ] Verify chatbot (James) responds correctly via the production API

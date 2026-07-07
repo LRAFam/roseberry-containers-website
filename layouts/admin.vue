@@ -82,22 +82,20 @@
 <script setup lang="ts">
 const route = useRoute()
 const router = useRouter()
-const config = useRuntimeConfig()
-const apiBase = config.public.apiBase || 'http://localhost:3001'
 const collapsed = ref(false)
 const currentTime = ref('')
 
 const navGroups = [
   {
-    label: 'Sales',
+    label: 'Operations',
     links: [
       { to: '/admin', label: 'Sales Dashboard', icon: '📊' },
     ],
   },
   {
-    label: 'Website',
+    label: 'Marketing',
     links: [
-      { to: '/admin/website', label: 'Analytics', icon: '📈' },
+      { to: '/admin/website', label: 'Analytics & SEO', icon: '📈' },
       { to: '/admin/blog', label: 'Blog', icon: '📝' },
     ],
   },
@@ -111,8 +109,7 @@ const navGroups = [
 
 const pageTitle = computed(() => {
   if (route.path === '/admin') return 'Sales Overview'
-  if (route.path.startsWith('/admin/sales')) return 'Leads & CRM'
-  if (route.path.startsWith('/admin/website')) return 'Website Analytics'
+  if (route.path.startsWith('/admin/website')) return 'Analytics & SEO'
   if (route.path.startsWith('/admin/blog')) return 'Blog Management'
   if (route.path.startsWith('/admin/settings')) return 'Account Settings'
   return 'Admin'
@@ -124,7 +121,7 @@ function isActive(path: string) {
 }
 
 async function logout() {
-  await fetch(`${apiBase}/admin/logout`, { method: 'POST', credentials: 'include' })
+  await fetch('/api/admin/logout', { method: 'POST', credentials: 'include' })
   await router.push('/admin/login')
 }
 

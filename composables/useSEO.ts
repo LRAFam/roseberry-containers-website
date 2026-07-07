@@ -69,5 +69,23 @@ export function useSEO() {
     })
   }
 
-  return { setPageSEO, setArticleJsonLd, siteUrl }
+  function setBreadcrumbJsonLd(items: Array<{ name: string; url: string }>) {
+    useHead({
+      script: [{
+        type: 'application/ld+json',
+        innerHTML: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: items.map((item, index) => ({
+            '@type': 'ListItem',
+            position: index + 1,
+            name: item.name,
+            item: item.url,
+          })),
+        }),
+      }],
+    })
+  }
+
+  return { setPageSEO, setArticleJsonLd, setBreadcrumbJsonLd, siteUrl }
 }

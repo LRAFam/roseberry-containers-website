@@ -8,6 +8,8 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss'],
 
   runtimeConfig: {
+    databaseUrl: process.env.DATABASE_URL ?? '',
+    siteJwtSecret: process.env.SITE_JWT_SECRET ?? '',
     public: {
       apiBase: process.env.NUXT_PUBLIC_API_BASE ?? 'http://localhost:3001',
       clientId: process.env.NUXT_PUBLIC_CLIENT_ID ?? '',

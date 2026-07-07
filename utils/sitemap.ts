@@ -44,13 +44,12 @@ ${urls}
 `
 }
 
-export async function fetchBlogSitemapEntries(): Promise<SitemapEntry[]> {
-  const apiBase = process.env.NUXT_PUBLIC_API_BASE || 'http://localhost:3001'
+export async function fetchBlogSitemapEntries(baseUrl = ''): Promise<SitemapEntry[]> {
   const clientId = process.env.NUXT_PUBLIC_CLIENT_ID
   if (!clientId) return []
 
   try {
-    const res = await fetch(`${apiBase}/api/blog?clientId=${clientId}&per_page=100`)
+    const res = await fetch(`${baseUrl}/api/blog?clientId=${clientId}&per_page=100`)
     if (!res.ok) return []
     const data = await res.json()
     return (data.posts ?? []).map((post: { slug: string }) => ({

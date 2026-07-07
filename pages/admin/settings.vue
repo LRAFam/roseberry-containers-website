@@ -55,7 +55,7 @@
 <script setup lang="ts">
 definePageMeta({ layout: 'admin', middleware: 'admin-auth' })
 
-const { adminFetch } = useAdminApi()
+const { siteFetch } = useAdminApi()
 const { showToast } = useAdminToast()
 
 const currentPassword = ref('')
@@ -76,7 +76,7 @@ async function changePassword() {
 
   isLoading.value = true
   try {
-    const res = await adminFetch('/admin/password', {
+    const res = await siteFetch('/admin/password', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

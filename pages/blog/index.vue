@@ -57,7 +57,6 @@ import { DEPOT_COUNT, depotNamesList } from '~/utils/depots'
 
 const config = useRuntimeConfig()
 const clientId = config.public.clientId
-const apiBase = config.public.apiBase
 const { setPageSEO } = useSEO()
 
 setPageSEO({
@@ -66,11 +65,10 @@ setPageSEO({
   type: 'website',
 })
 
-const { data, pending } = await useAsyncData('blog-posts', async () => {
-  if (!clientId) return { posts: [] }
-  const res = await fetch(`${apiBase}/api/blog?clientId=${clientId}&per_page=20`)
-  if (!res.ok) return { posts: [] }
-  return res.json()
+const { data, pending } = await useFetch('/api/blog', {
+  query: { clientId, per_page: 20 },
+  default: () => ({ posts: [] }),
+  watch: false,
 })
 
 const posts = computed(() => data.value?.posts ?? [])
