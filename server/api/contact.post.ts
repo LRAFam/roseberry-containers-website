@@ -73,7 +73,17 @@ export default defineEventHandler(async (event) => {
       notes: leadNotes,
     })
 
-    const notifyEmail = process.env.NOTIFICATION_EMAIL ?? client.email
+    const notifyEmail = (
+      process.env.NOTIFICATION_EMAIL
+      || config.notificationEmail
+      || client.email
+    ).trim()
+
+    if (!notifyEmail) {
+      throw createError({ statusCode: 503, message: 'No notification email configured.' })
+    }
+
+    console.info(`[contact] Notifying ${notifyEmail} (Resend from ${process.env.RESEND_FROM_EMAIL ?? config.resendFromEmail})`)
 
     try {
       await sendContactNotification({
@@ -84,16 +94,18 @@ export default defineEventHandler(async (event) => {
         notifyEmail,
       })
       setResponseStatus(event, 201)
-      return { success: true, leadId: lead?.id, emailDelivered: true }
+      return { success: true, leadId: lead?.id, emailDelivered: true, emailSentTo: notifyEmail }
     } catch (err: unknown) {
       const errMessage = err instanceof Error ? err.message : 'Email delivery failed'
-      console.error('[contact] Email notification failed:', errMessage)
+      console.error(`[contact] Email notification failed (to ${notifyEmail}):`, errMessage)
       setResponseStatus(event, 201)
       return {
         success: true,
         leadId: lead?.id,
         emailDelivered: false,
+        emailSentTo: notifyEmail,
         warning: 'Your enquiry was received but we could not send the email notification. We will still follow up.',
+        emailError: errMessage,
       }
     }
   } catch (err: unknown) {
