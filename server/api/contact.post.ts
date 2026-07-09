@@ -74,27 +74,30 @@ export default defineEventHandler(async (event) => {
     })
 
     const notifyEmail = (
-      process.env.NOTIFICATION_EMAIL
-      || config.notificationEmail
-      || client.email
-    ).trim()
+      process.env.NOTIFICATION_EMAIL?.trim()
+      || config.notificationEmail?.trim()
+      || 'james@roseberrycontainers.com'
+      || client.email?.trim()
+    )
 
     if (!notifyEmail) {
       throw createError({ statusCode: 503, message: 'No notification email configured.' })
     }
 
-    console.info(`[contact] Notifying ${notifyEmail} (Resend from ${process.env.RESEND_FROM_EMAIL ?? config.resendFromEmail})`)
+    const fromEmail = process.env.RESEND_FROM_EMAIL?.trim() || config.resendFromEmail?.trim() || ''
+    console.info(`[contact] Notifying ${notifyEmail} via Resend from ${fromEmail}`)
 
     try {
-      await sendContactNotification({
+      const resendId = await sendContactNotification({
         from: { name, email },
         phone,
         subject,
         message,
         notifyEmail,
       })
+      console.info(`[contact] Resend accepted message ${resendId ?? '(no id)'} to ${notifyEmail}`)
       setResponseStatus(event, 201)
-      return { success: true, leadId: lead?.id, emailDelivered: true, emailSentTo: notifyEmail }
+      return { success: true, leadId: lead?.id, emailDelivered: true, emailSentTo: notifyEmail, resendId }
     } catch (err: unknown) {
       const errMessage = err instanceof Error ? err.message : 'Email delivery failed'
       console.error(`[contact] Email notification failed (to ${notifyEmail}):`, errMessage)

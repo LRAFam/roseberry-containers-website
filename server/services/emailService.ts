@@ -24,7 +24,7 @@ export async function sendContactNotification(opts: {
   subject?: string
   message: string
   notifyEmail: string
-}): Promise<void> {
+}): Promise<string | null> {
   const resend = getResend()
   if (!resend) {
     throw new Error('Email not configured — set RESEND_API_KEY and RESEND_FROM_EMAIL')
@@ -40,7 +40,7 @@ export async function sendContactNotification(opts: {
     opts.message,
   ].filter(Boolean).join('\n')
 
-  const { error } = await resend.emails.send({
+  const { data, error } = await resend.emails.send({
     from: getFromAddress(),
     to: [opts.notifyEmail],
     replyTo: opts.from.email,
@@ -59,4 +59,6 @@ export async function sendContactNotification(opts: {
   if (error) {
     throw new Error(error.message)
   }
+
+  return data?.id ?? null
 }
