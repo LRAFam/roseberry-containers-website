@@ -199,6 +199,10 @@ const isSubmitting = ref(false)
 const submitMessage = ref('')
 const submitSuccess = ref(false)
 
+function readApiError(data: Record<string, unknown>, fallback: string): string {
+  return String(data.message ?? data.statusMessage ?? data.error ?? fallback)
+}
+
 const submitForm = async () => {
   isSubmitting.value = true
   submitMessage.value = ''
@@ -210,9 +214,10 @@ const submitForm = async () => {
       body: JSON.stringify({ ...form.value, clientId }),
     })
 
+    const data = await res.json().catch(() => ({}))
+
     if (!res.ok) {
-      const data = await res.json().catch(() => ({}))
-      throw new Error(data.error ?? 'Submission failed')
+      throw new Error(readApiError(data, 'Submission failed'))
     }
 
     submitSuccess.value = true

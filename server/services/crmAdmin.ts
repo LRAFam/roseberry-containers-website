@@ -322,22 +322,71 @@ export async function createLeadFromInternal(body: {
   status?: string
   notes?: string | null
 }) {
-  return queryOne(
-    `INSERT INTO leads (client_id, customer_name, email, phone, location, container_type, source, status, notes)
-     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
-     RETURNING *`,
-    [
-      body.client_id,
-      body.customer_name,
-      body.email ?? null,
-      body.phone ?? null,
-      body.location ?? null,
-      body.container_type ?? null,
-      body.source,
-      body.status ?? 'new',
-      body.notes ?? null,
-    ],
-  )
+  const values = [
+    body.client_id,
+    body.customer_name,
+    body.email ?? null,
+    body.phone ?? null,
+    body.location ?? null,
+    body.container_type ?? null,
+    body.source,
+    body.status ?? 'new',
+    body.notes ?? null,
+  ]
+
+  try {
+    return await queryOne(
+      `INSERT INTO leads (client_id, customer_name, email, phone, location, container_type, source, status, notes)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+       RETURNING *`,
+      values,
+    )
+  } catch (err: unknown) {
+    const pgErr = err as { code?: string; message?: string }
+    const message = pgErr.message ?? ''
+
+    // Migration 011 not applied — email column missing
+    if (pgErr.code === '42703' && message.includes('email')) {
+      console.warn('[crm] leads.email column missing — inserting without email (run migration 011)')
+      return queryOne(
+        `INSERT INTO leads (client_id, customer_name, phone, location, container_type, source, status, notes)
+         VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+         RETURNING *`,
+        [
+          body.client_id,
+          body.customer_name,
+          body.phone ?? null,
+          body.location ?? null,
+          body.container_type ?? null,
+          body.source,
+          body.status ?? 'new',
+          body.notes ?? null,
+        ],
+      )
+    }
+
+    // Migration 005 not applied — website source enum missing
+    if (pgErr.code === '22P02' && message.includes('lead_source')) {
+      console.warn('[crm] lead_source enum missing website — storing as whatsapp fallback (run migration 005)')
+      return queryOne(
+        `INSERT INTO leads (client_id, customer_name, email, phone, location, container_type, source, status, notes)
+         VALUES ($1, $2, $3, $4, $5, $6, 'whatsapp', $7, $8)
+         RETURNING *`,
+        [
+          body.client_id,
+          body.customer_name,
+          body.email ?? null,
+          body.phone ?? null,
+          body.location ?? null,
+          body.container_type ?? null,
+          body.status ?? 'new',
+          body.notes ?? null,
+        ],
+      )
+    }
+
+    throw err
+  }
 }
 
 export async function changeDashboardPassword(

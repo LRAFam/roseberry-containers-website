@@ -596,9 +596,10 @@ const submitEnquiry = async () => {
       }),
     })
 
+    const data = await res.json().catch(() => ({}))
+
     if (!res.ok) {
-      const data = await res.json().catch(() => ({}))
-      throw new Error(data.error ?? 'Submission failed')
+      throw new Error(String(data.message ?? data.statusMessage ?? data.error ?? 'Submission failed'))
     }
 
     enquirySuccess.value = true
