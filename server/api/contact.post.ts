@@ -1,5 +1,5 @@
 import { createLeadFromInternal } from '../services/crmAdmin'
-import { isEmailConfigured, sendContactNotification } from '../services/emailService'
+import { isEmailConfigured, sendContactNotification, getResendConfig } from '../services/emailService'
 import { queryOne } from '../db/pool'
 
 function isValidEmail(value: string): boolean {
@@ -84,7 +84,7 @@ export default defineEventHandler(async (event) => {
       throw createError({ statusCode: 503, message: 'No notification email configured.' })
     }
 
-    const fromEmail = process.env.RESEND_FROM_EMAIL?.trim() || config.resendFromEmail?.trim() || ''
+    const { fromEmail } = getResendConfig()
     console.info(`[contact] Notifying ${notifyEmail} via Resend from ${fromEmail}`)
 
     try {
