@@ -33,28 +33,28 @@
         <div class="card p-6">
           <h2 class="font-semibold text-gray-900 mb-2">Visitor Analytics</h2>
           <p class="text-sm text-gray-500 mb-4">
-            Connect Plausible or Google Analytics to see live visitor data, top pages, and traffic sources.
+            GA4 tracks public site visits. Admin pages are excluded. View reports in Google Analytics.
           </p>
-          <div class="flex items-center gap-2 mb-4">
-            <span
-              class="chip"
-              :class="plausibleDomain ? 'chip-green' : 'chip-yellow'"
-            >
-              {{ plausibleDomain ? 'Plausible connected' : 'Analytics not configured' }}
+          <div class="flex flex-wrap items-center gap-2 mb-4">
+            <span class="chip" :class="gaId ? 'chip-green' : 'chip-yellow'">
+              {{ gaId ? 'GA4 connected' : 'GA4 not configured' }}
             </span>
+            <span v-if="plausibleDomain" class="chip chip-green">Plausible connected</span>
           </div>
           <ul class="text-sm text-gray-600 space-y-2">
-            <li>• Set <code class="text-xs bg-gray-100 px-1 rounded">NUXT_PUBLIC_PLAUSIBLE_DOMAIN=roseberrycontainers.com</code> on Vercel</li>
-            <li>• Or add Google Analytics via <code class="text-xs bg-gray-100 px-1 rounded">NUXT_PUBLIC_GA_ID</code></li>
+            <li>• Create a GA4 property at <a href="https://analytics.google.com/" target="_blank" rel="noopener noreferrer" class="text-emerald-600 hover:underline">analytics.google.com</a></li>
+            <li>• Set stream URL to <code class="text-xs bg-gray-100 px-1 rounded">https://www.roseberrycontainers.com</code></li>
+            <li>• Add to Vercel: <code class="text-xs bg-gray-100 px-1 rounded">NUXT_PUBLIC_GA_ID=G-XXXXXXXXXX</code></li>
+            <li>• Redeploy — tracking loads on all public pages (not <code class="text-xs bg-gray-100 px-1 rounded">/admin</code>)</li>
           </ul>
           <a
-            v-if="plausibleDomain"
-            href="https://plausible.io/roseberrycontainers.com"
+            v-if="gaId"
+            href="https://analytics.google.com/"
             target="_blank"
             rel="noopener noreferrer"
             class="inline-block mt-4 text-sm text-emerald-600 hover:underline font-medium"
           >
-            Open Plausible dashboard →
+            Open Google Analytics →
           </a>
         </div>
 
@@ -63,6 +63,7 @@
           <ul class="text-sm text-gray-600 space-y-2">
             <li>• Submit sitemap: <a href="/sitemap.xml" target="_blank" class="text-emerald-600 hover:underline">/sitemap.xml</a></li>
             <li>• <a href="https://search.google.com/search-console" target="_blank" rel="noopener noreferrer" class="text-emerald-600 hover:underline">Open Search Console</a></li>
+            <li v-if="gaId">• <a href="https://analytics.google.com/" target="_blank" rel="noopener noreferrer" class="text-emerald-600 hover:underline">Open Google Analytics</a></li>
             <li v-if="plausibleDomain">• <a :href="`https://plausible.io/${plausibleDomain}`" target="_blank" rel="noopener noreferrer" class="text-emerald-600 hover:underline">Open Plausible</a></li>
           </ul>
         </div>
@@ -89,6 +90,7 @@ definePageMeta({ layout: 'admin', middleware: ['admin-auth'] })
 const { siteFetch } = useAdminApi()
 const config = useRuntimeConfig()
 const plausibleDomain = config.public.plausibleDomain
+const gaId = config.public.gaId
 
 const loading = ref(true)
 const stats = ref<any>(null)

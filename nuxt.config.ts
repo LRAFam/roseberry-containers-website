@@ -10,11 +10,15 @@ export default defineNuxtConfig({
   runtimeConfig: {
     databaseUrl: process.env.DATABASE_URL ?? '',
     siteJwtSecret: process.env.SITE_JWT_SECRET ?? '',
+    resendApiKey: process.env.RESEND_API_KEY ?? '',
+    resendFromEmail: process.env.RESEND_FROM_EMAIL ?? '',
+    notificationEmail: process.env.NOTIFICATION_EMAIL ?? '',
     public: {
       apiBase: process.env.NUXT_PUBLIC_API_BASE ?? 'http://localhost:3001',
       clientId: process.env.NUXT_PUBLIC_CLIENT_ID ?? '',
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL ?? 'https://www.roseberrycontainers.com',
       plausibleDomain: process.env.NUXT_PUBLIC_PLAUSIBLE_DOMAIN ?? '',
+      gaId: process.env.NUXT_PUBLIC_GA_ID ?? '',
       trustpilotBusinessUnitId: process.env.NUXT_PUBLIC_TRUSTPILOT_BUSINESS_UNIT_ID ?? '',
       trustpilotDomain: process.env.NUXT_PUBLIC_TRUSTPILOT_DOMAIN ?? 'roseberrycontainers.com',
     }

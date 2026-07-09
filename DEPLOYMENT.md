@@ -49,15 +49,19 @@ Create a `.env` file in the project root (see `.env.example` for a template).
 | `INTERNAL_API_KEY` | Optional — auth for `POST /api/internal/leads` from assistant |
 | `GOOGLE_SERVICE_ACCOUNT_JSON` | Optional — service account JSON for Search Console sync |
 | `GSC_SITE_URL` | Optional — e.g. `sc-domain:roseberrycontainers.com` |
+| `RESEND_API_KEY` | Resend API key for contact form emails |
+| `RESEND_FROM_EMAIL` | Verified sender, e.g. `notifications@roseberrycontainers.com` |
+| `NOTIFICATION_EMAIL` | Inbox for enquiries, e.g. `james@roseberrycontainers.com` |
 
 ### Public (client-side safe)
 
 | Variable | Description |
 |---|---|
-| `NUXT_PUBLIC_API_BASE` | Roseberry Assistant API URL for CRM, chat, contact (e.g. `https://roseberry-assistant-production.up.railway.app`) |
+| `NUXT_PUBLIC_API_BASE` | Roseberry Assistant API URL for chat only (e.g. `https://roseberry-assistant-production.up.railway.app`) |
 | `NUXT_PUBLIC_CLIENT_ID` | Client UUID — scopes blog posts and public API requests |
 | `NUXT_PUBLIC_SITE_URL` | Canonical site URL for SEO and sitemaps |
 | `NUXT_PUBLIC_PLAUSIBLE_DOMAIN` | Plausible Analytics domain (optional) |
+| `NUXT_PUBLIC_GA_ID` | Google Analytics 4 measurement ID, e.g. `G-XXXXXXXXXX` (optional) |
 | `NUXT_PUBLIC_TRUSTPILOT_BUSINESS_UNIT_ID` | Trustpilot Business Unit ID for the TrustBox widget |
 | `NUXT_PUBLIC_TRUSTPILOT_DOMAIN` | Your Trustpilot domain (default: `roseberrycontainers.co.uk`) |
 
@@ -65,7 +69,7 @@ Do **not** commit `.env` — it is git-ignored.
 
 ### Architecture note
 
-Blog, CRM admin, and website CMS APIs are served by **this Nuxt app** (`/api/blog`, `/api/admin/*`). The assistant API handles AI chat, contact form, voice/social automation, and the slim briefing dashboard only.
+Blog, CRM admin, contact form, and website CMS APIs are served by **this Nuxt app** (`/api/contact`, `/api/blog`, `/api/admin/*`). The assistant API handles AI chat, voice/social automation, and the slim briefing dashboard only.
 
 See [docs/INTEGRATION.md](docs/INTEGRATION.md) for the full boundary.
 
@@ -73,9 +77,8 @@ See [docs/INTEGRATION.md](docs/INTEGRATION.md) for the full boundary.
 
 - [ ] Run analytics migration: `npm run db:migrate -- 002_analytics.sql`
 - [ ] Set `DATABASE_URL` and `SITE_JWT_SECRET` on the **website** deployment (Vercel/Railway)
-- [ ] Confirm `NUXT_PUBLIC_API_BASE` points to the production assistant API
+- [ ] Set `RESEND_API_KEY`, `RESEND_FROM_EMAIL`, and `NOTIFICATION_EMAIL` on **Vercel** — contact form emails will not arrive without them
 - [ ] Confirm `NUXT_PUBLIC_CLIENT_ID` is set to the Roseberry client UUID from the assistant platform
-- [ ] Confirm SMTP is configured on the backend API (see `roseberry-assistant/PRODUCTION_SETUP.md`) — contact form emails will not arrive without it
 - [ ] Verify chatbot (James) responds correctly via the production API
 - [ ] Test all pages and links
 - [ ] Test mobile responsiveness

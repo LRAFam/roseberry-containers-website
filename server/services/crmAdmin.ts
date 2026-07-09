@@ -74,7 +74,12 @@ export async function getWebsiteLeadStats(clientId: string) {
     leadsThisWeek: parseInt(leadsWeek?.count ?? '0', 10),
     leadsThisMonth: parseInt(leadsMonth?.count ?? '0', 10),
     websiteLeadsThisMonth: parseInt(websiteLeadsMonth?.count ?? '0', 10),
-    analyticsConfigured: !!(process.env.PLAUSIBLE_SITE_ID || process.env.GA_MEASUREMENT_ID),
+    analyticsConfigured: !!(
+      process.env.NUXT_PUBLIC_PLAUSIBLE_DOMAIN
+      || process.env.NUXT_PUBLIC_GA_ID
+      || process.env.PLAUSIBLE_SITE_ID
+      || process.env.GA_MEASUREMENT_ID
+    ),
   }
 }
 

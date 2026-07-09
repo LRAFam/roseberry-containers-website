@@ -17,9 +17,18 @@ Both services share **one Postgres database** in production today. CRM admin API
 | Endpoint | Used for |
 |----------|----------|
 | `POST {API_BASE}/api/chat` | James chat widget |
-| `POST {API_BASE}/api/contact` | Contact form submissions |
 
 Env: `NUXT_PUBLIC_API_BASE`, `NUXT_PUBLIC_CLIENT_ID`
+
+---
+
+## Website contact form (same origin)
+
+| Endpoint | Used for |
+|----------|----------|
+| `POST /api/contact` | Contact form submissions (lead + Resend email) |
+
+Env (Vercel): `RESEND_API_KEY`, `RESEND_FROM_EMAIL`, `NOTIFICATION_EMAIL`, `NUXT_PUBLIC_CLIENT_ID`, `DATABASE_URL`
 
 ---
 

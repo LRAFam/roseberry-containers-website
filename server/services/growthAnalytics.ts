@@ -171,11 +171,12 @@ export async function syncGsc(days = 28): Promise<{ status: string; rows: number
 export async function getGrowthAnalytics(periodDays = 30) {
   const configured = isGoogleConfigured()
   const plausibleDomain = process.env.NUXT_PUBLIC_PLAUSIBLE_DOMAIN || ''
+  const gaId = process.env.NUXT_PUBLIC_GA_ID || ''
 
   if (!configured) {
     return {
       period_days: periodDays,
-      configured: { gsc: false, plausible: !!plausibleDomain },
+      configured: { gsc: false, plausible: !!plausibleDomain, ga4: !!gaId },
       seo: null,
       last_sync: null,
     }
@@ -228,7 +229,7 @@ export async function getGrowthAnalytics(periodDays = 30) {
   const t = totals[0]
   return {
     period_days: periodDays,
-    configured: { gsc: true, plausible: !!plausibleDomain },
+    configured: { gsc: true, plausible: !!plausibleDomain, ga4: !!gaId },
     seo: {
       totals: {
         clicks: parseInt(t?.clicks ?? '0', 10),
