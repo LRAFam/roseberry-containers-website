@@ -1,16 +1,16 @@
 <template>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-6">
-    <div class="flex items-start justify-between gap-4 mb-6">
-      <div>
-        <h1 class="text-2xl font-bold text-gray-900">Blog</h1>
-        <p class="text-gray-500 text-sm mt-1">
-          Website CMS — {{ stats.total }} posts ({{ stats.published }} published, {{ stats.draft }} drafts). Not part of the AI assistant.
-        </p>
-      </div>
-      <button class="btn-primary text-sm" @click="openCreate">+ New Post</button>
-    </div>
+  <div class="admin-page">
+    <AdminPageHeader
+      eyebrow="Website CMS"
+      :title="'Blog'"
+      :subtitle="`${stats.total} posts · ${stats.published} published · ${stats.draft} drafts`"
+    >
+      <template #actions>
+        <button class="admin-btn-primary text-sm" @click="openCreate">+ New post</button>
+      </template>
+    </AdminPageHeader>
 
-    <div class="flex flex-wrap gap-3 mb-6">
+    <div class="admin-toolbar">
       <select v-model="filters.status" class="input-field" @change="fetchPosts(1)">
         <option value="">All statuses</option>
         <option value="published">Published</option>
@@ -28,8 +28,10 @@
       />
     </div>
 
-    <div v-if="loading" class="card py-16 text-center text-gray-400 text-sm">Loading posts…</div>
-    <div v-else-if="posts.length === 0" class="card py-16 text-center text-gray-400 text-sm">No posts found.</div>
+    <AdminEmptyState v-if="loading" title="Loading posts…" icon="📝" />
+    <AdminEmptyState v-else-if="posts.length === 0" title="No posts yet" description="Create your first blog post to improve SEO and share updates with customers." icon="📝">
+      <button class="admin-btn-primary text-sm mt-2" @click="openCreate">+ New post</button>
+    </AdminEmptyState>
     <div v-else class="card overflow-hidden">
       <table class="w-full text-sm">
         <thead class="bg-gray-50 border-b border-gray-200">
@@ -368,16 +370,3 @@ async function deletePost() {
 
 onMounted(() => fetchPosts())
 </script>
-
-<style scoped>
-.card { @apply bg-white rounded-xl shadow-sm border border-gray-200; }
-.th { @apply px-4 py-3 font-medium text-gray-500 text-xs uppercase tracking-wide; }
-.td { @apply px-4 py-3; }
-.chip { @apply text-xs px-2 py-0.5 rounded-full font-medium inline-block; }
-.chip-green { @apply bg-emerald-100 text-emerald-700; }
-.chip-gray { @apply bg-gray-100 text-gray-600; }
-.input-field { @apply border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-100 transition-colors bg-white; }
-.form-label { @apply block text-xs font-medium text-gray-600 mb-1; }
-.btn-primary { @apply bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-4 py-2 rounded-lg transition-colors disabled:opacity-50; }
-.btn-secondary { @apply bg-white hover:bg-gray-50 text-gray-700 font-medium px-4 py-2 rounded-lg border border-gray-200 transition-colors; }
-</style>

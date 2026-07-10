@@ -1,59 +1,67 @@
 <template>
-  <div class="min-h-screen bg-gray-100 flex">
+  <div class="admin-app admin-shell min-h-screen flex">
+    <!-- Sidebar -->
     <aside
-      class="sticky top-0 h-screen flex-shrink-0 flex flex-col bg-white border-r border-gray-200 transition-all duration-300 z-40"
-      :class="collapsed ? 'w-16' : 'w-60'"
+      class="sticky top-0 h-screen flex-shrink-0 flex flex-col bg-slate-950 text-slate-300 transition-all duration-300 z-40 border-r border-slate-800/80"
+      :class="collapsed ? 'w-[4.25rem]' : 'w-64'"
     >
-      <div class="flex items-center h-16 px-3 border-b border-gray-200 flex-shrink-0">
-        <NuxtLink to="/admin" class="flex items-center gap-2.5 min-w-0">
-          <img src="/logo-nav.png" alt="Roseberry" class="h-8 w-auto flex-shrink-0" />
-          <span v-if="!collapsed" class="text-sm font-bold text-gray-900 truncate">Admin</span>
+      <!-- Brand -->
+      <div class="flex items-center h-16 px-3 border-b border-slate-800/80 flex-shrink-0">
+        <NuxtLink to="/admin" class="flex items-center gap-3 min-w-0 group">
+          <div class="h-9 w-9 rounded-xl bg-emerald-500/15 ring-1 ring-emerald-500/30 flex items-center justify-center flex-shrink-0">
+            <img src="/logo-nav.png" alt="" class="h-5 w-auto brightness-0 invert opacity-90" />
+          </div>
+          <div v-if="!collapsed" class="min-w-0">
+            <p class="text-sm font-bold text-white truncate leading-tight">Roseberry</p>
+            <p class="text-[10px] text-slate-500 truncate">Client dashboard</p>
+          </div>
         </NuxtLink>
         <button
-          class="ml-auto flex-shrink-0 w-7 h-7 rounded-md flex items-center justify-center text-gray-400 hover:text-gray-600 hover:bg-gray-100"
+          class="ml-auto flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center text-slate-500 hover:text-white hover:bg-slate-800 transition-colors"
           :aria-label="collapsed ? 'Expand sidebar' : 'Collapse sidebar'"
           @click="collapsed = !collapsed"
         >
-          <svg class="w-4 h-4" :class="collapsed ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-4 h-4 transition-transform" :class="collapsed ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
           </svg>
         </button>
       </div>
 
-      <nav class="flex-1 overflow-y-auto py-3 space-y-4">
+      <!-- Navigation -->
+      <nav class="flex-1 overflow-y-auto py-4 space-y-6">
         <div v-for="group in adminNavGroups" :key="group.label">
-          <div v-if="!collapsed" class="px-4 mb-1">
-            <span class="text-[10px] font-bold uppercase tracking-widest text-gray-400">{{ group.label }}</span>
+          <div v-if="!collapsed" class="px-4 mb-2">
+            <span class="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500">{{ group.label }}</span>
           </div>
-          <div v-else class="mx-auto w-6 h-px bg-gray-200 mb-2" />
+          <div v-else class="mx-auto w-8 h-px bg-slate-800 mb-3" />
 
-          <div class="space-y-0.5 px-2">
+          <div class="space-y-1 px-2">
             <template v-for="link in group.links" :key="link.to">
               <NuxtLink
                 :to="link.to"
-                class="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm font-medium transition-colors border"
+                class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all"
                 :class="navClass(link.to, group.label)"
                 :title="collapsed ? link.label : undefined"
               >
-                <span class="text-base flex-shrink-0">{{ link.icon }}</span>
-                <span v-if="!collapsed" class="min-w-0">
-                  <span class="block truncate">{{ link.label }}</span>
-                  <span class="block text-[10px] font-normal text-gray-400 truncate">{{ link.description }}</span>
+                <span class="text-base flex-shrink-0 w-5 text-center leading-none">{{ link.icon }}</span>
+                <span v-if="!collapsed" class="min-w-0 flex-1">
+                  <span class="block truncate text-[13px]">{{ link.label }}</span>
+                  <span class="block text-[11px] font-normal text-slate-500 truncate mt-0.5">{{ link.description }}</span>
                 </span>
               </NuxtLink>
 
               <div
                 v-if="'crmTabs' in group && group.crmTabs && !collapsed && route.path === '/admin'"
-                class="ml-3 mt-0.5 space-y-0.5 border-l border-gray-200 pl-2"
+                class="ml-4 mt-1 space-y-0.5 border-l border-slate-800 pl-3"
               >
                 <NuxtLink
                   v-for="tab in crmTabs"
                   :key="tab.id"
                   :to="{ path: '/admin', query: { tab: tab.id } }"
-                  class="flex items-center gap-2 px-2 py-1.5 rounded-md text-xs font-medium transition-colors"
+                  class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-colors"
                   :class="route.path === '/admin' && route.query.tab === tab.id
-                    ? 'bg-emerald-50 text-emerald-800'
-                    : 'text-gray-500 hover:text-gray-800 hover:bg-gray-50'"
+                    ? 'bg-emerald-500/15 text-emerald-300'
+                    : 'text-slate-500 hover:text-slate-200 hover:bg-slate-900'"
                 >
                   <span>{{ tab.icon }}</span>
                   <span class="truncate">{{ tab.label }}</span>
@@ -64,18 +72,19 @@
         </div>
       </nav>
 
-      <div class="flex-shrink-0 px-2 py-3 border-t border-gray-200 space-y-1">
+      <!-- Footer -->
+      <div class="flex-shrink-0 px-2 py-3 border-t border-slate-800/80 space-y-1">
         <NuxtLink
           to="/"
-          class="flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-50 transition-colors"
+          class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-900 transition-colors"
           :class="collapsed ? 'justify-center' : ''"
           :title="collapsed ? 'View website' : undefined"
         >
           <span>🌐</span>
-          <span v-if="!collapsed">View Website</span>
+          <span v-if="!collapsed">View website</span>
         </NuxtLink>
         <button
-          class="w-full flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-50 transition-colors"
+          class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-900 transition-colors"
           :class="collapsed ? 'justify-center' : ''"
           @click="logout"
         >
@@ -85,31 +94,33 @@
       </div>
     </aside>
 
+    <!-- Main -->
     <div class="flex-1 min-w-0 flex flex-col">
-      <header class="bg-white border-b border-gray-200 min-h-14 flex items-center justify-between gap-4 px-4 sm:px-6 py-2 flex-shrink-0">
+      <header class="bg-white/80 backdrop-blur-md border-b border-slate-200/80 min-h-[3.75rem] flex items-center justify-between gap-4 px-4 sm:px-6 lg:px-8 py-3 flex-shrink-0 sticky top-0 z-30">
         <div class="min-w-0 flex items-center gap-3">
           <span
-            class="hidden sm:inline-flex text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-md flex-shrink-0"
+            class="hidden sm:inline-flex text-[10px] font-bold uppercase tracking-[0.12em] px-2.5 py-1 rounded-lg flex-shrink-0"
             :class="areaBadgeClass"
           >
             {{ areaLabel }}
           </span>
-          <div class="min-w-0">
-            <p class="text-sm font-medium text-gray-900">{{ pageTitle }}</p>
-            <p v-if="pageSubtitle" class="text-xs text-gray-500 truncate">{{ pageSubtitle }}</p>
+          <div class="min-w-0 border-l border-slate-200 pl-3 hidden sm:block">
+            <p class="text-sm font-semibold text-slate-900 truncate">{{ pageTitle }}</p>
+            <p v-if="pageSubtitle" class="text-xs text-slate-500 truncate mt-0.5">{{ pageSubtitle }}</p>
           </div>
         </div>
-        <div class="flex items-center gap-2 flex-shrink-0">
+        <div class="flex items-center gap-3 flex-shrink-0">
           <NuxtLink
             v-if="adminArea === 'website'"
             to="/admin"
-            class="hidden sm:inline-flex text-xs font-medium text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-lg hover:bg-emerald-100 transition-colors"
+            class="hidden sm:inline-flex text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-3 py-1.5 rounded-lg hover:bg-emerald-100 transition-colors"
           >
             ← AI &amp; Sales
           </NuxtLink>
-          <span class="text-xs text-gray-400 hidden md:block">{{ currentTime }}</span>
+          <time class="text-xs text-slate-400 hidden md:block tabular-nums">{{ currentTime }}</time>
         </div>
       </header>
+
       <main class="flex-1 overflow-auto">
         <slot />
       </main>
@@ -139,7 +150,7 @@ const areaLabel = computed(() => adminAreaLabel(adminArea.value))
 
 const areaBadgeClass = computed(() => {
   if (adminArea.value === 'website') return 'bg-sky-100 text-sky-800'
-  if (adminArea.value === 'account') return 'bg-gray-100 text-gray-700'
+  if (adminArea.value === 'account') return 'bg-slate-100 text-slate-700'
   return 'bg-emerald-100 text-emerald-800'
 })
 
@@ -153,13 +164,13 @@ const pageTitle = computed(() => {
 
 const pageSubtitle = computed(() => {
   if (adminArea.value === 'website') {
-    return 'Website CMS — not connected to the AI assistant'
+    return 'Website CMS — separate from the AI assistant'
   }
   if (route.path === '/admin') {
     if (route.query.tab) {
       return crmTabs.find((t) => t.id === route.query.tab)?.description
     }
-    return 'James AI, leads, stock & billing'
+    return 'Overview · leads, stock, billing & AI calls'
   }
   for (const group of adminNavGroups) {
     const link = group.links.find((l) => route.path.startsWith(l.to))
@@ -176,10 +187,10 @@ function navClass(path: string, groupLabel: string) {
 
   if (active) {
     return isWebsite
-      ? 'bg-sky-50 text-sky-900 border-sky-200'
-      : 'bg-emerald-50 text-emerald-800 border-emerald-200'
+      ? 'bg-sky-500/15 text-sky-200 ring-1 ring-sky-500/25'
+      : 'bg-emerald-500/15 text-emerald-200 ring-1 ring-emerald-500/25'
   }
-  return 'text-gray-600 hover:text-gray-900 hover:bg-gray-50 border-transparent'
+  return 'text-slate-400 hover:text-white hover:bg-slate-900'
 }
 
 async function logout() {
@@ -197,3 +208,5 @@ onMounted(() => {
   setInterval(tick, 60_000)
 })
 </script>
+
+<style src="~/assets/css/admin.css"></style>

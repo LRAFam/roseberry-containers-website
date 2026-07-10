@@ -1,11 +1,25 @@
 <template>
-  <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 py-6 w-full flex flex-col gap-6">
+  <div class="admin-page">
 
-      <AdminQuickNav />
+      <AdminPageHeader
+        v-if="!route.query.tab"
+        eyebrow="AI & Sales"
+        title="Sales dashboard"
+        subtitle="Monitor pipeline health, manage stock and billing, and review James AI call transcripts."
+      />
+
+      <AdminQuickNav v-if="!route.query.tab" />
 
       <!-- ── Stats Overview ── -->
-      <section v-if="stats">
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+      <section v-if="stats && !route.query.tab" class="space-y-4">
+        <div class="flex items-end justify-between gap-4">
+          <div>
+            <p class="admin-section-label">Performance</p>
+            <h2 class="admin-section-title mt-1">Today at a glance</h2>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3">
           <StatCard label="New Today" :value="stats.newToday" color="emerald" icon="bolt" />
           <StatCard label="Total Leads" :value="stats.totalLeads" color="blue" icon="users" />
           <StatCard label="Qualified" :value="stats.byStatus.qualified ?? 0" color="purple" icon="star" />
@@ -14,35 +28,48 @@
           <StatCard label="Revenue" :value="`£${(stats.totalRevenuePence/100).toLocaleString()}`" color="emerald" icon="pound" />
         </div>
 
-        <!-- Source breakdown -->
-        <div class="mt-3 bg-white rounded-xl border border-gray-200 px-5 py-4 shadow-sm">
-          <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">Leads by Source</p>
-          <div class="flex gap-4 items-end h-16">
-            <div v-for="(label, key) in sourceLabels" :key="key" class="flex flex-col items-center gap-1 flex-1">
-              <span class="text-xs font-bold text-gray-700">{{ stats.bySource[key] ?? 0 }}</span>
-              <div class="w-full rounded-t relative" :style="{ height: barHeight(stats.bySource[key] ?? 0) }" :class="sourceColours[key]" />
-              <span class="text-[10px] text-gray-500">{{ label }}</span>
+        <div class="admin-card-padded">
+          <div class="flex items-center justify-between gap-4 mb-4">
+            <div>
+              <p class="admin-section-label">Channels</p>
+              <h3 class="admin-section-title mt-1">Leads by source</h3>
+            </div>
+            <p class="text-sm text-slate-500">
+              Conversion <span class="font-semibold text-slate-800 tabular-nums">{{ stats.conversionRate }}%</span>
+            </p>
+          </div>
+          <div class="flex gap-3 items-end h-20">
+            <div v-for="(label, key) in sourceLabels" :key="key" class="flex flex-col items-center gap-2 flex-1 min-w-0">
+              <span class="text-sm font-bold text-slate-800 tabular-nums">{{ stats.bySource[key] ?? 0 }}</span>
+              <div class="w-full rounded-t-md relative min-h-[4px]" :style="{ height: barHeight(stats.bySource[key] ?? 0) }" :class="sourceColours[key]" />
+              <span class="text-[11px] font-medium text-slate-500 truncate w-full text-center">{{ label }}</span>
             </div>
           </div>
-          <p class="text-xs text-gray-400 mt-2">Conversion rate: <span class="font-semibold text-gray-700">{{ stats.conversionRate }}%</span></p>
         </div>
       </section>
 
       <!-- ── Tabs ── -->
-      <nav class="flex gap-1 bg-white rounded-xl p-1 shadow-sm border border-gray-200 overflow-x-auto flex-shrink-0">
-        <button
-          v-for="tab in tabs"
-          :key="tab.id"
-          @click="activeTab = tab.id"
-          :class="['px-4 py-2 rounded-lg text-sm font-medium transition-colors whitespace-nowrap',
-            activeTab === tab.id ? 'bg-emerald-600 text-white shadow-sm' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50']"
-        >
-          {{ tab.label }}
-          <span v-if="tabBadge(tab.id)" class="ml-1.5 text-xs px-1.5 py-0.5 rounded-full" :class="activeTab === tab.id ? 'bg-white/25' : 'bg-gray-100 text-gray-600'">
-            {{ tabBadge(tab.id) }}
-          </span>
-        </button>
-      </nav>
+      <div class="space-y-4">
+        <div v-if="route.query.tab" class="admin-page-header !items-center">
+          <div>
+            <p class="admin-section-label">CRM</p>
+            <h2 class="admin-section-title mt-1">{{ activeTabLabel }}</h2>
+          </div>
+          <NuxtLink to="/admin" class="admin-btn-secondary text-sm">← Back to overview</NuxtLink>
+        </div>
+
+        <nav class="admin-tabs overflow-x-auto max-w-full">
+          <button
+            v-for="tab in tabs"
+            :key="tab.id"
+            @click="activeTab = tab.id"
+            :class="['admin-tab', activeTab === tab.id ? 'admin-tab-active' : '']"
+          >
+            {{ tab.label }}
+            <span v-if="tabBadge(tab.id)" class="admin-tab-badge">{{ tabBadge(tab.id) }}</span>
+          </button>
+        </nav>
+      </div>
 
       <!-- ── LEADS ── -->
       <section v-if="activeTab === 'leads'" class="flex flex-col gap-4">
@@ -374,11 +401,11 @@
       <div v-if="selectedLead" class="fixed inset-0 z-40 bg-black/30 backdrop-blur-sm" @click.self="selectedLead = null" />
     </Transition>
     <Transition enter-active-class="transition-all duration-300 ease-out" enter-from-class="translate-x-full" enter-to-class="translate-x-0" leave-active-class="transition-all duration-200" leave-from-class="translate-x-0" leave-to-class="translate-x-full">
-      <aside v-if="selectedLead" class="fixed right-0 top-0 bottom-0 z-50 w-full sm:w-[480px] bg-white shadow-2xl flex flex-col">
-        <!-- Slide-over header -->
-        <div class="px-5 py-4 border-b border-gray-200 flex items-center justify-between flex-shrink-0">
+      <aside v-if="selectedLead" class="fixed right-0 top-0 bottom-0 z-50 w-full sm:w-[480px] bg-white shadow-2xl flex flex-col border-l border-slate-200">
+        <div class="px-5 py-4 border-b border-slate-200 flex items-center justify-between flex-shrink-0 bg-slate-50/80">
           <div>
-            <h2 class="font-bold text-gray-900">{{ selectedLead.customer_name }}</h2>
+            <p class="admin-section-label">Lead detail</p>
+            <h2 class="text-lg font-bold text-slate-900 mt-1">{{ selectedLead.customer_name }}</h2>
             <p class="text-xs text-gray-400 mt-0.5">
               <span :class="sourceChip(selectedLead.source)" class="chip mr-1">{{ selectedLead.source }}</span>
               <span :class="statusColour(selectedLead.status)" class="font-medium capitalize">{{ selectedLead.status }}</span>
@@ -431,8 +458,13 @@
 
 <script setup lang="ts">
 import { sourceLabels, sourceColours, statusColour, sourceChip, followupStatusChip, invoiceStatusChip } from '~/utils/admin-ui'
+import { crmTabs } from '~/utils/admin-nav'
 
 definePageMeta({ layout: 'admin', middleware: ['admin-auth'] })
+
+const route = useRoute()
+
+const activeTabLabel = computed(() => crmTabs.find((t) => t.id === route.query.tab)?.label ?? 'CRM')
 
 const {
   apiBase,
@@ -498,22 +530,3 @@ const {
 
 onMounted(() => loadAll())
 </script>
-
-<style scoped>
-.card { @apply bg-white rounded-xl shadow-sm border border-gray-200; }
-.th  { @apply text-left px-4 py-3 font-medium text-gray-500 text-xs uppercase tracking-wide; }
-.td  { @apply px-4 py-3; }
-.chip { @apply text-xs px-2 py-0.5 rounded-full font-medium inline-block; }
-.chip-blue   { @apply bg-blue-100 text-blue-700; }
-.chip-green  { @apply bg-emerald-100 text-emerald-700; }
-.chip-pink   { @apply bg-pink-100 text-pink-700; }
-.chip-indigo { @apply bg-indigo-100 text-indigo-700; }
-.chip-yellow { @apply bg-yellow-100 text-yellow-700; }
-.chip-gray   { @apply bg-gray-100 text-gray-600; }
-.chip-red    { @apply bg-red-100 text-red-700; }
-.chip-purple { @apply bg-purple-100 text-purple-700; }
-.input-field { @apply border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-100 transition-colors; }
-.form-label  { @apply block text-xs font-medium text-gray-600 mb-1; }
-.btn-primary { @apply bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-4 py-2 rounded-lg transition-colors disabled:opacity-50; }
-.btn-secondary { @apply bg-white hover:bg-gray-50 text-gray-700 font-medium px-4 py-2 rounded-lg border border-gray-200 transition-colors; }
-</style>

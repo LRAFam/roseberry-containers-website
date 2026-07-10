@@ -1,37 +1,48 @@
 <template>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-6 space-y-6">
-    <div>
-      <h1 class="text-2xl font-bold text-gray-900">Website Analytics</h1>
-      <p class="text-gray-500 text-sm mt-1">Website CMS — traffic, SEO and blog stats (separate from the AI assistant).</p>
-    </div>
+  <div class="admin-page space-y-6">
+    <AdminPageHeader
+      eyebrow="Website CMS"
+      title="Analytics & SEO"
+      subtitle="Traffic, Search Console performance, and blog stats — separate from the AI assistant."
+    />
 
-    <div v-if="loading" class="card py-16 text-center text-gray-400 text-sm">Loading stats…</div>
+    <AdminEmptyState v-if="loading" title="Loading analytics…" icon="📈" />
 
     <template v-else-if="stats">
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div class="card p-5">
-          <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Leads this week</p>
-          <p class="text-3xl font-bold text-gray-900 mt-2">{{ stats.leadsThisWeek }}</p>
+      <section class="space-y-4">
+        <div>
+          <p class="admin-section-label">Traffic & content</p>
+          <h2 class="admin-section-title mt-1">Website performance</h2>
         </div>
-        <div class="card p-5">
-          <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Leads this month</p>
-          <p class="text-3xl font-bold text-gray-900 mt-2">{{ stats.leadsThisMonth }}</p>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+          <div class="admin-card-padded">
+            <p class="admin-section-label">This week</p>
+            <p class="text-3xl font-bold text-slate-900 mt-2 tabular-nums">{{ stats.leadsThisWeek }}</p>
+            <p class="text-sm text-slate-500 mt-1">Leads captured</p>
+          </div>
+          <div class="admin-card-padded">
+            <p class="admin-section-label">This month</p>
+            <p class="text-3xl font-bold text-slate-900 mt-2 tabular-nums">{{ stats.leadsThisMonth }}</p>
+            <p class="text-sm text-slate-500 mt-1">All sources</p>
+          </div>
+          <div class="admin-card-padded">
+            <p class="admin-section-label">30 days</p>
+            <p class="text-3xl font-bold text-emerald-700 mt-2 tabular-nums">{{ stats.websiteLeadsThisMonth }}</p>
+            <p class="text-sm text-slate-500 mt-1">Website enquiries</p>
+          </div>
+          <div class="admin-card-padded">
+            <p class="admin-section-label">Blog</p>
+            <p class="text-3xl font-bold text-slate-900 mt-2 tabular-nums">{{ stats.blog.published }}</p>
+            <p class="text-sm text-slate-500 mt-1">Published posts</p>
+          </div>
         </div>
-        <div class="card p-5">
-          <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Website enquiries (30d)</p>
-          <p class="text-3xl font-bold text-emerald-700 mt-2">{{ stats.websiteLeadsThisMonth }}</p>
-        </div>
-        <div class="card p-5">
-          <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Published posts</p>
-          <p class="text-3xl font-bold text-gray-900 mt-2">{{ stats.blog.published }}</p>
-        </div>
-      </div>
+      </section>
 
       <AdminGrowthPanel />
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <div class="card p-6">
-          <h2 class="font-semibold text-gray-900 mb-2">Visitor Analytics</h2>
+        <div class="admin-card-padded">
+          <h2 class="admin-section-title mb-2">Visitor analytics</h2>
           <p class="text-sm text-gray-500 mb-4">
             GA4 tracks public site visits. Admin pages are excluded. View reports in Google Analytics.
           </p>
@@ -58,8 +69,8 @@
           </a>
         </div>
 
-        <div class="card p-6">
-          <h2 class="font-semibold text-gray-900 mb-2">Quick links</h2>
+        <div class="admin-card-padded">
+          <h2 class="admin-section-title mb-2">Quick links</h2>
           <ul class="text-sm text-gray-600 space-y-2">
             <li>• Submit sitemap: <a href="/sitemap.xml" target="_blank" class="text-emerald-600 hover:underline">/sitemap.xml</a></li>
             <li>• <a href="https://search.google.com/search-console" target="_blank" rel="noopener noreferrer" class="text-emerald-600 hover:underline">Open Search Console</a></li>
@@ -69,8 +80,8 @@
         </div>
       </div>
 
-      <div class="card p-6">
-        <h2 class="font-semibold text-gray-900 mb-4">Blog content</h2>
+      <div class="admin-card-padded">
+        <h2 class="admin-section-title mb-4">Blog content</h2>
         <div class="flex items-center justify-between">
           <div class="text-sm text-gray-600">
             <span class="font-semibold text-gray-900">{{ stats.blog.total }}</span> total posts —
@@ -104,11 +115,3 @@ onMounted(async () => {
   }
 })
 </script>
-
-<style scoped>
-.card { @apply bg-white rounded-xl shadow-sm border border-gray-200; }
-.chip { @apply text-xs px-2 py-0.5 rounded-full font-medium inline-block; }
-.chip-green { @apply bg-emerald-100 text-emerald-700; }
-.chip-yellow { @apply bg-yellow-100 text-yellow-700; }
-.btn-primary { @apply bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-4 py-2 rounded-lg transition-colors; }
-</style>

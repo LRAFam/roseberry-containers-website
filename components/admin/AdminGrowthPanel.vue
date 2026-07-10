@@ -1,9 +1,10 @@
 <template>
-  <section class="space-y-4">
-    <div class="flex flex-wrap items-center justify-between gap-3">
+  <section class="admin-card overflow-hidden space-y-0">
+    <div class="admin-card-header">
       <div>
-        <h2 class="font-semibold text-gray-900">Search Console</h2>
-        <p class="text-sm text-gray-500">Google search performance — synced from GSC API</p>
+        <p class="admin-section-label">SEO</p>
+        <h2 class="admin-section-title mt-1">Search Console</h2>
+        <p class="text-sm text-slate-500 mt-1">Google search performance — synced from GSC API</p>
       </div>
       <div class="flex items-center gap-2">
         <button
@@ -20,11 +21,12 @@
       </div>
     </div>
 
-    <p v-if="syncMessage" class="text-sm text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-lg px-4 py-3">{{ syncMessage }}</p>
-    <p v-if="syncError" class="text-sm text-amber-800 bg-amber-50 border border-amber-200 rounded-lg px-4 py-3">{{ syncError }}</p>
+    <p v-if="syncMessage" class="text-sm text-emerald-700 bg-emerald-50 border-b border-emerald-100 px-5 py-3">{{ syncMessage }}</p>
+    <p v-if="syncError" class="text-sm text-amber-800 bg-amber-50 border-b border-amber-100 px-5 py-3">{{ syncError }}</p>
 
-    <div v-if="!growth?.configured?.gsc" class="card p-6 text-sm text-gray-600 space-y-2">
-      <p class="font-medium text-gray-900">GSC not configured yet</p>
+    <div class="p-5 sm:p-6 space-y-4">
+    <div v-if="!growth?.configured?.gsc" class="text-sm text-slate-600 space-y-2">
+      <p class="font-semibold text-slate-900">GSC not configured yet</p>
       <p>Add these env vars on your website deployment:</p>
       <ul class="list-disc pl-5 space-y-1 text-xs font-mono text-gray-500">
         <li>GOOGLE_SERVICE_ACCOUNT_JSON</li>
@@ -35,27 +37,27 @@
 
     <template v-else-if="growth?.seo">
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
-        <div class="card p-4">
-          <p class="text-xs text-gray-500 uppercase tracking-wide">Clicks</p>
-          <p class="text-2xl font-bold text-gray-900 mt-1">{{ growth.seo.totals.clicks.toLocaleString() }}</p>
+        <div class="admin-card-padded">
+          <p class="admin-section-label">Clicks</p>
+          <p class="text-2xl font-bold text-slate-900 mt-2 tabular-nums">{{ growth.seo.totals.clicks.toLocaleString() }}</p>
         </div>
-        <div class="card p-4">
-          <p class="text-xs text-gray-500 uppercase tracking-wide">Impressions</p>
-          <p class="text-2xl font-bold text-gray-900 mt-1">{{ growth.seo.totals.impressions.toLocaleString() }}</p>
+        <div class="admin-card-padded">
+          <p class="admin-section-label">Impressions</p>
+          <p class="text-2xl font-bold text-slate-900 mt-2 tabular-nums">{{ growth.seo.totals.impressions.toLocaleString() }}</p>
         </div>
-        <div class="card p-4">
-          <p class="text-xs text-gray-500 uppercase tracking-wide">Avg CTR</p>
-          <p class="text-2xl font-bold text-gray-900 mt-1">{{ growth.seo.totals.ctr.toFixed(1) }}%</p>
+        <div class="admin-card-padded">
+          <p class="admin-section-label">Avg CTR</p>
+          <p class="text-2xl font-bold text-slate-900 mt-2 tabular-nums">{{ growth.seo.totals.ctr.toFixed(1) }}%</p>
         </div>
-        <div class="card p-4">
-          <p class="text-xs text-gray-500 uppercase tracking-wide">Avg position</p>
-          <p class="text-2xl font-bold text-gray-900 mt-1">{{ growth.seo.totals.position.toFixed(1) }}</p>
+        <div class="admin-card-padded">
+          <p class="admin-section-label">Avg position</p>
+          <p class="text-2xl font-bold text-slate-900 mt-2 tabular-nums">{{ growth.seo.totals.position.toFixed(1) }}</p>
         </div>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <div class="card p-5">
-          <h3 class="font-semibold text-gray-900 mb-3 text-sm">Top search queries</h3>
+        <div class="admin-card-padded">
+          <h3 class="admin-section-title mb-3 text-sm">Top search queries</h3>
           <div v-if="!growth.seo.top_queries.length" class="text-sm text-gray-400">No data yet — run a sync.</div>
           <table v-else class="w-full text-sm">
             <thead>
@@ -75,8 +77,8 @@
           </table>
         </div>
 
-        <div class="card p-5">
-          <h3 class="font-semibold text-gray-900 mb-3 text-sm">Top landing pages</h3>
+        <div class="admin-card-padded">
+          <h3 class="admin-section-title mb-3 text-sm">Top landing pages</h3>
           <div v-if="!growth.seo.top_pages.length" class="text-sm text-gray-400">No data yet — run a sync.</div>
           <table v-else class="w-full text-sm">
             <thead>
@@ -95,11 +97,12 @@
         </div>
       </div>
 
-      <p v-if="growth.last_sync" class="text-xs text-gray-400">
+      <p v-if="growth.last_sync" class="text-xs text-slate-400 pt-2 border-t border-slate-100">
         Last sync: {{ fmtDatetime(String(growth.last_sync)) }}
         <span v-if="growth.last_sync_status">({{ growth.last_sync_status }})</span>
       </p>
     </template>
+    </div>
   </section>
 </template>
 
@@ -151,8 +154,3 @@ async function runGscSync() {
 
 onMounted(() => refresh())
 </script>
-
-<style scoped>
-.card { @apply bg-white rounded-xl shadow-sm border border-gray-200; }
-.btn-secondary { @apply bg-white hover:bg-gray-50 text-gray-700 font-medium px-4 py-2 rounded-lg border border-gray-200 transition-colors disabled:opacity-50; }
-</style>
