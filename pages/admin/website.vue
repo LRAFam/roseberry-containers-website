@@ -6,7 +6,7 @@
       subtitle="Traffic, Search Console performance, and blog stats — separate from the AI assistant."
     />
 
-    <AdminEmptyState v-if="loading" title="Loading analytics…" icon="📈" />
+    <AdminEmptyState v-if="loading" title="Loading analytics…" icon="chart-pie" />
 
     <template v-else-if="stats">
       <section class="space-y-4">

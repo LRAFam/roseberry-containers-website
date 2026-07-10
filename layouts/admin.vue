@@ -1,11 +1,10 @@
 <template>
   <div class="admin-app admin-shell min-h-screen flex">
-    <!-- Sidebar -->
+    <!-- Desktop sidebar -->
     <aside
-      class="sticky top-0 h-screen flex-shrink-0 flex flex-col bg-slate-950 text-slate-300 transition-all duration-300 z-40 border-r border-slate-800/80"
+      class="hidden lg:flex sticky top-0 h-screen flex-shrink-0 flex-col bg-slate-950 text-slate-300 transition-all duration-300 z-40 border-r border-slate-800/80"
       :class="collapsed ? 'w-[4.25rem]' : 'w-64'"
     >
-      <!-- Brand -->
       <div class="flex items-center h-16 px-3 border-b border-slate-800/80 flex-shrink-0">
         <NuxtLink to="/admin" class="flex items-center gap-3 min-w-0 group">
           <div class="h-9 w-9 rounded-xl bg-emerald-500/15 ring-1 ring-emerald-500/30 flex items-center justify-center flex-shrink-0">
@@ -21,14 +20,11 @@
           :aria-label="collapsed ? 'Expand sidebar' : 'Collapse sidebar'"
           @click="collapsed = !collapsed"
         >
-          <svg class="w-4 h-4 transition-transform" :class="collapsed ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
-          </svg>
+          <AdminIcon name="chevron-left" size="sm" :class="collapsed ? 'rotate-180' : ''" />
         </button>
       </div>
 
-      <!-- Navigation -->
-      <nav class="flex-1 overflow-y-auto py-4 space-y-6">
+      <nav class="flex-1 overflow-y-auto py-4 space-y-5">
         <div v-for="group in adminNavGroups" :key="group.label">
           <div v-if="!collapsed" class="px-4 mb-2">
             <span class="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500">{{ group.label }}</span>
@@ -43,7 +39,7 @@
                 :class="navClass(link.to, group.label)"
                 :title="collapsed ? link.label : undefined"
               >
-                <span class="text-base flex-shrink-0 w-5 text-center leading-none">{{ link.icon }}</span>
+                <AdminIcon :name="link.icon" size="sm" class="flex-shrink-0" />
                 <span v-if="!collapsed" class="min-w-0 flex-1">
                   <span class="block truncate text-[13px]">{{ link.label }}</span>
                   <span class="block text-[11px] font-normal text-slate-500 truncate mt-0.5">{{ link.description }}</span>
@@ -63,7 +59,7 @@
                     ? 'bg-emerald-500/15 text-emerald-300'
                     : 'text-slate-500 hover:text-slate-200 hover:bg-slate-900'"
                 >
-                  <span>{{ tab.icon }}</span>
+                  <AdminIcon :name="tab.icon" size="sm" />
                   <span class="truncate">{{ tab.label }}</span>
                 </NuxtLink>
               </div>
@@ -72,15 +68,13 @@
         </div>
       </nav>
 
-      <!-- Footer -->
       <div class="flex-shrink-0 px-2 py-3 border-t border-slate-800/80 space-y-1">
         <NuxtLink
           to="/"
           class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-900 transition-colors"
           :class="collapsed ? 'justify-center' : ''"
-          :title="collapsed ? 'View website' : undefined"
         >
-          <span>🌐</span>
+          <AdminIcon name="globe" size="sm" />
           <span v-if="!collapsed">View website</span>
         </NuxtLink>
         <button
@@ -88,44 +82,36 @@
           :class="collapsed ? 'justify-center' : ''"
           @click="logout"
         >
-          <span>↩</span>
+          <AdminIcon name="logout" size="sm" />
           <span v-if="!collapsed">Sign out</span>
         </button>
       </div>
     </aside>
 
-    <!-- Main -->
     <div class="flex-1 min-w-0 flex flex-col">
-      <header class="bg-white/80 backdrop-blur-md border-b border-slate-200/80 min-h-[3.75rem] flex items-center justify-between gap-4 px-4 sm:px-6 lg:px-8 py-3 flex-shrink-0 sticky top-0 z-30">
-        <div class="min-w-0 flex items-center gap-3">
+      <header class="bg-white/90 backdrop-blur-md border-b border-slate-200/80 min-h-[3.25rem] flex items-center justify-between gap-3 px-4 sm:px-6 lg:px-8 py-2.5 flex-shrink-0 sticky top-0 z-30">
+        <div class="min-w-0 flex items-center gap-2 sm:gap-3">
+          <img src="/logo-nav.png" alt="" class="h-7 w-auto lg:hidden flex-shrink-0" />
           <span
-            class="hidden sm:inline-flex text-[10px] font-bold uppercase tracking-[0.12em] px-2.5 py-1 rounded-lg flex-shrink-0"
+            class="text-[10px] font-bold uppercase tracking-[0.12em] px-2 py-1 rounded-lg flex-shrink-0"
             :class="areaBadgeClass"
           >
             {{ areaLabel }}
           </span>
-          <div class="min-w-0 border-l border-slate-200 pl-3 hidden sm:block">
+          <div class="min-w-0 lg:border-l lg:border-slate-200 lg:pl-3">
             <p class="text-sm font-semibold text-slate-900 truncate">{{ pageTitle }}</p>
-            <p v-if="pageSubtitle" class="text-xs text-slate-500 truncate mt-0.5">{{ pageSubtitle }}</p>
+            <p v-if="pageSubtitle" class="text-xs text-slate-500 truncate hidden sm:block">{{ pageSubtitle }}</p>
           </div>
         </div>
-        <div class="flex items-center gap-3 flex-shrink-0">
-          <NuxtLink
-            v-if="adminArea === 'website'"
-            to="/admin"
-            class="hidden sm:inline-flex text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-3 py-1.5 rounded-lg hover:bg-emerald-100 transition-colors"
-          >
-            ← AI &amp; Sales
-          </NuxtLink>
-          <time class="text-xs text-slate-400 hidden md:block tabular-nums">{{ currentTime }}</time>
-        </div>
+        <time class="text-xs text-slate-400 hidden md:block tabular-nums flex-shrink-0">{{ currentTime }}</time>
       </header>
 
-      <main class="flex-1 overflow-auto">
+      <main class="flex-1 overflow-auto admin-page-mobile-pad">
         <slot />
       </main>
     </div>
 
+    <AdminMobileNav />
     <AdminToast />
   </div>
 </template>
@@ -145,7 +131,6 @@ const collapsed = ref(false)
 const currentTime = ref('')
 
 const adminArea = computed(() => adminAreaForPath(route.path))
-
 const areaLabel = computed(() => adminAreaLabel(adminArea.value))
 
 const areaBadgeClass = computed(() => {
@@ -163,14 +148,10 @@ const pageTitle = computed(() => {
 })
 
 const pageSubtitle = computed(() => {
-  if (adminArea.value === 'website') {
-    return 'Website CMS — separate from the AI assistant'
-  }
+  if (adminArea.value === 'website') return 'Website CMS'
   if (route.path === '/admin') {
-    if (route.query.tab) {
-      return crmTabs.find((t) => t.id === route.query.tab)?.description
-    }
-    return 'Overview · leads, stock, billing & AI calls'
+    if (route.query.tab) return crmTabs.find((t) => t.id === route.query.tab)?.description
+    return 'Leads, stock & billing'
   }
   for (const group of adminNavGroups) {
     const link = group.links.find((l) => route.path.startsWith(l.to))

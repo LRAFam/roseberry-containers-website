@@ -5,61 +5,61 @@
  * Website     → Nitro CMS only (blog, SEO analytics) — never calls roseberry-assistant
  */
 
+import type { AdminIconName } from './admin-icons'
+
 export type CrmTabId = 'leads' | 'customers' | 'stock' | 'followups' | 'haulage' | 'invoices' | 'calls'
 export type AdminArea = 'operations' | 'website' | 'account'
 
 export interface AdminNavLink {
   to: string
   label: string
-  icon: string
+  icon: AdminIconName
   description: string
 }
 
 export interface CrmTabLink {
   id: CrmTabId
   label: string
-  icon: string
+  icon: AdminIconName
   description: string
 }
 
 export const crmTabs: CrmTabLink[] = [
-  { id: 'leads', label: 'Leads', icon: '👥', description: 'Enquiries and pipeline' },
-  { id: 'customers', label: 'Customers', icon: '🏢', description: 'Customer records' },
-  { id: 'stock', label: 'Depot Stock', icon: '📦', description: 'Container availability' },
-  { id: 'followups', label: 'Follow-ups', icon: '⏰', description: 'AI-scheduled messages' },
-  { id: 'haulage', label: 'Haulage', icon: '🚛', description: 'Delivery quotes' },
-  { id: 'invoices', label: 'Invoices', icon: '🧾', description: 'Billing and payments' },
-  { id: 'calls', label: 'AI Calls', icon: '📞', description: 'James voice transcripts' },
+  { id: 'leads', label: 'Leads', icon: 'users', description: 'Enquiries and pipeline' },
+  { id: 'customers', label: 'Customers', icon: 'building', description: 'Customer records' },
+  { id: 'stock', label: 'Depot Stock', icon: 'cube', description: 'Container availability' },
+  { id: 'followups', label: 'Follow-ups', icon: 'clock', description: 'AI-scheduled messages' },
+  { id: 'haulage', label: 'Haulage', icon: 'truck', description: 'Delivery quotes' },
+  { id: 'invoices', label: 'Invoices', icon: 'document', description: 'Billing and payments' },
+  { id: 'calls', label: 'AI Calls', icon: 'phone', description: 'James voice transcripts' },
 ]
 
-/** Sidebar: AI assistant + sales CRM */
 export const operationsNavGroup = {
   label: 'AI & Sales',
   links: [
     {
       to: '/admin',
       label: 'Sales Dashboard',
-      icon: '📊',
+      icon: 'chart-bar',
       description: 'Leads, stock, invoices & AI calls',
     },
   ] satisfies AdminNavLink[],
   crmTabs: true,
 }
 
-/** Sidebar: website platform only (Nitro /api/admin/*) */
 export const websiteNavGroup = {
   label: 'Website',
   links: [
     {
       to: '/admin/website',
       label: 'Analytics & SEO',
-      icon: '📈',
+      icon: 'chart-pie',
       description: 'Traffic, Search Console & leads',
     },
     {
       to: '/admin/blog',
       label: 'Blog',
-      icon: '📝',
+      icon: 'newspaper',
       description: 'Posts, SEO & publishing',
     },
   ] satisfies AdminNavLink[],
@@ -71,13 +71,20 @@ export const accountNavGroup = {
     {
       to: '/admin/settings',
       label: 'Settings',
-      icon: '⚙️',
+      icon: 'cog',
       description: 'Password & account',
     },
   ] satisfies AdminNavLink[],
 }
 
 export const adminNavGroups = [operationsNavGroup, websiteNavGroup, accountNavGroup]
+
+export const mobileNavItems = [
+  { to: '/admin', label: 'Sales', icon: 'chart-bar' as AdminIconName, match: (path: string) => path === '/admin' },
+  { to: '/admin/website', label: 'Analytics', icon: 'chart-pie' as AdminIconName, match: (path: string) => path.startsWith('/admin/website') },
+  { to: '/admin/blog', label: 'Blog', icon: 'newspaper' as AdminIconName, match: (path: string) => path.startsWith('/admin/blog') },
+  { to: '/admin/settings', label: 'Account', icon: 'cog' as AdminIconName, match: (path: string) => path.startsWith('/admin/settings') },
+]
 
 export function adminAreaForPath(path: string): AdminArea {
   if (path.startsWith('/admin/website') || path.startsWith('/admin/blog')) return 'website'

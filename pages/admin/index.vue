@@ -58,13 +58,14 @@
           <NuxtLink to="/admin" class="admin-btn-secondary text-sm">← Back to overview</NuxtLink>
         </div>
 
-        <nav class="admin-tabs overflow-x-auto max-w-full">
+        <nav class="admin-tabs overflow-x-auto max-w-full flex-nowrap w-full">
           <button
-            v-for="tab in tabs"
+            v-for="tab in crmTabs"
             :key="tab.id"
             @click="activeTab = tab.id"
-            :class="['admin-tab', activeTab === tab.id ? 'admin-tab-active' : '']"
+            :class="['admin-tab flex-shrink-0', activeTab === tab.id ? 'admin-tab-active' : '']"
           >
+            <AdminIcon :name="tab.icon" size="sm" class="hidden sm:block" />
             {{ tab.label }}
             <span v-if="tabBadge(tab.id)" class="admin-tab-badge">{{ tabBadge(tab.id) }}</span>
           </button>
@@ -74,9 +75,9 @@
       <!-- ── LEADS ── -->
       <section v-if="activeTab === 'leads'" class="flex flex-col gap-4">
         <!-- Toolbar -->
-        <div class="flex flex-wrap gap-3 items-center justify-between">
-          <div class="flex gap-2 flex-wrap">
-            <input v-model="leadSearch" placeholder="Search name or phone…" class="input-field w-52" />
+        <div class="flex flex-col sm:flex-row flex-wrap gap-2 sm:gap-3 items-stretch sm:items-center justify-between">
+          <div class="grid grid-cols-1 sm:flex sm:flex-wrap gap-2 flex-1">
+            <input v-model="leadSearch" placeholder="Search name or phone…" class="input-field w-full sm:w-52" />
             <select v-model="leadStatusFilter" class="input-field">
               <option value="">All statuses</option>
               <option v-for="s in leadStatuses" :key="s" :value="s" class="capitalize">{{ s }}</option>

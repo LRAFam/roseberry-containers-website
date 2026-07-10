@@ -13,7 +13,11 @@
 }
 
 .admin-page {
-  @apply max-w-[1440px] mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 lg:py-8 flex flex-col gap-6 lg:gap-8;
+  @apply max-w-[1440px] mx-auto w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-5 lg:py-6 flex flex-col gap-4 sm:gap-5;
+}
+
+.admin-page-mobile-pad {
+  @apply pb-20 lg:pb-0;
 }
 
 .admin-page-header {
@@ -140,3 +144,68 @@
 .th { @apply admin-th; }
 .td { @apply admin-td; }
 .chip { @apply admin-chip; }
+
+/* Mobile blog editor */
+.admin-editor-overlay {
+  @apply fixed inset-0 z-[60] bg-white flex flex-col;
+}
+
+.admin-editor-header {
+  @apply flex items-center gap-2 px-3 py-3 border-b border-slate-200 bg-white flex-shrink-0;
+  padding-top: max(0.75rem, env(safe-area-inset-top));
+}
+
+.admin-editor-steps {
+  @apply flex border-b border-slate-200 bg-slate-50 flex-shrink-0;
+}
+
+.admin-editor-step {
+  @apply flex-1 py-3 text-xs font-semibold text-slate-500 border-b-2 border-transparent transition-colors;
+}
+
+.admin-editor-step-active {
+  @apply text-emerald-700 border-emerald-600 bg-white;
+}
+
+.admin-editor-body {
+  @apply flex-1 overflow-y-auto px-4 py-4 sm:px-6;
+}
+
+.admin-editor-footer {
+  @apply flex gap-2 px-4 py-3 border-t border-slate-200 bg-white flex-shrink-0;
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+}
+
+.admin-input-lg {
+  @apply text-base py-3;
+}
+
+.admin-icon-btn {
+  @apply w-10 h-10 rounded-xl flex items-center justify-center text-slate-500 hover:bg-slate-100 hover:text-slate-800 transition-colors flex-shrink-0;
+}
+
+.admin-choice-btn {
+  @apply py-3 rounded-xl border border-slate-200 text-sm font-semibold text-slate-600 bg-white transition-colors;
+}
+
+.admin-choice-btn-active {
+  @apply border-emerald-500 bg-emerald-50 text-emerald-800 ring-2 ring-emerald-500/20;
+}
+
+.admin-callout {
+  @apply rounded-xl bg-slate-50 border border-slate-200 px-4 py-3;
+}
+
+.admin-post-card {
+  @apply admin-card-padded active:bg-slate-50 transition-colors;
+}
+
+.admin-fab {
+  @apply lg:hidden fixed right-4 bottom-[4.5rem] z-40 w-14 h-14 rounded-full bg-emerald-600 text-white shadow-lg
+         flex items-center justify-center hover:bg-emerald-700 active:scale-95 transition-all;
+  margin-bottom: env(safe-area-inset-bottom, 0);
+}
+
+.admin-filter-stack {
+  @apply grid grid-cols-1 sm:grid-cols-3 gap-2 w-full;
+}

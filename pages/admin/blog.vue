@@ -2,15 +2,18 @@
   <div class="admin-page">
     <AdminPageHeader
       eyebrow="Website CMS"
-      :title="'Blog'"
+      title="Blog"
       :subtitle="`${stats.total} posts · ${stats.published} published · ${stats.draft} drafts`"
     >
       <template #actions>
-        <button class="admin-btn-primary text-sm" @click="openCreate">+ New post</button>
+        <button class="admin-btn-primary text-sm hidden sm:inline-flex" @click="openCreate">
+          <AdminIcon name="plus" size="sm" />
+          New post
+        </button>
       </template>
     </AdminPageHeader>
 
-    <div class="admin-toolbar">
+    <div class="admin-filter-stack">
       <select v-model="filters.status" class="input-field" @change="fetchPosts(1)">
         <option value="">All statuses</option>
         <option value="published">Published</option>
@@ -23,46 +26,96 @@
       <input
         v-model="filters.search"
         placeholder="Search titles…"
-        class="input-field w-56"
+        class="input-field"
         @input="debouncedSearch"
       />
     </div>
 
-    <AdminEmptyState v-if="loading" title="Loading posts…" icon="📝" />
-    <AdminEmptyState v-else-if="posts.length === 0" title="No posts yet" description="Create your first blog post to improve SEO and share updates with customers." icon="📝">
-      <button class="admin-btn-primary text-sm mt-2" @click="openCreate">+ New post</button>
+    <AdminEmptyState v-if="loading" title="Loading posts…" icon="newspaper" />
+    <AdminEmptyState
+      v-else-if="posts.length === 0"
+      title="No posts yet"
+      description="Create your first article to boost SEO and keep customers informed."
+      icon="newspaper"
+    >
+      <button class="admin-btn-primary text-sm" @click="openCreate">
+        <AdminIcon name="plus" size="sm" />
+        Write first post
+      </button>
     </AdminEmptyState>
-    <div v-else class="card overflow-hidden">
+
+    <!-- Mobile card list -->
+    <div v-else class="md:hidden space-y-3">
+      <article v-for="post in posts" :key="post.id" class="admin-post-card">
+        <div class="flex items-start justify-between gap-3">
+          <div class="min-w-0 flex-1">
+            <p class="font-semibold text-slate-900 leading-snug">{{ post.title }}</p>
+            <p class="text-xs text-slate-400 mt-1 truncate">/blog/{{ post.slug }}</p>
+          </div>
+          <span :class="post.status === 'published' ? 'chip-green' : 'chip-gray'" class="chip capitalize flex-shrink-0">{{ post.status }}</span>
+        </div>
+        <div class="flex flex-wrap gap-x-3 gap-y-1 mt-2 text-xs text-slate-500">
+          <span class="capitalize">{{ post.category?.replace('-', ' ') }}</span>
+          <span>{{ post.view_count ?? 0 }} views</span>
+          <span>{{ fmtDate(post.published_at) }}</span>
+        </div>
+        <div class="grid grid-cols-2 gap-2 mt-4">
+          <button type="button" class="admin-btn-secondary text-sm !py-2.5" @click="openEdit(post)">
+            <AdminIcon name="pencil" size="sm" />
+            Edit
+          </button>
+          <button v-if="post.status === 'draft'" type="button" class="admin-btn-primary text-sm !py-2.5" @click="publishPost(post.id)">
+            <AdminIcon name="check" size="sm" />
+            Publish
+          </button>
+          <a
+            v-else-if="post.status === 'published'"
+            :href="`/blog/${post.slug}`"
+            target="_blank"
+            class="admin-btn-secondary text-sm !py-2.5 text-center"
+          >
+            <AdminIcon name="eye" size="sm" />
+            View live
+          </a>
+          <button type="button" class="admin-btn-secondary text-sm !py-2.5 text-red-600 border-red-100" @click="deleteTarget = post">
+            <AdminIcon name="trash" size="sm" />
+            Delete
+          </button>
+        </div>
+      </article>
+    </div>
+
+    <!-- Desktop table -->
+    <div v-if="posts.length && !loading" class="hidden md:block card overflow-hidden">
       <table class="w-full text-sm">
-        <thead class="bg-gray-50 border-b border-gray-200">
+        <thead>
           <tr>
             <th class="th text-left">Title</th>
-            <th class="th text-left hidden sm:table-cell">Category</th>
+            <th class="th text-left">Category</th>
             <th class="th text-left">Status</th>
-            <th class="th text-left hidden md:table-cell">Views</th>
-            <th class="th text-left hidden lg:table-cell">Published</th>
+            <th class="th text-left">Views</th>
+            <th class="th text-left">Published</th>
             <th class="th text-right">Actions</th>
           </tr>
         </thead>
-        <tbody class="divide-y divide-gray-100">
-          <tr v-for="post in posts" :key="post.id" class="hover:bg-gray-50">
+        <tbody class="divide-y divide-slate-100">
+          <tr v-for="post in posts" :key="post.id" class="hover:bg-slate-50/80">
             <td class="td">
-              <p class="font-medium text-gray-900">{{ post.title }}</p>
-              <p class="text-xs text-gray-400 mt-0.5">/blog/{{ post.slug }}</p>
+              <p class="font-medium text-slate-900">{{ post.title }}</p>
+              <p class="text-xs text-slate-400 mt-0.5">/blog/{{ post.slug }}</p>
             </td>
-            <td class="td hidden sm:table-cell capitalize text-gray-500">{{ post.category?.replace('-', ' ') }}</td>
+            <td class="td capitalize text-slate-500">{{ post.category?.replace('-', ' ') }}</td>
             <td class="td">
               <span :class="post.status === 'published' ? 'chip-green' : 'chip-gray'" class="chip capitalize">{{ post.status }}</span>
             </td>
-            <td class="td hidden md:table-cell text-gray-500">{{ post.view_count ?? 0 }}</td>
-            <td class="td hidden lg:table-cell text-gray-400">{{ fmtDate(post.published_at) }}</td>
+            <td class="td text-slate-500 tabular-nums">{{ post.view_count ?? 0 }}</td>
+            <td class="td text-slate-400">{{ fmtDate(post.published_at) }}</td>
             <td class="td text-right">
-              <div class="flex items-center justify-end gap-2">
-                <a v-if="post.status === 'published'" :href="`/blog/${post.slug}`" target="_blank" class="text-xs text-emerald-600 hover:underline">View</a>
-                <button class="text-xs text-gray-500 hover:text-gray-800" @click="openPreview(post)">Preview</button>
-                <button class="text-xs text-gray-500 hover:text-gray-800" @click="openEdit(post)">Edit</button>
-                <button v-if="post.status === 'draft'" class="text-xs text-emerald-600 hover:underline" @click="publishPost(post.id)">Publish</button>
-                <button class="text-xs text-red-500 hover:underline" @click="deleteTarget = post">Delete</button>
+              <div class="flex items-center justify-end gap-1">
+                <button class="admin-icon-btn !w-8 !h-8" title="Edit" @click="openEdit(post)"><AdminIcon name="pencil" size="sm" /></button>
+                <button class="admin-icon-btn !w-8 !h-8" title="Preview" @click="openPreview(post)"><AdminIcon name="eye" size="sm" /></button>
+                <button v-if="post.status === 'draft'" class="admin-icon-btn !w-8 !h-8 text-emerald-600" title="Publish" @click="publishPost(post.id)"><AdminIcon name="check" size="sm" /></button>
+                <button class="admin-icon-btn !w-8 !h-8 text-red-500" title="Delete" @click="deleteTarget = post"><AdminIcon name="trash" size="sm" /></button>
               </div>
             </td>
           </tr>
@@ -70,115 +123,56 @@
       </table>
     </div>
 
-    <div v-if="pagination.last_page > 1" class="flex justify-center gap-2 mt-6">
+    <div v-if="pagination.last_page > 1" class="flex justify-center gap-2">
       <button
         v-for="page in pagination.last_page"
         :key="page"
-        class="px-3 py-1.5 rounded text-sm"
-        :class="page === pagination.current_page ? 'bg-emerald-600 text-white' : 'bg-white border border-gray-200 text-gray-600'"
+        class="min-w-[2.25rem] px-3 py-2 rounded-lg text-sm font-medium"
+        :class="page === pagination.current_page ? 'bg-emerald-600 text-white' : 'bg-white border border-slate-200 text-slate-600'"
         @click="fetchPosts(page)"
       >
         {{ page }}
       </button>
     </div>
 
-    <!-- Modal -->
-    <div v-if="modal.open" class="fixed inset-0 bg-black/50 z-50 flex items-start justify-center p-4 overflow-y-auto" @click.self="closeModal">
-      <div class="bg-white rounded-2xl w-full max-w-3xl my-8 shadow-xl">
-        <div class="flex items-center justify-between px-6 py-4 border-b border-gray-200">
-          <h2 class="text-lg font-bold text-gray-900">{{ modal.isNew ? 'New Post' : 'Edit Post' }}</h2>
-          <button class="text-gray-400 hover:text-gray-700" @click="closeModal">✕</button>
-        </div>
-        <div class="p-6 space-y-4">
-          <div>
-            <label class="form-label">Title *</label>
-            <input v-model="form.title" type="text" class="input-field w-full" />
-          </div>
-          <div>
-            <label class="form-label">URL slug</label>
-            <input v-model="form.slug" type="text" placeholder="auto-generated from title if blank" class="input-field w-full" />
-            <p class="text-xs text-gray-400 mt-1">/blog/{{ slugPreview }}</p>
-          </div>
-          <div>
-            <label class="form-label">Excerpt *</label>
-            <textarea v-model="form.excerpt" rows="2" class="input-field w-full resize-none" />
-          </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label class="form-label">Category</label>
-              <select v-model="form.category" class="input-field w-full">
-                <option v-for="c in categories" :key="c.value" :value="c.value">{{ c.label }}</option>
-              </select>
-            </div>
-            <div>
-              <label class="form-label">Status</label>
-              <select v-model="form.status" class="input-field w-full">
-                <option value="draft">Draft</option>
-                <option value="published">Published</option>
-              </select>
-            </div>
-          </div>
-          <div>
-            <label class="form-label">SEO Title</label>
-            <input v-model="form.seo_title" type="text" maxlength="200" class="input-field w-full" />
-            <p class="text-xs text-gray-400 mt-1">{{ (form.seo_title || form.title).length }}/200 — leave blank to use post title</p>
-          </div>
-          <div>
-            <label class="form-label">SEO Description</label>
-            <textarea v-model="form.seo_description" rows="2" maxlength="500" class="input-field w-full resize-none" />
-            <p class="text-xs text-gray-400 mt-1">{{ (form.seo_description || form.excerpt).length }}/500 — leave blank to use excerpt</p>
-          </div>
-          <div>
-            <label class="form-label">Featured Image URL</label>
-            <input v-model="form.featured_image" type="text" placeholder="/container-20ft.jpg" class="input-field w-full" />
-          </div>
-          <div>
-            <label class="form-label">Tags (comma-separated)</label>
-            <input v-model="tagsInput" type="text" class="input-field w-full" placeholder="containers, delivery, teesside" />
-          </div>
-          <div>
-            <label class="form-label">Content (Markdown) *</label>
-            <textarea v-model="form.content" rows="14" class="input-field w-full font-mono text-sm resize-y" />
-          </div>
-        </div>
-        <div class="flex justify-end gap-3 px-6 py-4 border-t border-gray-200">
-          <button class="btn-secondary text-sm" @click="closeModal">Cancel</button>
-          <button class="btn-primary text-sm" :disabled="saving" @click="savePost">
-            {{ saving ? 'Saving…' : modal.isNew ? 'Create Post' : 'Save Changes' }}
-          </button>
-        </div>
-      </div>
-    </div>
+    <button type="button" class="admin-fab" aria-label="New post" @click="openCreate">
+      <AdminIcon name="plus" size="lg" class="text-white" />
+    </button>
 
-    <!-- Preview modal -->
-    <div v-if="preview.open" class="fixed inset-0 bg-black/50 z-50 flex items-start justify-center p-4 overflow-y-auto" @click.self="preview.open = false">
-      <div class="bg-white rounded-2xl w-full max-w-3xl my-8 shadow-xl">
-        <div class="flex items-center justify-between px-6 py-4 border-b border-gray-200">
-          <div>
-            <h2 class="text-lg font-bold text-gray-900">{{ preview.post?.title }}</h2>
-            <p class="text-xs text-gray-400 mt-1 capitalize">{{ preview.post?.category?.replace('-', ' ') }} · {{ preview.post?.status }}</p>
-          </div>
-          <button class="text-gray-400 hover:text-gray-700" @click="preview.open = false">✕</button>
-        </div>
-        <div class="p-6">
-          <p class="text-gray-500 italic mb-4 text-sm">{{ preview.post?.excerpt }}</p>
-          <article class="prose prose-sm prose-emerald max-w-none" v-html="previewHtml" />
-        </div>
-        <div class="flex justify-end gap-3 px-6 py-4 border-t border-gray-200">
-          <button class="btn-secondary text-sm" @click="preview.open = false">Close</button>
-          <button class="btn-primary text-sm" @click="openEdit(preview.post); preview.open = false">Edit</button>
-        </div>
+    <AdminBlogEditor
+      v-if="modal.open"
+      :is-new="modal.isNew"
+      :saving="saving"
+      :form="form"
+      :tags-input="tagsInput"
+      :slug-preview="slugPreview"
+      :categories="categories"
+      @close="closeModal"
+      @save="savePost"
+      @update:tags-input="tagsInput = $event"
+    />
+
+    <!-- Preview -->
+    <div v-if="preview.open" class="admin-editor-overlay" @click.self="preview.open = false">
+      <header class="admin-editor-header">
+        <button type="button" class="admin-icon-btn" @click="preview.open = false"><AdminIcon name="x-mark" /></button>
+        <p class="flex-1 text-center text-sm font-semibold text-slate-900 truncate px-2">Preview</p>
+        <button type="button" class="admin-btn-secondary !px-3 !py-2 text-xs" @click="openEdit(preview.post); preview.open = false">Edit</button>
+      </header>
+      <div class="admin-editor-body">
+        <p class="text-slate-500 italic mb-4 text-sm">{{ preview.post?.excerpt }}</p>
+        <article class="prose prose-sm prose-emerald max-w-none" v-html="previewHtml" />
       </div>
     </div>
 
     <!-- Delete confirm -->
-    <div v-if="deleteTarget" class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" @click.self="deleteTarget = null">
-      <div class="bg-white rounded-2xl p-6 w-full max-w-sm shadow-xl">
-        <h3 class="font-bold text-lg mb-2">Delete post?</h3>
-        <p class="text-gray-500 text-sm mb-6">"{{ deleteTarget.title }}" will be permanently removed.</p>
-        <div class="flex gap-3 justify-end">
-          <button class="btn-secondary text-sm" @click="deleteTarget = null">Cancel</button>
-          <button class="btn-primary text-sm bg-red-600 hover:bg-red-700" :disabled="saving" @click="deletePost">Delete</button>
+    <div v-if="deleteTarget" class="fixed inset-0 bg-black/50 z-[70] flex items-end sm:items-center justify-center p-4" @click.self="deleteTarget = null">
+      <div class="bg-white rounded-t-2xl sm:rounded-2xl p-6 w-full max-w-sm shadow-xl">
+        <h3 class="font-bold text-lg text-slate-900 mb-2">Delete post?</h3>
+        <p class="text-slate-500 text-sm mb-6">"{{ deleteTarget.title }}" will be permanently removed.</p>
+        <div class="flex gap-3">
+          <button class="admin-btn-secondary flex-1 text-sm" @click="deleteTarget = null">Cancel</button>
+          <button class="admin-btn-primary flex-1 text-sm !bg-red-600 hover:!bg-red-700" :disabled="saving" @click="deletePost">Delete</button>
         </div>
       </div>
     </div>
@@ -323,6 +317,11 @@ function buildPayload() {
 }
 
 async function savePost() {
+  if (!form.title.trim() || !form.excerpt.trim() || !form.content.trim()) {
+    showToast('Please add a title, summary and article body', 'error')
+    return
+  }
+
   saving.value = true
   try {
     const payload = buildPayload()
