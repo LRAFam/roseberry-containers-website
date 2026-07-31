@@ -99,6 +99,7 @@ export type DepotSchemaInput = {
   streetAddress?: string
   postalCode?: string
   areasServed?: string[]
+  heroImage?: string
 }
 
 export function depotFaqs(depot: Pick<DepotSchemaInput, 'name' | 'region' | 'addressLocality'>): ContainerFaq[] {
@@ -165,10 +166,10 @@ export function depotLocalBusinessSchema(depot: DepotSchemaInput) {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     name: `Roseberry Containers — ${depot.name}`,
-    description: `Buy shipping containers near ${depot.name}, ${depot.region}. Roseberry Containers supply 10ft, 20ft and 40ft containers with fast delivery.`,
+    description: `Buy shipping containers near ${depot.name}, ${depot.region}. Roseberry Containers supply 10ft, 20ft and 40ft containers with fast local delivery.`,
     url: `${SITE_URL}/depots/${depot.slug}`,
     telephone: '+447793251550',
-    image: `${SITE_URL}/logo.jpg`,
+    image: depot.heroImage ? `${SITE_URL}${depot.heroImage}` : `${SITE_URL}/logo.jpg`,
     address: {
       '@type': 'PostalAddress',
       ...(depot.streetAddress ? { streetAddress: depot.streetAddress } : {}),

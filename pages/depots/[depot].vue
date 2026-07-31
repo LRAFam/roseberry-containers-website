@@ -7,7 +7,7 @@
         <div v-if="depot.heroImage" class="absolute inset-0">
           <img
             :src="depot.heroImage"
-            :alt="`Shipping containers for sale in ${depot.name} — River Tyne and Tyneside`"
+            :alt="`Shipping containers for sale in ${depot.name}, ${depot.region}`"
             class="w-full h-full object-cover"
             fetchpriority="high"
           >
@@ -164,7 +164,7 @@
               FAQs
               <span class="w-8 h-px bg-amber-500"></span>
             </div>
-            <h2 class="heading-lg text-gray-900">Container Sales in {{ depot.name }} — Common Questions</h2>
+            <h2 class="heading-lg text-gray-900">Container Sales in {{ depot.name }}: Common Questions</h2>
           </div>
           <div class="space-y-4">
             <details v-for="faq in depotFaqItems" :key="faq.question" class="group bg-gray-50 rounded-xl border border-gray-200 open:border-amber-300 open:bg-amber-50/30 transition-colors">
@@ -210,28 +210,37 @@ const route = useRoute()
 
 const depot = computed(() => getDepotBySlug(String(route.params.depot)))
 
-const depotFaqItems = computed(() => depot.value ? depotFaqs(depot.value) : [])
+const depotFaqItems = computed(() => {
+  if (!depot.value) return []
+  return [...depotFaqs(depot.value), ...(depot.value.extraFaqs ?? [])]
+})
 
 useHead(() => {
   if (!depot.value) {
     return {
       title: 'Depot | Roseberry Containers',
-      meta: [{ name: 'description', content: 'Roseberry Containers — nationwide depot network.' }],
+      meta: [{ name: 'description', content: 'Roseberry Containers nationwide depot network.' }],
       link: [{ rel: 'canonical', href: 'https://www.roseberrycontainers.com/container-sales/nationwide' }],
     }
   }
 
   const canonical = depotPageUrl(depot.value.slug)
-  const description = `Buy shipping containers in ${depot.value.name}, ${depot.value.region}. 10ft, 20ft and 40ft new & used containers from £950 + VAT. Fast local delivery from our ${depot.value.name} depot. Call 07793 251550 for a quote.`
-  const keywords = [
+  const nearbyTowns = (depot.value.areasServed ?? []).slice(0, 4).join(', ')
+  const description = nearbyTowns
+    ? `Buy shipping containers in ${depot.value.name} and across ${depot.value.region}. 10ft, 20ft and 40ft new and used containers from £950 + VAT. Fast delivery to ${nearbyTowns} and surrounding areas. Call 07793 251550.`
+    : `Buy shipping containers in ${depot.value.name}, ${depot.value.region}. 10ft, 20ft and 40ft new & used containers from £950 + VAT. Fast local delivery from our ${depot.value.name} depot. Call 07793 251550 for a quote.`
+  const keywordParts = [
     `shipping containers ${depot.value.name}`,
+    `shipping containers for sale ${depot.value.name}`,
     `container sales ${depot.value.name}`,
     `buy shipping container ${depot.value.addressLocality}`,
     `20ft container ${depot.value.name}`,
     `used shipping containers ${depot.value.region}`,
-  ].join(', ')
+    ...(depot.value.areasServed ?? []).slice(0, 6).map(area => `shipping containers ${area}`),
+  ]
+  const keywords = [...new Set(keywordParts)].join(', ')
 
-  const faqs = depotFaqs(depot.value)
+  const faqs = depotFaqItems.value
   const ogImage = depot.value.heroImage
     ? `${SITE_URL}${depot.value.heroImage}`
     : `${SITE_URL}/logo.jpg`

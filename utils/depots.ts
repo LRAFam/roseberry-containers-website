@@ -24,6 +24,8 @@ export type Depot = {
   areasServed?: string[]
   /** Optional hero background image path (e.g. /images/depots/newcastle-hero.jpg) */
   heroImage?: string
+  /** Extra FAQs appended after the standard depot FAQs */
+  extraFaqs?: { question: string; answer: string }[]
 }
 
 export const depots: Depot[] = [
@@ -90,15 +92,39 @@ export const depots: Depot[] = [
     slug: 'birmingham',
     name: 'Birmingham',
     region: 'West Midlands',
-    highlight: 'Central location — Midlands hub',
+    highlight: 'Midlands hub: fast delivery across the West Midlands',
     heroImage: '/images/depots/birmingham-hero.jpg',
-    heroText: "At the heart of the UK's road network, our Birmingham depot delivers containers throughout the Midlands faster and cheaper than anywhere else.",
-    areaDescription: "Birmingham is the UK's second largest city and sits at the centre of the country's motorway network — making it the ideal hub for container deliveries across the Midlands.",
-    containerInfo: 'Our West Midlands depot stocks 10ft, 20ft and 40ft shipping containers in a range of grades and conditions. New, one-trip and good quality used containers are all available. We serve Birmingham, Coventry, Wolverhampton, Leicester, Nottingham, Oxford and the whole of the Midlands.',
-    deliveryInfo: 'With direct access to the M5, M6, M40 and M42 motorway corridors, our Birmingham depot can reach most Midlands postcodes within 24-48 hours of dispatch.',
-    nearbyDepots: [{ slug: 'liverpool', name: 'Liverpool' }, { slug: 'southampton', name: 'Southampton' }],
+    heroText: 'Our Birmingham depot sits at the centre of the UK motorway network, supplying shipping containers for sale across Birmingham, Coventry, Wolverhampton and the wider West Midlands.',
+    areaDescription: "Birmingham is the UK's second largest city and the natural hub for container sales across the Midlands. From our West Midlands depot we cover Birmingham, Coventry, the Black Country, Leicestershire, Warwickshire and surrounding counties, so local customers get shorter delivery runs and clearer pricing.",
+    containerInfo: 'From Birmingham we supply 10ft, 20ft and 40ft shipping containers to customers across the West Midlands, including Coventry, Wolverhampton, Oldbury, Tamworth, Leicester, Derby, Nottingham and Solihull. New 1-trip containers and quality grade-A used stock are regularly available, with low-grade 20ft units from £950 + VAT.',
+    deliveryInfo: 'We deliver from our Birmingham depot via the M5, M6, M40 and M42 corridors across the West Midlands and into the East Midlands. Most Birmingham, Coventry and Black Country postcodes can be reached within 24–48 hours of order confirmation.',
+    nearbyDepots: [{ slug: 'liverpool', name: 'Liverpool' }, { slug: 'southampton', name: 'Southampton' }, { slug: 'leeds', name: 'Leeds' }],
     addressLocality: 'Birmingham',
     addressRegion: 'West Midlands',
+    areasServed: [
+      'Birmingham',
+      'Coventry',
+      'Wolverhampton',
+      'Oldbury',
+      'Tamworth',
+      'Solihull',
+      'West Midlands',
+      'Leicester',
+      'Derby',
+      'Nottingham',
+      'Warwickshire',
+      'Black Country',
+    ],
+    extraFaqs: [
+      {
+        question: 'Do you sell shipping containers in Coventry and the West Midlands?',
+        answer: 'Yes. Our Birmingham depot supplies 10ft, 20ft and 40ft shipping containers for sale across Coventry, Wolverhampton, Oldbury, Tamworth, Leicester, Derby and the wider West Midlands. Call 07793 251550 for stock and a delivery quote to your postcode.',
+      },
+      {
+        question: 'How quickly can you deliver a shipping container in Birmingham?',
+        answer: 'Most Birmingham, Coventry and Black Country deliveries can be arranged within 24–48 hours of order confirmation, depending on stock and site access. We quote delivery clearly upfront with no hidden costs.',
+      },
+    ],
   },
   {
     slug: 'liverpool',
