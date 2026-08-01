@@ -155,6 +155,32 @@
         </div>
       </section>
 
+      <!-- Areas served -->
+      <section v-if="depotTowns.length" class="section-padding bg-white border-t border-gray-100">
+        <div class="container-custom">
+          <div class="text-center mb-10">
+            <div class="inline-flex items-center gap-2 text-amber-600 font-semibold text-sm uppercase tracking-widest mb-3">
+              <span class="w-8 h-px bg-amber-500"></span>
+              Areas We Cover
+              <span class="w-8 h-px bg-amber-500"></span>
+            </div>
+            <h2 class="heading-lg text-gray-900">Container Sales from {{ depot.name }} Into</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto mt-3">Stock and delivery from our {{ depot.name }} depot. Click a town for local availability.</p>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 max-w-4xl mx-auto">
+            <NuxtLink
+              v-for="t in depotTowns"
+              :key="t.slug"
+              :to="townPagePath(t.parentDepotSlug, t.slug)"
+              class="bg-white rounded-xl px-4 py-3 text-sm font-medium text-gray-900 border border-gray-200 hover:border-amber-300 hover:shadow-card transition-all flex items-center justify-between"
+            >
+              {{ t.name }}
+              <svg class="w-3.5 h-3.5 text-amber-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </NuxtLink>
+          </div>
+        </div>
+      </section>
+
       <!-- FAQ -->
       <section class="section-padding bg-white border-t border-gray-100">
         <div class="container-custom max-w-3xl">
@@ -204,11 +230,13 @@
 
 <script setup lang="ts">
 import { getDepotBySlug, depotPagePath, depotPageUrl, SITE_URL } from '~/utils/depots'
+import { townsForDepot, townPagePath } from '~/utils/depot-towns'
 import { depotLocalBusinessSchema, depotBreadcrumbSchema, depotFaqs, faqPageSchema } from '~/utils/container-sales-seo'
 
 const route = useRoute()
 
 const depot = computed(() => getDepotBySlug(String(route.params.depot)))
+const depotTowns = computed(() => depot.value ? townsForDepot(depot.value.slug) : [])
 
 const depotFaqItems = computed(() => {
   if (!depot.value) return []

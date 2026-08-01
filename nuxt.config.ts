@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { DEPOT_COUNT, depotNamesList, depots } from './utils/depots'
+import { allDepotTowns } from './utils/depot-towns'
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
@@ -59,6 +60,7 @@ export default defineNuxtConfig({
         '/guides/shipping-container-prices-uk',
         '/blog',
         ...depots.map(d => `/depots/${d.slug}`),
+        ...allDepotTowns().map(t => `/depots/${t.parentDepotSlug}/${t.slug}`),
       ],
     },
   },

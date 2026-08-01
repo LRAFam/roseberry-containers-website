@@ -1,4 +1,5 @@
 import { depots, SITE_URL } from './depots'
+import { allDepotTowns } from './depot-towns'
 
 export type SitemapEntry = {
   loc: string
@@ -19,6 +20,11 @@ export const staticSitemapEntries: SitemapEntry[] = [
     loc: `/depots/${d.slug}`,
     changefreq: 'weekly' as const,
     priority: 0.85,
+  })),
+  ...allDepotTowns().map(t => ({
+    loc: `/depots/${t.parentDepotSlug}/${t.slug}`,
+    changefreq: 'weekly' as const,
+    priority: 0.75,
   })),
   { loc: '/container-hire', changefreq: 'weekly', priority: 0.8 },
   { loc: '/self-storage', changefreq: 'weekly', priority: 0.7 },
