@@ -153,6 +153,29 @@ export const depots: Depot[] = [
     nearbyDepots: [{ slug: 'newcastle', name: 'Newcastle' }, { slug: 'teesside', name: 'Teesside' }, { slug: 'immingham', name: 'Immingham' }],
     addressLocality: 'Leeds',
     addressRegion: 'West Yorkshire',
+    areasServed: [
+      'Leeds',
+      'Sheffield',
+      'Bradford',
+      'York',
+      'Hull',
+      'Harrogate',
+      'Wakefield',
+      'West Yorkshire',
+      'South Yorkshire',
+      'North Yorkshire',
+      'East Yorkshire',
+    ],
+    extraFaqs: [
+      {
+        question: 'Do you deliver shipping containers across Yorkshire from Leeds?',
+        answer: 'Yes. Our Leeds depot supplies 10ft, 20ft and 40ft shipping containers across West, South, North and East Yorkshire, including Sheffield, Bradford, York, Hull, Harrogate and Wakefield. Call 07793 251550 for stock and a delivery quote.',
+      },
+      {
+        question: 'How quickly can you deliver a shipping container in Leeds and Yorkshire?',
+        answer: 'Most Yorkshire deliveries can be arranged within 2–4 working days of order confirmation, depending on stock and site access. We quote delivery clearly upfront with no hidden costs.',
+      },
+    ],
   },
   {
     slug: 'newcastle',

@@ -203,7 +203,7 @@ export function townFaqs(town: {
     },
     {
       question: `Is there a Roseberry Containers depot in ${town.name}?`,
-      answer: `Stock for ${town.name} is held at our ${town.parentDepotName} depot. We deliver direct to your site, so you get Midlands pricing without needing a separate ${town.name} yard.`,
+      answer: `Stock for ${town.name} is held at our ${town.parentDepotName} depot. We deliver direct to your site, so you get clear local delivery pricing without needing a separate ${town.name} yard.`,
     },
     {
       question: `How do I get a quote for a container in ${town.name}?`,

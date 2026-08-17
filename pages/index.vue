@@ -128,6 +128,22 @@
 import { aggregateRatingSchema, BUSINESS_ADDRESS } from '~/utils/container-sales-seo'
 import { DEPOT_COUNT } from '~/utils/depots'
 
+useSeoMeta({
+  title: 'Buy Shipping Containers | New & Used | UK Wide Delivery | Roseberry Containers',
+  description: `Buy shipping containers from Roseberry Containers. New 1-trip and quality used 10ft, 20ft and 40ft containers. ${DEPOT_COUNT} UK depots, nationwide delivery, hire and conversions.`,
+  ogTitle: 'Buy Shipping Containers | New & Used | Roseberry Containers',
+  ogDescription: `New 1-trip and quality used shipping containers, with ${DEPOT_COUNT} UK depots and nationwide delivery.`,
+  ogUrl: 'https://www.roseberrycontainers.com/',
+  ogImage: 'https://www.roseberrycontainers.com/images/hero-bg.jpg',
+  ogImageAlt: 'Shipping containers at a Roseberry Containers depot',
+  ogType: 'website',
+  ogLocale: 'en_GB',
+  twitterCard: 'summary_large_image',
+  twitterTitle: 'Buy Shipping Containers | New & Used | Roseberry Containers',
+  twitterDescription: `New 1-trip and quality used shipping containers, with ${DEPOT_COUNT} UK depots and nationwide delivery.`,
+  twitterImage: 'https://www.roseberrycontainers.com/images/hero-bg.jpg',
+})
+
 useHead({
   link: [
     { rel: 'canonical', href: 'https://www.roseberrycontainers.com/' }

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="!route.params.town">
     <Header />
     <main v-if="depot">
       <!-- Hero -->
@@ -226,6 +226,7 @@
 
     <Footer />
   </div>
+  <NuxtPage v-else />
 </template>
 
 <script setup lang="ts">

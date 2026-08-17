@@ -47,7 +47,7 @@
                 <p class="text-gray-600 leading-relaxed mb-4">
                   Stock is held at our
                   <NuxtLink :to="depotPagePath(town.parentDepotSlug)" class="text-amber-700 font-medium hover:text-amber-800">{{ town.parentDepotName }} depot</NuxtLink>,
-                  not a separate {{ town.name }} yard. That keeps delivery distances short across the Midlands and pricing clear.
+                  not a separate {{ town.name }} yard. That keeps delivery distances short and pricing clear.
                 </p>
                 <p class="text-gray-600 leading-relaxed">{{ town.deliveryInfo }}</p>
               </div>

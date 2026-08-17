@@ -171,8 +171,126 @@ export const birminghamTowns: DepotTown[] = [
   },
 ]
 
+export const leedsTowns: DepotTown[] = [
+  {
+    slug: 'sheffield',
+    name: 'Sheffield',
+    parentDepotSlug: 'leeds',
+    parentDepotName: 'Leeds',
+    heroText: 'Shipping containers for sale in Sheffield, supplied from our Leeds depot across South Yorkshire. New and used 10ft, 20ft and 40ft units available.',
+    areaDescription: 'Sheffield is a major South Yorkshire delivery area for our Leeds depot, connected by the M1 corridor. We supply shipping containers for construction sites, business yards, farms and private storage across Sheffield, Rotherham and nearby South Yorkshire locations.',
+    deliveryInfo: 'Most Sheffield and nearby South Yorkshire deliveries can be arranged within 2–4 working days of order confirmation, subject to stock and site access. We quote delivery clearly before you order.',
+    extraFaqs: [
+      {
+        question: 'Do you have a shipping container depot in Sheffield?',
+        answer: 'Stock for Sheffield is held at our Leeds depot, not a separate Sheffield yard. We deliver direct to suitable sites across Sheffield and South Yorkshire with a clear quote for your postcode.',
+      },
+      {
+        question: 'Can you deliver a 20ft container to Sheffield?',
+        answer: 'Yes. We supply 10ft, 20ft and 40ft containers from Leeds to Sheffield. Tell us about your access, gates and any overhead obstructions so we can recommend the right delivery vehicle.',
+      },
+    ],
+  },
+  {
+    slug: 'bradford',
+    name: 'Bradford',
+    parentDepotSlug: 'leeds',
+    parentDepotName: 'Leeds',
+    heroText: 'Buy shipping containers in Bradford with delivery from our Leeds depot. Secure new and used containers for West Yorkshire homes, yards and sites.',
+    areaDescription: 'Bradford is close to our Leeds depot via the M62 and local West Yorkshire routes. We deliver 10ft, 20ft and 40ft containers to commercial premises, building projects, farms and private sites across Bradford, Keighley and the surrounding area.',
+    deliveryInfo: 'Bradford deliveries are usually arranged within 2–4 working days from Leeds once stock and access are confirmed. Low-loaders can position containers on suitable hard-standing.',
+    extraFaqs: [
+      {
+        question: 'Do you deliver shipping containers to Bradford?',
+        answer: 'Yes. Our Leeds depot supplies shipping containers throughout Bradford and wider West Yorkshire. Call 07793 251550 for current stock and a delivery quote.',
+      },
+      {
+        question: 'What container sizes are available in Bradford?',
+        answer: 'We supply 10ft, 20ft and 40ft containers in new 1-trip and quality used grades, delivered from Leeds to your Bradford site.',
+      },
+    ],
+  },
+  {
+    slug: 'york',
+    name: 'York',
+    parentDepotSlug: 'leeds',
+    parentDepotName: 'Leeds',
+    heroText: 'Shipping containers for sale in York, delivered from our Leeds depot across North Yorkshire. Quality 10ft, 20ft and 40ft stock at clear prices.',
+    areaDescription: 'York is well placed for container delivery from our Leeds depot via the A64 and A1(M). We supply containers to York businesses, agricultural sites, construction projects and private customers across the city and nearby North Yorkshire villages.',
+    deliveryInfo: 'York deliveries typically take 2–4 working days from Leeds, depending on stock, route and site access. We confirm delivery costs upfront so you know exactly what to expect.',
+    extraFaqs: [
+      {
+        question: 'Can I buy a shipping container in York?',
+        answer: 'Yes. We sell new and used 10ft, 20ft and 40ft shipping containers delivered from our Leeds depot to York and surrounding North Yorkshire locations.',
+      },
+      {
+        question: 'How much is container delivery to York?',
+        answer: 'Delivery depends on your exact postcode, access and whether a crane lift is required. We provide a clear, no-obligation quote from our Leeds depot before you order.',
+      },
+    ],
+  },
+  {
+    slug: 'hull',
+    name: 'Hull',
+    parentDepotSlug: 'leeds',
+    parentDepotName: 'Leeds',
+    heroText: 'Buy shipping containers in Hull with delivery from our Leeds depot. New and used 10ft, 20ft and 40ft containers for East Yorkshire sites.',
+    areaDescription: 'Hull and the wider East Yorkshire area are covered from our Leeds depot via the M62 and A63. We supply containers for storage, trade yards, construction compounds and agricultural use across Hull, Beverley and nearby locations.',
+    deliveryInfo: 'Most Hull deliveries can be scheduled within 2–4 working days from Leeds once stock and suitable access are confirmed. Ask us for a delivery quote tailored to your site.',
+    extraFaqs: [
+      {
+        question: 'Do you deliver containers to Hull?',
+        answer: 'Yes. We deliver 10ft, 20ft and 40ft shipping containers from our Leeds depot to Hull and across East Yorkshire.',
+      },
+      {
+        question: 'Do you sell used containers in Hull?',
+        answer: 'Yes. Quality used and new 1-trip containers are available, including popular 20ft units. Contact us for current Leeds stock and delivery pricing to Hull.',
+      },
+    ],
+  },
+  {
+    slug: 'harrogate',
+    name: 'Harrogate',
+    parentDepotSlug: 'leeds',
+    parentDepotName: 'Leeds',
+    heroText: 'Shipping containers for sale in Harrogate, supplied from our Leeds depot for North Yorkshire homes, businesses, farms and construction sites.',
+    areaDescription: 'Harrogate is a straightforward North Yorkshire delivery area from our Leeds depot. We provide secure shipping containers for domestic storage, commercial yards, rural properties and building sites across Harrogate, Knaresborough and the surrounding area.',
+    deliveryInfo: 'Harrogate deliveries are commonly arranged within 2–4 working days from Leeds, subject to availability and access. We will check site suitability before confirming your delivery.',
+    extraFaqs: [
+      {
+        question: 'Can you deliver a container to Harrogate?',
+        answer: 'Yes. Our Leeds depot delivers containers to Harrogate and nearby North Yorkshire addresses. Let us know about your entrance width, ground conditions and overhead cables when you enquire.',
+      },
+      {
+        question: 'What is the best container size for a Harrogate property?',
+        answer: 'A 10ft or 20ft container is often suitable for private storage, while businesses and larger sites may prefer 20ft or 40ft units. We can help you choose based on the space available.',
+      },
+    ],
+  },
+  {
+    slug: 'wakefield',
+    name: 'Wakefield',
+    parentDepotSlug: 'leeds',
+    parentDepotName: 'Leeds',
+    heroText: 'Shipping containers for sale in Wakefield, delivered from our Leeds depot with fast, clear West Yorkshire pricing for new and used stock.',
+    areaDescription: 'Wakefield sits close to the M1 and M62 network, making it a natural local delivery area for our Leeds depot. We supply containers to Wakefield businesses, construction sites, farms and homeowners who need secure, weatherproof storage.',
+    deliveryInfo: 'Wakefield and nearby West Yorkshire postcodes are usually reachable within 2–4 working days from Leeds, depending on stock and access requirements.',
+    extraFaqs: [
+      {
+        question: 'Do you sell containers in Wakefield?',
+        answer: 'Yes. We supply new and used 10ft, 20ft and 40ft containers from our Leeds depot and deliver them throughout Wakefield and nearby areas.',
+      },
+      {
+        question: 'Can a container be placed on my Wakefield site?',
+        answer: 'Usually, provided the site has suitable access and level hard-standing. We will ask about gates, turning space, slopes and overhead obstructions before arranging delivery.',
+      },
+    ],
+  },
+]
+
 const townsByDepot: Record<string, DepotTown[]> = {
   birmingham: birminghamTowns,
+  leeds: leedsTowns,
 }
 
 export function townsForDepot(depotSlug: string): DepotTown[] {

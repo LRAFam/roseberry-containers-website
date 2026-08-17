@@ -1,5 +1,5 @@
 <template>
-  <section class="relative bg-gradient-to-br from-primary-950 via-gray-900 to-gray-900 text-white overflow-hidden" style="clip-path: polygon(0 0, 100% 0, 100% 94%, 0 100%)">
+  <section class="relative bg-primary-950 text-white overflow-hidden">
     <!-- Background: real container yard photo with dark overlay -->
     <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/images/hero-bg.jpg')">
       <div class="absolute inset-0 bg-primary-950/75"></div>
@@ -12,10 +12,7 @@
 
         <!-- Content -->
         <div class="space-y-7">
-          <div class="inline-flex items-center gap-2 bg-amber-500/10 text-amber-300 border border-amber-500/30 px-4 py-1.5 rounded-full text-sm font-semibold">
-            <span class="w-1.5 h-1.5 bg-amber-400 rounded-full animate-pulse"></span>
-            Nationwide Container Specialists
-          </div>
+          <p class="text-amber-300 text-sm font-semibold uppercase tracking-[0.16em]">Nationwide container specialists</p>
 
           <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight text-white">
             The UK's Leading
@@ -45,7 +42,7 @@
           <!-- Stats -->
           <div class="grid grid-cols-3 gap-4 pt-6 border-t border-amber-500/20">
             <div class="text-center">
-              <div class="text-3xl font-bold hero-gold-text">8</div>
+              <div class="text-3xl font-bold hero-gold-text">{{ DEPOT_COUNT }}</div>
               <div class="text-xs text-amber-300/70 mt-1 uppercase tracking-wide">UK Depots</div>
             </div>
             <div class="text-center border-x border-white/10">
@@ -59,36 +56,23 @@
           </div>
         </div>
 
-        <!-- Video / Image panel -->
+        <!-- Container yard image -->
         <div class="relative lg:h-[520px] h-[280px]">
-          <div class="absolute -inset-3 rounded-3xl bg-gradient-to-br from-amber-500/15 via-primary-500/10 to-transparent blur-2xl pointer-events-none"></div>
           <div class="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-amber-400/60 rounded-tl-2xl pointer-events-none z-20"></div>
           <div class="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-amber-400/60 rounded-tr-2xl pointer-events-none z-20"></div>
           <div class="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-amber-400/60 rounded-bl-2xl pointer-events-none z-20"></div>
           <div class="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-amber-400/60 rounded-br-2xl pointer-events-none z-20"></div>
-          <div class="absolute inset-0 rounded-2xl border border-amber-500/30 shadow-2xl overflow-hidden">
+          <div class="absolute inset-0 rounded-2xl border border-amber-500/30 overflow-hidden">
             <div class="absolute inset-0 pointer-events-none z-10" style="background: radial-gradient(ellipse at center, transparent 50%, rgba(3,22,14,0.65) 100%)"></div>
-            <video
+            <img
               class="w-full h-full object-cover"
-              autoplay
-              muted
-              loop
-              playsinline
-              preload="metadata"
-              src="/videos/hero.mp4"
-            ></video>
-          </div>
-          <!-- Floating badge -->
-          <div class="absolute -bottom-4 -left-4 z-30 bg-white rounded-xl shadow-xl px-4 py-3 flex items-center gap-3 border border-gray-100">
-            <div class="w-9 h-9 bg-[#00b67a] rounded-lg flex items-center justify-center flex-shrink-0">
-              <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/>
-              </svg>
-            </div>
-            <div>
-              <p class="text-xs text-gray-500 font-medium">Trustpilot Rated</p>
-              <p class="text-sm font-bold text-gray-900">Excellent · 4.3/5</p>
-            </div>
+              src="/images/hero-bg.jpg"
+              alt="Shipping containers at a Roseberry Containers depot"
+              width="1920"
+              height="1080"
+              fetchpriority="high"
+              loading="eager"
+            >
           </div>
         </div>
 
@@ -96,7 +80,7 @@
     </div>
 
     <!-- Depot ticker -->
-    <div class="relative z-10 border-t border-white/10 bg-primary-950/60 backdrop-blur-sm">
+    <div class="relative z-10 border-t border-white/10 bg-primary-950/80">
       <div class="container-custom py-3 flex items-center gap-4 overflow-hidden">
         <span class="text-xs text-amber-400 font-semibold uppercase tracking-wider whitespace-nowrap flex-shrink-0">{{ DEPOT_COUNT }} Depots:</span>
         <div class="flex gap-6 text-xs text-gray-400 overflow-x-auto" style="scrollbar-width:none">
