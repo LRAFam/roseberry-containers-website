@@ -15,7 +15,7 @@
           <p class="text-amber-300 text-sm font-semibold uppercase tracking-[0.16em]">Nationwide container specialists</p>
 
           <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight text-white">
-            The UK's Leading
+            The UK’s Fastest Growing
             <span class="hero-gold-text"> Shipping Container</span>
             Supplier
           </h1>
